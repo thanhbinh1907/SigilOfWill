@@ -6,6 +6,7 @@ namespace SG {
 	public class PlayerUIManager : MonoBehaviour
 	{
 		public static PlayerUIManager instance;
+		[HideInInspector] public PlayerUIHudManager playerUIHudManager;
 
 		private void Awake()
 		{
@@ -18,6 +19,8 @@ namespace SG {
 				Destroy(gameObject); 
 			}
 			DontDestroyOnLoad(gameObject);
+
+			playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
 		}
 
 		private void Start()
