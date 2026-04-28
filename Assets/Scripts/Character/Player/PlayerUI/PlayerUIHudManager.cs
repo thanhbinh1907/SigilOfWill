@@ -17,7 +17,7 @@ namespace SG
             staminaBar.gameObject.SetActive(true);
 		}
 
-        public void SetNewHealthValue(float oldValue, float newValue)
+        public void SetNewHealthValue(int oldValue, int newValue)
         {
             healthBar.SetStat(newValue);
         }

@@ -7,6 +7,7 @@ namespace SG {
 	{
 		public static PlayerUIManager instance;
 		[HideInInspector] public PlayerUIHudManager playerUIHudManager;
+		[HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
 
 		private void Awake()
 		{
@@ -21,6 +22,7 @@ namespace SG {
 			DontDestroyOnLoad(gameObject);
 
 			playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
+			playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>();
 		}
 
 		private void Start()

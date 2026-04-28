@@ -14,6 +14,7 @@ namespace SG
 
 		[HideInInspector] public CharacterController characterController;
 		[HideInInspector] public Animator animator;
+		[HideInInspector] public CharacterAnimatorManager characterAnimatorManager;	
 
 		[HideInInspector] public CharacterEffectsManager characterEffectsManager;
 
@@ -29,15 +30,15 @@ namespace SG
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //
 		public int maxHealth = 0;
-		public event Action<float, float> OnHealthChanged;
+		public event Action<int, int> OnHealthChanged;
 		
-		public float _currentHealth = 0;
-		public float currentHealth
+		public int _currentHealth = 0;
+		public int currentHealth
 		{
 			get { return _currentHealth; }
 			set
 			{
-				float oldValue = _currentHealth;
+				int oldValue = _currentHealth;
 				_currentHealth = value;
 				OnHealthChanged?.Invoke(oldValue,_currentHealth);
 			}
@@ -71,6 +72,7 @@ namespace SG
 			characterController = GetComponent<CharacterController>();
 			animator = GetComponent<Animator>();
 			characterEffectsManager = GetComponent<CharacterEffectsManager>();
+			characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
 		}
 
 		protected virtual void Update()
@@ -79,5 +81,49 @@ namespace SG
 			PlayerCamera.instance.HandleAllCameraActions();
 		}
 
+		public void CheckHP(int oldValue, int newValue)
+		{
+			if (isDead)
+				return;
+
+			if (currentHealth <= 0)
+			{
+				StartCoroutine(ProcessDeathEvent());
+			}
+
+			if (currentHealth > maxHealth)
+			{
+				currentHealth = maxHealth;
+			}
+		}
+
+		public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
+		{
+			_currentHealth = 0;
+			isDead = true;
+
+			// RESET ANY FLAGS HERE THAT NEED TO BE RESET
+			// NOTHING YET
+
+			// IF WE ARE NOT GROUNDED,  PLAY AN AERIAL DEATH ANIMATION
+
+			if (!manuallySelectDeathAnimation)
+			{
+				characterAnimatorManager.PlayTargetAnimation("Dead_01", true);
+			}
+
+			// PLAY SOME DEATH SFX
+
+			yield return new WaitForSeconds(5);
+
+			// AWARD PLAYER WITH RUNES
+
+			// DISABLE CHARACTER CONTROLLER
+		}
+
+		public virtual void ReviveCharacter()
+		{
+
+		}
 	}
 }

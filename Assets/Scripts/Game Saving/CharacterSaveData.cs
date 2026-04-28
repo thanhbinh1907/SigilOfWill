@@ -23,7 +23,7 @@ namespace SG
 		public float zPosition;
 
 		[Header("Resources")]
-		public float currentHealth;
+		public int currentHealth;
 		public float currentStamina;
 
 		[Header("Stats")]

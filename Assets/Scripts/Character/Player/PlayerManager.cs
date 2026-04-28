@@ -7,6 +7,9 @@ namespace SG
 {
     public class PlayerManager : CharacterManager
     {
+        [Header("Debug Menu")]
+        [SerializeField] bool respawnCharacter = false;
+
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerStatsManager playerStatsManager;
@@ -46,6 +49,8 @@ namespace SG
                 WorldSaveGameManager.instance.player = this;
 			}
 
+            OnHealthChanged += CheckHP;
+
 		}
 
 		protected override void Update()
@@ -53,7 +58,19 @@ namespace SG
             base.Update();
             playerLocomotionManager.HandleAllMovement();
             playerStatsManager.RegenerateStamina();
+
+            DebugMenu();
         }
+
+		public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
+		{
+            PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+
+			return base.ProcessDeathEvent(manuallySelectDeathAnimation);
+
+            // CHECK FOR PLAYERS THAT ARE ALIVE, IF 0 RESPAWN CHARACTERS
+
+		}
 
         public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData)
         {
@@ -90,6 +107,28 @@ namespace SG
 
 		}
 
+		public override void ReviveCharacter()
+		{
+			base.ReviveCharacter();
+
+            currentHealth = maxHealth;
+            currentStamina = maxStamina;
+            // RESTORE FOCUS POINT
+
+            // PLAY REBIRTH EFFECTS
+            playerAnimatorManager.PlayTargetAnimation("Empty", false);
+		}
+
+        private void DebugMenu()
+        {
+            if (respawnCharacter) 
+            {
+                respawnCharacter = false;
+                ReviveCharacter();
+            }
+        }
+
+        // TEST, WILL BE REMOVED LATER
         #if UNITY_EDITOR
 		        private void OnValidate()
 		        {
@@ -104,6 +143,13 @@ namespace SG
 				        // Tương tự cho Stamina
 				        maxStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(endurance);
 				        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+
+						// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
+						if (currentHealth <= 0 && !isDead)
+						{
+							// Truy cập trực tiếp hàm xử lý chết vì Event không tự chạy
+							StartCoroutine(ProcessDeathEvent());
+						}
 			        }
 		        }
         #endif
