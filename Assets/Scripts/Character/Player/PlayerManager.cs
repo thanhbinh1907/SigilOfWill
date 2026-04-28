@@ -13,8 +13,9 @@ namespace SG
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerStatsManager playerStatsManager;
+        [HideInInspector] public PlayerInventoryManager playerInventoryManager;
 
-        [Header("Character Info")]
+		[Header("Character Info")]
         public string characterName = "Character";
 
 		protected override void Awake()
@@ -24,6 +25,7 @@ namespace SG
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
 		}
 
 		private void Start()
