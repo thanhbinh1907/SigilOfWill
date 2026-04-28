@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace SG
 {
@@ -16,6 +17,22 @@ namespace SG
 		protected virtual void Awake()
 		{
 			character = GetComponent<CharacterManager>();
+		}
+
+		protected virtual void Start()
+		{
+
+		}
+
+		public int CalculateHealthBasedOnVitalityLevel(int vitality)
+		{
+			float health = 0;
+
+			// Create an equation for how you want health to be calculated
+
+			health = vitality * 15;
+
+			return Mathf.RoundToInt(health);
 		}
 
 		public int CalculateStaminaBasedOnEnduranceLevel(int endurance)

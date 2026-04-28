@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Take Stamina Damage Effect
   m_EditorClassIdentifier: Assembly-CSharp::SG.TakeStaminaDamageEffect
   instantEffectID: 0
-  staminaDamage: 0
+  staminaDamage: 25

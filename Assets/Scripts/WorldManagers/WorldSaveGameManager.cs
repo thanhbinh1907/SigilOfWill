@@ -129,7 +129,7 @@ namespace SG
 				// IF THE FILE EXIST, WE CAN'T CREATE A NEW GAME, OTHERWISE, WE CAN CREATE A NEW GAME
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_01;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -139,7 +139,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_02;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -149,7 +149,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_03;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -159,7 +159,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_04;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -169,7 +169,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_05;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -179,7 +179,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_06;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -189,7 +189,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_07;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -199,7 +199,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_08;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -209,7 +209,7 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_09;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
@@ -219,12 +219,19 @@ namespace SG
 			{
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_10;
 				currentCharacterData = new CharacterSaveData();
-				StartCoroutine(LoadWorldScene());
+				NewGame();
 				return;
 			}
 
 			// IF THERE ARE NO FREE SLOT, NOTIFY PLAYER
 			TitleScreenManager.instance.DisplayNoFreeCharacterSlotPopUp();
+		}
+
+		private void NewGame()
+		{
+			// SAVE THE NEWLY CREATED CHARACTER STATS, AND ITEM (WHEN CREATION SCREEN IS ADDED)
+			SaveGame();
+			StartCoroutine(LoadWorldScene());
 		}
 
 		public void LoadGame()
@@ -252,7 +259,10 @@ namespace SG
 			saveFileDataWriter.saveFileName = saveFileName;
 
 			// PASS THE PLAYER INFO, FROM GAME, TO THEIR SAVE FILE
-			player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
+			if (player != null)
+			{
+				player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
+			}
 
 			saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
 		}

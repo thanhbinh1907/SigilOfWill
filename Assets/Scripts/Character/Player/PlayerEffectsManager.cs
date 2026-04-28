@@ -16,8 +16,15 @@ namespace SG
             {
                 processEffect = false;
 
-                // WHY ARE WE INSTANTIATING A COPY OF THIS, INSTEAD OF JUST USING IT AS IT IS
-                InstantCharacterEffect effect = Instantiate(effectToTest);
+				// WHEN WE INSTANTIATE IT, THE ORIGINAL IS NOT EFFECTED
+				// TakeStaminaDamageEffect effect = Instantiate(effectToTest) as TakeStaminaDamageEffect;
+				// effect.staminaDamage = 55;
+
+				// WHEN WE DONT INSTANTIATE IT, THE ORIGINAL IS CHANGED 
+				// effectToTest.staminaDamage = 55;
+
+				InstantCharacterEffect effect = Instantiate(effectToTest);
+
 				ProcessInstantEffect(effect);
 			}
 		}

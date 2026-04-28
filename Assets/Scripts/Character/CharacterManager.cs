@@ -21,8 +21,24 @@ namespace SG
 		public bool canMove = true;
 		public bool isSprinting = false;
 
-		[Header("Stats")]
-		public int endurance = 10;
+		[Header("Resources")]
+		// ----------------------- HEALTH ------------------------ //
+		public int maxHealth = 0;
+		public event Action<float, float> OnHealthChanged;
+		
+		public float _currentHealth = 0;
+		public float currentHealth
+		{
+			get { return _currentHealth; }
+			set
+			{
+				float oldValue = _currentHealth;
+				_currentHealth = value;
+				OnHealthChanged?.Invoke(oldValue,_currentHealth);
+			}
+		}
+
+		// ----------------------- STAMINA ------------------------ //
 		public int maxStamina = 0;
 
 		public event Action<float, float> OnStaminaChanged;
@@ -38,7 +54,11 @@ namespace SG
 				OnStaminaChanged?.Invoke(oldValue,_currentStamina);
 			}
 		}
-	
+
+		[Header("Stats")]
+		public int vitality = 10;
+		public int endurance = 10;
+
 		protected virtual void Awake()
 		{
 			DontDestroyOnLoad(this);

@@ -64,9 +64,11 @@ namespace SG
 		}
 
 		// DRAW THE SPHERE USED FOR THE GROUNDED CHECK IN THE SCENE VIEW
+		/*
 		protected void OnDrawGizmosSelected()
 		{
 			Gizmos.DrawSphere(character.transform.position, groundedCheckSphereRadius);
 		}
+		*/
 	}
 }
