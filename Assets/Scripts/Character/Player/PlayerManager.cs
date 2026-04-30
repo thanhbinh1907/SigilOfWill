@@ -9,11 +9,13 @@ namespace SG
     {
         [Header("Debug Menu")]
         [SerializeField] bool respawnCharacter = false;
+        [SerializeField] bool switchRightWeapon = false; 
 
-        [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
+		[HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerStatsManager playerStatsManager;
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+		[HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
 
 		[Header("Character Info")]
         public string characterName = "Character";
@@ -26,6 +28,7 @@ namespace SG
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
 		}
 
 		private void Start()
@@ -127,8 +130,14 @@ namespace SG
             {
                 respawnCharacter = false;
                 ReviveCharacter();
-            }
-        }
+			}
+
+			if (switchRightWeapon)
+			{
+				switchRightWeapon = false;
+				playerEquipmentManager.SwitchRightWeapon();
+			}
+		}
 
         // TEST, WILL BE REMOVED LATER
         #if UNITY_EDITOR

@@ -18,12 +18,12 @@ namespace SG
 		public int faithREQ = 0;
 
 		[Header("Weapon Base Damage")]
-		public int physicalDMG = 0;
-		public int magicDMG = 0;
-		public int fireDMG = 0;
-		public int lightningDMG = 0;
-		public int holyDMG = 0;
-		public int WindDMG = 0;
+		public int physicalDamage = 0;
+		public int magicDamage = 0;
+		public int fireDamage = 0;
+		public int lightningDamage = 0;
+		public int holyDamage = 0;
+		public int windDamage = 0;
 
 		// WEAPON GUARD ABSORPTIONS (BLOCKING POWER)
 

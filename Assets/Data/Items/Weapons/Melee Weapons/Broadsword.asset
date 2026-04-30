@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6be315060578a448053d662a164de6, type: 3}
+  m_Name: Broadsword
+  m_EditorClassIdentifier: Assembly-CSharp::SG.MeleeWeaponItem
+  itemName: Broadsword
+  itemIcon: {fileID: 21300000, guid: 0fffccc5898d4504d87c39c109706c59, type: 3}
+  itemDescription: A straight sword.
+  itemID: 2
+  weaponModel: {fileID: 4416565875763140154, guid: 91a788695af340d488f6eb0bf2d8f557, type: 3}
+  strengREQ: 10
+  dexREQ: 10
+  intREQ: 0
+  faithREQ: 0
+  physicalDamage: 118
+  magicDamage: 0
+  fireDamage: 0
+  lightningDamage: 0
+  holyDamage: 0
+  windDamage: 0
+  poiseDMG: 25
+  baseStaminaCost: 20

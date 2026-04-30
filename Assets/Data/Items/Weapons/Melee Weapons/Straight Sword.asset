@@ -21,11 +21,11 @@ MonoBehaviour:
   dexREQ: 10
   intREQ: 0
   faithREQ: 0
-  physicalDMG: 118
-  magicDMG: 0
-  fireDMG: 0
-  lightningDMG: 0
-  holyDMG: 0
-  WindDMG: 0
+  physicalDamage: 118
+  magicDamage: 0
+  fireDamage: 0
+  lightningDamage: 0
+  holyDamage: 0
+  windDamage: 0
   poiseDMG: 25
   baseStaminaCost: 20
