@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 namespace SG
 {
@@ -46,8 +47,12 @@ namespace SG
 
 				// UPDATE UI STATS BAR WHEN A STATS CHANGE
 				OnHealthChanged += PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue;
-				OnStaminaChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
+				
+                OnStaminaChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
                 OnStaminaChanged += playerStatsManager.ResetStaminaRegenTimer;
+
+                OnManaChanged += PlayerUIManager.instance.playerUIHudManager.SetNewManaValue;
+                OnManaChanged += playerStatsManager.ResetManaRegenTimer;
 
 			}
 
@@ -60,13 +65,19 @@ namespace SG
 
 		}
 
+		private void PlayerManager_OnManaChanged(float arg1, float arg2)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		protected override void Update()
         {
             base.Update();
             playerLocomotionManager.HandleAllMovement();
             playerStatsManager.RegenerateStamina();
+            playerStatsManager.RegenerateMana();
 
-            DebugMenu();
+			DebugMenu();
         }
 
 		public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
@@ -90,9 +101,11 @@ namespace SG
 
             currentCharacterData.currentHealth = currentHealth;
             currentCharacterData.currentStamina = currentStamina;
+            currentCharacterData.currentMana = currentMana;
 
 			currentCharacterData.vitality = vitality;
             currentCharacterData.endurance = endurance;
+            currentCharacterData.intelligence = intelligence;
 		}
 
         public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) 
@@ -103,6 +116,7 @@ namespace SG
 
             vitality = currentCharacterData.vitality;
             endurance = currentCharacterData.endurance;
+            intelligence = currentCharacterData.intelligence;
 
 			maxHealth = playerStatsManager.CalculateHealthBasedOnVitalityLevel(vitality);
             currentHealth = maxHealth;
@@ -112,6 +126,10 @@ namespace SG
 			currentStamina = maxStamina;
 			PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
 
+            maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
+            currentMana = maxMana;
+            PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
+
 		}
 
 		public override void ReviveCharacter()
@@ -120,10 +138,11 @@ namespace SG
 
             currentHealth = maxHealth;
             currentStamina = maxStamina;
-            // RESTORE FOCUS POINT
+            currentMana = maxMana;
+			// RESTORE FOCUS POINT
 
-            // PLAY REBIRTH EFFECTS
-            playerAnimatorManager.PlayTargetAnimation("Empty", false);
+			// PLAY REBIRTH EFFECTS
+			playerAnimatorManager.PlayTargetAnimation("Empty", false);
 		}
 
         private void DebugMenu()
@@ -157,8 +176,11 @@ namespace SG
 				        maxStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(endurance);
 				        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
 
-						// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
-						if (currentHealth <= 0 && !isDead)
+                        maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
+                        PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
+
+				// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
+				if (currentHealth <= 0 && !isDead)
 						{
 							// Truy cập trực tiếp hàm xử lý chết vì Event không tự chạy
 							StartCoroutine(ProcessDeathEvent());

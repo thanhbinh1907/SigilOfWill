@@ -8,6 +8,7 @@ namespace SG
     {
         [SerializeField] UI_StatBar healthBar;
 		[SerializeField] UI_StatBar staminaBar;
+        [SerializeField] UI_StatBar manaBar;
 
         public void RefreshHUD()
         {
@@ -15,6 +16,9 @@ namespace SG
             healthBar.gameObject.SetActive(true);
             staminaBar.gameObject.SetActive(false);
             staminaBar.gameObject.SetActive(true);
+            manaBar.gameObject.SetActive(false);
+			manaBar.gameObject.SetActive(true);
+
 		}
 
         public void SetNewHealthValue(int oldValue, int newValue)
@@ -36,5 +40,15 @@ namespace SG
         {
             staminaBar.SetMaxStat(maxStamina); 
         }
+
+        public void SetNewManaValue(float oldValue, float newValue)
+        {
+            manaBar.SetStat(newValue);
+		}
+
+        public void SetMaxManaValue(int maxMana)
+        {
+            manaBar.SetMaxStat(maxMana);
+		}
 	}
 }

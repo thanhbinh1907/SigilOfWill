@@ -24,7 +24,7 @@ namespace SG
 		{
 			if (player.isPerformingAction)
 				return;
-			if (player.currentStamina <= 0)
+			if (player.currentMana <= 0)
 				return;
 			if (player.isCasting) 
 				return;

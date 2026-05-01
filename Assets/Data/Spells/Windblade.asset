@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Windblade
   m_EditorClassIdentifier: Assembly-CSharp::SG.SpellAction
   spellID: 3
-  spellAnimation: 
-  staminaCost: 20
-  spellPrefab: {fileID: 0}
+  spellAnimation: Windblade_Cast
+  manaCost: 0
+  spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
   fireDamage: 0
   lightningDamage: 0
   windDamage: 30
+  projectileSpeed: 10

@@ -62,9 +62,26 @@ namespace SG
 			}
 		}
 
+		// ----------------------- MANA ------------------------ //
+		public int maxMana = 0;
+		public event Action<float, float> OnManaChanged;
+		public float _currentMana = 0;
+		public float currentMana
+		{
+			get { return _currentMana; }
+			set
+			{
+				float oldValue = _currentMana;
+				_currentMana = value;
+				OnManaChanged?.Invoke(oldValue,_currentMana);
+			}
+		}
+
+
 		[Header("Stats")]
 		public int vitality = 10;
 		public int endurance = 10;
+		public int intelligence = 10;
 
 		protected virtual void Awake()
 		{

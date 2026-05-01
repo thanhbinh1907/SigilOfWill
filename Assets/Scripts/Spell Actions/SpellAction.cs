@@ -9,7 +9,7 @@ namespace SG
 	{
         public int spellID;
         public string spellAnimation;
-        public int staminaCost;
+        public int manaCost;
         public GameObject spellPrefab;
 
         [Header("Spell Base Damage")]
@@ -22,10 +22,10 @@ namespace SG
 
 		public virtual void AttemptToPerformAction(PlayerManager player)
         {
-            if (player.currentStamina > 0)
+            if (player.currentMana > 0)
             {
                 player.characterAnimatorManager.PlayTargetAnimation(spellAnimation, true);
-                player.currentStamina -= staminaCost;
+                player.currentMana -= manaCost;
                 player.playerCombatManager.currentSpellBeingCast = this;
 			}
             else

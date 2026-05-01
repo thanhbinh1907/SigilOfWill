@@ -25,10 +25,12 @@ namespace SG
 		[Header("Resources")]
 		public int currentHealth;
 		public float currentStamina;
+		public float currentMana;
 
 		[Header("Stats")]
 		public int vitality = 10;
 		public int endurance = 10;
+		public int intelligence = 10;
 	}
 }
 

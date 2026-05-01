@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SG.SpellAction
   spellID: 1
   spellAnimation: Fireball_Cast
-  staminaCost: 30
+  manaCost: 10
   spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
   fireDamage: 50
   lightningDamage: 0

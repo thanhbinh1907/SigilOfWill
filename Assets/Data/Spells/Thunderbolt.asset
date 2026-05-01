@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Thunderbolt
   m_EditorClassIdentifier: Assembly-CSharp::SG.SpellAction
   spellID: 2
-  spellAnimation: 
-  staminaCost: 50
-  spellPrefab: {fileID: 0}
+  spellAnimation: Thunderbolt_Cast
+  manaCost: 0
+  spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
   fireDamage: 0
   lightningDamage: 100
   windDamage: 0
+  projectileSpeed: 10

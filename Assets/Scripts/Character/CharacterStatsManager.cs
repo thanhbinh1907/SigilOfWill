@@ -14,6 +14,11 @@ namespace SG
 		private float staminaRegenerationTimer = 0;
 		[SerializeField] float staminaRegenerationDelay = 2;
 
+		[Header("Mana Regeneration")]
+		[SerializeField] float manaRegenerationAmount = 10;
+		private float manaRegenerationTimer = 0;
+		[SerializeField] float manaRegenerationDelay = 2;
+
 		protected virtual void Awake()
 		{
 			character = GetComponent<CharacterManager>();
@@ -46,6 +51,14 @@ namespace SG
 			return Mathf.RoundToInt(stamina);
 		}
 
+		public int CalculateManaBasedOnIntelligenceLevel(int intelligence)
+		{
+			float mana = 0;
+			
+			mana = intelligence * 10;
+			return Mathf.RoundToInt(mana);
+		}
+
 		public virtual void RegenerateStamina()
 		{
 			if (character.isSprinting)
@@ -60,12 +73,7 @@ namespace SG
 			{
 				if (character.currentStamina < character.maxStamina)
 				{
-					staminaRegenerationTimer += Time.deltaTime;
-
-					if (staminaRegenerationTimer >= staminaRegenerationDelay)
-					{
-						character.currentStamina += staminaRegenerationAmount * Time.deltaTime;
-					}
+					character.currentStamina += staminaRegenerationAmount * Time.deltaTime;
 				}
 			}
 		}
@@ -78,5 +86,29 @@ namespace SG
 				staminaRegenerationTimer = 0;
 			}
 		}
+
+		public virtual void RegenerateMana()
+		{
+			if (character.isPerformingAction)
+				return;
+			manaRegenerationTimer += Time.deltaTime;
+
+			if (manaRegenerationTimer >= manaRegenerationDelay)
+			{
+				if (character.currentMana < character.maxMana)
+				{
+					character.currentMana += manaRegenerationAmount * Time.deltaTime;
+				}
+			}
+		}
+
+		public virtual void ResetManaRegenTimer(float previousManaAmount, float currentManaAmount)
+		{
+			if (currentManaAmount < previousManaAmount)
+			{
+				manaRegenerationTimer = 0;
+			}
+		}
+
 	}
 }

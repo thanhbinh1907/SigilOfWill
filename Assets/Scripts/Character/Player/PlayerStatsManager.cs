@@ -23,6 +23,7 @@ namespace SG
 			// UNTIL THEN HOWEVER, STATS ARE NEVER CALCULATED, SO WE DO IS HERE ON START, IF A SAVE FILE EXISTS THEY WILL BE OVER WRITTEN WHEN LOADING TO SCENE
 			CalculateHealthBasedOnVitalityLevel(player.vitality);
 			CalculateStaminaBasedOnEnduranceLevel(player.endurance);
+			CalculateManaBasedOnIntelligenceLevel(player.intelligence);
 		}
 	}
 }
