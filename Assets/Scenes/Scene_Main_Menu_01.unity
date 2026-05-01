@@ -5023,6 +5023,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2710101093118023425, guid: 97a9ab445d4cb0645bc27ba29805c23a, type: 3}
+      propertyPath: weapons.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710101093118023425, guid: 97a9ab445d4cb0645bc27ba29805c23a, type: 3}
+      propertyPath: 'weapons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c9c46d549c1f71c4298594ce0ac6cf08, type: 2}
+    - target: {fileID: 2710101093118023425, guid: 97a9ab445d4cb0645bc27ba29805c23a, type: 3}
+      propertyPath: 'weapons.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 09c4dbd77e6b5b949890f42a536f5117, type: 2}
+    - target: {fileID: 2710101093118023425, guid: 97a9ab445d4cb0645bc27ba29805c23a, type: 3}
+      propertyPath: 'weapons.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a7e9b65a6fbb5be4187112e96fc05770, type: 2}
     - target: {fileID: 4176213593552324201, guid: 97a9ab445d4cb0645bc27ba29805c23a, type: 3}
       propertyPath: m_Name
       value: World Item Database
@@ -5373,6 +5389,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+--- !u!1001 &6863316101363271889
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1429579836171884113, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_Name
+      value: World Spell Database
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.62301
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.66568
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.18606
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
 --- !u!222 &7027166376884058713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5679,3 +5752,4 @@ SceneRoots:
   - {fileID: 4954000400038767240}
   - {fileID: 2426358556837539879}
   - {fileID: 2485202538768918549}
+  - {fileID: 6863316101363271889}

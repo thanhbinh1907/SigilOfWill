@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -29,6 +29,9 @@ namespace SG
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
 
+        [Header("Player Combat Input")]
+        [SerializeField] bool spellTriggerInput = false;
+
         private void Awake()
         {
             if (instance == null)
@@ -46,15 +49,15 @@ namespace SG
             DontDestroyOnLoad(gameObject);
             SceneManager.activeSceneChanged += OnSceneChange;
 
-			if (SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
-			{
-				instance.enabled = true;
-			}
-			else
-			{
-				instance.enabled = false;
-			}
-		}
+            if (SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+            {
+                instance.enabled = true;
+            }
+            else
+            {
+                instance.enabled = false;
+            }
+        }
 
         private void OnSceneChange(Scene oldScene, Scene newScene)
         {
@@ -84,10 +87,22 @@ namespace SG
                 playerControls.PlayerAction.Dodge.performed += i => dodgeInput = true;
                 playerControls.PlayerAction.Jump.performed += i => jumpInput = true;
 
-                // Holding the input will set sprintInput to true, releasing it will set it to false
+                // HOLDING THE INPUT WILL SET SPRINTINPUT TO TRUE, RELEASING IT WILL SET IT TO FALSE
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
-            }
+
+				playerControls.PlayerCombat.SpellTrigger.performed += i =>
+				{
+					spellTriggerInput = true;
+					Debug.Log(">>(Player Input Manager) ĐÃ NHẬN DIỆN PHÍM E ĐƯỢC BẤM XUỐNG!"); 
+				};
+				playerControls.PlayerCombat.SpellTrigger.canceled += i =>
+				{
+					spellTriggerInput = false;
+					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!"); 
+				};
+
+			}
             playerControls.Enable();
         }
 
@@ -114,6 +129,7 @@ namespace SG
             HandleDodgeInput();
             HandleSprintInput();
             HandleJumpInput();
+            HandleCastSpellInput();
 		}
 
         // MOVEMENT INPUT
@@ -179,12 +195,20 @@ namespace SG
             {
                 jumpInput = false;
 
-				// IF WE HAVE A UI WINDOW OPEN, WE DON'T WANT TO JUMP, SO RETURN EARLY
+                // IF WE HAVE A UI WINDOW OPEN, WE DON'T WANT TO JUMP, SO RETURN EARLY
 
                 // ATTEMPT TO PERFORM JUMP
                 player.playerLocomotionManager.AttemptToPerformJump();
 
+            }
+        }
+
+        private void HandleCastSpellInput()
+        {
+            if (spellTriggerInput)
+            {
+                player.playerCombatManager.EnableCastingState();
 			}
-		}
+        }
     }
 }

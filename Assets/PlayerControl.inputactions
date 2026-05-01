@@ -197,6 +197,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player Combat",
+            "id": "331a2732-12a6-45c1-bfcc-adf045cf2965",
+            "actions": [
+                {
+                    "name": "SpellTrigger",
+                    "type": "Button",
+                    "id": "bef7c6f3-e32d-41de-b5aa-86ff77984dcc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3a2988f5-a634-4b06-a78e-9d23b1c94934",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpellTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

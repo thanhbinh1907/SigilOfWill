@@ -26,6 +26,7 @@ namespace SG
 		public bool canRotate = true;
 		public bool canMove = true;
 		public bool isSprinting = false;
+		public bool isCasting = false;
 
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //

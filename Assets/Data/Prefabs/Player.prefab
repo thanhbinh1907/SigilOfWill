@@ -985,6 +985,9 @@ PrefabInstance:
       addedObject: {fileID: 9115456554175591900}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -8566222826321141154}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -8070901037549610352}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       insertIndex: -1
@@ -1045,6 +1048,7 @@ MonoBehaviour:
   canRotate: 1
   canMove: 1
   isSprinting: 0
+  isCasting: 0
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -1058,6 +1062,7 @@ MonoBehaviour:
   playerStatsManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
   playerEquipmentManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
   characterName: 
 --- !u!114 &9115456554175591900
 MonoBehaviour:
@@ -1092,6 +1097,19 @@ MonoBehaviour:
   jumpForwardSpeed: 5
   freeFallSpeed: 2
   dodgeStaminaCost: 25
+--- !u!114 &-8566222826321141154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656126145850657291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b4435f6ee89764c8905e6c26aa94c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerCombatManager
+  currentSpellBeingCast: {fileID: 0}
 --- !u!114 &-8070901037549610352
 MonoBehaviour:
   m_ObjectHideFlags: 0
