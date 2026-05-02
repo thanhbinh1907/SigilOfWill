@@ -17,6 +17,10 @@ namespace SG
         public int lightningDamage = 0;
         public int windDamage = 0;
 
+		[Header("Spell Cast Type")]
+		public bool isSpellFromSky = false;
+		public bool isMeleeSpell = false;
+
 		[Header("Projectile Settings")]
 		public float projectileSpeed = 10f;
 

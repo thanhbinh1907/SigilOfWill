@@ -10,7 +10,10 @@ namespace SG
     {
         [Header("Debug Menu")]
         [SerializeField] bool respawnCharacter = false;
-        [SerializeField] bool switchRightWeapon = false; 
+        [SerializeField] bool switchRightWeapon = false;
+		[SerializeField] bool testCastFireball = false;
+		[SerializeField] bool testCastThunderbolt = false;
+		[SerializeField] bool testCastWindblade = false;
 
 		[HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -157,6 +160,28 @@ namespace SG
 			{
 				switchRightWeapon = false;
 				playerEquipmentManager.SwitchRightWeapon();
+			}
+
+			if (testCastFireball)
+			{
+				testCastFireball = false; 
+										  
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(1);
+				if (spell != null) spell.AttemptToPerformAction(this);
+			}
+
+			if (testCastThunderbolt)
+			{
+				testCastThunderbolt = false;
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(2);
+				if (spell != null) spell.AttemptToPerformAction(this);
+			}
+
+			if (testCastWindblade)
+			{
+				testCastWindblade = false;
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(3);
+				if (spell != null) spell.AttemptToPerformAction(this);
 			}
 		}
 

@@ -25,8 +25,5 @@ public enum CharacterSlot
 public enum WeaponModelSlot
 {
 	RightHand,
-	LeftHand,
-	// RightHip,
-	// LeftHip,
-	// Back,
+	LeftHand
 }

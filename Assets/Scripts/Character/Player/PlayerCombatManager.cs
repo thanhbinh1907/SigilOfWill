@@ -26,7 +26,7 @@ namespace SG
 				return;
 			if (player.currentMana <= 0)
 				return;
-			if (player.isCasting) 
+			if (player.isCasting)
 				return;
 
 			WeaponItem weaponItem = player.playerInventoryManager.currentRightHandWeapon;
@@ -95,28 +95,63 @@ namespace SG
 			Debug.Log("Đang gọi Animation Event: SpawnProjectile...");
 			if (currentSpellBeingCast != null && currentSpellBeingCast.spellPrefab != null)
 			{
-				Transform spawnLocation = null;
-
-				if (player.playerEquipmentManager != null && player.playerEquipmentManager.rightWeaponManager != null)
+				//  THUNDERBOLT
+				if (currentSpellBeingCast.isSpellFromSky)
 				{
-					spawnLocation = player.playerEquipmentManager.rightWeaponManager.spellSpawnPoint;
+
+					Vector3 strikePosition = player.transform.position + PlayerCamera.instance.transform.forward * 10f;
+					strikePosition.y = player.transform.position.y;
+					GameObject bolt = Instantiate(currentSpellBeingCast.spellPrefab, strikePosition, Quaternion.identity);
+
+					DamageCollider damageCollider = bolt.GetComponentInChildren<DamageCollider>();
+
+					// Bắt đầu quy trình giáng sét đồng bộ
+					StartCoroutine(ThunderboltStrike(damageCollider));
 				}
-
-				if (spawnLocation == null)
+				//  WINDBLADE
+				else if (currentSpellBeingCast.isMeleeSpell)
 				{
-					spawnLocation = player.playerEquipmentManager.rightHandSlot.transform;
-					Debug.LogWarning("Vũ khí không có Spell Spawn Point. Lấy tạm vị trí tay phải.");
+					Transform spawnLocation = player.playerEquipmentManager.rightWeaponManager.spellSpawnPoint;
+					if (spawnLocation == null) spawnLocation = player.playerEquipmentManager.rightHandSlot.transform;
+
+					// Sinh ra hiệu ứng và gán nó làm con (Parent) của điểm spawn để nó di chuyển theo gậy/tay
+					GameObject slashVFX = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, spawnLocation.rotation);
+
+					DamageCollider damageCollider = slashVFX.GetComponentInChildren<DamageCollider>();
+					if (damageCollider != null)
+					{
+						damageCollider.windDamage = currentSpellBeingCast.windDamage;
+
+						StartCoroutine(ActiveMeleeSpellHitbox(damageCollider));
+
+					}
 				}
-
-				GameObject projectile = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, player.transform.rotation);
-
-				Rigidbody rb = projectile.GetComponent<Rigidbody>();
-				if (rb != null)
+				//  FIREBALL
+				else
 				{
-					Vector3 shootDirection = PlayerCamera.instance.transform.forward;
-					shootDirection.y = 0;
-					rb.linearVelocity = shootDirection * currentSpellBeingCast.projectileSpeed;
-					Debug.Log("Quả cầu lửa đã được ném đi!");
+					Transform spawnLocation = null;
+
+					if (player.playerEquipmentManager != null && player.playerEquipmentManager.rightWeaponManager != null)
+					{
+						spawnLocation = player.playerEquipmentManager.rightWeaponManager.spellSpawnPoint;
+					}
+
+					if (spawnLocation == null)
+					{
+						spawnLocation = player.playerEquipmentManager.rightHandSlot.transform;
+						Debug.LogWarning("Vũ khí không có Spell Spawn Point. Lấy tạm vị trí tay phải.");
+					}
+
+					GameObject projectile = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, player.transform.rotation);
+
+					Rigidbody rb = projectile.GetComponent<Rigidbody>();
+					if (rb != null)
+					{
+						Vector3 shootDirection = PlayerCamera.instance.transform.forward;
+						shootDirection.y = 0;
+						rb.linearVelocity = shootDirection * currentSpellBeingCast.projectileSpeed;
+						Debug.Log("Quả cầu lửa đã được ném đi!");
+					}
 				}
 			}
 			else
@@ -124,5 +159,34 @@ namespace SG
 				Debug.LogError("Lỗi SpawnProjectile: Thiếu SpellPrefab hoặc chưa lưu currentSpellBeingCast.");
 			}
 		}
+
+		private IEnumerator ThunderboltStrike(DamageCollider damageCollider)
+		{
+
+			if (damageCollider != null)
+			{
+				damageCollider.DisableDamageCollider();
+
+				yield return new WaitForSeconds(0.3f);
+
+				damageCollider.EnableDamageCollider();
+
+				yield return new WaitForSeconds(0.2f);
+
+				damageCollider.DisableDamageCollider();
+			}
+		}
+		private IEnumerator ActiveMeleeSpellHitbox(DamageCollider damageCollider)
+		{
+			damageCollider.DisableDamageCollider();
+			yield return new WaitForSeconds(0.1f);
+
+			damageCollider.EnableDamageCollider();
+
+			yield return new WaitForSeconds(0.3f);
+
+			damageCollider.DisableDamageCollider();
+		}
+
 	}
 }

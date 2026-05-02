@@ -15,8 +15,10 @@ MonoBehaviour:
   spellID: 3
   spellAnimation: Windblade_Cast
   manaCost: 0
-  spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
+  spellPrefab: {fileID: 6799862405182533531, guid: 295e7b42df4ad4e43813578e7182a973, type: 3}
   fireDamage: 0
   lightningDamage: 0
   windDamage: 30
+  isSpellFromSky: 0
+  isMeleeSpell: 1
   projectileSpeed: 10

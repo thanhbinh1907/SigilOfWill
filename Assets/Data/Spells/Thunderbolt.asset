@@ -15,8 +15,9 @@ MonoBehaviour:
   spellID: 2
   spellAnimation: Thunderbolt_Cast
   manaCost: 0
-  spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
+  spellPrefab: {fileID: 7164546670827282018, guid: 8a6c92b2cfafce749a31abd62b99fdbe, type: 3}
   fireDamage: 0
   lightningDamage: 100
   windDamage: 0
+  isSpellFromSky: 1
   projectileSpeed: 10

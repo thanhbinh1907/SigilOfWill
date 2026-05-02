@@ -15,8 +15,9 @@ MonoBehaviour:
   spellID: 1
   spellAnimation: Fireball_Cast
   manaCost: 10
-  spellPrefab: {fileID: 6191767193543341437, guid: 9729b2177651970499ec5fc74c99fed3, type: 3}
+  spellPrefab: {fileID: 2204507553938104669, guid: 0540ce0530d62de4d84f5dbf80384647, type: 3}
   fireDamage: 50
   lightningDamage: 0
   windDamage: 0
+  isSpellFromSky: 0
   projectileSpeed: 10

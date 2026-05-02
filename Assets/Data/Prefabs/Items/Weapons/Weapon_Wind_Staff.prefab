@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1555817246712012299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5721098364642618890}
+  m_Layer: 0
+  m_Name: Spell_Spawn_Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5721098364642618890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555817246712012299}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5048779, y: 0.5000067, z: 0.4999457, w: 0.4951221}
+  m_LocalPosition: {x: -0.089, y: 0.801, z: 0.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7895070723323867220}
+  m_LocalEulerAnglesHint: {x: -89.21, y: -135.359, z: 225.356}
 --- !u!1 &4416565875763140154
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   meleeDamageCollider: {fileID: 0}
+  spellSpawnPoint: {fileID: 0}
 --- !u!1 &5390953434286219658
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +108,8 @@ Transform:
   m_LocalPosition: {x: 0.101, y: 0.031, z: -0.038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5721098364642618890}
   m_Father: {fileID: 9187948125593347662}
   m_LocalEulerAnglesHint: {x: -190.856, y: 87.072, z: -65.5}
 --- !u!33 &8812640090546611850
