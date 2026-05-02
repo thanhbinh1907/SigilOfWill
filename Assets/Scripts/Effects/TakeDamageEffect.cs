@@ -56,8 +56,8 @@ namespace SG
 			// CHECK WHICH DIRECTIONAL DAMAGE CAME FROM
 			// PLAY A DAMAGE ANIMATION
 			// CHECK FOR BUILD UP (POISON, BLEED, ETC)
-			// PLAY DAMAGE SOUND FX 
-			// play damage VFX (blood)
+			PlayDamageSFX(character);
+			PlayDamageVFX(character);
 
 			// IF CHARACTER IS A.I, CHECK FOR NEW TARGET IF CHARACTER CAUSING DAMAGE IS PRESENT 
 		}
@@ -86,6 +86,18 @@ namespace SG
 			character.currentHealth -= finalDamageDealt;
 
 			// CALCULATE POISE DAMAGE TO DETERMINE IF CHARATER WILL ME STUNNED OR NOT
+		}
+
+        private void PlayDamageVFX(CharacterManager character)
+        {
+            character.characterEffectsManager.PlayeBloodSplatterVFX(contactPoint);
+		}
+
+        private void PlayDamageSFX(CharacterManager character)
+        {
+            AudioClip slashDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.slashSFX);
+
+			character.characterSoundFXManager.PlaySoundFX(slashDamageSFX);
 		}
 	}
 }
