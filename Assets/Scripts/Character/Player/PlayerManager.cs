@@ -14,6 +14,11 @@ namespace SG
 		[SerializeField] bool testCastFireball = false;
 		[SerializeField] bool testCastThunderbolt = false;
 		[SerializeField] bool testCastWindblade = false;
+		[SerializeField] bool testFrontHit;
+		[SerializeField] bool testBackHit;
+		[SerializeField] bool testLeftHit;
+		[SerializeField] bool testRightHit;
+
 
 		[HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -147,8 +152,8 @@ namespace SG
 			// PLAY REBIRTH EFFECTS
 			playerAnimatorManager.PlayTargetAnimation("Empty", false);
 		}
-
-        private void DebugMenu()
+		// =============================================== DEBUG =============================================== //
+		private void DebugMenu()
         {
             if (respawnCharacter) 
             {
@@ -183,11 +188,30 @@ namespace SG
 				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(3);
 				if (spell != null) spell.AttemptToPerformAction(this);
 			}
+
+			if (testFrontHit) { testFrontHit = false; ForceDebugHit(180); }
+			if (testBackHit) { testBackHit = false; ForceDebugHit(0); }
+			if (testLeftHit) { testLeftHit = false; ForceDebugHit(-90); }
+			if (testRightHit) { testRightHit = false; ForceDebugHit(90); }
 		}
 
-        // TEST, WILL BE REMOVED LATER
-        #if UNITY_EDITOR
-		        private void OnValidate()
+		private void ForceDebugHit(float angle)
+		{
+			// 1. Khởi tạo hiệu ứng sát thương từ Database
+			TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+
+			// 2. Gán các thông số cần thiết
+			damageEffect.physicalDamage = 10; // Sát thương giả định
+			damageEffect.angleHitFrom = angle; // Góc đánh truyền vào
+			damageEffect.contactPoint = transform.position + Vector3.up; // Điểm va chạm (ngay ngực nhân vật)
+
+			// 3. Chạy quy trình xử lý hiệu ứng (Bao gồm Animation, SFX, VFX)
+			characterEffectsManager.ProcessInstantEffect(damageEffect);
+		}
+
+		// TEST, WILL BE REMOVED LATER
+#if UNITY_EDITOR
+		private void OnValidate()
 		        {
 			        // Kiểm tra nếu game đang chạy và các Manager đã tồn tại
 			        if (Application.isPlaying && playerStatsManager != null && PlayerUIManager.instance != null)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 namespace SG
 {
@@ -19,7 +20,7 @@ namespace SG
         public float holyDamage = 0;
 
         [Header("Final Damage")]
-        public int finalDamageDealt = 0;                   // The final damage that will be applied to the character after all calculations are done. This is the value that will be used to reduce the character's health.       
+        public int finalDamageDealt = 0;                // The final damage that will be applied to the character after all calculations are done. This is the value that will be used to reduce the character's health.       
 
         [Header("Poise")]
         public float poiseDamage = 0;
@@ -50,11 +51,8 @@ namespace SG
 
             // CHECK FOR "INVULNERABILITY"
 
-            // CALCULATE DAMAGE
             CalculateDamage(character);
-
-			// CHECK WHICH DIRECTIONAL DAMAGE CAME FROM
-			// PLAY A DAMAGE ANIMATION
+            PlayDirectionalBaseOnDamageAnimation(character);
 			// CHECK FOR BUILD UP (POISON, BLEED, ETC)
 			PlayDamageSFX(character);
 			PlayDamageVFX(character);
@@ -98,6 +96,43 @@ namespace SG
             AudioClip slashDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.slashSFX);
 
 			character.characterSoundFXManager.PlaySoundFX(slashDamageSFX);
+		}
+
+        private void PlayDirectionalBaseOnDamageAnimation(CharacterManager character)
+		{
+            // CALCULATE IF POISE IS BROKEN
+            poiseIsBroken = true;
+
+			// WHY ARE THE ANGLE LIKE THIS ?
+			// YOU CAN IMAGINE THAT U ARE THE CHARACTER AND 0 DEGREE IS DIRECTLY IN BACK OF YOU, 90 DEGREE IS TO YOUR RIGHT,
+            // -90 DEGREE IS TO YOUR LEFT AND 180 OR -180 DEGREE IS DIRECTLY BACK YOU.
+
+			if (angleHitFrom >= 145 && angleHitFrom <= 180)
+            {
+				damageAnimation  = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.hit_Forward_Medium_List);
+			}
+            else if (angleHitFrom <= -145 && angleHitFrom >= -180)
+            {
+				damageAnimation  = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.hit_Forward_Medium_List);
+			}
+			else if (angleHitFrom >= -45 && angleHitFrom <= 45)
+			{
+				damageAnimation  = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.hit_Backward_Medium_List);
+			}
+			else if (angleHitFrom >= -144 && angleHitFrom <= -45)
+			{
+				damageAnimation  = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.hit_Left_Medium_List);
+			}
+			else if (angleHitFrom >= 45 && angleHitFrom <= 144)
+			{
+				damageAnimation  = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.hit_Right_Medium_List);
+			}
+
+            if (poiseIsBroken)
+            {
+                character.characterAnimatorManager.lastDamageAnimationPlayed = damageAnimation;
+				character.characterAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+			}
 		}
 	}
 }

@@ -61,7 +61,9 @@ namespace SG
             damageEffect.holyDamage = holyDamage;
             damageEffect.contactPoint = contactPoint;
 
-            damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+			CalculateDamageAngle(damageEffect, damageTarget);
+
+			damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
 		}
 
         public virtual void EnableDamageCollider()
@@ -74,5 +76,10 @@ namespace SG
             damageCollider.enabled = false;
             charactersDamaged.Clear();                  
 		}
+
+        protected virtual void CalculateDamageAngle(TakeDamageEffect damageEffect, CharacterManager damageTarget) 
+        {
+
+        }
 	}
 }
