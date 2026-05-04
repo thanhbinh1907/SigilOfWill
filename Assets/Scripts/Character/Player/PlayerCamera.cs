@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -26,6 +26,12 @@ namespace SG {
 		[SerializeField] float upAndDownLookAngle; 
 		private float cameraZPosition;                                 // used for camera collision 
 		private float targetCameraZPosition;                           // used for camera collision
+
+		[Header("Lock On Settings")]
+		[SerializeField] float lockOnRadius = 20;
+		[SerializeField] float maximumLockOnDistance = 20f;
+		[SerializeField] float minimumViewableAngle = -50f;
+		[SerializeField] float maximumViewableAngle = 50f;
 
 		private void Awake()
 		{
@@ -110,6 +116,74 @@ namespace SG {
 			// smoothly move the camera to the target z position
 			cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosition, 0.2f);
 			cameraObject.transform.localPosition = cameraObjectPosition;
+		}
+
+		public void HandleLockOnTargets()
+		{
+			CharacterManager closestTarget = null;
+			float shortestDistance = Mathf.Infinity;
+
+			Collider[] colliders = Physics.OverlapSphere(player.transform.position, lockOnRadius, WorldUtilityManager.instance.GetCharacterLayers());
+			for (int i=0; i < colliders.Length; i++)
+			{
+				CharacterManager lockOnTarget = colliders[i].GetComponent<CharacterManager>();
+				
+				if (lockOnTarget != null)
+				{
+					float distanceFromPlayer = Vector3.Distance(player.transform.position, lockOnTarget.transform.position);
+					
+					Vector3 lockOnTargetDirection = lockOnTarget.transform.position - player.transform.position;
+					float viewableAngle = Vector3.Angle(lockOnTargetDirection, cameraObject.transform.forward);
+
+					if (lockOnTarget.isDead ||
+						lockOnTarget.transform.root == player.transform.root ||
+						distanceFromPlayer > maximumLockOnDistance || 
+						viewableAngle < minimumViewableAngle || viewableAngle > maximumViewableAngle)
+					{
+						continue;
+					}
+
+					if (Physics.Linecast(player.lockOnTransform.position,
+										 lockOnTarget.lockOnTransform.position,
+										 WorldUtilityManager.instance.GetEnvironmentLayers()))
+					{
+						continue;
+					}
+
+					if (distanceFromPlayer < shortestDistance)
+					{
+						shortestDistance = distanceFromPlayer;
+						closestTarget = lockOnTarget;
+					}
+				}
+			}
+			if (closestTarget != null)
+			{
+				player.playerCombatManager.currentTarget = closestTarget;
+				player.isLockOn = true;
+			}
+		}
+
+		// ===================== Test & Debug ===================== // 
+		private void OnDrawGizmos()
+		{
+			if (player == null) return;
+
+			// 1. Vẽ vòng tròn bán kính Lock-on (Màu xanh dương)
+			Gizmos.color = Color.blue;
+			Gizmos.DrawWireSphere(player.transform.position, lockOnRadius);
+
+			// 2. Nếu đang Lock-on, vẽ đường thẳng nối tới mục tiêu (Màu đỏ)
+			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
+			{
+				Gizmos.color = Color.red;
+				// Vẽ tia nối giữa 2 điểm Lock-on để kiểm tra Linecast
+				Gizmos.DrawLine(player.lockOnTransform.position,
+								player.playerCombatManager.currentTarget.lockOnTransform.position);
+
+				// Vẽ một khối cầu nhỏ tại điểm đang bị khóa
+				Gizmos.DrawWireSphere(player.playerCombatManager.currentTarget.lockOnTransform.position, 0.5f);
+			}
 		}
 	}
 }

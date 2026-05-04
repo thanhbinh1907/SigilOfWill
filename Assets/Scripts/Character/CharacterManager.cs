@@ -9,6 +9,8 @@ namespace SG
 {
 	public class CharacterManager : MonoBehaviour
 	{
+		public Transform lockOnTransform;
+
 		[Header("Status")]
 		public bool isDead = false;
 
@@ -17,6 +19,7 @@ namespace SG
 		[HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
 		[HideInInspector] public CharacterEffectsManager characterEffectsManager;
 		[HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
+		[HideInInspector] public CharacterCombatManager characterCombatManager;
 
 		[Header("Flags")]
 		public bool isPerformingAction = false;
@@ -27,6 +30,8 @@ namespace SG
 		public bool canMove = true;
 		public bool isSprinting = false;
 		public bool isCasting = false;
+		public bool isLockOn = false;
+
 
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //
@@ -92,6 +97,7 @@ namespace SG
 			characterEffectsManager = GetComponent<CharacterEffectsManager>();
 			characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
 			characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
+			characterCombatManager = GetComponent<CharacterCombatManager>();
 		}
 
 		protected virtual void Start()

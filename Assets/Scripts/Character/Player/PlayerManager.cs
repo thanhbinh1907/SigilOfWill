@@ -26,6 +26,7 @@ namespace SG
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
 		[HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
         [HideInInspector] public PlayerCombatManager playerCombatManager;
+		[HideInInspector] public PlayerCamera playerCamera;
 
 		[Header("Character Info")]
         public string characterName = "Character";
@@ -40,6 +41,7 @@ namespace SG
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+			playerCamera = GetComponent<PlayerCamera>();
 		}
 
 		private void Start()

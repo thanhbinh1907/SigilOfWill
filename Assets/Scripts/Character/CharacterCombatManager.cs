@@ -6,11 +6,11 @@ namespace SG
 {
     public class CharacterCombatManager : MonoBehaviour
     {
-        CharacterCombatManager character;
-
-        protected virtual void Awake()
+		[Header("Attack Target")]
+		public CharacterManager currentTarget;
+		protected virtual void Awake()
         {
-            character = GetComponent<CharacterCombatManager>();
+            
 		}
 	}
 }

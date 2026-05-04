@@ -29,7 +29,10 @@ namespace SG
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
 
-        [Header("Player Combat Input")]
+        [Header("Lock On Input")]
+        [SerializeField] bool lockOnInput = false; 
+
+		[Header("Player Combat Input")]
         [SerializeField] bool spellTriggerInput = false;
 
         private void Awake()
@@ -91,6 +94,9 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
+                // LOCK ON 
+                playerControls.PlayerAction.LockOn.performed += i => lockOnInput = true;
+
 				playerControls.PlayerCombat.SpellTrigger.performed += i =>
 				{
 					spellTriggerInput = true;
@@ -124,7 +130,8 @@ namespace SG
 
         private void HandleAllInput()
         {
-            HandlePlayerMovementInput();
+            HandleLockOnInput();
+			HandlePlayerMovementInput();
             HandleCameraMovementInput();
             HandleDodgeInput();
             HandleSprintInput();
@@ -203,7 +210,37 @@ namespace SG
             }
         }
 
-        private void HandleCastSpellInput()
+		// LOCK ON INPUT
+
+		private void HandleLockOnInput()
+        {
+            if (player.isLockOn)
+            {
+                if (player.playerCombatManager.currentTarget == null)
+                    return;
+                if (player.playerCombatManager.currentTarget.isDead)
+                {
+                    player.isLockOn = false;
+                    player.playerCombatManager.currentTarget = null;
+				}
+			}
+
+            if (lockOnInput)
+            {
+                lockOnInput = false;
+                if (player.isLockOn)
+                {
+                    player.isLockOn = false;
+                    player.playerCombatManager.currentTarget = null;
+                }
+                else
+                {
+                    PlayerCamera.instance.HandleLockOnTargets();
+				}
+			}
+		}
+
+		private void HandleCastSpellInput()
         {
             if (spellTriggerInput)
             {

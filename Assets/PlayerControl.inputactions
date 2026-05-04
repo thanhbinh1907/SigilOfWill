@@ -125,6 +125,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Lock On",
+                    "type": "Button",
+                    "id": "5e6c5d44-39a8-4068-8601-db2d553fc6eb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "8e176407-b0a4-413b-8f9f-a726240267c0",
@@ -154,6 +163,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31e6d279-2139-41a5-8e21-82f56ce179d0",
+                    "path": "<Keyboard>/#(Q)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock On",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

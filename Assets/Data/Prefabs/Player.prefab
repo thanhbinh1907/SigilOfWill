@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3923673314980761736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3209882408912940298}
+  m_Layer: 10
+  m_Name: Lock On Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3209882408912940298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923673314980761736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2015599330259436258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8429023685968438832
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +376,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6582942952909536244, guid: 0ad932253e8dc8841948afa5d1a0d051, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3209882408912940298}
     - targetCorrespondingSourceObject: {fileID: 3780837713738550241, guid: 0ad932253e8dc8841948afa5d1a0d051, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5355207474298337819}
@@ -586,6 +620,11 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 0
   m_Center: {x: 0.18, y: 0, z: 0}
+--- !u!4 &2015599330259436258 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6582942952909536244, guid: 0ad932253e8dc8841948afa5d1a0d051, type: 3}
+  m_PrefabInstance: {fileID: 4657732834003548438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2904182788299298749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1662341123100217685, guid: 0ad932253e8dc8841948afa5d1a0d051, type: 3}
@@ -1036,11 +1075,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c990686ca1e10f14b83a09b59832b9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerManager
+  lockOnTransform: {fileID: 3209882408912940298}
   isDead: 0
   characterController: {fileID: 0}
   animator: {fileID: 0}
   characterAnimatorManager: {fileID: 0}
   characterEffectsManager: {fileID: 0}
+  characterSoundFXManager: {fileID: 0}
+  characterCombatManager: {fileID: 0}
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -1049,20 +1091,32 @@ MonoBehaviour:
   canMove: 1
   isSprinting: 0
   isCasting: 0
+  isLockOn: 0
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
   _currentStamina: 0
+  maxMana: 0
+  _currentMana: 0
   vitality: 10
   endurance: 10
+  intelligence: 10
   respawnCharacter: 0
   switchRightWeapon: 0
+  testCastFireball: 0
+  testCastThunderbolt: 0
+  testCastWindblade: 0
+  testFrontHit: 0
+  testBackHit: 0
+  testLeftHit: 0
+  testRightHit: 0
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   playerStatsManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
   playerEquipmentManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
+  playerCamera: {fileID: 0}
   characterName: 
 --- !u!114 &9115456554175591900
 MonoBehaviour:
@@ -1109,6 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b4435f6ee89764c8905e6c26aa94c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerCombatManager
+  currentTarget: {fileID: 0}
   currentSpellBeingCast: {fileID: 0}
 --- !u!114 &-8070901037549610352
 MonoBehaviour:
@@ -1122,6 +1177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c784c90385c3a4fa789d4fc4ea7750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  lastDamageAnimationPlayed: 
+  hit_Forward_Medium_01: Hit_Forward_Medium_01
+  hit_Forward_Medium_02: Hit_Forward_Medium_02
+  hit_Backward_Medium_01: Hit_Backward_Medium_01
+  hit_Backward_Medium_02: Hit_Backward_Medium_02
+  hit_Left_Medium_01: Hit_Left_Medium_01
+  hit_Left_Medium_02: Hit_Left_Medium_02
+  hit_Right_Medium_01: Hit_Right_Medium_01
+  hit_Right_Medium_02: Hit_Right_Medium_02
+  hit_Forward_Medium_List: []
+  hit_Backward_Medium_List: []
+  hit_Left_Medium_List: []
+  hit_Right_Medium_List: []
 --- !u!114 &-7263055456037553615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,6 +1216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerStatsManager
   staminaRegenerationAmount: 2
   staminaRegenerationDelay: 2
+  manaRegenerationAmount: 10
+  manaRegenerationDelay: 2
 --- !u!114 &-705273070426165117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,6 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99180b8cdc74ba42bfe8fa0c5e32ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerEffectsManager
+  bloodSplatterVFX: {fileID: 0}
   effectToTest: {fileID: 11400000, guid: 52c48f82093ce4e46aae0b55ffd9d5cb, type: 2}
   processEffect: 0
 --- !u!114 &891217758093393198
