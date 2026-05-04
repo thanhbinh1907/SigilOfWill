@@ -35,7 +35,11 @@ namespace SG
 		[Header("Player Combat Input")]
         [SerializeField] bool spellTriggerInput = false;
 
-        private void Awake()
+		[Header("Weapon Switch Input")]
+		public bool switchRightWeaponInput = false;
+		public bool switchLeftWeaponInput = false;
+
+		private void Awake()
         {
             if (instance == null)
             {
@@ -94,8 +98,12 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
-                // LOCK ON 
-                playerControls.PlayerAction.LockOn.performed += i => lockOnInput = true;
+				// SWITCH WEAPON INPUT
+				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;
+				playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switchLeftWeaponInput = true;
+
+				// LOCK ON 
+				playerControls.PlayerAction.LockOn.performed += i => lockOnInput = true;
 
 				playerControls.PlayerCombat.SpellTrigger.performed += i =>
 				{
@@ -137,6 +145,7 @@ namespace SG
             HandleSprintInput();
             HandleJumpInput();
             HandleCastSpellInput();
+            HandleSwitchWeaponInput();
 		}
 
         // MOVEMENT INPUT
@@ -223,6 +232,20 @@ namespace SG
 
             }
         }
+
+        private void HandleSwitchWeaponInput()
+        {
+            if (switchRightWeaponInput)
+            {
+                switchRightWeaponInput = false;
+                player.playerEquipmentManager.SwitchRightWeapon();
+            }
+            if (switchLeftWeaponInput)
+            {
+                switchLeftWeaponInput = false;
+                player.playerEquipmentManager.SwitchLeftWeapon();
+            }
+		}
 
 		// LOCK ON INPUT
 

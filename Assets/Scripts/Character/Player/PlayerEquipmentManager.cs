@@ -60,6 +60,9 @@ namespace SG
 
         public void SwitchRightWeapon()
         {
+            if (player.isPerformingAction)
+                return;
+
 			player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", false, true, true, true);
 
 			WeaponItem selectedWeapon = null;
@@ -105,6 +108,11 @@ namespace SG
 				rightHandSlot.LoadWeapon(rightHandWeaponModel);
                 rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
                 rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+
+                if (PlayerUIManager.instance != null)
+                {
+                    PlayerUIManager.instance.playerUIHudManager.SetRightWeaponQuickSlotIcon(player.playerInventoryManager.currentRightHandWeapon.itemID);
+				}
 			}
 		}
 
@@ -112,7 +120,37 @@ namespace SG
 
         public void SwitchLeftWeapon()
         {
+            if (player.isPerformingAction)
+                return;
 
+            player.playerAnimatorManager.PlayTargetAnimation("Swap_Left_Weapon_01", false, true, true, true);
+
+            WeaponItem selectedWeapon = null;
+            int index = player.playerInventoryManager.leftHandWeaponIndex;
+
+            for (int i = 0; i < 3; i++)
+            {
+                index += 1;
+                if (index > 2) index = 0;
+                WeaponItem weaponInSlot = player.playerInventoryManager.weaponsInLeftHandSlots[index];
+                if (weaponInSlot != null && weaponInSlot.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                {
+                    selectedWeapon = weaponInSlot;
+                    player.playerInventoryManager.leftHandWeaponIndex = index;
+                    break;
+                }
+			}
+
+            if (selectedWeapon != null)
+            {
+                player.playerInventoryManager.currentLeftHandWeapon = selectedWeapon;
+            }
+            else
+            {
+                player.playerInventoryManager.currentLeftHandWeapon = WorldItemDatabase.instance.unarmedWeapon;
+                player.playerInventoryManager.leftHandWeaponIndex = -1;
+            }
+            LoadLeftWeapon();
 		}
 
 		public void LoadLeftWeapon()
@@ -125,7 +163,12 @@ namespace SG
                 leftHandSlot.LoadWeapon(leftHandWeaponModel);
                 leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
                 leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
-			}
+
+                if (PlayerUIManager.instance != null)
+                {
+                    PlayerUIManager.instance.playerUIHudManager.SetLeftWeaponQuickSlotIcon(player.playerInventoryManager.currentLeftHandWeapon.itemID);
+                }
+            }
         }
 	}
 }

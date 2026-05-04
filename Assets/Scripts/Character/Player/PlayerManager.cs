@@ -116,6 +116,16 @@ namespace SG
 			currentCharacterData.vitality = vitality;
             currentCharacterData.endurance = endurance;
             currentCharacterData.intelligence = intelligence;
+
+			if (playerInventoryManager.currentRightHandWeapon != null)
+			{
+				currentCharacterData.currentRightHandWeaponID = playerInventoryManager.currentRightHandWeapon.itemID;
+			}
+			if (playerInventoryManager.currentLeftHandWeapon != null)
+			{
+				currentCharacterData.currentLeftHandWeaponID = playerInventoryManager.currentLeftHandWeapon.itemID;
+			}
+
 		}
 
         public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) 
@@ -140,6 +150,10 @@ namespace SG
             currentMana = maxMana;
             PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
 
+			playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentRightHandWeaponID);
+			playerInventoryManager.currentLeftHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentLeftHandWeaponID);
+
+			playerEquipmentManager.LoadWeaponsOnBothHands();
 		}
 
 		public override void ReviveCharacter()

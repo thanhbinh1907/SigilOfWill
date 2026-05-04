@@ -31,6 +31,10 @@ namespace SG
 		public int vitality = 10;
 		public int endurance = 10;
 		public int intelligence = 10;
+
+		[Header("Equipment")]
+		public int currentRightHandWeaponID;
+		public int currentLeftHandWeaponID;
 	}
 }
 
