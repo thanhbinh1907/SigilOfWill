@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
@@ -82,6 +82,15 @@ namespace SG
             Debug.Log("Final Damage Dealt: " + finalDamageDealt);
 
 			character.currentHealth -= finalDamageDealt;
+
+			string damageDetail = $"[HIT] Mục tiêu: {character.name} | Tổng Dame: {finalDamageDealt}\n";
+			if (physicalDamage > 0) damageDetail += $"- Vật lý: {physicalDamage}\n";
+			if (fireDamage > 0) damageDetail += $"- Lửa: {fireDamage}\n";
+			if (magicDamage > 0) damageDetail += $"- Phép: {magicDamage}\n";
+			if (lightningDamage > 0) damageDetail += $"- Sét: {lightningDamage}\n";
+			if (windDamage > 0) damageDetail += $"- Gió: {windDamage}\n";
+
+			Debug.Log(damageDetail);
 
 			// CALCULATE POISE DAMAGE TO DETERMINE IF CHARATER WILL ME STUNNED OR NOT
 		}

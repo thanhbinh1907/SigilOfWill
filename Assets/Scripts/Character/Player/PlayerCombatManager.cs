@@ -95,11 +95,33 @@ namespace SG
 			Debug.Log("Đang gọi Animation Event: SpawnProjectile...");
 			if (currentSpellBeingCast != null && currentSpellBeingCast.spellPrefab != null)
 			{
+				if (currentSpellBeingCast == null || currentSpellBeingCast.spellPrefab == null) return;
+
+				// Hàm phụ để gán toàn bộ thông số sát thương từ Database vào phép thuật vừa sinh ra
+				void AssignSpellDamage(DamageCollider collider)
+				{
+					if (collider == null) return;
+					collider.characterCausingDamage = player;
+					collider.fireDamage = currentSpellBeingCast.fireDamage;
+					collider.lightningDamage = currentSpellBeingCast.lightningDamage;
+					collider.windDamage = currentSpellBeingCast.windDamage;
+				}
+
 				//  THUNDERBOLT
 				if (currentSpellBeingCast.isSpellFromSky)
 				{
 
-					Vector3 strikePosition = player.transform.position + PlayerCamera.instance.transform.forward * 10f;
+					Vector3 strikePosition;
+
+					if (player.isLockOn)
+					{
+						strikePosition = player.playerCombatManager.currentTarget.transform.position;
+					}
+					else
+					{
+						strikePosition = player.transform.position + player.transform.forward * 5f;
+					}
+
 					strikePosition.y = player.transform.position.y;
 					GameObject bolt = Instantiate(currentSpellBeingCast.spellPrefab, strikePosition, Quaternion.identity);
 
@@ -156,10 +178,19 @@ namespace SG
 					Rigidbody rb = projectile.GetComponent<Rigidbody>();
 					if (rb != null)
 					{
-						Vector3 shootDirection = PlayerCamera.instance.transform.forward;
-						shootDirection.y = 0;
+						Vector3 shootDirection;
+
+						if (player.isLockOn && player.playerCombatManager.currentTarget != null)
+						{
+							shootDirection = player.playerCombatManager.currentTarget.transform.position - spawnLocation.position;
+						}
+						else
+						{
+							shootDirection = player.transform.forward;
+						}
+						
+						shootDirection.Normalize();
 						rb.linearVelocity = shootDirection * currentSpellBeingCast.projectileSpeed;
-						Debug.Log("Quả cầu lửa đã được ném đi!");
 					}
 				}
 			}
