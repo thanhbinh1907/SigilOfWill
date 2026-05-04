@@ -104,9 +104,12 @@ namespace SG
 					GameObject bolt = Instantiate(currentSpellBeingCast.spellPrefab, strikePosition, Quaternion.identity);
 
 					DamageCollider damageCollider = bolt.GetComponentInChildren<DamageCollider>();
+					if (damageCollider != null) damageCollider.characterCausingDamage = player;
 
 					// Bắt đầu quy trình giáng sét đồng bộ
 					StartCoroutine(ThunderboltStrike(damageCollider));
+
+					Debug.Log("Sấm sét đã được triệu hồi từ trên trời!");
 				}
 				//  WINDBLADE
 				else if (currentSpellBeingCast.isMeleeSpell)
@@ -115,15 +118,18 @@ namespace SG
 					if (spawnLocation == null) spawnLocation = player.playerEquipmentManager.rightHandSlot.transform;
 
 					// Sinh ra hiệu ứng và gán nó làm con (Parent) của điểm spawn để nó di chuyển theo gậy/tay
-					GameObject slashVFX = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, spawnLocation.rotation);
+					GameObject slash = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, spawnLocation.rotation);
 
-					DamageCollider damageCollider = slashVFX.GetComponentInChildren<DamageCollider>();
+					DamageCollider damageCollider = slash.GetComponentInChildren<DamageCollider>();
 					if (damageCollider != null)
 					{
+						damageCollider.characterCausingDamage = player;
+
 						damageCollider.windDamage = currentSpellBeingCast.windDamage;
 
 						StartCoroutine(ActiveMeleeSpellHitbox(damageCollider));
 
+						Debug.Log("Windblade đã được kích hoạt hitbox!");
 					}
 				}
 				//  FIREBALL
@@ -143,6 +149,9 @@ namespace SG
 					}
 
 					GameObject projectile = Instantiate(currentSpellBeingCast.spellPrefab, spawnLocation.position, player.transform.rotation);
+
+					DamageCollider damageCollider = projectile.GetComponentInChildren<DamageCollider>();
+					if (damageCollider != null) damageCollider.characterCausingDamage = player;
 
 					Rigidbody rb = projectile.GetComponent<Rigidbody>();
 					if (rb != null)

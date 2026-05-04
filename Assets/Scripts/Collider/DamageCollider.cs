@@ -9,6 +9,8 @@ namespace SG
         [Header("Collider")]
         protected Collider damageCollider;
 
+		public CharacterManager characterCausingDamage;
+
 		[Header("Damage")]
         public float physicalDamage = 0;
         public float fireDamage = 0;
@@ -23,13 +25,21 @@ namespace SG
         [Header("Character Damaged")]
         protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
+		protected virtual void Awake()
+		{
+			damageCollider = GetComponent<Collider>();
+		}
+
 		private void OnTriggerEnter(Collider other)
 		{
             CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 
             if (damageTarget != null)
             {
-                contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                if (damageTarget == characterCausingDamage)
+                    return;
+
+				contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
 
 				// CHECK IF WE CAN DAMAGE THIS TARGET BASED ON FRIENDLY FIRE SETTINGS
 
@@ -53,7 +63,10 @@ namespace SG
             charactersDamaged.Add(damageTarget);
 
             TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
-            damageEffect.physicalDamage = physicalDamage;
+
+            damageEffect.characterCausingDamage = characterCausingDamage;
+
+			damageEffect.physicalDamage = physicalDamage;
             damageEffect.fireDamage = fireDamage;
             damageEffect.magicDamage = magicDamage;
             damageEffect.lightningDamage = lightningDamage;

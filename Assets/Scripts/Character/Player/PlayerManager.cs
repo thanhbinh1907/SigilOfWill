@@ -146,7 +146,9 @@ namespace SG
 		{
 			base.ReviveCharacter();
 
-            currentHealth = maxHealth;
+			isDead = false;
+
+			currentHealth = maxHealth;
             currentStamina = maxStamina;
             currentMana = maxMana;
 			// RESTORE FOCUS POINT
@@ -212,7 +214,7 @@ namespace SG
 		}
 
 		// TEST, WILL BE REMOVED LATER
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 		private void OnValidate()
 		        {
 			        // Kiểm tra nếu game đang chạy và các Manager đã tồn tại
@@ -230,8 +232,8 @@ namespace SG
                         maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
                         PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
 
-				// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
-				if (currentHealth <= 0 && !isDead)
+					// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
+					if (currentHealth <= 0 && !isDead)
 						{
 							// Truy cập trực tiếp hàm xử lý chết vì Event không tự chạy
 							StartCoroutine(ProcessDeathEvent());

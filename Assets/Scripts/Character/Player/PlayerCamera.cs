@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace SG { 
 	public class PlayerCamera : MonoBehaviour
@@ -32,6 +33,12 @@ namespace SG {
 		[SerializeField] float maximumLockOnDistance = 20f;
 		[SerializeField] float minimumViewableAngle = -50f;
 		[SerializeField] float maximumViewableAngle = 50f;
+		[SerializeField] float lockOnRotationSpeed = 2f;
+		[SerializeField] float unlockedCameraHeight = 1.75f;
+		[SerializeField] float lockedCameraHeight = 2f;
+		[SerializeField] float lockOnLostTimer = 0;
+		[SerializeField] float maxLockOnLostTime = 2f;
+
 
 		private void Awake()
 		{
@@ -58,6 +65,7 @@ namespace SG {
 				HandleFollowTarget();
 				HandleRotation();
 				HandleCollision();
+				HandleCameraHeight();
 			}
 		}
 
@@ -69,25 +77,85 @@ namespace SG {
 
 		private void HandleRotation()
 		{
-			// if locked on, rotation towards enemy
-			// else rotate based on camera input
-			leftAndRightLookAngle += PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed * Time.deltaTime;
-			upAndDownLookAngle -= PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed * Time.deltaTime;
-			upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
-			
-			Vector3 cameraRotation = Vector3.zero;
-			Quaternion targetRotation;
+			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
+			{
+				bool canSeeTarget = !Physics.Linecast(player.lockOnTransform.position,
+													player.playerCombatManager.currentTarget.lockOnTransform.position,
+													WorldUtilityManager.instance.GetEnvironmentLayers());
 
-			// rotate this game object left and right
-			cameraRotation.y = leftAndRightLookAngle;
-			targetRotation = Quaternion.Euler(cameraRotation);
-			transform.rotation = targetRotation;
+				if (!canSeeTarget)
+				{
+					lockOnLostTimer += Time.deltaTime;
 
-			// rotate this game object up and down
-			cameraRotation = Vector3.zero;
-			cameraRotation.x = upAndDownLookAngle;
-			targetRotation = Quaternion.Euler(cameraRotation);
-			cameraPivotTransform.localRotation = targetRotation;
+					if (lockOnLostTimer > maxLockOnLostTime)
+					{
+						player.isLockOn = false;
+						player.playerCombatManager.currentTarget = null;
+						lockOnLostTimer = 0;
+						return;
+					}
+				}
+				else
+				{
+					lockOnLostTimer = 0;
+				}
+
+				Vector3 targetDirection = player.playerCombatManager.currentTarget.lockOnTransform.position - transform.position;
+				targetDirection.Normalize();
+				targetDirection.y = 0;
+
+				Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+				transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lockOnRotationSpeed * Time.deltaTime);
+
+				targetDirection = player.playerCombatManager.currentTarget.lockOnTransform.position - cameraPivotTransform.position;
+				targetDirection.Normalize();
+
+				Quaternion pivotRotation = Quaternion.LookRotation(targetDirection);
+				cameraPivotTransform.rotation = Quaternion.Slerp(cameraPivotTransform.rotation, pivotRotation, lockOnRotationSpeed);
+
+				leftAndRightLookAngle = transform.eulerAngles.y;
+				float angle = cameraPivotTransform.localEulerAngles.x;
+				if (angle > 180)
+				{
+					angle -= 360;
+				}
+				upAndDownLookAngle = angle;
+			}
+
+			else
+			{
+				// else rotate based on camera input
+				leftAndRightLookAngle += PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed * Time.deltaTime;
+				upAndDownLookAngle -= PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed * Time.deltaTime;
+				upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
+
+				Vector3 cameraRotation = Vector3.zero;
+				Quaternion targetRotation;
+
+				// rotate this game object left and right
+				cameraRotation.y = leftAndRightLookAngle;
+				targetRotation = Quaternion.Euler(cameraRotation);
+				transform.rotation = targetRotation;
+
+				// rotate this game object up and down
+				cameraRotation = Vector3.zero;
+				cameraRotation.x = upAndDownLookAngle;
+				targetRotation = Quaternion.Euler(cameraRotation);
+				cameraPivotTransform.localRotation = targetRotation;
+			}
+		}
+
+		private void HandleCameraHeight()
+		{
+			float targetHeight = unlockedCameraHeight;
+
+			if (player.isLockOn)
+			{
+				targetHeight = lockedCameraHeight;
+			}
+
+			Vector3 newHeight = new Vector3(0, targetHeight, 0);
+			cameraPivotTransform.localPosition = Vector3.Lerp(cameraPivotTransform.localPosition, newHeight, 0.5f);
 		}
 
 		private void HandleCollision()

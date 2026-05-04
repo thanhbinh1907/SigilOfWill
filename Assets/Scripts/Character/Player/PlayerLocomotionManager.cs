@@ -118,28 +118,56 @@ namespace SG
             if (!player.canRotate)
                 return;
 
-			// BUILD CAMERA-RELATIVE INPUT DIRECTION
-			Vector3 inputDirection = PlayerCamera.instance.transform.forward * verticalMovement;
-            inputDirection += PlayerCamera.instance.transform.right * horizontalMovement;
-            inputDirection.y = 0f;
-
-            // IF THERE IS MEANINGFUL INPUT, UPDATE THE TARGET ROTATION DIRECTION AND NORMALIZE IT.
-            // OTHERWISE KEEP THE PREVIOUS TARGETROTATIONDIRECTION SO THE PLAYER DOESN'T SNAP BACK.
-            const float inputThreshold = 0.0001f;
-            if (inputDirection.sqrMagnitude > inputThreshold)
+            if (player.isLockOn && player.playerCombatManager.currentTarget != null)
             {
-                targetRotationDirection = inputDirection.normalized;
-            }
+				if (player.isSprinting)
+				{
+					Vector3 targetDirection = PlayerCamera.instance.transform.forward * verticalMovement;
+					targetDirection += PlayerCamera.instance.transform.right * horizontalMovement;
+					targetDirection.y = 0;
+					targetDirection.Normalize();
 
-            // ENSURE WE HAVE A VALID FALLBACK DIRECTION ON FIRST FRAME
-            if (targetRotationDirection == Vector3.zero)
+					if (targetDirection == Vector3.zero)
+						targetDirection = transform.forward;
+
+					Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+					transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+				}
+				else
+				{
+					Vector3 targetDirection = player.playerCombatManager.currentTarget.transform.position - transform.position;
+					targetDirection.y = 0;
+					targetDirection.Normalize();
+
+					Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+					transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+				}
+			}
+            else
             {
-                targetRotationDirection = transform.forward;
-            }
+				// BUILD CAMERA-RELATIVE INPUT DIRECTION
+				Vector3 inputDirection = PlayerCamera.instance.transform.forward * verticalMovement;
+				inputDirection += PlayerCamera.instance.transform.right * horizontalMovement;
+				inputDirection.y = 0f;
 
-            Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
-            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
-            transform.rotation = targetRotation;
+				// IF THERE IS MEANINGFUL INPUT, UPDATE THE TARGET ROTATION DIRECTION AND NORMALIZE IT.
+				// OTHERWISE KEEP THE PREVIOUS TARGETROTATIONDIRECTION SO THE PLAYER DOESN'T SNAP BACK.
+				const float inputThreshold = 0.0001f;
+				if (inputDirection.sqrMagnitude > inputThreshold)
+				{
+					targetRotationDirection = inputDirection.normalized;
+				}
+
+				// ENSURE WE HAVE A VALID FALLBACK DIRECTION ON FIRST FRAME
+				if (targetRotationDirection == Vector3.zero)
+				{
+					targetRotationDirection = transform.forward;
+				}
+
+				Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
+				Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
+				transform.rotation = targetRotation;
+			}
 		}
 
         public void HandleSprinting()

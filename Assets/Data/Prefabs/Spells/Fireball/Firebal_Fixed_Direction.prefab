@@ -82,8 +82,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.98
-  m_Center: {x: 0.15, y: 0, z: 0}
+  m_Radius: 0.14
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!114 &8527411549468091135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b079bf103898c42b7da9701e6c72a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.DamageCollider
+  characterCausingDamage: {fileID: 0}
   physicalDamage: 0
   fireDamage: 0
   magicDamage: 0

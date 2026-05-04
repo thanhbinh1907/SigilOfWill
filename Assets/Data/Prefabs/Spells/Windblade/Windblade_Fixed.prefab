@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b079bf103898c42b7da9701e6c72a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.DamageCollider
+  characterCausingDamage: {fileID: 0}
   physicalDamage: 0
   fireDamage: 0
   magicDamage: 0

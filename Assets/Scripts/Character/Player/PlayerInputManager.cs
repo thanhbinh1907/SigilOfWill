@@ -148,7 +148,7 @@ namespace SG
 
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-            // Snapping moveAmount to either 0.5 or 1 for walk/run distinction
+            // SNAPPING MOVEAMOUNT TO EITHER 0.5 OR 1 FOR WALK/RUN DISTINCTION
             if (moveAmount <= 0.5f && moveAmount > 0)
             {
                 moveAmount = 0.5f;
@@ -158,10 +158,24 @@ namespace SG
                 moveAmount = 1f;
             }
 
-            // horizontal = 0 because we only want non-strafing movement 
-            // we use horizontal when we want strafing movement or locked on
-            // if we are not locked on, only use moveAmount 
-            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.isSprinting);
+            if (player.isLockOn)
+            {
+                if (player.isSprinting) 
+                {
+                    player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, verticalInput, player.isSprinting);
+				}
+                else
+                {
+					player.playerAnimatorManager.UpdateAnimatorMovementParameters(horizontalInput, verticalInput, player.isSprinting);
+				}
+            }
+            // HORIZONTAL = 0 BECAUSE WE ONLY WANT NON-STRAFING MOVEMENT 
+            // WE USE HORIZONTAL WHEN WE WANT STRAFING MOVEMENT OR LOCKED ON
+            // IF WE ARE NOT LOCKED ON, ONLY USE MOVEAMOUNT  
+            else
+            {
+                player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.isSprinting);
+            }
         }
 
         private void HandleCameraMovementInput()
@@ -218,10 +232,16 @@ namespace SG
             {
                 if (player.playerCombatManager.currentTarget == null)
                     return;
+
                 if (player.playerCombatManager.currentTarget.isDead)
                 {
-                    player.isLockOn = false;
-                    player.playerCombatManager.currentTarget = null;
+                    PlayerCamera.instance.HandleLockOnTargets();
+
+                    if (player.playerCombatManager.currentTarget == null || player.playerCombatManager.currentTarget.isDead)
+                    {
+                        player.isLockOn = false;
+                        player.playerCombatManager.currentTarget = null;
+                    }
 				}
 			}
 

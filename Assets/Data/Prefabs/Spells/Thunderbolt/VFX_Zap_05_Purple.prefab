@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5627696518775099638, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
       propertyPath: m_Name
-      value: VFX_Zap_05_Purple Variant
+      value: VFX_Zap_05_Purple
       objectReference: {fileID: 0}
     - target: {fileID: 5735631384014967125, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -119,5 +119,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5627696518775099638, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9002834674548397298}
+    - targetCorrespondingSourceObject: {fileID: 5627696518775099638, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7191161084066597745}
   m_SourcePrefab: {fileID: 100100000, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
+--- !u!1 &7164546670827282018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5627696518775099638, guid: b9006bf1a0b6b994bbe0d867a1c2f33a, type: 3}
+  m_PrefabInstance: {fileID: 3275257217583206036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &9002834674548397298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7164546670827282018}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.42, y: 22.55472, z: 1.42}
+  m_Center: {x: 0, y: 10.567361, z: 0}
+--- !u!114 &7191161084066597745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7164546670827282018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b079bf103898c42b7da9701e6c72a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SG.DamageCollider
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 150
+  windDamage: 0
+  holyDamage: 0

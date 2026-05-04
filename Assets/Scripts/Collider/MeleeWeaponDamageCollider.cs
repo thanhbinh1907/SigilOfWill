@@ -6,9 +6,6 @@ namespace SG
 {
     public class MeleeWeaponDamageCollider : DamageCollider
     {
-        [Header("Attacking Character")]
-        public CharacterManager characterCausingDamage;
-
 		protected override void DamageTarget(CharacterManager damageTarget)
 		{
 			base.DamageTarget(damageTarget);

@@ -100,8 +100,11 @@ namespace SG
 
         private void PlayDirectionalBaseOnDamageAnimation(CharacterManager character)
 		{
-            // CALCULATE IF POISE IS BROKEN
-            poiseIsBroken = true;
+            if (character.isDead)
+                return;
+
+			// CALCULATE IF POISE IS BROKEN
+			poiseIsBroken = true;
 
 			// WHY ARE THE ANGLE LIKE THIS ?
 			// YOU CAN IMAGINE THAT U ARE THE CHARACTER AND 0 DEGREE IS DIRECTLY IN BACK OF YOU, 90 DEGREE IS TO YOUR RIGHT,
