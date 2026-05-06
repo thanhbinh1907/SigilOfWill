@@ -8,10 +8,12 @@ namespace SG
     {
         [Header("Detection")]
         [SerializeField] float detectionRadius = 15;
+        [SerializeField] float minimunDetectionAngle = -35;
+        [SerializeField] float maximumDetectionAngle = 35;
 
-		private void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
+		public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
         {
-            if (currentTarget == null)
+            if (currentTarget != null)
                 return;
 
             Collider[] colliders = Physics.OverlapSphere(aiCharacter.transform.position, detectionRadius, WorldUtilityManager.instance.GetCharacterLayers());
@@ -29,7 +31,29 @@ namespace SG
                 if  (targetCharacter.isDead)
                     continue;
 
-                // CAN I ATTACK THIS CHARACTER, IF SO, MAKE THEM MY TARGET
+				// CAN I ATTACK THIS CHARACTER, IF SO, MAKE THEM MY TARGET
+				if (WorldUtilityManager.instance.CanIDamageThisTarget(aiCharacter.characterGroup, targetCharacter.characterGroup))
+				{
+					//  IF A POTENTIAL TARGET IS FOUND, IT HAS TO BE INFONT OF US
+                    Vector3 targetsDirection = targetCharacter.transform.position - aiCharacter.transform.position;
+                    float viewableAngle = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
+
+                    if (viewableAngle > minimunDetectionAngle && viewableAngle < maximumDetectionAngle)
+                    {
+                        // LASTLY, WE CHECK ENVIRONMENT BLOCK
+                        if (Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position, 
+                                             targetCharacter.characterCombatManager.lockOnTransform.position, 
+                                             WorldUtilityManager.instance.GetEnvironmentLayers()))
+                        {
+                            Debug.DrawLine(aiCharacter.characterCombatManager.lockOnTransform.position, targetCharacter.characterCombatManager.lockOnTransform.position);
+							Debug.Log("BLOCKED");
+                        }
+						else
+						{
+							aiCharacter.characterCombatManager.SetTarget(targetCharacter);
+						}
+					}
+				}
 			}
 		}
 

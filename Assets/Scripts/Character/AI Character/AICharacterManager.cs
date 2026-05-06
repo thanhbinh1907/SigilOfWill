@@ -6,8 +6,16 @@ namespace SG
 {
     public class AICharacterManager : CharacterManager
     {
+        public AICharacterCombatManager aICharacterCombatManager;
+
         [Header("Current State")]
         [SerializeField] AIState currentState;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            aICharacterCombatManager = GetComponent<AICharacterCombatManager>();
+		}
 
 		protected override void FixedUpdate()
 		{

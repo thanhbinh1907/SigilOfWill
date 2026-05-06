@@ -17,7 +17,8 @@ namespace SG
 			else
 			{
 				// RETURN THIS STATE, TO CONTINUALLY SEARCH FOR A TARGET
-				Debug.Log("NO TARGET");
+				Debug.Log("SEARCHING FOR A TARGET");
+				aiCharacter.aICharacterCombatManager.FindATargetViaLineOfSight(aiCharacter);
 			}
 			return this;
 		}

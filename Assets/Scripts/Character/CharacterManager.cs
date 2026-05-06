@@ -19,6 +19,9 @@ namespace SG
 		[HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
 		[HideInInspector] public CharacterCombatManager characterCombatManager;
 
+		[Header("Character Group")]
+		[SerializeField] public CharacterGroup characterGroup;
+
 		[Header("Flags")]
 		public bool isPerformingAction = false;
 		public bool isJumping = false;

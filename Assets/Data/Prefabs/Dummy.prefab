@@ -2050,7 +2050,7 @@ Transform:
   m_GameObject: {fileID: 7391667068249021754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.061604, y: -0.00000011138923, z: -56.15962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2098,6 +2098,7 @@ MonoBehaviour:
   characterEffectsManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
+  characterGroup: 1
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -2116,6 +2117,7 @@ MonoBehaviour:
   vitality: 10
   endurance: 10
   intelligence: 10
+  aICharacterCombatManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 82d6fd1326462c64e9e083507fc4094d, type: 2}
 --- !u!143 &8665839154251946194
 CharacterController:
@@ -2388,8 +2390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9cd0616019f4049b69a83d4fcb5233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.AICharacterCombatManager
+  lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
   lockOnTransform: {fileID: 4239224162652276045}
+  detectionRadius: 15
+  minimunDetectionAngle: -35
+  maximumDetectionAngle: 35
 --- !u!1 &7796549629535412790
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,11 +41,6 @@ namespace SG
 					fallingVelocityHasBeenSet = false;
 					yVelocity.y = groundedYVelocity;
 				}
-
-				if (character.isJumping)
-				{
-					character.isJumping = false;
-				}
 			}
 			else
 			{

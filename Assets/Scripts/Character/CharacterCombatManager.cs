@@ -6,6 +6,11 @@ namespace SG
 {
     public class CharacterCombatManager : MonoBehaviour
     {
+		protected CharacterManager character;
+
+		[Header("Last Attack Animation Performed")]
+		public string lastAttackAnimationPerformed;
+
 		[Header("Attack Target")]
 		public CharacterManager currentTarget;
 
@@ -14,6 +19,11 @@ namespace SG
 		protected virtual void Awake()
         {
             
+		}
+
+		public virtual void SetTarget(CharacterManager newTarget)
+		{
+			currentTarget = newTarget;
 		}
 	}
 }
