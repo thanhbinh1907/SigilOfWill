@@ -202,7 +202,7 @@ namespace SG
 
 		public void AttemptToPerformDodge()
         {
-            if (player.isPerformingAction)
+            if (player.isPerformingAction || player.isJumping)
                 return;
 
             if (player.currentStamina <= 0)

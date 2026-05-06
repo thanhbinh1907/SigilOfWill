@@ -216,6 +216,7 @@ namespace SG
 				damageCollider.DisableDamageCollider();
 			}
 		}
+
 		private IEnumerator ActiveMeleeSpellHitbox(DamageCollider damageCollider)
 		{
 			damageCollider.DisableDamageCollider();

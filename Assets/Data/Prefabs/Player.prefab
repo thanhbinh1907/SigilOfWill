@@ -1075,7 +1075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c990686ca1e10f14b83a09b59832b9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerManager
-  lockOnTransform: {fileID: 3209882408912940298}
   isDead: 0
   characterController: {fileID: 0}
   animator: {fileID: 0}
@@ -1164,6 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerCombatManager
   currentTarget: {fileID: 0}
+  lockOnTransform: {fileID: 3209882408912940298}
   currentSpellBeingCast: {fileID: 0}
 --- !u!114 &-8070901037549610352
 MonoBehaviour:

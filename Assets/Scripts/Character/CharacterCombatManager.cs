@@ -8,6 +8,9 @@ namespace SG
     {
 		[Header("Attack Target")]
 		public CharacterManager currentTarget;
+
+		public Transform lockOnTransform;
+
 		protected virtual void Awake()
         {
             

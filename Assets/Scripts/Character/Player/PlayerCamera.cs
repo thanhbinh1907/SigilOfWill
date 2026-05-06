@@ -79,8 +79,8 @@ namespace SG {
 		{
 			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
 			{
-				bool canSeeTarget = !Physics.Linecast(player.lockOnTransform.position,
-													player.playerCombatManager.currentTarget.lockOnTransform.position,
+				bool canSeeTarget = !Physics.Linecast(player.playerCombatManager.lockOnTransform.position,
+													player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position,
 													WorldUtilityManager.instance.GetEnvironmentLayers());
 
 				if (!canSeeTarget)
@@ -100,14 +100,14 @@ namespace SG {
 					lockOnLostTimer = 0;
 				}
 
-				Vector3 targetDirection = player.playerCombatManager.currentTarget.lockOnTransform.position - transform.position;
+				Vector3 targetDirection = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position - transform.position;
 				targetDirection.Normalize();
 				targetDirection.y = 0;
 
 				Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 				transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lockOnRotationSpeed * Time.deltaTime);
 
-				targetDirection = player.playerCombatManager.currentTarget.lockOnTransform.position - cameraPivotTransform.position;
+				targetDirection = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position - cameraPivotTransform.position;
 				targetDirection.Normalize();
 
 				Quaternion pivotRotation = Quaternion.LookRotation(targetDirection);
@@ -211,8 +211,8 @@ namespace SG {
 						continue;
 					}
 
-					if (Physics.Linecast(player.lockOnTransform.position,
-										 lockOnTarget.lockOnTransform.position,
+					if (Physics.Linecast(player.playerCombatManager.lockOnTransform.position,
+										 lockOnTarget.characterCombatManager.lockOnTransform.position,
 										 WorldUtilityManager.instance.GetEnvironmentLayers()))
 					{
 						continue;
@@ -246,11 +246,11 @@ namespace SG {
 			{
 				Gizmos.color = Color.red;
 				// Vẽ tia nối giữa 2 điểm Lock-on để kiểm tra Linecast
-				Gizmos.DrawLine(player.lockOnTransform.position,
-								player.playerCombatManager.currentTarget.lockOnTransform.position);
+				Gizmos.DrawLine(player.playerCombatManager.lockOnTransform.position,
+								player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position);
 
 				// Vẽ một khối cầu nhỏ tại điểm đang bị khóa
-				Gizmos.DrawWireSphere(player.playerCombatManager.currentTarget.lockOnTransform.position, 0.5f);
+				Gizmos.DrawWireSphere(player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position, 0.5f);
 			}
 		}
 	}

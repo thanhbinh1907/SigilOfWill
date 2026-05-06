@@ -9,8 +9,6 @@ namespace SG
 {
 	public class CharacterManager : MonoBehaviour
 	{
-		public Transform lockOnTransform;
-
 		[Header("Status")]
 		public bool isDead = false;
 
@@ -111,6 +109,11 @@ namespace SG
 			PlayerCamera.instance.HandleAllCameraActions();
 		}
 
+		protected virtual void FixedUpdate()
+		{
+
+		}
+
 		public void CheckHP(int oldValue, int newValue)
 		{
 			if (isDead)
@@ -156,6 +159,9 @@ namespace SG
 
 		}
 
+
+		// ?? WE CAN PROBABLY OPTIMIZE THIS BY JUST IGNORING THE COLLISION BETWEEN THE CHARACTER CONTROLLER AND THE DAMAGEABLE COLLIDERS,
+		// INSTEAD OF IGNORING ALL COLLISIONS BETWEEN ALL COLLIDERS, BUT THIS DONT WORKS FOR NOW
 		protected virtual void IgnoreMyOwnColliders()
 		{
 			Collider characterControllerCollider = GetComponent<Collider>();
