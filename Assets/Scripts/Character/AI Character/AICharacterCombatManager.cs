@@ -6,18 +6,22 @@ namespace SG
 {
     public class AICharacterCombatManager : CharacterCombatManager
     {
+        [Header("View Angle")]
+        public float viewableAngle;
+        public Vector3 targetsDirection;
+
         [Header("Detection")]
         [SerializeField] float detectionRadius = 15;
-        [SerializeField] float minimunDetectionAngle = -35;
-        [SerializeField] float maximumDetectionAngle = 35;
+        public float minimunFOV = -35;
+        public float maximumFOV = 35;
 
-		public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
+        public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
         {
             if (currentTarget != null)
                 return;
 
             Collider[] colliders = Physics.OverlapSphere(aiCharacter.transform.position, detectionRadius, WorldUtilityManager.instance.GetCharacterLayers());
-            
+
             for (int i = 0; i < colliders.Length; i++)
             {
                 CharacterManager targetCharacter = colliders[i].GetComponent<CharacterManager>();
@@ -25,37 +29,79 @@ namespace SG
                 if (targetCharacter == null)
                     continue;
 
-				if (targetCharacter == aiCharacter)
+                if (targetCharacter == aiCharacter)
                     continue;
 
-                if  (targetCharacter.isDead)
+                if (targetCharacter.isDead)
                     continue;
 
-				// CAN I ATTACK THIS CHARACTER, IF SO, MAKE THEM MY TARGET
-				if (WorldUtilityManager.instance.CanIDamageThisTarget(aiCharacter.characterGroup, targetCharacter.characterGroup))
-				{
-					//  IF A POTENTIAL TARGET IS FOUND, IT HAS TO BE INFONT OF US
+                // CAN I ATTACK THIS CHARACTER, IF SO, MAKE THEM MY TARGET
+                if (WorldUtilityManager.instance.CanIDamageThisTarget(aiCharacter.characterGroup, targetCharacter.characterGroup))
+                {
+                    //  IF A POTENTIAL TARGET IS FOUND, IT HAS TO BE INFONT OF US
                     Vector3 targetsDirection = targetCharacter.transform.position - aiCharacter.transform.position;
-                    float viewableAngle = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
+                    float angleOfPotentialTarget = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
 
-                    if (viewableAngle > minimunDetectionAngle && viewableAngle < maximumDetectionAngle)
+                    if (angleOfPotentialTarget > minimunFOV && angleOfPotentialTarget < maximumFOV)
                     {
                         // LASTLY, WE CHECK ENVIRONMENT BLOCK
-                        if (Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position, 
-                                             targetCharacter.characterCombatManager.lockOnTransform.position, 
+                        if (Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position,
+                                             targetCharacter.characterCombatManager.lockOnTransform.position,
                                              WorldUtilityManager.instance.GetEnvironmentLayers()))
                         {
                             Debug.DrawLine(aiCharacter.characterCombatManager.lockOnTransform.position, targetCharacter.characterCombatManager.lockOnTransform.position);
-							Debug.Log("BLOCKED");
+                            Debug.Log("BLOCKED");
                         }
-						else
-						{
-							aiCharacter.characterCombatManager.SetTarget(targetCharacter);
-						}
-					}
-				}
-			}
-		}
+                        else
+                        {
+                            targetsDirection = targetCharacter.transform.position - transform.position;
+                            viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, targetsDirection);
+                            aiCharacter.characterCombatManager.SetTarget(targetCharacter);
+                            PivotTowardsTarget(aiCharacter);
+                        }
+                    }
+                }
+            }
+        }
 
-	}
+        public void PivotTowardsTarget(AICharacterManager aiCharacter)
+        {
+            // PLAY A PIVOT ANIMATION DEPENDING ON VIEW ANGLE OF TARGET
+            if (aiCharacter.isPerformingAction)
+                return;
+
+            if (viewableAngle >= 20 && viewableAngle <= 60)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Right_45", true);
+            }
+            else if (viewableAngle <= -20 && viewableAngle >= -60)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Left_45", true);
+            }
+            else if (viewableAngle >= 61 && viewableAngle <= 110)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Right_90", true);
+            }
+            else if (viewableAngle <= -61 && viewableAngle >= -110)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Left_90", true);
+            }
+            else if (viewableAngle >= 111 && viewableAngle <= 145)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Right_135", true);
+            }
+            else if (viewableAngle <= -111 && viewableAngle >= -145)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Left_135", true);
+            }
+            else if (viewableAngle >= 146 && viewableAngle <= 180)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Right_180", true);
+            }
+            else if (viewableAngle <= -146 && viewableAngle >= -180)
+            {
+                aiCharacter.characterAnimatorManager.PlayTargetAnimation("Turn_Left_180", true);
+            }
+        }
+    }
 }

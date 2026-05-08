@@ -50,13 +50,19 @@ namespace SG
         {
             AIState nextState = currentState?.Tick(this);
 
-            if (nextState != null)
+			if (aiCharacterCombatManager.currentTarget != null)
+			{
+				aiCharacterCombatManager.targetsDirection = aiCharacterCombatManager.currentTarget.transform.position - transform.position;
+				aiCharacterCombatManager.viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetsDirection);
+			}
+
+			if (nextState != null)
             {
                 currentState = nextState;
             }
 
-            // THE POSITION/ROTATION SHOULD BE RESET ONLY AFTER THE STATE MACHINE HAS PROCESSED IT'S TICK
-            navMeshAgent.transform.localPosition = Vector3.zero;
+			// THE POSITION/ROTATION SHOULD BE RESET ONLY AFTER THE STATE MACHINE HAS PROCESSED IT'S TICK
+			navMeshAgent.transform.localPosition = Vector3.zero;
             navMeshAgent.transform.localRotation = Quaternion.identity;
 
 			if (navMeshAgent.enabled)

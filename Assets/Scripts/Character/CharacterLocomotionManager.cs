@@ -11,7 +11,7 @@ namespace SG
 		CharacterManager character;
 
 		[Header("Grounded Check & Jumping")]
-		[SerializeField] protected float gravityForce = -5.55f;                   // THE FORCE AT WHICH THE CHARACTER WILL BE PULLED DOWN TO THE GROUND
+		[SerializeField] protected float gravityForce = -5.55f;             // THE FORCE AT WHICH THE CHARACTER WILL BE PULLED DOWN TO THE GROUND
 		[SerializeField] LayerMask groundLayer;                                           
 		[SerializeField] float groundedCheckSphereRadius = 1;           
 		[SerializeField] protected Vector3 yVelocity;						// THE FORCE AT WHICH THE CHARACTER WILL BE PULLED DOWN TO THE GROUND
