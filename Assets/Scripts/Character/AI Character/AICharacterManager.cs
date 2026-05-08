@@ -1,20 +1,43 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace SG
 {
     public class AICharacterManager : CharacterManager
     {
-        public AICharacterCombatManager aICharacterCombatManager;
+        [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
+        [HideInInspector] public AICharacterLocomotionManager aiCharacterLocomotionManager;
 
-        [Header("Current State")]
+		[Header("Navmesh Agent")]
+        public NavMeshAgent navMeshAgent;
+
+		[Header("Current State")]
         [SerializeField] AIState currentState;
 
-        protected override void Awake()
+        [Header("States")]
+        public IdleState idle;
+        public PursueTargetState pursueTarget;
+        public CombatStanceState combatStance;
+		// COMBAT STANCE 
+		// ATTACK
+
+		protected override void Awake()
         {
             base.Awake();
-            aICharacterCombatManager = GetComponent<AICharacterCombatManager>();
+
+            aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
+            aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
+
+			navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+
+            // USE A COPY OF THE SCRIPTABLE OBJECTS, SO ORIGINALS ARE NOT MODIFIED
+            idle = Instantiate(idle);
+            pursueTarget = Instantiate(pursueTarget);
+            combatStance = Instantiate(combatStance);
+
+            currentState = idle;
 		}
 
 		protected override void FixedUpdate()
@@ -31,6 +54,29 @@ namespace SG
             {
                 currentState = nextState;
             }
-        }
+
+            // THE POSITION/ROTATION SHOULD BE RESET ONLY AFTER THE STATE MACHINE HAS PROCESSED IT'S TICK
+            navMeshAgent.transform.localPosition = Vector3.zero;
+            navMeshAgent.transform.localRotation = Quaternion.identity;
+
+			if (navMeshAgent.enabled)
+            {
+                Vector3 agentDestiation = navMeshAgent.destination;
+                float remainingDistance = Vector3.Distance(transform.position, agentDestiation);
+
+                if (remainingDistance > navMeshAgent.stoppingDistance)
+                {
+                    isMoving = true;
+                }
+                else
+                {
+                    isMoving = false;
+				}
+			}
+            else
+            {
+                isMoving = false;
+			}
+		}
 	}
 }

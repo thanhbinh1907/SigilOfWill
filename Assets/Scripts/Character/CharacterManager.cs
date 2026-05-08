@@ -32,6 +32,7 @@ namespace SG
 		public bool isSprinting = false;
 		public bool isCasting = false;
 		public bool isLockOn = false;
+		public bool isMoving = false;
 
 
 		[Header("Resources")]
@@ -109,7 +110,7 @@ namespace SG
 		protected virtual void Update()
 		{
 			animator.SetBool("isGrounded", isGrounded);
-			PlayerCamera.instance.HandleAllCameraActions();
+			animator.SetBool("isMoving", isMoving);
 		}
 
 		protected virtual void FixedUpdate()

@@ -86,6 +86,7 @@ namespace SG
             playerLocomotionManager.HandleAllMovement();
             playerStatsManager.RegenerateStamina();
             playerStatsManager.RegenerateMana();
+			PlayerCamera.instance.HandleAllCameraActions();
 
 			DebugMenu();
         }

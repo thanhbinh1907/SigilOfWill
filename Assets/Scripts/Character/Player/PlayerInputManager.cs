@@ -167,7 +167,19 @@ namespace SG
                 moveAmount = 1f;
             }
 
-            if (player.isLockOn)
+            if (player == null) 
+                return;
+
+            if (moveAmount != 0)
+            {
+                player.isMoving = true;
+			}
+            else
+            {
+                player.isMoving = false;
+			}
+            
+			if (player.isLockOn)
             {
                 if (player.isSprinting) 
                 {

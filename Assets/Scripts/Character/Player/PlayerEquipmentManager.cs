@@ -63,7 +63,7 @@ namespace SG
             if (player.isPerformingAction)
                 return;
 
-			player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", true, true, true, true);
+			player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", false, false, true, true);
 
 			WeaponItem selectedWeapon = null;
 			int index = player.playerInventoryManager.rightHandWeaponIndex;
@@ -123,7 +123,7 @@ namespace SG
             if (player.isPerformingAction)
                 return;
 
-            player.playerAnimatorManager.PlayTargetAnimation("Swap_Left_Weapon_01", true, true, true, true);
+            player.playerAnimatorManager.PlayTargetAnimation("Swap_Left_Weapon_01", false, false, true, true);
 
             WeaponItem selectedWeapon = null;
             int index = player.playerInventoryManager.leftHandWeaponIndex;
