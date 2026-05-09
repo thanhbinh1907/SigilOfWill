@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace SG
 {
@@ -15,6 +16,9 @@ namespace SG
 		[Header("Attack")]
 		public List<AICharacterAttackAction> aiCHaracterAttacks;			// A list of all possible attacks this character can do
 		protected List<AICharacterAttackAction> potentialAttacks;           // A list that is created duing this state, all attacks possible in this situation (base on angle, distance, etc)
+		private AICharacterAttackAction choosenAttack; 
+		private AICharacterAttackAction previousAttack;
+		protected bool hasAttack = false;                                              	
 
 		[Header("Combo")]
 		[SerializeField] protected bool canPerformCombo = false;            // If character can perform a combo attack, after the initial attack
@@ -26,16 +30,105 @@ namespace SG
 
 		public override AIState Tick(AICharacterManager aiCharacter)
 		{
+			if (aiCharacter.isPerformingAction)
+				return this;
+
+			if (!aiCharacter.navMeshAgent.enabled)
+				aiCharacter.navMeshAgent.enabled = true;
+
+			// IF YOU WANT THE A.I CHARACTER TO FACE AND TURN TOWARDS ITS TARGET WHEN ITS OUTSIDE IT'S FOV INCLUDE THIS
+			if (!aiCharacter.isMoving)
+			{
+				if (aiCharacter.aiCharacterCombatManager.viewableAngle <- 30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
+				{
+					aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+				}
+			}
+
+			// ROTATE TO FACE OUR TARGET 
+
+
+			// IF OUR TARGET IS NO LONGER PRESENT, SWITCH TO IDLE STATE
+			if (aiCharacter.aiCharacterCombatManager.currentTarget == null)
+				return SwitchState(aiCharacter, aiCharacter.idle);
+
+			if (!hasAttack)
+			{
+				GetNewAttack(aiCharacter);
+			}
+			else
+			{
+				// CHECK RECOVERY TIMER
+				// PASS ATTACK TO ATTACK STATE
+				// ROLL FOR COMBO CHANCE
+				// SWITCH STATE
+			}
+			// IF WE ARE OUTSIDE OF THE COMBAT ENGAGEMENT DISTANCE, SWITCH TO PURSUE TARGET STATE
+			if (aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
+				return SwitchState(aiCharacter, aiCharacter.pursueTarget);
+
+			NavMeshPath path = new NavMeshPath();
+			aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
+			aiCharacter.navMeshAgent.SetPath(path);
+
 			return this;
 		}
 
 		protected virtual void GetNewAttack(AICharacterManager aiCharacter)
 		{
 			// 1. Sort through all possible attacks
+			potentialAttacks = new List<AICharacterAttackAction>();
+
 			// 2. Remove attacks that cant be used in this situation (based on distance, angle, etc)
-			// 3. Place remaining attacks into a list
+			foreach (var potentialAttack in potentialAttacks)
+			{
+				// IF THE ATTACK IS NOT IN RANGE, CONTINUE TO THE NEXT ONE
+				if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget 
+					|| potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterCombatManager.distanceFromTarget)
+				{
+					continue;
+				}
+
+				// IF ThE ATTACK IS NOT IN VIEWABLE ANGLE, CONTINUE TO THE NEXT ONE
+				if (potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterCombatManager.viewableAngle
+					|| potentialAttack.minimumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle)
+				{
+					continue;
+				}
+
+				// 3. Place remaining attacks into a list
+				potentialAttacks.Add(potentialAttack);
+			}
+
+			if (potentialAttacks.Count <= 0)
+				return;
+
+			var totalWeight = 0;
+
+			foreach (var attack in potentialAttacks)
+			{
+				totalWeight += attack.attackWeight;
+			}
+
 			// 4. Pick one of the remaining attacks randomly, base on weight 
-			// 5. Select this attack and pass it to attack state
+			var randomValue = Random.Range(1, totalWeight + 1);
+			var progressWeight = 0;
+
+			foreach (var attack in potentialAttacks)
+			{
+				progressWeight += attack.attackWeight;
+
+				if (randomValue <= progressWeight)
+				{
+
+					// 5. Select this attack and pass it to attack state
+					choosenAttack = attack;
+					previousAttack = choosenAttack;
+					hasAttack = true;
+				}
+			}
+
+
 
 
 		}
@@ -58,6 +151,7 @@ namespace SG
 		{
 			base.ResetStateFlags(aiCharacter);
 
+			hasAttack = false;
 			hasRollForComboChance = false;
 		}
 	}
