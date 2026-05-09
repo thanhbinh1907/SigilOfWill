@@ -257,7 +257,9 @@ namespace SG
 
                 player.SetCharacterActionHand(true);
 
-                player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action, player.playerInventoryManager.currentRightHandWeapon);
+                player.playerCombatManager.PerformWeaponBasedAction(
+                    player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action.actionID, 
+                    player.playerInventoryManager.currentRightHandWeapon.itemID);
             }
 		}
 

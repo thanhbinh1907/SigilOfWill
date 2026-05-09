@@ -23,9 +23,19 @@ namespace SG
 			HandleGestureCasting();
 		}
 
-		public void PerformWeaponBasedAction(WeaponItemAction weaponAction, WeaponItem weaponPerformingAction)
+		public void PerformWeaponBasedAction(int actionID, int weaponID)
 		{
-			weaponAction.AttemptToPerformAction(player, weaponPerformingAction);
+			WeaponItemAction weaponAction = WorldActionManager.instance.GetWeaponItemActionByID(actionID);
+
+			if (weaponAction != null)
+			{
+				WeaponItem weapon = WorldItemDatabase.instance.GetWeaponByID(weaponID);
+
+				if (weapon != null)
+				{
+					weaponAction.AttemptToPerformAction(player, weapon);
+				}
+			}
 		}
 
 		public void EnableCastingState()
