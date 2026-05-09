@@ -20,8 +20,7 @@ namespace SG
         public IdleState idle;
         public PursueTargetState pursueTarget;
         public CombatStanceState combatStance;
-		// COMBAT STANCE 
-		// ATTACK
+        public AttackState attack;
 
 		protected override void Awake()
         {
@@ -40,10 +39,18 @@ namespace SG
             currentState = idle;
 		}
 
+		protected override void Update()
+		{
+			base.Update();
+
+            aiCharacterCombatManager.HandleActionRecovery(this);
+		}
+
 		protected override void FixedUpdate()
 		{
 			base.FixedUpdate();
             ProcessStateMachine();
+
 		}
 
         private void ProcessStateMachine()

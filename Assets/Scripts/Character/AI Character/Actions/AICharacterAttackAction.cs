@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace SG
 {
 	[CreateAssetMenu(menuName = "A.I/Actions/Attack")]
-	public class AICharacterAttackAction : MonoBehaviour
+	public class AICharacterAttackAction : ScriptableObject
     {
 		[Header("Attack")]
 		[SerializeField] private string attackAnimation;
@@ -21,7 +21,7 @@ namespace SG
 		public float minimumAttackAngle = -35;                
 		public float maximumAttackAngle = 35;
 		public float minimumAttackDistance = 0;
-		public float maximumAttackDistance = 2;
+		public float maximumAttackDistance = 3;
 
 		public void AttempToPerformAction(AICharacterManager aiCharacter)
         {

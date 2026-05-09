@@ -14,7 +14,7 @@ namespace SG
 		// 4. If target is no longer present, switch to idle state
 
 		[Header("Attack")]
-		public List<AICharacterAttackAction> aiCHaracterAttacks;			// A list of all possible attacks this character can do
+		public List<AICharacterAttackAction> aiCharacterAttacks;			// A list of all possible attacks this character can do
 		protected List<AICharacterAttackAction> potentialAttacks;           // A list that is created duing this state, all attacks possible in this situation (base on angle, distance, etc)
 		private AICharacterAttackAction choosenAttack; 
 		private AICharacterAttackAction previousAttack;
@@ -26,7 +26,7 @@ namespace SG
 		[SerializeField] bool hasRollForComboChance = false;				// If we have already rolled for the chance during this state 
 
 		[Header("Engagement Distance")]
-		[SerializeField] protected float maximumEngagementDistance = 5;     // The distance we have to be away from the target before we enter the pursue state
+		[SerializeField] public float maximumEngagementDistance = 5;     // The distance we have to be away from the target before we enter the pursue state
 
 		public override AIState Tick(AICharacterManager aiCharacter)
 		{
@@ -39,13 +39,13 @@ namespace SG
 			// IF YOU WANT THE A.I CHARACTER TO FACE AND TURN TOWARDS ITS TARGET WHEN ITS OUTSIDE IT'S FOV INCLUDE THIS
 			if (!aiCharacter.isMoving)
 			{
-				if (aiCharacter.aiCharacterCombatManager.viewableAngle <- 30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
+				if (aiCharacter.aiCharacterCombatManager.viewableAngle < -30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
 				{
 					aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
 				}
 			}
 
-			// ROTATE TO FACE OUR TARGET 
+			aiCharacter.aiCharacterCombatManager.RotateTowardsAgent(aiCharacter);
 
 
 			// IF OUR TARGET IS NO LONGER PRESENT, SWITCH TO IDLE STATE
@@ -58,10 +58,11 @@ namespace SG
 			}
 			else
 			{
-				// CHECK RECOVERY TIMER
-				// PASS ATTACK TO ATTACK STATE
+				aiCharacter.attack.currentAttack = choosenAttack;
+
 				// ROLL FOR COMBO CHANCE
-				// SWITCH STATE
+
+				return SwitchState(aiCharacter, aiCharacter.attack);
 			}
 			// IF WE ARE OUTSIDE OF THE COMBAT ENGAGEMENT DISTANCE, SWITCH TO PURSUE TARGET STATE
 			if (aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
@@ -80,7 +81,7 @@ namespace SG
 			potentialAttacks = new List<AICharacterAttackAction>();
 
 			// 2. Remove attacks that cant be used in this situation (based on distance, angle, etc)
-			foreach (var potentialAttack in potentialAttacks)
+			foreach (var potentialAttack in aiCharacterAttacks)
 			{
 				// IF THE ATTACK IS NOT IN RANGE, CONTINUE TO THE NEXT ONE
 				if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget 
@@ -91,7 +92,7 @@ namespace SG
 
 				// IF ThE ATTACK IS NOT IN VIEWABLE ANGLE, CONTINUE TO THE NEXT ONE
 				if (potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterCombatManager.viewableAngle
-					|| potentialAttack.minimumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle)
+					|| potentialAttack.maximumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle)
 				{
 					continue;
 				}
@@ -125,12 +126,9 @@ namespace SG
 					choosenAttack = attack;
 					previousAttack = choosenAttack;
 					hasAttack = true;
+					return;
 				}
 			}
-
-
-
-
 		}
 
 		protected virtual bool RollForOutcomeChance(int outcomeChance)

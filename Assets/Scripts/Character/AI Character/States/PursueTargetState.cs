@@ -30,12 +30,16 @@ namespace SG
 			// ROTATE THE AI CHARACTER TOWARDS THE TARGET
 			aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);
 
+
 			// IF WE ARE WITHIN COMBAT RANGE OF A TARGET, SWITCH STATE TO COMBAT STANCE STATE
-			float distanceToTarget = Vector3.Distance(aiCharacter.transform.position, aiCharacter.characterCombatManager.currentTarget.transform.position);
-			if (distanceToTarget <= aiCharacter.navMeshAgent.stoppingDistance)
-			{
+			// OPTION 1
+			//if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.combatStance.maximumEngagementDistance)
+			//	return SwitchState(aiCharacter, aiCharacter.combatStance);
+			
+			// OPTION 2
+			if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
 				return SwitchState(aiCharacter, aiCharacter.combatStance);
-			}
+
 
 			// IF THE TARGET IS NOT REACHABLE,  AN THEY FAR AWAY, RETURN HOME
 
