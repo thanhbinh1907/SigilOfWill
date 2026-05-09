@@ -7,6 +7,7 @@ namespace SG
     public class CharacterCombatManager : MonoBehaviour
     {
 		protected CharacterManager character;
+		public AttackType currentAttackType;
 
 		[Header("Last Attack Animation Performed")]
 		public string lastAttackAnimationPerformed;

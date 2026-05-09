@@ -38,6 +38,25 @@ namespace SG
 			}
 		}
 
+		public virtual void DrainStaminaBasedOnAttack()
+		{
+			if (currentWeaponBeingUsed == null)
+				return;
+
+			float staminaDeducted = 0;
+
+			switch (currentAttackType)
+			{
+				case AttackType.LightAttack01:
+					staminaDeducted = currentWeaponBeingUsed.baseStaminaCost * currentWeaponBeingUsed.light_Attack_01_Modifier;
+					break;
+				default:
+					break;
+			}
+			 
+			player.currentStamina -= Mathf.RoundToInt(staminaDeducted);
+		}
+
 		public void EnableCastingState()
 		{
 			if (player.isPerformingAction)
@@ -119,7 +138,6 @@ namespace SG
 				void AssignSpellDamage(DamageCollider collider)
 				{
 					if (collider == null) return;
-					collider.characterCausingDamage = player;
 					collider.fireDamage = currentSpellBeingCast.fireDamage;
 					collider.lightningDamage = currentSpellBeingCast.lightningDamage;
 					collider.windDamage = currentSpellBeingCast.windDamage;

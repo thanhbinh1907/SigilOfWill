@@ -6,7 +6,7 @@ namespace SG
 {
     public class WeaponManager : MonoBehaviour
     {
-        [SerializeField] MeleeWeaponDamageCollider meleeDamageCollider;
+        public MeleeWeaponDamageCollider meleeDamageCollider;
 
         public Transform spellSpawnPoint;
 
@@ -26,7 +26,9 @@ namespace SG
                 meleeDamageCollider.lightningDamage = weapon.lightningDamage;
                 meleeDamageCollider.holyDamage = weapon.holyDamage;
                 meleeDamageCollider.windDamage = weapon.windDamage;
-            }
+
+                meleeDamageCollider.light_Attack_01_Modifier = weapon.light_Attack_01_Modifier;
+			}
 			else
 			{
 				Debug.Log($"Vũ khí {weapon.itemName} không có MeleeWeaponDamageCollider. Bỏ qua gán sát thương cận chiến.");

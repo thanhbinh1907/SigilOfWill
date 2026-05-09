@@ -108,7 +108,7 @@ namespace SG
 			character.canMove = canMove;
 		}
 
-		public virtual void PlayTargetAttackActionAnimation(
+		public virtual void PlayTargetAttackActionAnimation(AttackType attackType,
 			string targetAnimation,
 			bool isPerformingAction,
 			bool applyRootMotion = true,
@@ -120,6 +120,7 @@ namespace SG
 			// UPDATE ANIMATION SET TO CURRENT WEAPON ANIMATION
 			// DECIDE IF OUR ATTACK CAN BE PARRIED
 
+			character.characterCombatManager.currentAttackType = attackType;
 			character.applyRootMotion = applyRootMotion;
 			character.animator.CrossFade(targetAnimation, 0.2f);
 			character.isPerformingAction = isPerformingAction;

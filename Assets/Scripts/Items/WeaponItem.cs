@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace SG
 {
-    public class WeaponItem : Item
-    {
+	public class WeaponItem : Item
+	{
 		// ANIMATOR CONTROLLER OVERRIDE (CHANGE ATTACK ANIMATIONS BASED ON WEAPON YOU ARE CURRENTLY USING)
 
 		[Header("Weapon Model")]
@@ -31,15 +31,15 @@ namespace SG
 		public float poiseDMG = 10;
 		// OFFENSIVE POISE BONUS WHEN ATTACKING 
 
-		// WEAPON MODIFIERS
-		// LIGHT ATTACK MODIFIER
+		[Header("Attack Modifiers")]
+		public float light_Attack_01_Modifier = 1f;
 		// HEAVY ATTACK MODIFIER
 		// CRITICAL ATTACK MODIFIER ETC 
 
-		[Header("Stamina Cost")]
-		public int baseStaminaCost = 0;
+		[Header("Stamina Cost Modifiers")]
+		public int baseStaminaCost = 20;
+		public float lightAttackStaminaCost = 0.9f;
 		// RUNNING ATTACK STAMINA COST MODIFIER 
-		// LIGHT ATTACK STAMINA COST MODIFIER
 		// HEAVY ATTACK STAMINA COST MODIFIER
 
 		[Header("Actions")]

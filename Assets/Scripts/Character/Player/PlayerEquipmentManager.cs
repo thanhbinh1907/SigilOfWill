@@ -15,17 +15,17 @@ namespace SG
         [SerializeField] public WeaponManager rightWeaponManager;
         [SerializeField] public WeaponManager leftWeaponManager;
 
-		public GameObject rightHandWeaponModel;
+        public GameObject rightHandWeaponModel;
         public GameObject leftHandWeaponModel;
 
-		protected override void Awake()
+        protected override void Awake()
         {
             base.Awake();
 
             player = GetComponent<PlayerManager>();
 
             InitializeWeaponSlots();
-		}
+        }
 
         protected override void Start()
         {
@@ -33,7 +33,7 @@ namespace SG
             LoadWeaponsOnBothHands();
         }
 
-		private void InitializeWeaponSlots()
+        private void InitializeWeaponSlots()
         {
             WeaponModelInstatiationSlot[] weaponSlots = GetComponentsInChildren<WeaponModelInstatiationSlot>();
 
@@ -47,76 +47,76 @@ namespace SG
                 {
                     leftHandSlot = weaponSlot;
                 }
-			}
-		}
+            }
+        }
 
         public void LoadWeaponsOnBothHands()
         {
             LoadRightWeapon();
             LoadLeftWeapon();
-		}
+        }
 
-		// RIGHT HAND WEAPON
+        // RIGHT HAND WEAPON
 
         public void SwitchRightWeapon()
         {
             if (player.isPerformingAction)
                 return;
 
-			player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", false, false, true, true);
+            player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", false, false, true, true);
 
-			WeaponItem selectedWeapon = null;
-			int index = player.playerInventoryManager.rightHandWeaponIndex;
+            WeaponItem selectedWeapon = null;
+            int index = player.playerInventoryManager.rightHandWeaponIndex;
 
-			for (int i = 0; i < 3; i++) 
-			{
-				index += 1;
-				if (index > 2) index = 0; 
+            for (int i = 0; i < 3; i++)
+            {
+                index += 1;
+                if (index > 2) index = 0;
 
-				WeaponItem weaponInSlot = player.playerInventoryManager.weaponsInRightHandSlots[index];
+                WeaponItem weaponInSlot = player.playerInventoryManager.weaponsInRightHandSlots[index];
 
-				if (weaponInSlot != null && weaponInSlot.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
-				{
-					selectedWeapon = weaponInSlot;
-					player.playerInventoryManager.rightHandWeaponIndex = index;
-					break; 
-				}
-			}
+                if (weaponInSlot != null && weaponInSlot.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                {
+                    selectedWeapon = weaponInSlot;
+                    player.playerInventoryManager.rightHandWeaponIndex = index;
+                    break;
+                }
+            }
 
-			if (selectedWeapon != null)
-			{
-				player.playerInventoryManager.currentRightHandWeapon = selectedWeapon;
-			}
-			else
-			{
-				player.playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.unarmedWeapon;
-				player.playerInventoryManager.rightHandWeaponIndex = -1;
-			}
+            if (selectedWeapon != null)
+            {
+                player.playerInventoryManager.currentRightHandWeapon = selectedWeapon;
+            }
+            else
+            {
+                player.playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.unarmedWeapon;
+                player.playerInventoryManager.rightHandWeaponIndex = -1;
+            }
 
-			LoadRightWeapon();
-		}
+            LoadRightWeapon();
+        }
 
-		public void LoadRightWeapon()
+        public void LoadRightWeapon()
         {
             if (player.playerInventoryManager.currentRightHandWeapon != null)
             {
-				// UNLOAD CURRENT WEAPON MODEL
+                // UNLOAD CURRENT WEAPON MODEL
                 rightHandSlot.UnloadWeapon();
 
-				// LOAD NEW WEAPON MODEL
-				rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
-				rightHandSlot.LoadWeapon(rightHandWeaponModel);
+                // LOAD NEW WEAPON MODEL
+                rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
+                rightHandSlot.LoadWeapon(rightHandWeaponModel);
                 rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
                 rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
 
                 if (PlayerUIManager.instance != null)
                 {
                     PlayerUIManager.instance.playerUIHudManager.SetRightWeaponQuickSlotIcon(player.playerInventoryManager.currentRightHandWeapon.itemID);
-				}
-			}
-		}
+                }
+            }
+        }
 
-		// LEFT HAND WEAPON
+        // LEFT HAND WEAPON
 
         public void SwitchLeftWeapon()
         {
@@ -139,7 +139,7 @@ namespace SG
                     player.playerInventoryManager.leftHandWeaponIndex = index;
                     break;
                 }
-			}
+            }
 
             if (selectedWeapon != null)
             {
@@ -151,9 +151,9 @@ namespace SG
                 player.playerInventoryManager.leftHandWeaponIndex = -1;
             }
             LoadLeftWeapon();
-		}
+        }
 
-		public void LoadLeftWeapon()
+        public void LoadLeftWeapon()
         {
             if (player.playerInventoryManager.currentLeftHandWeapon != null)
             {
@@ -170,5 +170,31 @@ namespace SG
                 }
             }
         }
-	}
+
+        // DAMAGE COLLIDER
+
+        public void OpenDamageCollider()
+        {
+            if (player.isUsingRightHand)
+            {
+                rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
+            }
+            else if (player.isUsingLeftHand)
+            {
+                leftWeaponManager.meleeDamageCollider.EnableDamageCollider();
+            }
+        }
+
+        public void CloseDamageCollider()
+        {
+            if (player.isUsingRightHand)
+            {
+                rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
+            else if (player.isUsingLeftHand)
+            {
+                leftWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
+        }
+    }
 }

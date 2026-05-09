@@ -7,7 +7,7 @@ namespace SG
     public class DamageCollider : MonoBehaviour
     {
         [Header("Collider")]
-        protected Collider damageCollider;
+        [SerializeField] protected Collider damageCollider;
 
 		public CharacterManager characterCausingDamage;
 
@@ -20,7 +20,7 @@ namespace SG
         public float holyDamage = 0;
 
         [Header("Contact Point")]
-        private Vector3 contactPoint;
+        public Vector3 contactPoint;
 
         [Header("Character Damaged")]
         protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
@@ -30,7 +30,7 @@ namespace SG
 			damageCollider = GetComponent<Collider>();
 		}
 
-		private void OnTriggerEnter(Collider other)
+		protected virtual void OnTriggerEnter(Collider other)
 		{
             CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 
