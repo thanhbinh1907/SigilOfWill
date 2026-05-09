@@ -42,7 +42,8 @@ namespace SG
 		// LIGHT ATTACK STAMINA COST MODIFIER
 		// HEAVY ATTACK STAMINA COST MODIFIER
 
-		// ITEM BASE ACTION 
+		[Header("Actions")]
+		public WeaponItemAction oh_RB_Action;           // ONE HAND RIGHT BUMPER ACTION (LIGHT ATTACK)
 
 		// ASH OF WAR
 

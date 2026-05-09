@@ -159,6 +159,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Left Mouse",
+                    "type": "Button",
+                    "id": "4a901170-d8cd-4dfe-840a-c704d6193f8c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -225,6 +234,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Switch Left Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3b0a437-8150-4142-8e9f-803b67812fa8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -33,6 +33,8 @@ namespace SG
 		public bool isCasting = false;
 		public bool isLockOn = false;
 		public bool isMoving = false;
+		public bool isUsingRightHand = false;
+		public bool isUsingLeftHand = false;
 
 
 		[Header("Resources")]
@@ -163,6 +165,19 @@ namespace SG
 
 		}
 
+		public void SetCharacterActionHand(bool rightHandedAction)
+		{
+			if (rightHandedAction)
+			{
+				isUsingRightHand = true;
+				isUsingLeftHand = false;
+			}
+			else
+			{
+				isUsingRightHand = false;
+				isUsingLeftHand = true;
+			}
+		}
 
 		// ?? WE CAN PROBABLY OPTIMIZE THIS BY JUST IGNORING THE COLLISION BETWEEN THE CHARACTER CONTROLLER AND THE DAMAGEABLE COLLIDERS,
 		// INSTEAD OF IGNORING ALL COLLISIONS BETWEEN ALL COLLIDERS, BUT THIS DONT WORKS FOR NOW

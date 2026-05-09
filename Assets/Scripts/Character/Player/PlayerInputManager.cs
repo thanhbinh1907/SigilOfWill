@@ -13,29 +13,30 @@ namespace SG
         PlayerControl playerControls;
 
 
-        [Header("Camera Movement Input")]
+        [Header("CAMERA MOVEMENT INPUT")]
         [SerializeField] Vector2 cameraInput;
         public float cameraVerticalInput;
         public float cameraHorizontalInput;
 
-        [Header("Player Movement Input")]
+        [Header("PLAYER MOVEMENT INPUT")]
         [SerializeField] Vector2 movementInput;
         public float verticalInput;
         public float horizontalInput;
         public float moveAmount;
 
-        [Header("Player Action Input")]
+        [Header("PLAYER ACTION INPUT")]
         [SerializeField] bool dodgeInput = false;
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
+        [SerializeField] bool leftMouseInput = false;
 
-        [Header("Lock On Input")]
+		[Header("LOCK ON INPUT")]
         [SerializeField] bool lockOnInput = false; 
 
-		[Header("Player Combat Input")]
+		[Header("PLAYER COMBAT INPUT")]
         [SerializeField] bool spellTriggerInput = false;
 
-		[Header("Weapon Switch Input")]
+		[Header("WEAPON SWITCH INPUT")]
 		public bool switchRightWeaponInput = false;
 		public bool switchLeftWeaponInput = false;
 
@@ -98,6 +99,8 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
+                playerControls.PlayerAction.LeftMouse.performed += i => leftMouseInput = true;
+
 				// SWITCH WEAPON INPUT
 				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;
 				playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switchLeftWeaponInput = true;
@@ -145,7 +148,8 @@ namespace SG
             HandleSprintInput();
             HandleJumpInput();
             HandleCastSpellInput();
-            HandleSwitchWeaponInput();
+            HandleLeftMouseInput();
+			HandleSwitchWeaponInput();
 		}
 
         // MOVEMENT INPUT
@@ -245,7 +249,19 @@ namespace SG
             }
         }
 
-        private void HandleSwitchWeaponInput()
+        private void HandleLeftMouseInput()
+        {
+            if (leftMouseInput)
+            {
+                leftMouseInput = false;
+
+                player.SetCharacterActionHand(true);
+
+                player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action, player.playerInventoryManager.currentRightHandWeapon);
+            }
+		}
+
+		private void HandleSwitchWeaponInput()
         {
             if (switchRightWeaponInput)
             {

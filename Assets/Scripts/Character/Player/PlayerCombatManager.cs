@@ -6,7 +6,10 @@ namespace SG
 {
 	public class PlayerCombatManager : CharacterCombatManager
 	{
+		public WeaponItem currentWeaponBeingUsed;
+
 		PlayerManager player;
+
 		[HideInInspector] public SpellAction currentSpellBeingCast;
 
 		protected override void Awake()
@@ -18,6 +21,11 @@ namespace SG
 		private void Update()
 		{
 			HandleGestureCasting();
+		}
+
+		public void PerformWeaponBasedAction(WeaponItemAction weaponAction, WeaponItem weaponPerformingAction)
+		{
+			weaponAction.AttemptToPerformAction(player, weaponPerformingAction);
 		}
 
 		public void EnableCastingState()
