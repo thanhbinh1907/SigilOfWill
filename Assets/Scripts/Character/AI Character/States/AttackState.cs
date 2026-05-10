@@ -26,10 +26,10 @@ namespace SG
                 return SwitchState(aiCharacter, aiCharacter.idle);
 
 
-			//  ROTATE TOWARD THE TARGET WHILIST ATTACKING
+			aiCharacter.aiCharacterCombatManager.RotateTowardsTargetWhilistAttacking(aiCharacter);
 
 			//  SET MOVEMENT TO ZERO
-            aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0, false);
+			aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0, false);
 
 			// PERFORM A COMBO
 			if (willPerformCombo && !hasPerformedCombo)
@@ -42,13 +42,13 @@ namespace SG
 				}
 			}
 
-            if (!hasPerformAttack)
+			if (aiCharacter.isPerformingAction)
+				return this;
+
+			if (!hasPerformAttack)
             {
 				// IF WE ARE STILL RECOVERING FROM AN ACTION, WAIT BEFORE PERFORMING ANOTHER
 				if (aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
-                    return this;
-
-                if (aiCharacter.isPerformingAction)
                     return this;
 
                 PerformAttack(aiCharacter);

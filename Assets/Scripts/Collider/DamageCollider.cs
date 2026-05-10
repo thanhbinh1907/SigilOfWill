@@ -74,7 +74,7 @@ namespace SG
             damageEffect.holyDamage = holyDamage;
             damageEffect.contactPoint = contactPoint;
 
-			CalculateDamageAngle(damageEffect, damageTarget);
+			damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
 
 			damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
 		}
@@ -89,10 +89,5 @@ namespace SG
             damageCollider.enabled = false;
             charactersDamaged.Clear();                  
 		}
-
-        protected virtual void CalculateDamageAngle(TakeDamageEffect damageEffect, CharacterManager damageTarget) 
-        {
-
-        }
 	}
 }

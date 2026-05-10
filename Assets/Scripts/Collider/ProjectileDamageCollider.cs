@@ -8,12 +8,5 @@ namespace SG
 		{
 			base.DamageTarget(damageTarget);
 		}
-
-		protected override void CalculateDamageAngle(TakeDamageEffect damageEffect, CharacterManager damageTarget)
-		{
-			base.CalculateDamageAngle(damageEffect, damageTarget);
-
-			damageEffect.angleHitFrom = Vector3.SignedAngle(transform.forward, damageTarget.transform.forward, Vector3.up);
-		}
 	}
 }

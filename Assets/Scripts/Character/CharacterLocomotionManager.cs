@@ -63,12 +63,14 @@ namespace SG
 			character.isGrounded = Physics.CheckSphere(character.transform.position, groundedCheckSphereRadius, groundLayer);
 		}
 
-		// DRAW THE SPHERE USED FOR THE GROUNDED CHECK IN THE SCENE VIEW
-		/*
-		protected void OnDrawGizmosSelected()
+		public void EnableCanRotate()
 		{
-			Gizmos.DrawSphere(character.transform.position, groundedCheckSphereRadius);
+			character.canRotate = true;
 		}
-		*/
+
+		public void DisableCanRotate()
+		{
+			character.canRotate = false;
+		}
 	}
 }

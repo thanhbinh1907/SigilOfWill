@@ -56,6 +56,7 @@ namespace SG
 			damageEffect.windDamage = windDamage;
 			damageEffect.holyDamage = holyDamage;
 			damageEffect.contactPoint = contactPoint;
+			damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
 
 			switch (characterCausingDamage.characterCombatManager.currentAttackType)
 			{
@@ -65,8 +66,6 @@ namespace SG
 				default:
 					break;
 			}
-
-			CalculateDamageAngle(damageEffect, damageTarget);
 
 			damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
 		}
@@ -80,13 +79,6 @@ namespace SG
 			damage.windDamage *= modifier;
 			damage.holyDamage *= modifier;
 			damage.poiseDamage *= modifier;
-		}
-
-		protected override void CalculateDamageAngle(TakeDamageEffect damageEffect, CharacterManager damageTarget)
-		{
-			base.CalculateDamageAngle(damageEffect, damageTarget);
-
-			damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
 		}
 	}
 }
