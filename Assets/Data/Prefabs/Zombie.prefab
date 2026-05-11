@@ -1790,6 +1790,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea7ca534f7806c45b63cdda9904a1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.CharacterSoundFXManager
+  damageGrunts:
+  - {fileID: 8300000, guid: d39eae0bb304ae14f99e3c4f1ec952b7, type: 3}
+  - {fileID: 8300000, guid: 802a3297644f20f4f8801b287fe83082, type: 3}
+  - {fileID: 8300000, guid: 9bb86207ef8e53647a7da85e5a1e6436, type: 3}
+  - {fileID: 8300000, guid: a0e9521a8482f5e40a72277606b7f152, type: 3}
+  attackGrunts:
+  - {fileID: 8300000, guid: 9fb79421bf93b1e44ac02c1511e9bf0c, type: 3}
+  - {fileID: 8300000, guid: eefe2ea8799468f4f8972784afdb9f0f, type: 3}
+  - {fileID: 8300000, guid: b53431fb3fc862e409a8d738f2d3b605, type: 3}
 --- !u!114 &6684658160853502860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,6 +2000,7 @@ MonoBehaviour:
   lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
   lockOnTransform: {fileID: 4686095459970363564}
+  aiCharacter: {fileID: 0}
   actionRecoveryTimer: 0
   distanceFromTarget: 0
   viewableAngle: 0

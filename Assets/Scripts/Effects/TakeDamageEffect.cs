@@ -105,6 +105,7 @@ namespace SG
             AudioClip slashDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.slashSFX);
 
 			character.characterSoundFXManager.PlaySoundFX(slashDamageSFX);
+            character.characterSoundFXManager.PlayDamageGruntSFX();
 		}
 
         private void PlayDirectionalBaseOnDamageAnimation(CharacterManager character)

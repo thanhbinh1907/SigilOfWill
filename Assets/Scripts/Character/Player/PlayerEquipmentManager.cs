@@ -178,12 +178,14 @@ namespace SG
             if (player.isUsingRightHand)
             {
                 rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
-            }
+                player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
+			}
             else if (player.isUsingLeftHand)
             {
                 leftWeaponManager.meleeDamageCollider.EnableDamageCollider();
-            }
-        }
+				player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentLeftHandWeapon.whooshes));
+			}
+		}
 
         public void CloseDamageCollider()
         {

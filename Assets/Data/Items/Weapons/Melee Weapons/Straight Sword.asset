@@ -32,3 +32,7 @@ MonoBehaviour:
   baseStaminaCost: 20
   lightAttackStaminaCost: 0.9
   oh_RB_Action: {fileID: 11400000, guid: 61e7ce25c8a4b5e4abc716c9c0aa672d, type: 2}
+  whooshes:
+  - {fileID: 8300000, guid: 2f8a783f075bf4155ab4b59bdd5fd2be, type: 3}
+  - {fileID: 8300000, guid: 936e0c7b18e034f1db5890e9aa95bc42, type: 3}
+  - {fileID: 8300000, guid: 5777bd69665764cfcb1873a61f617a18, type: 3}
