@@ -9,13 +9,9 @@ namespace SG
 	{
 		public static WorldAIManager instance;
 
-		[Header("Debug")]
-		[SerializeField] bool spawnAICharacters = false;
-		[SerializeField] bool despawnAICharacters = false;
-
 		[Header("Characters")]
-		[SerializeField] GameObject[] aiCharacters;
-		[SerializeField] List<GameObject> spawnedCharacters = new List<GameObject>();
+		[SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
+		[SerializeField] List<GameObject> spawnedCharacters;
 
 		private void Awake()
 		{
@@ -32,43 +28,19 @@ namespace SG
 		private void Start()
 		{
 			DontDestroyOnLoad(gameObject);
-
-			// WE ONLY WANT TO SPAWN THE CHARACTERS IF WE ARE IN THE WORLD SCENE, OTHERWISE WE WILL SPAWN THEM AGAIN WHEN WE LOAD THE WORLD SCENE
-			if (SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.worldSceneIndex)
-			{
-				StartCoroutine(WaitForSceneToLoadThenSpawnCharacter());
-			}
 		}
 
-		private void Update()
+		public void SpawnCharacter(AICharacterSpawner aiCharacterSpawner)
 		{
-			if (spawnAICharacters)
-			{
-				spawnAICharacters = false;
-				 SpawnAllAICharacters();
-			}
-			if (despawnAICharacters)
-			{
-				despawnAICharacters = false;
-				DespawnAllAICharacters();
-			}
+			aiCharacterSpawners.Add(aiCharacterSpawner);
+			aiCharacterSpawner.AttemptToSpawnCharacter();
 		}
 
-		private IEnumerator WaitForSceneToLoadThenSpawnCharacter()
+		public void AddSpawnedCharacter(GameObject character)
 		{
-			while (!SceneManager.GetActiveScene().isLoaded)
+			if (!spawnedCharacters.Contains(character)) 
 			{
-				yield return new WaitForSeconds(0.5f);
-			}
-			SpawnAllAICharacters();
-		}
-
-		private void SpawnAllAICharacters()
-		{
-			foreach (var character in aiCharacters)
-			{
-				GameObject spawnedCharacter = Instantiate(character);
-				spawnedCharacters.Add(spawnedCharacter);
+				spawnedCharacters.Add(character);
 			}
 		}
 
@@ -76,15 +48,12 @@ namespace SG
 		{
 			foreach (var character in spawnedCharacters)
 			{
-				Destroy(character);
+				if (character != null) 
+				{
+					Destroy(character);
+				}
 			}
 			spawnedCharacters.Clear();
-		}
-
-		private void DisableAllAICharacters()
-		{
-			// CAN BE USE TO DISABLE CHARACTERS THAT ARE FAR AWAY FROM THE PLAYER TO SAVE PERFORMANCE, AND THEN ENABLE THEM AGAIN WHEN THE PLAYER GETS CLOSER TO THEM
-			// CHARACTER CAN BE SPLIT INTO AREAS
 		}
 	}
 }
