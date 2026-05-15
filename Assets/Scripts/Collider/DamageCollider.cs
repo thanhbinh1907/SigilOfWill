@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -19,7 +19,10 @@ namespace SG
         public float windDamage = 0;
         public float holyDamage = 0;
 
-        [Header("Contact Point")]
+        [Header("Debug")]
+		[SerializeField] bool showDebugGizmos = true; 
+
+		[Header("Contact Point")]
         public Vector3 contactPoint;
 
         [Header("Character Damaged")]
@@ -28,6 +31,7 @@ namespace SG
 		protected virtual void Awake()
 		{
 			damageCollider = GetComponent<Collider>();
+			damageCollider.enabled = false;
 		}
 
 		protected virtual void OnTriggerEnter(Collider other)
@@ -88,6 +92,51 @@ namespace SG
         {
             damageCollider.enabled = false;
             charactersDamaged.Clear();                  
+		}
+
+		protected virtual void OnDrawGizmos()
+		{
+			// Chỉ vẽ nếu được bật, có collider và collider đó đang hoạt động
+			if (!showDebugGizmos || damageCollider == null || !damageCollider.enabled)
+				return;
+
+			Gizmos.color = new Color(1, 0, 0, 0.5f); // Màu đỏ trong suốt
+
+			// Áp dụng Ma trận của Transform để khối debug xoay và tỉ lệ theo đúng vật thể
+			Matrix4x4 oldMatrix = Gizmos.matrix;
+			Gizmos.matrix = transform.localToWorldMatrix;
+
+			// Kiểm tra từng loại hình dáng cụ thể
+			if (damageCollider is BoxCollider box)
+			{
+				// Vẽ hình hộp khớp với Size và Center của BoxCollider
+				Gizmos.DrawCube(box.center, box.size);
+			}
+			else if (damageCollider is SphereCollider sphere)
+			{
+				// Vẽ hình cầu khớp với Radius và Center của SphereCollider
+				Gizmos.DrawSphere(sphere.center, sphere.radius);
+			}
+			else if (damageCollider is CapsuleCollider capsule)
+			{
+				// Capsule không có hàm Draw sẵn, ta vẽ 2 đầu cầu để xác định phạm vi hitbox
+				Vector3 pointOffset = Vector3.zero;
+				float halfHeight = (capsule.height / 2f) - capsule.radius;
+
+				// Xác định hướng của Capsule (0: X, 1: Y, 2: Z)
+				if (capsule.direction == 0) pointOffset = Vector3.right * halfHeight;
+				else if (capsule.direction == 1) pointOffset = Vector3.up * halfHeight;
+				else if (capsule.direction == 2) pointOffset = Vector3.forward * halfHeight;
+
+				Gizmos.DrawSphere(capsule.center + pointOffset, capsule.radius);
+				Gizmos.DrawSphere(capsule.center - pointOffset, capsule.radius);
+
+				// Vẽ đường nối giữa 2 đầu
+				Gizmos.DrawLine(capsule.center + pointOffset, capsule.center - pointOffset);
+			}
+
+			// Trả lại matrix mặc định để không ảnh hưởng đến các Gizmos khác
+			Gizmos.matrix = oldMatrix;
 		}
 	}
 }

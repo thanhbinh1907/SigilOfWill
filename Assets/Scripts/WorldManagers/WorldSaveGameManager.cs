@@ -17,7 +17,7 @@ namespace SG
 		[SerializeField] bool loadGame;
 
 		[Header("World Scene Index")]
-		[SerializeField] public int worldSceneIndex = 1;
+		[SerializeField] public int worldSceneIndex = 2;
 
 		[Header("Save Data Writer")]
 		private SaveFileDataWriter saveFileDataWriter;
@@ -347,10 +347,10 @@ namespace SG
 		{
 			// 1. LOAD WORLD SCENE
 			// IF WE JUST WANT 1 WORLD SCENE USE THIS
-			AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+			// AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
 
 			// IF WE WANT TO USE DIFFERENT SCENE FOR LEVELS IN OUR PROJECT USE THIS
-			//AsyncOperation loadOperation = SceneManager.LoadSceneAsync(currentCharacterData.sceneIndex);
+			AsyncOperation loadOperation = SceneManager.LoadSceneAsync(currentCharacterData.sceneIndex);
 
 			yield return loadOperation;
 
@@ -377,7 +377,7 @@ namespace SG
 		*/
 		public int GetWorldSceneIndex()
 		{
-			return worldSceneIndex;
+			return currentCharacterData.sceneIndex;
 		}
 	}
 }

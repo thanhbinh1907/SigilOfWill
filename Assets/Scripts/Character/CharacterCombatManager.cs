@@ -15,6 +15,9 @@ namespace SG
 		[Header("Attack Target")]
 		public CharacterManager currentTarget;
 
+		[Header("Range")]
+		public bool isCrossbowLoaded = false;
+
 		public Transform lockOnTransform;
 
 		protected virtual void Awake()

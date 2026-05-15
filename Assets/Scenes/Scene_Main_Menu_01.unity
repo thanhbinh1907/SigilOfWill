@@ -5122,12 +5122,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3716528572088331030, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
       propertyPath: weaponItemActions.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3716528572088331030, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
       propertyPath: 'weaponItemActions.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 61e7ce25c8a4b5e4abc716c9c0aa672d, type: 2}
+    - target: {fileID: 3716528572088331030, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
+      propertyPath: 'weaponItemActions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1144554a6397d844c85b363191d5d670, type: 2}
+    - target: {fileID: 3716528572088331030, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
+      propertyPath: 'weaponItemActions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1503fcde4af30384ebb9187c98170e79, type: 2}
+    - target: {fileID: 3716528572088331030, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
+      propertyPath: 'weaponItemActions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bb66b36547f137b408995d55d7d5f287, type: 2}
     - target: {fileID: 7754429824398042195, guid: 2651e4316f26933418960e2529e63b6a, type: 3}
       propertyPath: m_Name
       value: World Action Manager

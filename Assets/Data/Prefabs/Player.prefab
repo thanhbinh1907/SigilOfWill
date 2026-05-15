@@ -2590,20 +2590,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.0941644
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 18.008091
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -38.572395
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2611,7 +2623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2623,7 +2635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2736,6 +2748,9 @@ MonoBehaviour:
   isSprinting: 0
   isCasting: 0
   isLockOn: 0
+  isMoving: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -2807,9 +2822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b4435f6ee89764c8905e6c26aa94c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerCombatManager
+  currentAttackType: 0
   lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
   lockOnTransform: {fileID: 3209882408912940298}
+  currentWeaponBeingUsed: {fileID: 0}
   currentSpellBeingCast: {fileID: 0}
 --- !u!114 &-8070901037549610352
 MonoBehaviour:
@@ -2848,6 +2865,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f4f42ed85f1e64d94ca43ab9e57aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerSoundFXManager
+  damageGrunts:
+  - {fileID: 8300000, guid: 36face8ac33b3814caa19d440d6d33fa, type: 3}
+  - {fileID: 8300000, guid: e5cec87f827407d4c80611da3e064acd, type: 3}
+  - {fileID: 8300000, guid: c9fcdbd8bb5bb9c42981a9ba28089d98, type: 3}
+  - {fileID: 8300000, guid: c5311bb6d7d14a14c80bfdcaf3f07b8c, type: 3}
+  - {fileID: 8300000, guid: ed5d0007a6aca7a4e9cfe74b94ed21a2, type: 3}
+  - {fileID: 8300000, guid: 6267fe68d4c4db24da7e77a14132ef56, type: 3}
+  - {fileID: 8300000, guid: d15a57e785dbdb54881ba70edc461552, type: 3}
+  attackGrunts:
+  - {fileID: 8300000, guid: 93e2375703cfc9445b94007a531cd9f7, type: 3}
+  - {fileID: 8300000, guid: 4f38cfc057803284a8ce039fd8f26215, type: 3}
+  - {fileID: 8300000, guid: 33b254c7c6a9bd544942d22f9324246a, type: 3}
+  - {fileID: 8300000, guid: 19aedbf8b29a60d43952665e81c18be6, type: 3}
+  - {fileID: 8300000, guid: 7d7fc97b142add344bdaa7c64e9c8673, type: 3}
+  - {fileID: 8300000, guid: b1b0134244e36784b9a6d58c192d76c9, type: 3}
+  - {fileID: 8300000, guid: f7e6e74bdab7f44489dd30d3593b115b, type: 3}
+  - {fileID: 8300000, guid: 171f04d3f87ca6140a6520d5fb2ef9f7, type: 3}
 --- !u!114 &877727194952388442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,7 +2910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99180b8cdc74ba42bfe8fa0c5e32ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerEffectsManager
-  bloodSplatterVFX: {fileID: 0}
+  bloodSplatterVFX: {fileID: 5669246471909640947, guid: bfd016bff164dfc4aac33a0563922772, type: 3}
   effectToTest: {fileID: 11400000, guid: 52c48f82093ce4e46aae0b55ffd9d5cb, type: 2}
   processEffect: 0
 --- !u!114 &891217758093393198

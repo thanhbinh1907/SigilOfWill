@@ -122,7 +122,7 @@ namespace SG
 
 			character.characterCombatManager.currentAttackType = attackType;
 			character.applyRootMotion = applyRootMotion;
-			character.animator.CrossFade(targetAnimation, 0.2f);
+			character.animator.CrossFade(targetAnimation, 0.2f);	
 			character.isPerformingAction = isPerformingAction;
 			character.canRotate = canRotate;
 			character.canMove = canMove;

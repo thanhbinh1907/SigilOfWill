@@ -40,12 +40,12 @@ namespace SG
 
         public void OpenLeftHandDamageCollider()
         {
-            leftHandDamageCollider.EnableDamageCollider();
+			aiCharacter.characterSoundFXManager.PlayAttackGruntSFX();
+			leftHandDamageCollider.EnableDamageCollider();
         }
 
         public void CloseRightHandDamageCollider()
         {
-            aiCharacter.characterSoundFXManager.PlayAttackGruntSFX();
 			rightHandDamageCollider.DisableDamageCollider();
         }
 

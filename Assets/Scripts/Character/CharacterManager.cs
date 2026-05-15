@@ -36,7 +36,6 @@ namespace SG
 		public bool isUsingRightHand = false;
 		public bool isUsingLeftHand = false;
 
-
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //
 		public int maxHealth = 0;
