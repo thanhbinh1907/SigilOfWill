@@ -35,6 +35,7 @@ namespace SG
 		public bool isMoving = false;
 		public bool isUsingRightHand = false;
 		public bool isUsingLeftHand = false;
+		public bool isActive = true;
 
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //
@@ -206,5 +207,7 @@ namespace SG
 				}
 			}
 		}
+
+
 	}
 }
