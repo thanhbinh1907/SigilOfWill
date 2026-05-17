@@ -1,18 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 
 namespace SG
 {
 	public class AIBossCharacterManager : AICharacterManager
 	{
+		[Header("Boss Settings")]
 		public int bossID = 0;
+		[SerializeField] bool hasBeenAwakened = false;
 		[SerializeField] bool hasBeenDefeated = false;
-		// WHEN THIS A.I SPAWNED, CHECK OUT SAVE FILE 
-		// IF THE SAVE FILE DOES NOT CONTAIN A BOSS MONSTER WITH THIS ID, ADD IT
-		// IF IT IS PRESENT, CHECK IF THE BOSS HAS BEEN DEFEATED
-		// IF THE BOSS HAS BEEN DEFEATED, DISABLE THE BOSS MONSTER AND ITS COMPONENTS
-		// IF THE BOSS HAS NOT BEEN DEFEATED, ALLOW THIS OBJECT TO CONTINUE TO BE ACTIVE
+
+		[Header("Boss Fog Wall")]
+		[SerializeField] private List<FogWallInteractable> myFogWalls = new List<FogWallInteractable>();
+
+		[Header("Test Debug")]
+		[SerializeField] bool wakeBossUpDebug = false;
+		[SerializeField] bool defeatBossDebug = false;
 
 		protected override void Start()
 		{
@@ -23,17 +29,113 @@ namespace SG
 			{
 				WorldSaveGameManager.instance.currentCharacterData.bossesAwakened.Add(bossID, false);
 				WorldSaveGameManager.instance.currentCharacterData.bossesDefeated.Add(bossID, false);
+				Debug.Log($"[HỆ THỐNG] Đã nhận diện Boss ID {bossID} thành công trên RAM!");
 			}
 			// OTHERWISE, LOAD DATA THAT IS ALREADY EXISTING ON THIS BOSS
 			else
 			{
 				hasBeenDefeated = WorldSaveGameManager.instance.currentCharacterData.bossesDefeated[bossID];
+			}
+
+			StartCoroutine(GetFogWallsFromWorldObjectManager());
+		}
+
+		protected override void Update()
+		{
+			base.Update();
+
+			if (wakeBossUpDebug)
+			{
+				wakeBossUpDebug = false;
+				WakeBoss();
+			}
+		}
+
+		private IEnumerator GetFogWallsFromWorldObjectManager()
+		{
+			while (WorldObjectManager.instance == null || WorldObjectManager.instance.fogWalls.Count == 0)
+			{
+				yield return null;
+			}
+
+			myFogWalls.Clear();
+			foreach (var fogWall in WorldObjectManager.instance.fogWalls)
+			{
+				if (fogWall.fogWallID == bossID)
+				{
+					myFogWalls.Add(fogWall);
+				}
+			}
+
+			LoadBossAndFogWallStates();
+		}
+
+		private void LoadBossAndFogWallStates()
+		{
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
+			{
+				var saveData = WorldSaveGameManager.instance.currentCharacterData;
+
+				if (!saveData.bossesAwakened.ContainsKey(bossID))
+				{
+					saveData.bossesAwakened[bossID] = false;
+					saveData.bossesDefeated[bossID] = false;
+				}
+				else
+				{
+					hasBeenAwakened = saveData.bossesAwakened[bossID];
+					hasBeenDefeated = saveData.bossesDefeated[bossID];
+				}
 
 				if (hasBeenDefeated)
 				{
-					gameObject.SetActive(false);
+					foreach (var fogWall in myFogWalls)
+					{
+						if (fogWall != null)
+						{
+							fogWall.IsActive = false;
+						}
+						gameObject.SetActive(false);
+						return;
+					}
+				}
+
+				if (hasBeenAwakened)
+				{
+					foreach (var fogWall in myFogWalls)
+					{
+						if (fogWall != null)
+						{
+							fogWall.IsActive = true;
+						}
+					}
+				}
+				else
+				{
+					foreach (var fogWall in myFogWalls)
+					{
+						if (fogWall != null)
+						{
+							fogWall.IsActive = false;
+						}
+					}
 				}
 			}
+		}
+
+		public void WakeBoss()
+		{
+			if (hasBeenDefeated)
+				return;
+
+			WorldSaveGameManager.instance.currentCharacterData.bossesAwakened[bossID] = true;
+			WorldSaveGameManager.instance.SaveGame();
+
+			foreach (var fogWall in myFogWalls)
+			{
+				fogWall.IsActive = true;
+			}
+			Debug.Log($"Boss ID {bossID} đã thức tỉnh! Tường sương mù đã dựng lên!");
 		}
 
 		public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)

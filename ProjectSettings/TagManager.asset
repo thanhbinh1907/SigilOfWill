@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Character
   - Damageable Character
-  - 
+  - IgnoreNavMesh
   - 
   - Damage Collider
   - 

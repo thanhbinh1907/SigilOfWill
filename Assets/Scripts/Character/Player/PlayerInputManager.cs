@@ -148,7 +148,7 @@ namespace SG
             HandleSprintInput();
             HandleJumpInput();
             HandleCastSpellInput();
-            HandleLeftMouseInput();
+            //HandleLeftMouseInput();
 			HandleSwitchWeaponInput();
 		}
 
@@ -249,6 +249,7 @@ namespace SG
             }
         }
 
+        /*
         private void HandleLeftMouseInput()
         {
             if (leftMouseInput)
@@ -262,6 +263,7 @@ namespace SG
                     player.playerInventoryManager.currentRightHandWeapon.itemID);
             }
 		}
+        */
 
 		private void HandleSwitchWeaponInput()
         {

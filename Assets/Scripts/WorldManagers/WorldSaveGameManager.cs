@@ -347,7 +347,7 @@ namespace SG
 		{
 			// 1. LOAD WORLD SCENE
 			// IF WE JUST WANT 1 WORLD SCENE USE THIS
-			// AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+			//AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
 
 			// IF WE WANT TO USE DIFFERENT SCENE FOR LEVELS IN OUR PROJECT USE THIS
 			AsyncOperation loadOperation = SceneManager.LoadSceneAsync(currentCharacterData.sceneIndex);
@@ -377,6 +377,7 @@ namespace SG
 		*/
 		public int GetWorldSceneIndex()
 		{
+			//return worldSceneIndex;
 			return currentCharacterData.sceneIndex;
 		}
 	}
