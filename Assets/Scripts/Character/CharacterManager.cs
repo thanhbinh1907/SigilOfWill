@@ -36,6 +36,7 @@ namespace SG
 		public bool isUsingRightHand = false;
 		public bool isUsingLeftHand = false;
 		public bool isActive = true;
+		public bool isInvulnerable = false;
 
 		[Header("Resources")]
 		// ----------------------- HEALTH ------------------------ //
@@ -94,8 +95,6 @@ namespace SG
 
 		protected virtual void Awake()
 		{
-			DontDestroyOnLoad(this);
-
 			characterController = GetComponent<CharacterController>();
 			animator = GetComponent<Animator>();
 			characterEffectsManager = GetComponent<CharacterEffectsManager>();

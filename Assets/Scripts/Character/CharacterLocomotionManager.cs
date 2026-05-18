@@ -72,5 +72,18 @@ namespace SG
 		{
 			character.canRotate = false;
 		}
+
+		#if UNITY_EDITOR
+				// Hàm này sẽ tự động vẽ quả cầu trong cửa sổ Scene khi bạn bấm chọn vào GameObject của Nhân vật/Boss
+				protected virtual void OnDrawGizmosSelected()
+				{
+					// Thay đổi màu sắc hiển thị của quả cầu (ở đây đặt màu xanh lá cho dễ nhìn)
+					Gizmos.color = Color.green;
+
+					// Vẽ một quả cầu dạng khung lưới (Wire Sphere) tại đúng vị trí check ground
+					// Sử dụng transform.position để tránh lỗi NullReference khi chưa bấm Play game
+					Gizmos.DrawWireSphere(transform.position, groundedCheckSphereRadius);
+				}
+		#endif
 	}
 }

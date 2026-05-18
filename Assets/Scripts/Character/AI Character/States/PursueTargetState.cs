@@ -23,9 +23,12 @@ namespace SG
 				aiCharacter.navMeshAgent.enabled = true;
 
 			// IF OUR TARGET GOES OUTSIDE OF THE CHARACTER FOV, PIVOT TO FACE THEM
-			if (aiCharacter.aiCharacterCombatManager.viewableAngle < aiCharacter.aiCharacterCombatManager.minimunFOV 
-				|| aiCharacter.aiCharacterCombatManager.viewableAngle > aiCharacter.aiCharacterCombatManager.maximumFOV)
-				aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+			if (aiCharacter.aiCharacterCombatManager.enablePivot)
+			{
+				if (aiCharacter.aiCharacterCombatManager.viewableAngle < aiCharacter.aiCharacterCombatManager.minimunFOV
+					|| aiCharacter.aiCharacterCombatManager.viewableAngle > aiCharacter.aiCharacterCombatManager.maximumFOV)
+					aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+			}
 
 			// ROTATE THE AI CHARACTER TOWARDS THE TARGET
 			aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);

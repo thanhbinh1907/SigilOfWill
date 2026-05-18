@@ -29,6 +29,14 @@ namespace SG {
 		{
 			DontDestroyOnLoad(gameObject);
 		}
+
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
+			}
+		}
 	} 
 	
 }

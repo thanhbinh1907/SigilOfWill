@@ -58,6 +58,14 @@ namespace SG {
 			cameraZPosition = cameraObject.transform.localPosition.z;
 		}
 
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
+			}
+		}
+
 		public void HandleAllCameraActions()
 		{
 			if (player != null)

@@ -73,6 +73,14 @@ namespace SG
 			navMeshAgent.transform.localPosition = Vector3.zero;
             navMeshAgent.transform.localRotation = Quaternion.identity;
 
+			if (navMeshAgent != null)
+			{
+				navMeshAgent.updatePosition = false;
+				navMeshAgent.updateRotation = false;
+
+				navMeshAgent.nextPosition = transform.position;
+			}
+
 			if (navMeshAgent.enabled)
             {
                 Vector3 agentDestiation = navMeshAgent.destination;

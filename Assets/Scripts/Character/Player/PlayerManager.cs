@@ -35,7 +35,9 @@ namespace SG
         {
             base.Awake();
 
-            playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+			DontDestroyOnLoad(gameObject);
+
+			playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();

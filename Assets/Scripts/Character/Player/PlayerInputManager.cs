@@ -131,7 +131,12 @@ namespace SG
         private void OnDestroy()
         {
             SceneManager.activeSceneChanged -= OnSceneChange;
-        }
+
+			if (instance == this)
+			{
+				instance = null;
+			}
+		}
         void Update()
         {
             if (player == null) return;

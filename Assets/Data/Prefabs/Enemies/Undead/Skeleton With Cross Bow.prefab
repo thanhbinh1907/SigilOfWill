@@ -2128,6 +2128,7 @@ MonoBehaviour:
   isMoving: 0
   isUsingRightHand: 0
   isUsingLeftHand: 0
+  isActive: 1
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -2441,6 +2442,7 @@ MonoBehaviour:
   attackRotationSpeed: 25
   arrowPrefab: {fileID: 4219797133486896138, guid: 05f9511de837aed4eba321ee429fdd9a, type: 3}
   arrowSpawnPoint: {fileID: 7417802347816055566}
+  arrowVelocity: 10
   baseDamage: 25
   light_Attack_Modifier: 1
   heavy_Attack_Modifier: 2
@@ -2910,6 +2912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4940824525567588636}
+  - component: {fileID: 8812987252806386594}
   m_Layer: 0
   m_Name: Lock On Transform
   m_TagString: Untagged
@@ -2932,6 +2935,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7808630375095073885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8812987252806386594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037291428520602668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60ed56a0a19c2c4794ab36f34fb1687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.LockOnTransform
 --- !u!1 &9167116124990073620
 GameObject:
   m_ObjectHideFlags: 0

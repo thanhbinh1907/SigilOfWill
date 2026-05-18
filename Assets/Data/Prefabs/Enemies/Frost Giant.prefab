@@ -495,7 +495,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1090280118039963729}
-  m_Layer: 6
+  - component: {fileID: 3436957961164754492}
+  - component: {fileID: 1806989746250899322}
+  m_Layer: 10
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,6 +524,52 @@ Transform:
   - {fileID: 3711541208078892407}
   m_Father: {fileID: 6880454514936094888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3436957961164754492
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567184716193820276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.53
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.18, z: 0.08}
+--- !u!114 &1806989746250899322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567184716193820276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 3436957961164754492}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &1594256920758250280
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +777,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -974,7 +1022,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6560534158751336200}
-  m_Layer: 6
+  - component: {fileID: 3133320338462759712}
+  - component: {fileID: 3572284435973687788}
+  m_Layer: 10
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,6 +1047,52 @@ Transform:
   - {fileID: 3718842194634875641}
   m_Father: {fileID: 2827687274359247581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3133320338462759712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662588434205777609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26
+  m_Height: 1.51
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.36, z: 0}
+--- !u!114 &3572284435973687788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662588434205777609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 3133320338462759712}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &3760421835367320823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,7 +1344,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6879731285072032463}
-  m_Layer: 6
+  - component: {fileID: 8520787452418486245}
+  - component: {fileID: 1415260556823688608}
+  m_Layer: 10
   m_Name: mixamorig:LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,6 +1369,52 @@ Transform:
   - {fileID: 3935613756401323402}
   m_Father: {fileID: 4424354136187443367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8520787452418486245
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275447469864923384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23
+  m_Height: 1.01
+  m_Direction: 1
+  m_Center: {x: 0.03, y: 0.23, z: 0}
+--- !u!114 &1415260556823688608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275447469864923384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 8520787452418486245}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &4422216046342433498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1456,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6175185225444901908}
-  m_Layer: 6
+  - component: {fileID: 3306266458463081207}
+  - component: {fileID: 3785225779746836872}
+  m_Layer: 10
   m_Name: mixamorig:LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,6 +1481,52 @@ Transform:
   - {fileID: 5786316332054416626}
   m_Father: {fileID: 81972055577424325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3306266458463081207
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511251508041367737}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.09, y: -0.16, z: -0.06}
+--- !u!114 &3785225779746836872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511251508041367737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 3306266458463081207}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &4578439793163372063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1630,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424354136187443367}
-  m_Layer: 6
+  - component: {fileID: 2907411218824844269}
+  - component: {fileID: 4588638664950920857}
+  m_Layer: 10
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1461,6 +1655,52 @@ Transform:
   - {fileID: 6879731285072032463}
   m_Father: {fileID: 8326912776024235568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2907411218824844269
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848110399062260764}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26
+  m_Height: 1.51
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.36, z: 0}
+--- !u!114 &4588638664950920857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848110399062260764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 2907411218824844269}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &5030809266152758252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1754,7 @@ Animator:
   m_GameObject: {fileID: 5030809266152758252}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 098f7cce188d97042883e56cf5ccb306, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1f454c734e308f14785d904b96452303, type: 2}
+  m_Controller: {fileID: 9100000, guid: 019208336e0eda947bc1d7abfb41401e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1542,7 +1782,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  groundedCheckSphereRadius: 1
+  groundedCheckSphereRadius: 0.1
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
@@ -1617,6 +1857,7 @@ MonoBehaviour:
   lockOnTransform: {fileID: 0}
   aiCharacter: {fileID: 0}
   actionRecoveryTimer: 0
+  enablePivot: 1
   distanceFromTarget: 0
   viewableAngle: 0
   targetsDirection: {x: 0, y: 0, z: 0}
@@ -1624,6 +1865,24 @@ MonoBehaviour:
   minimunFOV: -35
   maximumFOV: 35
   attackRotationSpeed: 25
+  leftHandDamageCollider: {fileID: 3069965794435300178}
+  leftForceArmDamageCollider: {fileID: 3785225779746836872}
+  leftLegDamageCollider: {fileID: 4588638664950920857}
+  leftFootDamageCollider: {fileID: 1415260556823688608}
+  rightHandDamageCollider: {fileID: 1806989746250899322}
+  rightForceArmDamageCollider: {fileID: 3493275646505779485}
+  rightLegDamageCollider: {fileID: 3572284435973687788}
+  rightFootDamageCollider: {fileID: 8216608107074502472}
+  baseDamage: 40
+  AttackFront01DamageModifier: 1
+  AttackFront02DamageModifier: 1
+  AttackFront03DamageModifier: 1.5
+  AttackBackDamageModifier: 1.5
+  AttackGround01DamageModifier: 1.5
+  AttackGround02DamageModifier: 2
+  AttackJumpDamageModifier: 2
+  AttackDashDamageModifier: 2
+  AttackThrowStoneDamageModifier: 3
 --- !u!54 &7051379376734431005
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1669,13 +1928,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3.48
+  m_Height: 4
   m_Radius: 1.18
   m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.03, z: 0}
+  m_Center: {x: 0, y: 2.1, z: 0}
 --- !u!114 &7283137315208125095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,6 +1968,7 @@ MonoBehaviour:
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isActive: 1
+  isInvulnerable: 0
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -1722,10 +1982,10 @@ MonoBehaviour:
   aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 3809702215217312}
   currentState: {fileID: 0}
-  idle: {fileID: 11400000, guid: 82d6fd1326462c64e9e083507fc4094d, type: 2}
-  pursueTarget: {fileID: 11400000, guid: e67c2be442bd21f49b57b1e01bde3e7e, type: 2}
-  combatStance: {fileID: 11400000, guid: 5b10f4a8412cfd54dad9b885e501366d, type: 2}
-  attack: {fileID: 11400000, guid: c9c110285e104e24997104622352dcb1, type: 2}
+  idle: {fileID: 11400000, guid: 08bd800d240a2f74ea1012193f439b2b, type: 2}
+  pursueTarget: {fileID: 11400000, guid: 6fce42d06bb4c124ca073ddebd17c4ab, type: 2}
+  combatStance: {fileID: 11400000, guid: fc3ae89193425934f9cc8f3699126d35, type: 2}
+  attack: {fileID: 11400000, guid: 02ab4120e9645ca4c843dd437d58f575, type: 2}
   bossID: 1
   hasBeenAwakened: 0
   hasBeenDefeated: 0
@@ -2329,7 +2589,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5786316332054416626}
-  m_Layer: 6
+  - component: {fileID: 2058796732603199199}
+  - component: {fileID: 3069965794435300178}
+  m_Layer: 10
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,6 +2618,52 @@ Transform:
   - {fileID: 4130801337662313799}
   m_Father: {fileID: 6175185225444901908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2058796732603199199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873722008617519970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.53
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.18, z: 0.08}
+--- !u!114 &3069965794435300178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873722008617519970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 2058796732603199199}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &6914286012014701613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +3057,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6880454514936094888}
-  m_Layer: 6
+  - component: {fileID: 5225037536961703222}
+  - component: {fileID: 3493275646505779485}
+  m_Layer: 10
   m_Name: mixamorig:RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2772,6 +3082,52 @@ Transform:
   - {fileID: 1090280118039963729}
   m_Father: {fileID: 3953537748799416402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5225037536961703222
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509149688961958256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.06, y: -0.16, z: -0.03}
+--- !u!114 &3493275646505779485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509149688961958256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 5225037536961703222}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &8531587030405169019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,7 +3169,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3718842194634875641}
-  m_Layer: 6
+  - component: {fileID: 2533249869720680529}
+  - component: {fileID: 8216608107074502472}
+  m_Layer: 10
   m_Name: mixamorig:RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2836,6 +3194,52 @@ Transform:
   - {fileID: 197739507273473100}
   m_Father: {fileID: 6560534158751336200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2533249869720680529
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534701143812390185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23
+  m_Height: 1.01
+  m_Direction: 1
+  m_Center: {x: 0.03, y: 0.23, z: 0}
+--- !u!114 &8216608107074502472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534701143812390185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
+  damageCollider: {fileID: 2533249869720680529}
+  characterCausingDamage: {fileID: 0}
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  windDamage: 0
+  holyDamage: 0
+  showDebugGizmos: 1
+  contactPoint: {x: 0, y: 0, z: 0}
+  bossCharacter: {fileID: 0}
 --- !u!1 &8732630137276261810
 GameObject:
   m_ObjectHideFlags: 0

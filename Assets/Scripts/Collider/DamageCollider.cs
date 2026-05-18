@@ -50,10 +50,12 @@ namespace SG
 				// CHECK IF TARGET IS BLOCKING
 
 				// CHECK IF TARGET IS INVULNERABLE 
+				if (damageTarget.isInvulnerable)
+					return;
 
-                // DAMAGE 
+				// DAMAGE 
 
-                DamageTarget(damageTarget);
+				DamageTarget(damageTarget);
 			}
 		}
         

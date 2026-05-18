@@ -16,14 +16,14 @@ namespace SG
 		[Header("Attack")]
 		public List<AICharacterAttackAction> aiCharacterAttacks;			// A list of all possible attacks this character can do
 		protected List<AICharacterAttackAction> potentialAttacks;           // A list that is created duing this state, all attacks possible in this situation (base on angle, distance, etc)
-		private AICharacterAttackAction choosenAttack; 
-		private AICharacterAttackAction previousAttack;
+		[SerializeField] protected AICharacterAttackAction choosenAttack; 
+		[SerializeField] protected AICharacterAttackAction previousAttack;
 		protected bool hasAttack = false;                                              	
 
 		[Header("Combo")]
 		[SerializeField] protected bool canPerformCombo = false;            // If character can perform a combo attack, after the initial attack
 		[SerializeField] protected int chanceToPerformCombo = 25;           // The chance (in percentage) of the character to perform a combo on the next attack
-		[SerializeField] bool hasRollForComboChance = false;				// If we have already rolled for the chance during this state 
+		[SerializeField] bool hasRollForComboChance = false;                // If we have already rolled for the chance during this state 
 
 		[Header("Engagement Distance")]
 		[SerializeField] public float maximumEngagementDistance = 5;     // The distance we have to be away from the target before we enter the pursue state
@@ -37,11 +37,15 @@ namespace SG
 				aiCharacter.navMeshAgent.enabled = true;
 
 			// IF YOU WANT THE A.I CHARACTER TO FACE AND TURN TOWARDS ITS TARGET WHEN ITS OUTSIDE IT'S FOV INCLUDE THIS
-			if (!aiCharacter.isMoving)
+
+			if (aiCharacter.aiCharacterCombatManager.enablePivot)
 			{
-				if (aiCharacter.aiCharacterCombatManager.viewableAngle < -30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
+				if (!aiCharacter.isMoving)
 				{
-					aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+					if (aiCharacter.aiCharacterCombatManager.viewableAngle < -30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
+					{
+						aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+					}
 				}
 			}
 

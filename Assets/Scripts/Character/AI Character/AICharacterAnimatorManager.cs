@@ -16,10 +16,12 @@ namespace SG
 
 		private void OnAnimatorMove()
 		{
-			if (!aiCharacter.isGrounded)
+			if (!aiCharacter.isGrounded && !aiCharacter.isPerformingAction)
 				return;
 
 			Vector3 velocity = aiCharacter.animator.deltaPosition;
+
+			velocity.y = 0;
 
 			aiCharacter.characterController.Move(velocity);
 			aiCharacter.transform.rotation *= aiCharacter.animator.deltaRotation;

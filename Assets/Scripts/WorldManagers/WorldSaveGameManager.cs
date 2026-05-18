@@ -9,6 +9,7 @@ namespace SG
 	public class WorldSaveGameManager : MonoBehaviour
 	{
 		public static WorldSaveGameManager instance;
+		public static System.Action OnNoFreeCharacterSlotsAvailable;
 
 		public PlayerManager player;
 
@@ -72,6 +73,14 @@ namespace SG
 			{
 				loadGame = false;
 				LoadGame();
+			}
+		}
+
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
 			}
 		}
 
@@ -224,7 +233,7 @@ namespace SG
 			}
 
 			// IF THERE ARE NO FREE SLOT, NOTIFY PLAYER
-			TitleScreenManager.instance.DisplayNoFreeCharacterSlotPopUp();
+			OnNoFreeCharacterSlotsAvailable?.Invoke();
 		}
 
 		private void NewGame()

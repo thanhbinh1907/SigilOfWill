@@ -40,12 +40,14 @@ namespace SG
 
 		public virtual void PlayDamageGruntSFX()
 		{
-			PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(damageGrunts));
+			if (damageGrunts.Length > 0)
+				PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(damageGrunts));
 		}
 
 		public virtual void PlayAttackGruntSFX()
 		{
-			PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+			if (attackGrunts.Length > 0)
+				PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
 		}
 	}
 }

@@ -13,9 +13,22 @@ namespace SG
 		private void Awake()
 		{
 			if (instance == null)
+			{
 				instance = this;
+				DontDestroyOnLoad(gameObject);
+			}
 			else
+			{
 				Destroy(gameObject);
+			}
+		}
+
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
+			}
 		}
 
 		public LayerMask GetCharacterLayers()

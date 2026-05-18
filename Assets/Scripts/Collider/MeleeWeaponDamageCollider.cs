@@ -35,6 +35,9 @@ namespace SG
 
 				contactPoint =	other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
 
+				if (damageTarget.isInvulnerable)
+					return;
+
 				DamageTarget(damageTarget);
 			}
 		}

@@ -19,6 +19,8 @@ namespace SG
 			character.applyRootMotion = false;
 			character.canRotate = true;
 			character.canMove = true;
+			character.isJumping = false;
+			character.isInvulnerable = false;
 		}
 	}
 }

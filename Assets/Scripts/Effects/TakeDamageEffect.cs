@@ -44,7 +44,10 @@ namespace SG
 
         public override void ProcessEffect(CharacterManager character)
         {
-            base.ProcessEffect(character);
+            if (character.isInvulnerable)
+                return;
+
+			base.ProcessEffect(character);
 
             if (character.isDead)
                 return;

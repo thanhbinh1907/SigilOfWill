@@ -34,7 +34,15 @@ namespace SG
 			}
 		}
 
-        public WeaponItemAction GetWeaponItemActionByID(int ID)
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
+			}
+		}
+
+		public WeaponItemAction GetWeaponItemActionByID(int ID)
         {
             return weaponItemActions.FirstOrDefault(action => action.actionID == ID);
 		}

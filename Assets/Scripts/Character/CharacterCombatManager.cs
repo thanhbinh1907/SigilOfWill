@@ -29,5 +29,15 @@ namespace SG
 		{
 			currentTarget = newTarget;
 		}
+
+		public void EnableIsInvulnerable()
+		{
+			character.isInvulnerable = true;
+		}
+
+		public void DisableIsInvulnerable()
+		{
+			character.isInvulnerable = false;
+		}
 	}
 }

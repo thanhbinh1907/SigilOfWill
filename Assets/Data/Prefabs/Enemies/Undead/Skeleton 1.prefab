@@ -318,6 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8423496677492351963}
+  - component: {fileID: 8834011053892386715}
   m_Layer: 0
   m_Name: Lock On Transform
   m_TagString: Untagged
@@ -340,6 +341,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7243774905032095117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8834011053892386715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626851476500853155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60ed56a0a19c2c4794ab36f34fb1687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.LockOnTransform
 --- !u!1 &1813205143557510165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1938,7 @@ MonoBehaviour:
   isMoving: 0
   isUsingRightHand: 0
   isUsingLeftHand: 0
+  isActive: 1
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -1957,6 +1971,7 @@ MonoBehaviour:
   currentAttackType: 0
   lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
+  isCrossbowLoaded: 0
   lockOnTransform: {fileID: 8423496677492351963}
   aiCharacter: {fileID: 0}
   actionRecoveryTimer: 0

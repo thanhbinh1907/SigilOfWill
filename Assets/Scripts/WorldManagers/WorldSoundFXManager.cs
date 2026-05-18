@@ -31,7 +31,15 @@ namespace SG
             DontDestroyOnLoad(gameObject);
 		}
 
-        public AudioClip ChooseRandomSFXFromArray(AudioClip[] array)
+        private void OnDestroy()
+        {
+            if (instance == this)
+            {
+                instance = null;
+            }
+        }
+
+		public AudioClip ChooseRandomSFXFromArray(AudioClip[] array)
         {
             int index = Random.Range(0, array.Length);
             return array[index];

@@ -29,6 +29,14 @@ namespace SG
 			DontDestroyOnLoad(gameObject);
 		}
 
+		private void OnDestroy()
+		{
+			if (instance == this)
+			{
+				instance = null;
+			}
+		}
+
 		public SpellAction GetSpellActionByID(int spellID)
 		{
 			return spellActions.FirstOrDefault(spell => spell.spellID == spellID);

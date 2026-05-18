@@ -21,7 +21,8 @@ namespace SG
             if (instance == null)
             {
                 instance = this;
-            }
+                DontDestroyOnLoad(gameObject);
+			}
             else
             {
                 Destroy(gameObject);
@@ -40,7 +41,15 @@ namespace SG
             }
         }
 
-        public WeaponItem GetWeaponByID(int ID)
+        private void OnDestroy()
+        {
+            if (instance == this)
+            {
+                instance = null;
+            }
+		}
+
+		public WeaponItem GetWeaponByID(int ID)
         {
             return weapons.FirstOrDefault(weapon => weapon.itemID == ID);
         }

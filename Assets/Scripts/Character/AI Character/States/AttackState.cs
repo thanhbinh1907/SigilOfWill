@@ -66,6 +66,7 @@ namespace SG
         protected void PerformAttack(AICharacterManager aiCharacter)
         {
 			hasPerformAttack = true;
+
 			currentAttack.AttempToPerformAction(aiCharacter);
             aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
 		}
