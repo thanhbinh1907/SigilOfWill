@@ -328,6 +328,37 @@ Transform:
   - {fileID: 2428292479018275510}
   m_Father: {fileID: 2225515697058941169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &943329518766167055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6123204951716429897}
+  m_Layer: 10
+  m_Name: One Hand Impact Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6123204951716429897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943329518766167055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.084, y: 0.157, z: -0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1090280118039963729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006406161550976328
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +553,7 @@ Transform:
   - {fileID: 3208606649630652356}
   - {fileID: 8599153274338075765}
   - {fileID: 3711541208078892407}
+  - {fileID: 6123204951716429897}
   m_Father: {fileID: 6880454514936094888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3436957961164754492
@@ -602,6 +634,37 @@ Transform:
   - {fileID: 7814521356778504849}
   m_Father: {fileID: 3711541208078892407}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1715981119479750565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1211269178465479294}
+  m_Layer: 6
+  m_Name: 'Two Hand Impact Point '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1211269178465479294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715981119479750565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.153, y: 0.184, z: 1.778}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 891540257218685791}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1970484636214862314
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +697,8 @@ Transform:
   - {fileID: 8326912776024235568}
   - {fileID: 2827687274359247581}
   - {fileID: 3898865079541809222}
+  - {fileID: 1211269178465479294}
+  - {fileID: 8116563631272281198}
   m_Father: {fileID: 2625615182117115433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2178789774815759593
@@ -1022,9 +1087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6560534158751336200}
-  - component: {fileID: 3133320338462759712}
-  - component: {fileID: 3572284435973687788}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,52 +1110,6 @@ Transform:
   - {fileID: 3718842194634875641}
   m_Father: {fileID: 2827687274359247581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3133320338462759712
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3662588434205777609}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.26
-  m_Height: 1.51
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.36, z: 0}
---- !u!114 &3572284435973687788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3662588434205777609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
-  damageCollider: {fileID: 3133320338462759712}
-  characterCausingDamage: {fileID: 0}
-  physicalDamage: 0
-  fireDamage: 0
-  magicDamage: 0
-  lightningDamage: 0
-  windDamage: 0
-  holyDamage: 0
-  showDebugGizmos: 1
-  contactPoint: {x: 0, y: 0, z: 0}
-  bossCharacter: {fileID: 0}
 --- !u!1 &3760421835367320823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,9 +1361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6879731285072032463}
-  - component: {fileID: 8520787452418486245}
-  - component: {fileID: 1415260556823688608}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: mixamorig:LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1369,52 +1384,6 @@ Transform:
   - {fileID: 3935613756401323402}
   m_Father: {fileID: 4424354136187443367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8520787452418486245
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4275447469864923384}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.23
-  m_Height: 1.01
-  m_Direction: 1
-  m_Center: {x: 0.03, y: 0.23, z: 0}
---- !u!114 &1415260556823688608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4275447469864923384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
-  damageCollider: {fileID: 8520787452418486245}
-  characterCausingDamage: {fileID: 0}
-  physicalDamage: 0
-  fireDamage: 0
-  magicDamage: 0
-  lightningDamage: 0
-  windDamage: 0
-  holyDamage: 0
-  showDebugGizmos: 1
-  contactPoint: {x: 0, y: 0, z: 0}
-  bossCharacter: {fileID: 0}
 --- !u!1 &4422216046342433498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,8 +1600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4424354136187443367}
   - component: {fileID: 2907411218824844269}
-  - component: {fileID: 4588638664950920857}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,29 +1646,6 @@ CapsuleCollider:
   m_Height: 1.51
   m_Direction: 1
   m_Center: {x: 0, y: 0.36, z: 0}
---- !u!114 &4588638664950920857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848110399062260764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
-  damageCollider: {fileID: 2907411218824844269}
-  characterCausingDamage: {fileID: 0}
-  physicalDamage: 0
-  fireDamage: 0
-  magicDamage: 0
-  lightningDamage: 0
-  windDamage: 0
-  holyDamage: 0
-  showDebugGizmos: 1
-  contactPoint: {x: 0, y: 0, z: 0}
-  bossCharacter: {fileID: 0}
 --- !u!1 &5030809266152758252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1798,6 @@ MonoBehaviour:
   currentAttackType: 0
   lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
-  isCrossbowLoaded: 0
   lockOnTransform: {fileID: 0}
   aiCharacter: {fileID: 0}
   actionRecoveryTimer: 0
@@ -1867,13 +1811,10 @@ MonoBehaviour:
   attackRotationSpeed: 25
   leftHandDamageCollider: {fileID: 3069965794435300178}
   leftForceArmDamageCollider: {fileID: 3785225779746836872}
-  leftLegDamageCollider: {fileID: 4588638664950920857}
-  leftFootDamageCollider: {fileID: 1415260556823688608}
   rightHandDamageCollider: {fileID: 1806989746250899322}
   rightForceArmDamageCollider: {fileID: 3493275646505779485}
-  rightLegDamageCollider: {fileID: 3572284435973687788}
-  rightFootDamageCollider: {fileID: 8216608107074502472}
   baseDamage: 40
+  stompDamage: 40
   AttackFront01DamageModifier: 1
   AttackFront02DamageModifier: 1
   AttackFront03DamageModifier: 1.5
@@ -1883,6 +1824,15 @@ MonoBehaviour:
   AttackJumpDamageModifier: 2
   AttackDashDamageModifier: 2
   AttackThrowStoneDamageModifier: 3
+  oneHandImpactPoint: {fileID: 6123204951716429897}
+  twoHandImpactPoint: {fileID: 1211269178465479294}
+  jumpImpactPoint: {fileID: 8116563631272281198}
+  groundSlam01Radius: 2.5
+  groundSlam02Radius: 3.5
+  jumpSlamRadius: 4
+  showGroundSlam01Gizmo: 0
+  showGroundSlam02Gizmo: 0
+  showJumpSlamGizmo: 0
 --- !u!54 &7051379376734431005
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2743,6 +2693,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60ed56a0a19c2c4794ab36f34fb1687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.LockOnTransform
+--- !u!1 &7028195953610924632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8116563631272281198}
+  m_Layer: 6
+  m_Name: Jump Impact Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8116563631272281198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028195953610924632}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.049, y: -1.696, z: 0.038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 891540257218685791}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7419722226013522152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3169,9 +3150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3718842194634875641}
-  - component: {fileID: 2533249869720680529}
-  - component: {fileID: 8216608107074502472}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: mixamorig:RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3194,52 +3173,6 @@ Transform:
   - {fileID: 197739507273473100}
   m_Father: {fileID: 6560534158751336200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2533249869720680529
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534701143812390185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.23
-  m_Height: 1.01
-  m_Direction: 1
-  m_Center: {x: 0.03, y: 0.23, z: 0}
---- !u!114 &8216608107074502472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534701143812390185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d75b8b2866b54c4d9f16acc170cdb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SG.Gameplay::SG.FrostGiantDamageCollider
-  damageCollider: {fileID: 2533249869720680529}
-  characterCausingDamage: {fileID: 0}
-  physicalDamage: 0
-  fireDamage: 0
-  magicDamage: 0
-  lightningDamage: 0
-  windDamage: 0
-  holyDamage: 0
-  showDebugGizmos: 1
-  contactPoint: {x: 0, y: 0, z: 0}
-  bossCharacter: {fileID: 0}
 --- !u!1 &8732630137276261810
 GameObject:
   m_ObjectHideFlags: 0

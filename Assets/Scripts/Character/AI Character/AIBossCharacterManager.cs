@@ -17,7 +17,6 @@ namespace SG
 
 		[Header("Test Debug")]
 		[SerializeField] bool wakeBossUpDebug = false;
-		[SerializeField] bool defeatBossDebug = false;
 
 		protected override void Start()
 		{

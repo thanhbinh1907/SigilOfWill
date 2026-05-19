@@ -23,7 +23,7 @@ namespace SG
 		[Header("Combo")]
 		[SerializeField] protected bool canPerformCombo = false;            // If character can perform a combo attack, after the initial attack
 		[SerializeField] protected int chanceToPerformCombo = 25;           // The chance (in percentage) of the character to perform a combo on the next attack
-		[SerializeField] bool hasRollForComboChance = false;                // If we have already rolled for the chance during this state 
+		//[SerializeField] bool hasRollForComboChance = false;                // If we have already rolled for the chance during this state 
 
 		[Header("Engagement Distance")]
 		[SerializeField] public float maximumEngagementDistance = 5;     // The distance we have to be away from the target before we enter the pursue state
@@ -154,7 +154,7 @@ namespace SG
 			base.ResetStateFlags(aiCharacter);
 
 			hasAttack = false;
-			hasRollForComboChance = false;
+			//hasRollForComboChance = false;
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace SG
         [SerializeField] bool dodgeInput = false;
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
-        [SerializeField] bool leftMouseInput = false;
+        //[SerializeField] bool leftMouseInput = false;
 
 		[Header("LOCK ON INPUT")]
         [SerializeField] bool lockOnInput = false; 
@@ -99,7 +99,7 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
-                playerControls.PlayerAction.LeftMouse.performed += i => leftMouseInput = true;
+                //playerControls.PlayerAction.LeftMouse.performed += i => leftMouseInput = true;
 
 				// SWITCH WEAPON INPUT
 				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;

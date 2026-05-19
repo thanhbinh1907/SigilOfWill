@@ -10,18 +10,11 @@ namespace SG
 		[Header("Damage Collider")]
 		[SerializeField] FrostGiantDamageCollider leftHandDamageCollider;
 		[SerializeField] FrostGiantDamageCollider leftForceArmDamageCollider;
-		[SerializeField] FrostGiantDamageCollider leftLegDamageCollider;
-		[SerializeField] FrostGiantDamageCollider leftFootDamageCollider;
-
 		[SerializeField] FrostGiantDamageCollider rightHandDamageCollider;
 		[SerializeField] FrostGiantDamageCollider rightForceArmDamageCollider;
-		[SerializeField] FrostGiantDamageCollider rightLegDamageCollider;
-		[SerializeField] FrostGiantDamageCollider rightFootDamageCollider;
-
 
 		[Header("Damage")]
 		[SerializeField] int baseDamage = 40;
-		[SerializeField] float stompDamage = 40;
 		[SerializeField] float AttackFront01DamageModifier = 1f;
 		[SerializeField] float AttackFront02DamageModifier = 1f;
 		[SerializeField] float AttackFront03DamageModifier = 1.5f;
@@ -30,7 +23,22 @@ namespace SG
 		[SerializeField] float AttackGround02DamageModifier = 2f;
 		[SerializeField] float AttackJumpDamageModifier = 2f;
 		[SerializeField] float AttackDashDamageModifier = 2f;
-		[SerializeField] float AttackThrowStoneDamageModifier = 3f;
+		//[SerializeField] float AttackThrowStoneDamageModifier = 3f;
+
+		[Header("AOE Impact Point")]
+		[SerializeField] private Transform oneHandImpactPoint;
+		[SerializeField] private Transform twoHandImpactPoint;
+		[SerializeField] private Transform jumpImpactPoint;
+
+		[Header("AOE Radius")]
+		[SerializeField] private float groundSlam01Radius = 2.5f;
+		[SerializeField] private float groundSlam02Radius = 3.5f;
+		[SerializeField] private float jumpSlamRadius = 4f;
+
+		[Header("Gizmos Toggle")]
+		[SerializeField] private bool showGroundSlam01Gizmo = true; 
+		[SerializeField] private bool showGroundSlam02Gizmo = true; 
+		[SerializeField] private bool showJumpSlamGizmo = true;
 
 		protected virtual void Start()
 		{
@@ -38,13 +46,9 @@ namespace SG
 			{
 				if (leftHandDamageCollider != null) leftHandDamageCollider.characterCausingDamage = aiCharacter;
 				if (leftForceArmDamageCollider != null) leftForceArmDamageCollider.characterCausingDamage = aiCharacter;
-				if (leftLegDamageCollider != null) leftLegDamageCollider.characterCausingDamage = aiCharacter;
-				if (leftFootDamageCollider != null) leftFootDamageCollider.characterCausingDamage = aiCharacter;
 
 				if (rightHandDamageCollider != null) rightHandDamageCollider.characterCausingDamage = aiCharacter;
 				if (rightForceArmDamageCollider != null) rightForceArmDamageCollider.characterCausingDamage = aiCharacter;
-				if (rightLegDamageCollider != null) rightLegDamageCollider.characterCausingDamage = aiCharacter;
-				if (rightFootDamageCollider != null) rightFootDamageCollider.characterCausingDamage = aiCharacter;
 			}
 		}
 
@@ -96,25 +100,12 @@ namespace SG
 			leftForceArmDamageCollider.physicalDamage = baseDamage * AttackGround02DamageModifier;
 		}
 
-		public void SetAttackJumpDamage()
-		{
-			rightLegDamageCollider.physicalDamage = baseDamage * AttackJumpDamageModifier;
-			leftLegDamageCollider.physicalDamage = baseDamage * AttackJumpDamageModifier;
-			rightFootDamageCollider.physicalDamage = baseDamage * AttackJumpDamageModifier;
-			leftFootDamageCollider.physicalDamage = baseDamage * AttackJumpDamageModifier;
-		}
-
 		public void SetAttackDashDamage()
 		{
-			rightHandDamageCollider.physicalDamage = baseDamage * AttackFront03DamageModifier;
-			leftHandDamageCollider.physicalDamage = baseDamage * AttackFront03DamageModifier;
-			rightForceArmDamageCollider.physicalDamage = baseDamage * AttackFront03DamageModifier;
-			leftForceArmDamageCollider.physicalDamage = baseDamage * AttackFront03DamageModifier;
-
-			rightLegDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
-			leftLegDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
-			rightFootDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
-			leftFootDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
+			rightHandDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
+			leftHandDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
+			rightForceArmDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
+			leftForceArmDamageCollider.physicalDamage = baseDamage * AttackDashDamageModifier;
 		}
 
 		public void OpenRightHandCollider()
@@ -143,35 +134,78 @@ namespace SG
 			leftForceArmDamageCollider.DisableDamageCollider();
 		}
 
-		public void OpenRightLegCollider()
+		public void ActivateGiantGroundSlam01()
 		{
-			//aiCharacter.characterSoundFXManager.PlayAttackGruntSFX();
-			rightLegDamageCollider.EnableDamageCollider();
-			rightFootDamageCollider.EnableDamageCollider();
+			float calculatedDamage = baseDamage * AttackGround01DamageModifier;
+			Transform impactPoint = oneHandImpactPoint;
+			ExecuteAOEExplosion(impactPoint.position, groundSlam01Radius, calculatedDamage);
 		}
 
-		public void CloseRightLegCollider()
+		public void ActivateGiantGroundSlam02()
 		{
-			rightLegDamageCollider.DisableDamageCollider();
-			rightFootDamageCollider.DisableDamageCollider();
+			float calculatedDamage = baseDamage * AttackGround02DamageModifier;
+			Transform impactPoint = twoHandImpactPoint;
+			ExecuteAOEExplosion(impactPoint.position, groundSlam02Radius, calculatedDamage);
 		}
 
-		public void OpenLeftLegCollider()
+		public void ActiveGiantJumpSlam()
 		{
-			//aiCharacter.characterSoundFXManager.PlayAttackGruntSFX();
-			leftLegDamageCollider.EnableDamageCollider();
-			leftFootDamageCollider.EnableDamageCollider();
+			float calculatedDamage = baseDamage * AttackJumpDamageModifier;
+			Transform impactPoint = jumpImpactPoint;
+			ExecuteAOEExplosion(impactPoint.position, jumpSlamRadius, calculatedDamage);
 		}
 
-		public void CloseLeftLegCollider()
+		private void ExecuteAOEExplosion(Vector3 impactPosition, float radius, float damageValue)
 		{
-			leftLegDamageCollider.DisableDamageCollider();
-			leftFootDamageCollider.DisableDamageCollider();
+			List<CharacterManager> damagedCharacters = new List<CharacterManager>();
+
+			Collider[] colliders = Physics.OverlapSphere(impactPosition, radius, WorldUtilityManager.instance.GetCharacterLayers());
+
+			foreach (var collider in colliders)
+			{
+				CharacterManager targetCharacter = collider.GetComponentInParent<CharacterManager>();
+
+				if (targetCharacter != null)
+				{
+					if (targetCharacter == aiCharacter)
+						continue;
+
+					if (!damagedCharacters.Contains(targetCharacter))
+					{
+						damagedCharacters.Add(targetCharacter);
+
+						if (targetCharacter.isInvulnerable)
+							continue;
+
+						TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+						damageEffect.physicalDamage = damageValue;
+						damageEffect.poiseDamage = damageValue;
+
+						targetCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
+					}
+				}
+			}
 		}
 
-		public void ActivateGiantStomp()
+		private void OnDrawGizmosSelected()
 		{
+			if (showGroundSlam01Gizmo && oneHandImpactPoint != null)
+			{
+				Gizmos.color = Color.red; 
+				Gizmos.DrawWireSphere(oneHandImpactPoint.position, groundSlam01Radius);
+			}
 
+			if (showGroundSlam02Gizmo && twoHandImpactPoint != null)
+			{
+				Gizmos.color = Color.yellow; 
+				Gizmos.DrawWireSphere(twoHandImpactPoint.position, groundSlam02Radius);
+			}
+
+			if (showJumpSlamGizmo && jumpImpactPoint != null)
+			{
+				Gizmos.color = Color.blue; 
+				Gizmos.DrawWireSphere(jumpImpactPoint.position, jumpSlamRadius);
+			}
 		}
 
 		public override void PivotTowardsTarget(AICharacterManager aiCharacter)

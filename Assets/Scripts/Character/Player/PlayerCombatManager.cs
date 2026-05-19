@@ -134,15 +134,6 @@ namespace SG
 			{
 				if (currentSpellBeingCast == null || currentSpellBeingCast.spellPrefab == null) return;
 
-				// Hàm phụ để gán toàn bộ thông số sát thương từ Database vào phép thuật vừa sinh ra
-				void AssignSpellDamage(DamageCollider collider)
-				{
-					if (collider == null) return;
-					collider.fireDamage = currentSpellBeingCast.fireDamage;
-					collider.lightningDamage = currentSpellBeingCast.lightningDamage;
-					collider.windDamage = currentSpellBeingCast.windDamage;
-				}
-
 				//  THUNDERBOLT
 				if (currentSpellBeingCast.isSpellFromSky)
 				{

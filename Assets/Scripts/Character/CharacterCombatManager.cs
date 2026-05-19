@@ -13,16 +13,13 @@ namespace SG
 		public string lastAttackAnimationPerformed;
 
 		[Header("Attack Target")]
-		public CharacterManager currentTarget;
-
-		[Header("Range")]
-		public bool isCrossbowLoaded = false;
+		public CharacterManager currentTarget; 
 
 		public Transform lockOnTransform;
 
 		protected virtual void Awake()
         {
-            
+            character = GetComponent<CharacterManager>();
 		}
 
 		public virtual void SetTarget(CharacterManager newTarget)
