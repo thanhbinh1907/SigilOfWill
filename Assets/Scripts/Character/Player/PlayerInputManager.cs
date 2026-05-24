@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -34,7 +34,7 @@ namespace SG
         [SerializeField] bool lockOnInput = false; 
 
 		[Header("PLAYER COMBAT INPUT")]
-        [SerializeField] bool spellTriggerInput = false;
+        [SerializeField] public bool spellTriggerInput = false;
 
 		[Header("WEAPON SWITCH INPUT")]
 		public bool switchRightWeaponInput = false;

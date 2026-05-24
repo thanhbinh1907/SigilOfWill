@@ -26,5 +26,4 @@ MonoBehaviour:
   previousAttack: {fileID: 0}
   canPerformCombo: 0
   chanceToPerformCombo: 25
-  hasRollForComboChance: 0
-  maximumEngagementDistance: 5
+  maximumEngagementDistance: 10

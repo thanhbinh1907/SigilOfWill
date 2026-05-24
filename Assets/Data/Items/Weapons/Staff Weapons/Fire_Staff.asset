@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Fire Staff
   itemIcon: {fileID: 0}
   itemDescription: Buff fire damage.
-  itemID: 0
-  weaponModel: {fileID: 4416565875763140154, guid: 2a63f227e2dbb4c488e378f8005e4bb6, type: 3}
+  itemID: 3
+  weaponModel: {fileID: 8986092292266625940, guid: b19720c69f3420b4d9e33c796b0a6c48, type: 3}
   strengREQ: 0
   dexREQ: 0
   intREQ: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
   holyDamage: 0
   windDamage: 0
   poiseDMG: 10
+  light_Attack_01_Modifier: 1
   baseStaminaCost: 0
+  lightAttackStaminaCost: 0.9
+  oh_RB_Action: {fileID: 0}
+  whooshes: []

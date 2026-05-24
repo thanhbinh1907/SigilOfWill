@@ -26,17 +26,19 @@ namespace SG
 
 		public virtual void AttemptToPerformAction(PlayerManager player)
         {
+            Debug.Log($">> [SPELL ACTION] AttemptToPerformAction bắt đầu. Chiêu thức: {name}, Mana hiện tại của Player: {player.currentMana}, Mana tiêu hao: {manaCost}");
             if (player.currentMana > 0)
             {
+                Debug.Log($">> [SPELL ACTION] Mana hợp lệ (>0). Đang chạy animation '{spellAnimation}' và trừ {manaCost} mana...");
                 player.characterAnimatorManager.PlayTargetAnimation(spellAnimation, true);
                 player.currentMana -= manaCost;
                 player.playerCombatManager.currentSpellBeingCast = this;
+                Debug.Log($">> [SPELL ACTION] Đã chạy xong lệnh PlayTargetAnimation. Mana còn lại: {player.currentMana}");
 			}
             else
             {
-                Debug.Log("Not enough stamina to perform this action.");
+                Debug.LogWarning($">> [SPELL ACTION] Thất bại: Không đủ mana! Mana hiện tại: {player.currentMana}");
 			}
-                
 		}
 	}
 }

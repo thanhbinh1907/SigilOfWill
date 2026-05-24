@@ -35,13 +35,13 @@ namespace SG
 
 
 			// IF WE ARE WITHIN COMBAT RANGE OF A TARGET, SWITCH STATE TO COMBAT STANCE STATE
-			// OPTION 1
-			//if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.combatStance.maximumEngagementDistance)
-			//	return SwitchState(aiCharacter, aiCharacter.combatStance);
-			
-			// OPTION 2
-			if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
+			// OPTION 1 (Sử dụng Khoảng cách giao tranh tối đa của Combat Stance)
+			if (aiCharacter.combatStance != null && aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.combatStance.maximumEngagementDistance)
 				return SwitchState(aiCharacter, aiCharacter.combatStance);
+			
+			// OPTION 2 (Sử dụng stoppingDistance của NavMeshAgent)
+			// if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
+			// 	return SwitchState(aiCharacter, aiCharacter.combatStance);
 
 
 			// IF THE TARGET IS NOT REACHABLE,  AN THEY FAR AWAY, RETURN HOME

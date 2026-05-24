@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -8,12 +8,15 @@ namespace SG
 {
     public class PlayerManager : CharacterManager
     {
-        [Header("Debug Menu")]
-        [SerializeField] bool respawnCharacter = false;
-        [SerializeField] bool switchRightWeapon = false;
+		[Header("Debug Menu")]
+		[SerializeField] bool respawnCharacter = false;
+		[SerializeField] bool switchRightWeapon = false;
 		[SerializeField] bool testCastFireball = false;
 		[SerializeField] bool testCastThunderbolt = false;
 		[SerializeField] bool testCastWindblade = false;
+		[SerializeField] bool testCastStrongFireball = false;
+		[SerializeField] bool testCastStrongThunderbolt = false;
+		[SerializeField] bool testCastStrongWindblade = false;
 		[SerializeField] bool testFrontHit;
 		[SerializeField] bool testBackHit;
 		[SerializeField] bool testLeftHit;
@@ -207,6 +210,27 @@ namespace SG
 			{
 				testCastWindblade = false;
 				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(3);
+				if (spell != null) spell.AttemptToPerformAction(this);
+			}
+
+			if (testCastStrongFireball)
+			{
+				testCastStrongFireball = false;
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(4);
+				if (spell != null) spell.AttemptToPerformAction(this);
+			}
+
+			if (testCastStrongThunderbolt)
+			{
+				testCastStrongThunderbolt = false;
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(5);
+				if (spell != null) spell.AttemptToPerformAction(this);
+			}
+
+			if (testCastStrongWindblade)
+			{
+				testCastStrongWindblade = false;
+				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(6);
 				if (spell != null) spell.AttemptToPerformAction(this);
 			}
 

@@ -11,9 +11,13 @@ namespace SG
 		[Header("Damage Grunts")]
 		[SerializeField] protected AudioClip[] damageGrunts;
 
-
 		[Header("Attack Grunts")]
 		[SerializeField] protected AudioClip[] attackGrunts;
+
+		[Header("Foot Steps")]
+		[SerializeField] protected AudioClip[] footSteps;
+		// public AudioClip[] footStepsDirt;
+		// public AudioClip[] footStepsStone;
 
 		protected virtual void Awake()
 		{
@@ -48,6 +52,12 @@ namespace SG
 		{
 			if (attackGrunts.Length > 0)
 				PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+		}
+
+		public virtual void PlayFootStepSFX()
+		{
+			if (footSteps.Length > 0)
+				PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(footSteps));
 		}
 	}
 }

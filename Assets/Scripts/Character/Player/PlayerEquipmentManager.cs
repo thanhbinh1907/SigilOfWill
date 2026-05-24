@@ -107,7 +107,14 @@ namespace SG
                 rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
                 rightHandSlot.LoadWeapon(rightHandWeaponModel);
                 rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
-                rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                if (rightWeaponManager != null)
+                {
+                    rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                }
+                else
+                {
+                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay phải '{rightHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                }
 
                 if (PlayerUIManager.instance != null)
                 {
@@ -162,7 +169,14 @@ namespace SG
                 leftHandWeaponModel = Instantiate(player.playerInventoryManager.currentLeftHandWeapon.weaponModel);
                 leftHandSlot.LoadWeapon(leftHandWeaponModel);
                 leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
-                leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
+                if (leftWeaponManager != null)
+                {
+                    leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
+                }
+                else
+                {
+                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay trái '{leftHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                }
 
                 if (PlayerUIManager.instance != null)
                 {

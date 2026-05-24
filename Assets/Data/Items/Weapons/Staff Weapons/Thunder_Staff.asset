@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Thunder Staff
   itemIcon: {fileID: 0}
   itemDescription: Buff lighting damage.
-  itemID: 1
-  weaponModel: {fileID: 4416565875763140154, guid: ba6f1c8e2ebd9d547b431457f4f7c758, type: 3}
+  itemID: 4
+  weaponModel: {fileID: 7255140408272727148, guid: 995d887b8f0a1514a96322975b640a3b, type: 3}
   strengREQ: 0
   dexREQ: 0
   intREQ: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
   holyDamage: 0
   windDamage: 0
   poiseDMG: 10
+  light_Attack_01_Modifier: 1
   baseStaminaCost: 0
+  lightAttackStaminaCost: 0.9
+  oh_RB_Action: {fileID: 0}
+  whooshes: []
