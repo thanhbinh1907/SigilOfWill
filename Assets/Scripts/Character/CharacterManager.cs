@@ -96,6 +96,9 @@ namespace SG
 		public int endurance = 10;
 		public int intelligence = 10;
 
+		[Header("UI Manager")]
+		public CharacterUIManager characterUIManager;
+
 		protected virtual void Awake()
 		{
 			characterController = GetComponent<CharacterController>();
@@ -104,6 +107,7 @@ namespace SG
 			characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
 			characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
 			characterCombatManager = GetComponent<CharacterCombatManager>();
+			characterUIManager = GetComponent<CharacterUIManager>();
 		}
 
 		protected virtual void Start()
@@ -112,6 +116,11 @@ namespace SG
 
 			// Đăng ký sự kiện kiểm tra lượng máu (tự động xử lý chết khi HP <= 0) cho tất cả nhân vật
 			OnHealthChanged += CheckHP;
+
+			if (characterUIManager != null)
+			{
+				OnHealthChanged += characterUIManager.OnCharacterHPChanged;
+			}
 
 			// Khởi tạo máu ban đầu bằng máu tối đa cho AI và Boss
 			if (currentHealth == 0 && maxHealth > 0)

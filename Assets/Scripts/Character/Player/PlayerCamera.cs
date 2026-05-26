@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +12,7 @@ namespace SG {
 		[SerializeField] Transform cameraPivotTransform;
 
 		[Header("Camera Settings")]
-		[SerializeField] private float cameraSmoothSpeed = 0.3;
+		[SerializeField] private float cameraSmoothSpeed = 0.3f;
 		[SerializeField] float leftAndRightRotationSpeed = 220; 
 		[SerializeField] float upAndDownRotationSpeed = 220;
 		[SerializeField] float minimumPivot = -30;                     // lowest point the camera can look down to

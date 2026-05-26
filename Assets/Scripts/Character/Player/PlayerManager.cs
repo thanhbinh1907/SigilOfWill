@@ -48,8 +48,10 @@ namespace SG
 			playerCamera = GetComponent<PlayerCamera>();
 		}
 
-		private void Start()
+		protected override void Start()
 		{
+			base.Start();
+
 			if (PlayerCamera.instance != null)
             {
                 PlayerCamera.instance.player = this;
