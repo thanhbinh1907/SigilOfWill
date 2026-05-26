@@ -9,6 +9,10 @@ namespace SG {
 		[HideInInspector] public PlayerUIHudManager playerUIHudManager;
 		[HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
 
+		[Header("UI Windows")]
+		public bool menuWindowIsOpen = false;
+		public bool popupWindowIsOpen = false;
+
 		private void Awake()
 		{
 			if (instance == null)

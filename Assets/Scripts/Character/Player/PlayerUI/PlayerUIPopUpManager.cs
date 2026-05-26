@@ -19,6 +19,10 @@ namespace SG
         [SerializeField] TextMeshProUGUI bossDefeatedPopUpBackGroundText;
         [SerializeField] TextMeshProUGUI bossDefeatedPopUpText;
         [SerializeField] CanvasGroup bossDefeatedPopUpCanvasGroup;
+
+        [Header("Player Message Pop Up")]
+        [SerializeField] GameObject playerMessagePopUpGameObject;
+        [SerializeField] TextMeshProUGUI playerMessageText;
         
 
         public void SendYouDiedPopUp()
@@ -118,6 +122,28 @@ namespace SG
             canvas.alpha = 0;
 
             yield return null;
+        }
+
+        public void SendPlayerMessagePopup(string message)
+        {
+            if (playerMessageText != null)
+            {
+                playerMessageText.text = message;
+            }
+            if (playerMessagePopUpGameObject != null)
+            {
+                playerMessagePopUpGameObject.SetActive(true);
+            }
+            PlayerUIManager.instance.popupWindowIsOpen = true;
+        }
+
+        public void CloseAllPopupWindows()
+        {
+            if (playerMessagePopUpGameObject != null)
+            {
+                playerMessagePopUpGameObject.SetActive(false);
+            }
+            PlayerUIManager.instance.popupWindowIsOpen = false;
         }
     }
 }

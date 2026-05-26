@@ -2708,6 +2708,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4079201414259025350}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4436002142845599556}
   m_SourcePrefab: {fileID: 100100000, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
 --- !u!4 &4986971807090872497 stripped
 Transform:
@@ -2731,6 +2734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c990686ca1e10f14b83a09b59832b9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerManager
+  characterName: 
   isDead: 0
   characterController: {fileID: 0}
   animator: {fileID: 0}
@@ -2752,6 +2756,7 @@ MonoBehaviour:
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isActive: 1
+  isInvulnerable: 0
   maxHealth: 0
   _currentHealth: 0
   maxStamina: 0
@@ -2761,11 +2766,15 @@ MonoBehaviour:
   vitality: 10
   endurance: 10
   intelligence: 10
+  characterUIManager: {fileID: 0}
   respawnCharacter: 0
   switchRightWeapon: 0
   testCastFireball: 0
   testCastThunderbolt: 0
   testCastWindblade: 0
+  testCastStrongFireball: 0
+  testCastStrongThunderbolt: 0
+  testCastStrongWindblade: 0
   testFrontHit: 0
   testBackHit: 0
   testLeftHit: 0
@@ -2777,7 +2786,7 @@ MonoBehaviour:
   playerEquipmentManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerCamera: {fileID: 0}
-  characterName: 
+  playerInteractionManager: {fileID: 0}
 --- !u!114 &9115456554175591900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2826,10 +2835,10 @@ MonoBehaviour:
   currentAttackType: 0
   lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
-  isCrossbowLoaded: 0
   lockOnTransform: {fileID: 3209882408912940298}
   currentWeaponBeingUsed: {fileID: 0}
   currentSpellBeingCast: {fileID: 0}
+  castingTimeoutDuration: 1.5
 --- !u!114 &-8070901037549610352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,6 +2893,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b1b0134244e36784b9a6d58c192d76c9, type: 3}
   - {fileID: 8300000, guid: f7e6e74bdab7f44489dd30d3593b115b, type: 3}
   - {fileID: 8300000, guid: 171f04d3f87ca6140a6520d5fb2ef9f7, type: 3}
+  footSteps: []
 --- !u!114 &877727194952388442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3106,3 +3116,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4436002142845599556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656126145850657291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e513bab1041117742b906bf741d9632f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SG.Gameplay::SG.PlayerInteractionManager

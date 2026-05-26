@@ -30,6 +30,7 @@ namespace SG
 		[HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
         [HideInInspector] public PlayerCombatManager playerCombatManager;
 		[HideInInspector] public PlayerCamera playerCamera;
+		[HideInInspector] public PlayerInteractionManager playerInteractionManager;
 
 
 
@@ -46,6 +47,7 @@ namespace SG
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
 			playerCamera = GetComponent<PlayerCamera>();
+			playerInteractionManager = GetComponent<PlayerInteractionManager>();
 		}
 
 		protected override void Start()

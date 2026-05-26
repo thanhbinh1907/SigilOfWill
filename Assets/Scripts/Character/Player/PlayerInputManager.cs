@@ -40,6 +40,9 @@ namespace SG
 		public bool switchRightWeaponInput = false;
 		public bool switchLeftWeaponInput = false;
 
+		[Header("PLAYER INTERACTION INPUT")]
+		[SerializeField] bool interactionInput = false;
+
 		private void Awake()
         {
             if (instance == null)
@@ -119,6 +122,8 @@ namespace SG
 					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!"); 
 				};
 
+				// INTERACTION
+				playerControls.PlayerAction.Interact.performed += i => interactionInput = true;
 			}
             playerControls.Enable();
         }
@@ -155,6 +160,7 @@ namespace SG
             HandleCastSpellInput();
             //HandleLeftMouseInput();
 			HandleSwitchWeaponInput();
+			HandleInteractionInput();
 		}
 
         // MOVEMENT INPUT
@@ -327,5 +333,18 @@ namespace SG
                 player.playerCombatManager.EnableCastingState();
 			}
         }
+
+		private void HandleInteractionInput()
+		{
+			if (interactionInput)
+			{
+				interactionInput = false;
+
+				if (player != null && player.playerInteractionManager != null)
+				{
+					player.playerInteractionManager.Interact();
+				}
+			}
+		}
     }
 }
