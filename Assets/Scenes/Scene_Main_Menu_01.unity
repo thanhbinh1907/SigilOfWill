@@ -5528,6 +5528,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 439347967444123003, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439347967444123003, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1083780493939277483, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5550,6 +5558,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1746792750040973682, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818924603212433249, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: bossHPBarObject
+      value: 
+      objectReference: {fileID: 2887614033711326129, guid: 8df2455f6c1216d4b892d31ed713e170, type: 3}
+    - target: {fileID: 2503377779559286326, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503377779559286326, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503377779559286326, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503377779559286326, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2909562163659756457, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
@@ -5764,6 +5792,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8209649445615821251, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8675916778671965197, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5817,7 +5849,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8306741644655668694, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c1a8237b555b1240a5274da3be2723e, type: 3}
@@ -5838,17 +5871,29 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: 'spellActions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 35e328b4dfec9364f90f1d36f0499aaa, type: 2}
+    - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: 'spellActions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7772e39e6415b0240be20885f23c2896, type: 2}
+    - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
+      propertyPath: 'spellActions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e30f3a52edcc0443ba3463f0f9b10f6, type: 2}
+    - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
       propertyPath: 'spellActions.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: fc50eeb6f27f75d41b19deb47e12bf8a, type: 2}
+      objectReference: {fileID: 11400000, guid: 86ff438c2e5a56241b7ae53615ce60f6, type: 2}
     - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
       propertyPath: 'spellActions.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: af0f8623ac2311b478d22c039fa64bba, type: 2}
+      objectReference: {fileID: 11400000, guid: cc64fa6961ecc734e99e7c34a27184e1, type: 2}
     - target: {fileID: 4890392760313645306, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
       propertyPath: 'spellActions.Array.data[5]'
       value: 
-      objectReference: {fileID: 11400000, guid: 44ea95e1476335a4884e819328c6c291, type: 2}
+      objectReference: {fileID: 11400000, guid: bdca05d875034354c8531d157ca468cc, type: 2}
     - target: {fileID: 5557552715555819850, guid: c76d78522d119a141ab6a86da29131f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.62301

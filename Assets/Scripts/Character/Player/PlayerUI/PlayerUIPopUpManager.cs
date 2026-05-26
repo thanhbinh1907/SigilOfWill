@@ -14,6 +14,13 @@ namespace SG
         [SerializeField] TextMeshProUGUI youDiedPopUpText;
         [SerializeField] CanvasGroup youDiedPopUpCanvasGroup;
 
+        [Header("BOSS DEFEATED Pop Up")]
+        [SerializeField] GameObject bossDefeatedPopUpGameObject;
+        [SerializeField] TextMeshProUGUI bossDefeatedPopUpBackGroundText;
+        [SerializeField] TextMeshProUGUI bossDefeatedPopUpText;
+        [SerializeField] CanvasGroup bossDefeatedPopUpCanvasGroup;
+        
+
         public void SendYouDiedPopUp()
         {
             // ACTIVATE POST PROCESSING EFFECT
@@ -29,6 +36,22 @@ namespace SG
             StartCoroutine(WaitThenFadeOutPopUpOverTime(youDiedPopUpCanvasGroup, 2, 5));
         }
 
+        public void SendBossDefeatedPopUp(string bossDefeatedMessage)
+        {
+            bossDefeatedPopUpText.text = bossDefeatedMessage;
+            bossDefeatedPopUpBackGroundText.text = bossDefeatedMessage;
+
+            bossDefeatedPopUpGameObject.SetActive(true);
+            bossDefeatedPopUpBackGroundText.characterSpacing = 0;
+
+            // STRETCH OUT THE POP UP
+            StartCoroutine(StretchPopUpTextOverTime(bossDefeatedPopUpBackGroundText, 8, 19));
+            // FADE IN THE POP UP
+            StartCoroutine(FadeInPopUpOverTime(bossDefeatedPopUpCanvasGroup, 5));
+            // WAIT, THEN FADE OUT THE POP UP
+            StartCoroutine(WaitThenFadeOutPopUpOverTime(bossDefeatedPopUpCanvasGroup, 2, 5));
+        }
+
         private IEnumerator StretchPopUpTextOverTime(TextMeshProUGUI text, float duration, float stretchAmount)
         {
             if (duration > 0)
@@ -42,6 +65,7 @@ namespace SG
                 {
                     timer += Time.deltaTime;
                     text.characterSpacing = Mathf.Lerp(text.characterSpacing, stretchAmount, duration * (Time.deltaTime / 20));
+                    yield return null;
                 }
             }
         }

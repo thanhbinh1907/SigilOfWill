@@ -59,6 +59,9 @@ namespace SG
 
 		public void StartNewGame()
 		{
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.isSceneLoading)
+				return;
+
 			WorldSaveGameManager.instance.AttemptToCreateNewGame();
 		}
 

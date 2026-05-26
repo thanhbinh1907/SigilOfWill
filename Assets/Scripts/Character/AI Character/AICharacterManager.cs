@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
@@ -92,5 +92,10 @@ namespace SG
                 isMoving = false;
 			}
 		}
+
+        public void SetCurrentState(AIState newState)
+        {
+            currentState = newState;
+        }
 	}
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7ffe9c0269cc24eb82fdf0cd2eee52, type: 3}
+  m_Name: Fireball Ultimate
+  m_EditorClassIdentifier: SG.Gameplay::SG.SkySpellAction
+  spellID: 4
+  spellAnimation: Fireball_Ultimate_Cast
+  manaCost: 50
+  spellPrefab: {fileID: 1764370465590902, guid: 7efed9b7dcfc6954b95c9d998a217498, type: 3}
+  fireDamage: 7000
+  lightningDamage: 0
+  windDamage: 0
+  spawnForwardOffset: 5

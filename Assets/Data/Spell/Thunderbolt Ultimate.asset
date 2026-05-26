@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7ffe9c0269cc24eb82fdf0cd2eee52, type: 3}
+  m_Name: Thunderbolt Ultimate
+  m_EditorClassIdentifier: SG.Gameplay::SG.SkySpellAction
+  spellID: 5
+  spellAnimation: Thunderbolt_Ultimate_Cast
+  manaCost: 100
+  spellPrefab: {fileID: 1604970523841052, guid: dfabbd05c7735314e97de47b3d7695c4, type: 3}
+  fireDamage: 0
+  lightningDamage: 35
+  windDamage: 0
+  spawnForwardOffset: 5

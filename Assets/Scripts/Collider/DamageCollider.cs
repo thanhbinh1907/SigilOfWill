@@ -1,25 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace SG
 {
-    public class DamageCollider : MonoBehaviour
+    public class DamageCollider : DamageDealer
     {
         [Header("Collider")]
         [SerializeField] protected Collider damageCollider;
 
-		public CharacterManager characterCausingDamage;
-
-		[Header("Damage")]
-        public float physicalDamage = 0;
-        public float fireDamage = 0;
-        public float magicDamage = 0;
-        public float lightningDamage = 0;
-        public float windDamage = 0;
-        public float holyDamage = 0;
-
-        [Header("Debug")]
+		[Header("Debug")]
 		[SerializeField] bool showDebugGizmos = true; 
 
 		[Header("Contact Point")]
@@ -68,21 +58,7 @@ namespace SG
 
             charactersDamaged.Add(damageTarget);
 
-            TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
-
-            damageEffect.characterCausingDamage = characterCausingDamage;
-
-			damageEffect.physicalDamage = physicalDamage;
-            damageEffect.fireDamage = fireDamage;
-            damageEffect.magicDamage = magicDamage;
-            damageEffect.lightningDamage = lightningDamage;
-            damageEffect.windDamage = windDamage;
-            damageEffect.holyDamage = holyDamage;
-            damageEffect.contactPoint = contactPoint;
-
-			damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
-
-			damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+            ApplyDamage(damageTarget, contactPoint);
 		}
 
         public virtual void EnableDamageCollider()

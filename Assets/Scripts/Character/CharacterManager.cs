@@ -9,6 +9,9 @@ namespace SG
 {
 	public class CharacterManager : MonoBehaviour
 	{
+		[Header("Character Info")]
+		public string characterName = "Character";
+
 		[Header("Status")]
 		public bool isDead = false;
 
@@ -106,6 +109,15 @@ namespace SG
 		protected virtual void Start()
 		{
 			IgnoreMyOwnColliders();
+
+			// Đăng ký sự kiện kiểm tra lượng máu (tự động xử lý chết khi HP <= 0) cho tất cả nhân vật
+			OnHealthChanged += CheckHP;
+
+			// Khởi tạo máu ban đầu bằng máu tối đa cho AI và Boss
+			if (currentHealth == 0 && maxHealth > 0)
+			{
+				currentHealth = maxHealth;
+			}
 		}
 
 		protected virtual void Update()

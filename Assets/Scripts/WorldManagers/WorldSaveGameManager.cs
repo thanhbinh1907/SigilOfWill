@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -28,6 +28,9 @@ namespace SG
 		public CharacterSaveData currentCharacterData;
 		private string saveFileName;
 
+		[Header("Loading Status")]
+		public bool isSceneLoading = false;
+
 		[Header("Character Slots")]
 		public CharacterSaveData characterSlot01;
 		public CharacterSaveData characterSlot02;
@@ -45,6 +48,8 @@ namespace SG
 
 		private void Awake()
 		{
+			isSceneLoading = false;
+
 			// IF THE INSTANCE IS NULL, SET IT TO THIS INSTANCE. OTHERWISE, DESTROY THIS GAME OBJECT TO ENFORCE THE SINGLETON PATTERN.
 			if (instance == null)
 			{
@@ -128,6 +133,9 @@ namespace SG
 
 		public void AttemptToCreateNewGame()
 		{
+			if (isSceneLoading)
+				return;
+
 			saveFileDataWriter = new SaveFileDataWriter();
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
 
@@ -238,6 +246,7 @@ namespace SG
 
 		private void NewGame()
 		{
+			isSceneLoading = true;
 			// SAVE THE NEWLY CREATED CHARACTER STATS, AND ITEM (WHEN CREATION SCREEN IS ADDED)
 			SaveGame();
 			StartCoroutine(LoadWorldScene());
@@ -245,6 +254,11 @@ namespace SG
 
 		public void LoadGame()
 		{
+			if (isSceneLoading)
+				return;
+
+			isSceneLoading = true;
+
 			saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(currentCharacterSlotBeingUsed);
 
 			saveFileDataWriter = new SaveFileDataWriter();
@@ -375,6 +389,8 @@ namespace SG
 
 			// 4. LOAD THE PLAYER'S DATA ONTO THE PLAYER
 			player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
+
+			isSceneLoading = false;
 		}
 
 		// IF YOU WANT TO USE A MULTI SCENE SETUP, THERE IS NO CURRENT SCENE INDEX ON A NEW CHARACTER  

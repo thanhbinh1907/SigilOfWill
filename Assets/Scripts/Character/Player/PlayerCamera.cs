@@ -12,7 +12,7 @@ namespace SG {
 		[SerializeField] Transform cameraPivotTransform;
 
 		[Header("Camera Settings")]
-		private float cameraSmoothSpeed = 1;
+		[SerializeField] private float cameraSmoothSpeed = 0.3;
 		[SerializeField] float leftAndRightRotationSpeed = 220; 
 		[SerializeField] float upAndDownRotationSpeed = 220;
 		[SerializeField] float minimumPivot = -30;                     // lowest point the camera can look down to
@@ -79,7 +79,7 @@ namespace SG {
 
 		private void HandleFollowTarget()
 		{
-			Vector3 targetCameraPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraVelocity, cameraSmoothSpeed * Time.deltaTime);
+			Vector3 targetCameraPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraVelocity, cameraSmoothSpeed);
 			transform.position = targetCameraPosition;
 		}
 

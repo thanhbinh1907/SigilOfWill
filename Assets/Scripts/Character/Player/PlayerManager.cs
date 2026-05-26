@@ -31,8 +31,7 @@ namespace SG
         [HideInInspector] public PlayerCombatManager playerCombatManager;
 		[HideInInspector] public PlayerCamera playerCamera;
 
-		[Header("Character Info")]
-        public string characterName = "Character";
+
 
 		protected override void Awake()
         {
@@ -75,9 +74,6 @@ namespace SG
             {
                 WorldSaveGameManager.instance.player = this;
 			}
-
-            OnHealthChanged += CheckHP;
-
 		}
 
 		private void PlayerManager_OnManaChanged(float arg1, float arg2)

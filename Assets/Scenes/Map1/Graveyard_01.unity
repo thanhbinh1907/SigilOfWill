@@ -37653,11 +37653,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2657985437959754234, guid: b3edfd68304847c4787ee6931a67aab4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.21
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 2657985437959754234, guid: b3edfd68304847c4787ee6931a67aab4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2657985437959754234, guid: b3edfd68304847c4787ee6931a67aab4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61369,6 +61369,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1661297302736174713, guid: fa94614456c8b1d40bd51fd3e8c9b071, type: 3}
   m_PrefabInstance: {fileID: 2143645627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &425262536738011413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.4368
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.578
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3468
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499830004148185057, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531936109596574761, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
+      propertyPath: m_Name
+      value: Event Trigger - Wake Frost Giant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b864c3b0c36dcbd40bbd94569b72beb5, type: 3}
 --- !u!1001 &3271065286377096544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61498,3 +61555,4 @@ SceneRoots:
   - {fileID: 3271065286377096544}
   - {fileID: 7720366266093596818}
   - {fileID: 1329374005}
+  - {fileID: 425262536738011413}

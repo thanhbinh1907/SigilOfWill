@@ -182,12 +182,18 @@ namespace SG
 
         public void LoadGameFromCharacterSaveSlot()
         {
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.isSceneLoading)
+				return;
+
             WorldSaveGameManager.instance.currentCharacterSlotBeingUsed = characterSlot;
             WorldSaveGameManager.instance.LoadGame();
 		}
 
         public void SelectCurrentSlot() 
         {
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.isSceneLoading)
+				return;
+
             TitleScreenManager.instance.SelectCharacterSlot(characterSlot);
 		}
     }

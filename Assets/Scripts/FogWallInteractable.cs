@@ -31,6 +31,19 @@ namespace SG
 				WorldObjectManager.instance.AddFogWallToList(this);
 			}
 
+			// Kiểm tra xem Boss tương ứng với Fog Wall này đã bị tiêu diệt trong file save chưa
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
+			{
+				var saveData = WorldSaveGameManager.instance.currentCharacterData;
+				if (saveData.bossesDefeated.ContainsKey(fogWallID))
+				{
+					if (saveData.bossesDefeated[fogWallID])
+					{
+						_isActive = false; // Tắt sương mù ban đầu nếu boss đã bị tiêu diệt
+					}
+				}
+			}
+
 			OnIsActiveStatusChanged(_isActive);
 		}
 

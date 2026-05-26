@@ -17,7 +17,11 @@ namespace SG
         [SerializeField] Image rightWeaponQuickSlotIcon;
         [SerializeField] Image leftWeaponQuickSlotIcon;
 
-        public void RefreshHUD()
+		[Header("Boss Fight UI")]
+		[SerializeField] GameObject bossHPBarObject;
+		[SerializeField] Transform bossHPBarParent;
+		[SerializeField] List<UI_BossHPBar> activeBossHPBars = new List<UI_BossHPBar>();
+		public void RefreshHUD()
         {
             healthBar.gameObject.SetActive(false);
             healthBar.gameObject.SetActive(true);
@@ -104,5 +108,53 @@ namespace SG
             leftWeaponQuickSlotIcon.sprite = weapon.itemIcon;
             leftWeaponQuickSlotIcon.enabled = true;
 		}
+
+        public void AddBossHPBar(AIBossCharacterManager boss)
+        {
+            // Tránh tạo trùng lặp
+            if (activeBossHPBars.Exists(bar => bar.GetBossCharacter() == boss))
+                return;
+
+            if (bossHPBarObject == null)
+            {
+                Debug.LogError("[HỆ THỐNG] Không thể hiển thị thanh máu Boss vì bossHPBarObject chưa được gán trên PlayerUIHudManager trong Inspector!");
+                return;
+            }
+
+            GameObject barObj = Instantiate(bossHPBarObject, bossHPBarParent);
+            UI_BossHPBar hpBar = barObj.GetComponent<UI_BossHPBar>();
+            if (hpBar == null)
+            {
+                hpBar = barObj.GetComponentInChildren<UI_BossHPBar>();
+            }
+
+            if (hpBar != null)
+            {
+                hpBar.EnableBossHPBar(boss);
+                activeBossHPBars.Add(hpBar);
+            }
+            else
+            {
+                Debug.LogError($"[HUD Manager] Không tìm thấy Component UI_BossHPBar trên Prefab {bossHPBarObject.name} (kể cả trên các đối tượng con)!");
+            }
+        }
+
+        public void RemoveBossHPBar(AIBossCharacterManager boss)
+        {
+            UI_BossHPBar hpBar = activeBossHPBars.Find(bar => bar.GetBossCharacter() == boss);
+            if (hpBar != null)
+            {
+                activeBossHPBars.Remove(hpBar);
+                // Giải phóng toàn bộ Prefab cha (Boss Health Bar(Clone)) thay vì chỉ GameObject con Health Bar
+                if (hpBar.transform.parent != null && hpBar.transform.parent != bossHPBarParent)
+                {
+                    Destroy(hpBar.transform.parent.gameObject);
+                }
+                else
+                {
+                    Destroy(hpBar.gameObject);
+                }
+            }
+        }
     }
 }

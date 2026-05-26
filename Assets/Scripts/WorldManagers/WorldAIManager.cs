@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 namespace SG
 {
@@ -12,6 +13,30 @@ namespace SG
 		[Header("Characters")]
 		[SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
 		[SerializeField] List<GameObject> spawnedCharacters;
+
+		[Header("Bosses")]
+		[SerializeField] List<AIBossCharacterManager> spawnedInBosses = new List<AIBossCharacterManager>();
+
+		public void RegisterBoss(AIBossCharacterManager boss)
+		{
+			if (!spawnedInBosses.Contains(boss))
+			{
+				spawnedInBosses.Add(boss);
+			}
+		}
+
+		public void UnregisterBoss(AIBossCharacterManager boss)
+		{
+			if (spawnedInBosses.Contains(boss))
+			{
+				spawnedInBosses.Remove(boss);
+			}
+		}
+
+		public AIBossCharacterManager GetBossCharacterByID(int id)
+		{
+			return spawnedInBosses.FirstOrDefault(boss => boss.bossID == id);
+		}
 
 		private void Awake()
 		{

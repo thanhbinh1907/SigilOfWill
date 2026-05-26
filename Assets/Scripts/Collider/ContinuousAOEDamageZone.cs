@@ -4,23 +4,12 @@ using System.Collections.Generic;
 
 namespace SG
 {
-	public class ContinuousAOEDamageZone : MonoBehaviour
+	public class ContinuousAOEDamageZone : DamageDealer
 	{
-		[Header("Damage Causer")]
-		public CharacterManager characterCausingDamage;
-
 		[Header("AOE Settings")]
 		public float radius = 5f;
 		public float damageInterval = 0.5f;
 		public float duration = 5f;
-
-		[Header("Damage Value")]
-		public float physicalDamage = 0;
-		public float fireDamage = 0;
-		public float magicDamage = 0;
-		public float lightningDamage = 30;
-		public float windDamage = 0;
-		public float holyDamage = 0;
 
 		[Header("VFX Settings")]
 		[SerializeField] private bool showDebugGizmos = true;
@@ -70,19 +59,8 @@ namespace SG
 						if (targetCharacter.isInvulnerable)
 							continue;
 
-						// Tạo và áp dụng hiệu ứng nhận sát thương
-						TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
-						damageEffect.characterCausingDamage = characterCausingDamage;
-						
-						damageEffect.physicalDamage = physicalDamage;
-						damageEffect.fireDamage = fireDamage;
-						damageEffect.magicDamage = magicDamage;
-						damageEffect.lightningDamage = lightningDamage;
-						damageEffect.windDamage = windDamage;
-						damageEffect.holyDamage = holyDamage;
-						damageEffect.contactPoint = targetCharacter.transform.position; // Điểm nhận sát thương là tâm đối tượng
-
-						targetCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
+						// Tạo và áp dụng hiệu ứng nhận sát thương bằng ApplyDamage
+						ApplyDamage(targetCharacter, targetCharacter.transform.position);
 
 						// Sinh ra hiệu ứng sét đánh (Lightning hit) tại vị trí mục tiêu
 						if (impactVFX != null)
