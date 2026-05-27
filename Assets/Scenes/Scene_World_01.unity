@@ -65933,11 +65933,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog Wall Interactable
       objectReference: {fileID: 0}
+    - target: {fileID: 5962685940410438126, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+      propertyPath: fogWallCollider
+      value: 
+      objectReference: {fileID: 1361508982}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+--- !u!65 &1361508982 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1434054347039750903, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+  m_PrefabInstance: {fileID: 1361508981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363945802
 GameObject:
   m_ObjectHideFlags: 0

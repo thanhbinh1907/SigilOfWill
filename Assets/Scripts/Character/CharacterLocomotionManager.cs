@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -55,7 +55,10 @@ namespace SG
 				yVelocity.y += gravityForce * Time.deltaTime;
 			}
 			// THERE SHOULD ALWAYS BE SOME FORCE APPLIED TO THE Y VELOCITY
-			character.characterController.Move(yVelocity * Time.deltaTime);
+			if (character.characterController.enabled)
+			{
+				character.characterController.Move(yVelocity * Time.deltaTime);
+			}
 		}
 
 		protected void HandleGroundCheck()
