@@ -340,6 +340,16 @@ namespace SG
 			{
 				interactionInput = false;
 
+				// Nếu bảng thông báo nhận vật phẩm đang hiển thị trên UI, bấm phím tương tác lần nữa sẽ ẩn nó đi
+				if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
+				{
+					if (PlayerUIManager.instance.playerUIPopUpManager.IsItemPopupActive())
+					{
+						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows();
+						return;
+					}
+				}
+
 				if (player != null && player.playerInteractionManager != null)
 				{
 					player.playerInteractionManager.Interact();

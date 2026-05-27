@@ -88,5 +88,25 @@ namespace SG
 			}
 			spawnedCharacters.Clear();
 		}
+
+		public void ResetAllCharacters()
+		{
+			// 1 & 2. Dọn dẹp xóa sạch các quái vật cũ đang hoạt động
+			DespawnAllAICharacters();
+
+			// 3. Truy tìm toàn bộ các bộ sinh quái AICharacterSpawner đang đặt rải rác trên Scene bản đồ (bao gồm cả spawner ẩn)
+			AICharacterSpawner[] allSpawners = FindObjectsOfType<AICharacterSpawner>(true);
+
+			// 4. Duyệt qua từng bộ sinh spawner và ra lệnh ép thực thi AttemptToSpawnCharacter để hồi sinh quái vật loạt mới nguyên vẹn ở vị trí xuất phát ban đầu
+			foreach (var spawner in allSpawners)
+			{
+				if (spawner != null)
+				{
+					spawner.AttemptToSpawnCharacter();
+				}
+			}
+
+			Debug.Log("[HỆ THỐNG CO-OP OFFLINE] Toàn bộ quái vật thường trên bản đồ đã được dọn dẹp sạch sẽ và hồi sinh trở lại tọa độ gốc thành công!");
+		}
 	}
 }

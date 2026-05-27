@@ -13,6 +13,47 @@ namespace SG {
 		public bool menuWindowIsOpen = false;
 		public bool popupWindowIsOpen = false;
 
+		[Header("Main Menu Settings (Offline)")]
+		[SerializeField] private CanvasGroup hudCanvasGroup;       // Kéo thả CanvasGroup của thanh Máu/Stamina vào đây
+		[SerializeField] private CanvasGroup mainMenuCanvasGroup;  // Kéo thả CanvasGroup của Menu Tổng (Equipment, Inventory...) vào đây
+
+		public void ToggleMainMenu()
+		{
+			menuWindowIsOpen = !menuWindowIsOpen;
+
+			if (menuWindowIsOpen)
+			{
+				// ẨN THANH HUD CHIẾN ĐẤU
+				if (hudCanvasGroup != null)
+				{
+					hudCanvasGroup.alpha = 0;
+					hudCanvasGroup.interactable = false;
+					hudCanvasGroup.blocksRaycasts = false;
+				}
+
+				// HIỆN MENU TỔNG
+				if (mainMenuCanvasGroup != null)
+				{
+					mainMenuCanvasGroup.alpha = 1;
+					mainMenuCanvasGroup.interactable = true;
+					mainMenuCanvasGroup.blocksRaycasts = true;
+				}
+				
+				// Khóa thời gian game hoặc ngắt hành vi tấn công/nhảy của Player tại đây nếu cần
+			}
+			else
+			{
+				// HIỆN LẠI THANH HUD CHIẾN ĐẤU
+				if (hudCanvasGroup != null) { hudCanvasGroup.alpha = 1; hudCanvasGroup.interactable = true; hudCanvasGroup.blocksRaycasts = true; }
+
+				// ẨN MENU TỔNG
+				if (mainMenuCanvasGroup != null) { mainMenuCanvasGroup.alpha = 0; mainMenuCanvasGroup.interactable = false; mainMenuCanvasGroup.blocksRaycasts = false; }
+				
+				// Đóng luôn màn hình con Trang bị nếu người chơi đang bật
+				GetComponentInChildren<PlayerUIEquipmentManager>()?.CloseEquipmentWindow();
+			}
+		}
+
 		private void Awake()
 		{
 			if (instance == null)

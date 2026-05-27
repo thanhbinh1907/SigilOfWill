@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SG
 {
-    // ĐỔI KẾ THỪA: Chuyển từ MonoBehaviour sang kế thừa lớp tương tác cơ sở 'Interactable' của tập trước
+    // ĐỔI KẾ THỪA: Chuyển từ MonoBehaviour sang kế thừa lớp tương tác cơ sở 'Interactable'
     public class FogWallInteractable : Interactable
     {
         public enum DirectionAxis
@@ -106,7 +106,7 @@ namespace SG
         }
 
         // =================================================================================
-        // GHI ĐÈ PHƯƠNG THỨC TƯƠNG TÁC XUYÊN SƯƠNG MÙ CHUẨN OFFLINE SINGLE-PLAYER (TẬP 53)
+        // GHI ĐÈ PHƯƠNG THỨC TƯƠNG TÁC XUYÊN SƯƠNG MÙ CHUẨN OFFLINE SINGLE-PLAYER
         // =================================================================================
         public override void Interact(PlayerManager player)
         {

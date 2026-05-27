@@ -13,6 +13,7 @@ namespace SG
 
 		[Header("Action Sounds")]
 		public AudioClip rollSFX;
+		public AudioClip pickupItemSFX; // Âm thanh thu thập vật phẩm
 
 		[Header("Boss Music Players")]
 		[SerializeField] AudioSource bossIntroPlayer;

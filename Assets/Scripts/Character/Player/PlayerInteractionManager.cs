@@ -45,6 +45,15 @@ namespace SG
             if (currentInteractableActions[0] == null)
             {
                 currentInteractableActions.RemoveAt(0);
+
+                // Cập nhật lại trạng thái nếu hàng đợi rỗng sau khi dọn dẹp
+                if (currentInteractableActions.Count == 0)
+                {
+                    if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
+                    {
+                        PlayerUIManager.instance.playerUIPopUpManager.ClosePlayerMessagePopup();
+                    }
+                }
                 return;
             }
 
@@ -104,12 +113,12 @@ namespace SG
                 }
             }
 
-            // Nếu sau khi dọn dẹp mà danh sách trống hoàn toàn, ra lệnh cho UI ẩn bảng thông báo đi
+            // Nếu sau khi dọn dẹp mà danh sách trống hoàn toàn, ra lệnh cho UI ẩn bảng thông báo đi (chỉ ẩn message popup, giữ nguyên loot card)
             if (currentInteractableActions.Count == 0)
             {
                 if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
                 {
-                    PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows();
+                    PlayerUIManager.instance.playerUIPopUpManager.ClosePlayerMessagePopup();
                 }
             }
         }

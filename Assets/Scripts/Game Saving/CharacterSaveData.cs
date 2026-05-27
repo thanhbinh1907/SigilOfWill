@@ -40,10 +40,18 @@ namespace SG
 		public SerializableDictionary<int, bool> bossesAwakened;
 		public SerializableDictionary<int, bool> bossesDefeated;
 
+		[Header("Sites Of Grace")]
+		public SerializableDictionary<int, bool> sitesOfGrace;
+
+		[Header("World Items Looted")]
+		public SerializableDictionary<int, bool> worldItemsLooted;
+
 		public CharacterSaveData()
 		{
 			bossesAwakened = new SerializableDictionary<int, bool>();
 			bossesDefeated = new SerializableDictionary<int, bool>();
+			sitesOfGrace = new SerializableDictionary<int, bool>();
+			worldItemsLooted = new SerializableDictionary<int, bool>();
 		}
 	}
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire_Staff
   m_EditorClassIdentifier: Assembly-CSharp::SG.StaffWeaponItem
   itemName: Fire Staff
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 5c4b6c951991e7848954265bc1f62b35, type: 3}
   itemDescription: Buff fire damage.
   itemID: 3
   weaponModel: {fileID: 8986092292266625940, guid: b19720c69f3420b4d9e33c796b0a6c48, type: 3}
