@@ -263,6 +263,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open Character Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7af84b1-8b2c-49ea-80df-58673a5a40bb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +362,17 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1f7b8a5-d8cf-4ab2-98ea-0e8fae98c9dd"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Character Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -431,6 +451,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_PlayerAction_SwitchLeftWeapon = m_PlayerAction.FindAction("Switch Left Weapon", throwIfNotFound: true);
         m_PlayerAction_LeftMouse = m_PlayerAction.FindAction("Left Mouse", throwIfNotFound: true);
         m_PlayerAction_Interact = m_PlayerAction.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerAction_OpenCharacterMenu = m_PlayerAction.FindAction("Open Character Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_DeleteCharacterSlot = m_UI.FindAction("DeleteCharacterSlot", throwIfNotFound: true);
@@ -721,6 +742,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_SwitchLeftWeapon;
     private readonly InputAction m_PlayerAction_LeftMouse;
     private readonly InputAction m_PlayerAction_Interact;
+    private readonly InputAction m_PlayerAction_OpenCharacterMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player Action".
     /// </summary>
@@ -764,6 +786,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerAction/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_PlayerAction_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerAction/OpenCharacterMenu".
+        /// </summary>
+        public InputAction @OpenCharacterMenu => m_Wrapper.m_PlayerAction_OpenCharacterMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -814,6 +840,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @OpenCharacterMenu.started += instance.OnOpenCharacterMenu;
+            @OpenCharacterMenu.performed += instance.OnOpenCharacterMenu;
+            @OpenCharacterMenu.canceled += instance.OnOpenCharacterMenu;
         }
 
         /// <summary>
@@ -849,6 +878,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @OpenCharacterMenu.started -= instance.OnOpenCharacterMenu;
+            @OpenCharacterMenu.performed -= instance.OnOpenCharacterMenu;
+            @OpenCharacterMenu.canceled -= instance.OnOpenCharacterMenu;
         }
 
         /// <summary>
@@ -1167,6 +1199,13 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Open Character Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenCharacterMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -1,36 +1,117 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace SG
 {
     public class PlayerUIEquipmentManager : MonoBehaviour
     {
-        [Header("Equipment Windows")]
-        [SerializeField] private GameObject equipmentWindowGameObject; // Kéo thả Panel Trang bị vào đây
+        [Header("Menu Window")]
+        [SerializeField] GameObject menuWindow;
 
-        [Header("Default Selected Slot")]
-        [SerializeField] private GameObject firstSelectedWeaponSlot; // Kéo thả ô vũ khí Tay Phải 01 vào đây
+        [Header("Weapon Slots UI Images")]
+        [SerializeField] Image rightHandSlot01;
+        [SerializeField] Image rightHandSlot02;
+        [SerializeField] Image rightHandSlot03;
+        [SerializeField] Image leftHandSlot01;
+        [SerializeField] Image leftHandSlot02;
+        [SerializeField] Image leftHandSlot03;
 
-        // Hàm mở màn hình trang bị khi bấm nút từ Menu Tổng
-        public void OpenEquipmentWindow()
+        [Header("Default Selected Button")]
+        [SerializeField] Button defaultSelectedButton;
+
+        public void OpenEquipmentManagerMenu()
         {
-            if (equipmentWindowGameObject == null) return;
+            menuWindow.SetActive(true);
+            RefreshWeaponSlotIcons();
 
-            // Kích hoạt bật hiển thị Panel
-            equipmentWindowGameObject.SetActive(true);
-
-            // THAO TÁC QUAN TRỌNG: Ép hệ thống Unity UI tự động chọn và bôi sáng ô vũ khí đầu tiên
-            if (firstSelectedWeaponSlot != null && EventSystem.current != null)
+            if (defaultSelectedButton != null)
             {
-                EventSystem.current.SetSelectedGameObject(firstSelectedWeaponSlot);
+                defaultSelectedButton.Select();
             }
         }
 
-        public void CloseEquipmentWindow()
+        public void CloseEquipmentManagerMenu()
         {
-            if (equipmentWindowGameObject != null)
+            menuWindow.SetActive(false);
+        }
+
+        private void RefreshWeaponSlotIcons()
+        {
+            // CHUYỂN HƯỚNG OFFLINE: Lấy thẳng qua Instance Singleton của PlayerManager cục bộ
+            PlayerManager player = PlayerManager.instance; 
+
+            if (player == null) return;
+
+            // TAY PHẢI - Ô 1
+            if (player.playerInventoryManager.weaponsInRightHandSlots[0] != null && 
+                player.playerInventoryManager.weaponsInRightHandSlots[0].itemIcon != null)
             {
-                equipmentWindowGameObject.SetActive(false);
+                rightHandSlot01.sprite = player.playerInventoryManager.weaponsInRightHandSlots[0].itemIcon;
+                rightHandSlot01.enabled = true;
+            }
+            else
+            {
+                rightHandSlot01.enabled = false; // Ẩn icon nếu là tay không (Unarmed)
+            }
+
+            // TAY PHẢI - Ô 2
+            if (player.playerInventoryManager.weaponsInRightHandSlots[1] != null && 
+                player.playerInventoryManager.weaponsInRightHandSlots[1].itemIcon != null)
+            {
+                rightHandSlot02.sprite = player.playerInventoryManager.weaponsInRightHandSlots[1].itemIcon;
+                rightHandSlot02.enabled = true;
+            }
+            else
+            {
+                rightHandSlot02.enabled = false;
+            }
+
+            // TAY PHẢI - Ô 3
+            if (player.playerInventoryManager.weaponsInRightHandSlots[2] != null && 
+                player.playerInventoryManager.weaponsInRightHandSlots[2].itemIcon != null)
+            {
+                rightHandSlot03.sprite = player.playerInventoryManager.weaponsInRightHandSlots[2].itemIcon;
+                rightHandSlot03.enabled = true;
+            }
+            else
+            {
+                rightHandSlot03.enabled = false;
+            }
+
+            // TAY TRÁI - Ô 1
+            if (player.playerInventoryManager.weaponsInLeftHandSlots[0] != null && 
+                player.playerInventoryManager.weaponsInLeftHandSlots[0].itemIcon != null)
+            {
+                leftHandSlot01.sprite = player.playerInventoryManager.weaponsInLeftHandSlots[0].itemIcon;
+                leftHandSlot01.enabled = true;
+            }
+            else
+            {
+                leftHandSlot01.enabled = false;
+            }
+
+            // TAY TRÁI - Ô 2
+            if (player.playerInventoryManager.weaponsInLeftHandSlots[1] != null && 
+                player.playerInventoryManager.weaponsInLeftHandSlots[1].itemIcon != null)
+            {
+                leftHandSlot02.sprite = player.playerInventoryManager.weaponsInLeftHandSlots[1].itemIcon;
+                leftHandSlot02.enabled = true;
+            }
+            else
+            {
+                leftHandSlot02.enabled = false;
+            }
+
+            // TAY TRÁI - Ô 3
+            if (player.playerInventoryManager.weaponsInLeftHandSlots[2] != null && 
+                player.playerInventoryManager.weaponsInLeftHandSlots[2].itemIcon != null)
+            {
+                leftHandSlot03.sprite = player.playerInventoryManager.weaponsInLeftHandSlots[2].itemIcon;
+                leftHandSlot03.enabled = true;
+            }
+            else
+            {
+                leftHandSlot03.enabled = false;
             }
         }
     }

@@ -177,6 +177,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Open Character Menu",
+                    "type": "Button",
+                    "id": "d7af84b1-8b2c-49ea-80df-58673a5a40bb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,6 +274,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1f7b8a5-d8cf-4ab2-98ea-0e8fae98c9dd",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Character Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

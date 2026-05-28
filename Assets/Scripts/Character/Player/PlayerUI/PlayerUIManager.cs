@@ -7,7 +7,10 @@ namespace SG {
 	{
 		public static PlayerUIManager instance;
 		[HideInInspector] public PlayerUIHudManager playerUIHudManager;
+		public PlayerUIHudManager playerHUDManager => playerUIHudManager;
 		[HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
+		[HideInInspector] public PlayerUICharacterMenuManager playerUICharacterMenuManager;
+		[HideInInspector] public PlayerUIEquipmentManager playerUIEquipmentManager;
 
 		[Header("UI Windows")]
 		public bool menuWindowIsOpen = false;
@@ -50,7 +53,7 @@ namespace SG {
 				if (mainMenuCanvasGroup != null) { mainMenuCanvasGroup.alpha = 0; mainMenuCanvasGroup.interactable = false; mainMenuCanvasGroup.blocksRaycasts = false; }
 				
 				// Đóng luôn màn hình con Trang bị nếu người chơi đang bật
-				GetComponentInChildren<PlayerUIEquipmentManager>()?.CloseEquipmentWindow();
+				GetComponentInChildren<PlayerUIEquipmentManager>()?.CloseEquipmentManagerMenu();
 			}
 		}
 
@@ -68,6 +71,16 @@ namespace SG {
 
 			playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
 			playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>();
+			playerUICharacterMenuManager = GetComponentInChildren<PlayerUICharacterMenuManager>(true);
+			playerUIEquipmentManager = GetComponentInChildren<PlayerUIEquipmentManager>(true);
+		}
+
+		public void CloseAllMenuWindows()
+		{
+			if (playerUICharacterMenuManager != null)
+				playerUICharacterMenuManager.CloseCharacterMenu();
+			if (playerUIEquipmentManager != null)
+				playerUIEquipmentManager.CloseEquipmentManagerMenu();
 		}
 
 		private void Start()

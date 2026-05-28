@@ -13,6 +13,20 @@ namespace SG
         [SerializeField] UI_StatBar staminaBar;
         [SerializeField] UI_StatBar manaBar;
 
+        [Header("HUD Canvas Groups")]
+        [SerializeField] CanvasGroup[] hudCanvasGroups;
+
+        public void ToggleHUD(bool status)
+        {
+            foreach (var canvasGroup in hudCanvasGroups)
+            {
+                if (canvasGroup != null)
+                {
+                    canvasGroup.alpha = status ? 1f : 0f;
+                }
+            }
+        }
+
         [Header("Quick Slot Icon")]
         [SerializeField] Image rightWeaponQuickSlotIcon;
         [SerializeField] Image leftWeaponQuickSlotIcon;

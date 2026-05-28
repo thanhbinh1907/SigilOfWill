@@ -43,6 +43,10 @@ namespace SG
 		[Header("PLAYER INTERACTION INPUT")]
 		[SerializeField] bool interactionInput = false;
 
+		[Header("UI Inputs")]
+		public bool closeMenuInput;
+		public bool openCharacterMenuInput;
+
 		private void Awake()
         {
             if (instance == null)
@@ -124,6 +128,9 @@ namespace SG
 
 				// INTERACTION
 				playerControls.PlayerAction.Interact.performed += i => interactionInput = true;
+
+				// UI INPUTS
+				playerControls.PlayerAction.OpenCharacterMenu.performed += i => openCharacterMenuInput = true;
 			}
             playerControls.Enable();
         }
@@ -147,6 +154,21 @@ namespace SG
             if (player == null) return;
 
             HandleAllInput();
+
+            // Cập nhật trạng thái con trỏ chuột dựa trên UI
+            if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
         }
 
         private void HandleAllInput()
@@ -161,12 +183,23 @@ namespace SG
             //HandleLeftMouseInput();
 			HandleSwitchWeaponInput();
 			HandleInteractionInput();
+			HandleCloseUIInput();
+			HandleOpenCharacterMenuInput();
 		}
 
         // MOVEMENT INPUT
 
         private void HandlePlayerMovementInput()
         {
+            if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                verticalInput = 0;
+                horizontalInput = 0;
+                moveAmount = 0;
+                if (player != null) player.isMoving = false;
+                return;
+            }
+
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
 
@@ -216,6 +249,13 @@ namespace SG
 
         private void HandleCameraMovementInput()
         {
+            if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                cameraVerticalInput = 0;
+                cameraHorizontalInput = 0;
+                return;
+            }
+
             cameraInput = playerControls.PlayerCamera.Movement.ReadValue<Vector2>();
 
             cameraVerticalInput = cameraInput.y;
@@ -248,11 +288,12 @@ namespace SG
 
         private void HandleJumpInput()
         {
+            if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+                return;
+
             if (jumpInput)
             {
                 jumpInput = false;
-
-                // IF WE HAVE A UI WINDOW OPEN, WE DON'T WANT TO JUMP, SO RETURN EARLY
 
                 // ATTEMPT TO PERFORM JUMP
                 player.playerLocomotionManager.AttemptToPerformJump();
@@ -356,5 +397,45 @@ namespace SG
 				}
 			}
 		}
-    }
+
+		private void HandleCloseUIInput()
+		{
+			// Kiểm tra nhấn phím Escape trên bàn phím
+			bool escapePressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame;
+
+			if (escapePressed)
+			{
+				closeMenuInput = true;
+			}
+
+			if (closeMenuInput)
+			{
+				closeMenuInput = false;
+				if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+				{
+					PlayerUIManager.instance.CloseAllMenuWindows();
+				}
+			}
+		}
+
+		private void HandleOpenCharacterMenuInput()
+		{
+			if (openCharacterMenuInput)
+			{
+				openCharacterMenuInput = false;
+
+				if (PlayerUIManager.instance != null)
+				{
+					// Reset và dọn dẹp các cửa sổ thông báo trước khi mở menu chính
+					if (PlayerUIManager.instance.playerUIPopUpManager != null)
+						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows(); 
+
+					PlayerUIManager.instance.CloseAllMenuWindows();
+
+					if (PlayerUIManager.instance.playerUICharacterMenuManager != null)
+						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
+				}
+			}
+		}
+	}
 }

@@ -23,6 +23,8 @@ namespace SG
 		[SerializeField] bool testRightHit;
 
 
+		public static PlayerManager instance;
+
 		[HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerStatsManager playerStatsManager;
@@ -36,6 +38,16 @@ namespace SG
 
 		protected override void Awake()
         {
+			if (instance == null)
+			{
+				instance = this;
+			}
+			else
+			{
+				Destroy(gameObject);
+				return;
+			}
+
             base.Awake();
 
 			DontDestroyOnLoad(gameObject);
