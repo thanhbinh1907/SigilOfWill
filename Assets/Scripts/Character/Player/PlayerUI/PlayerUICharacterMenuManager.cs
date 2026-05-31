@@ -7,38 +7,33 @@ namespace SG
     public class PlayerUICharacterMenuManager : MonoBehaviour
     {
         [Header("Menu Window")]
-        [SerializeField] GameObject menuWindow;
+        [SerializeField] GameObject menu;
 
-        [Header("Default Selected Button")]
-        [SerializeField] Button defaultSelectedButton;
+        public bool IsOpen => menu != null && menu.activeSelf;
 
         public void OpenCharacterMenu()
         {
-            PlayerUIManager.instance.menuWindowIsOpen = true;
-            menuWindow.SetActive(true);
-
-            if (defaultSelectedButton != null)
-            {
-                defaultSelectedButton.Select();
-            }
+            PlayerUIManager.instance.SetMainMenuActive(true);
+            menu.SetActive(true);
         }
 
         public void CloseCharacterMenu()
         {
-            PlayerUIManager.instance.menuWindowIsOpen = false;
-            menuWindow.SetActive(false);
-        }
+			PlayerUIManager.instance.SetMainMenuActive(false);
+			menu.SetActive(false);
+		}
 
-        // Hàm wrapper gọi từ nút bấm UI (Step 5)
-        public void CloseCharacterMenuAfterFixedUpdate()
+        public void CloseCharacterMenuAfterFixedFrame()
         {
-            StartCoroutine(WaitThenClose());
-        }
+            StartCoroutine(WaitThenCloseMenu());
+		}
 
-        private IEnumerator WaitThenClose()
+        private IEnumerator WaitThenCloseMenu()
         {
-            yield return new WaitForFixedUpdate(); // Chờ xử lý vật lý/input gameplay frame này chạy xong
-            CloseCharacterMenu();
-        }
+            yield return new WaitForFixedUpdate();
+
+			PlayerUIManager.instance.SetMainMenuActive(false);
+			menu.SetActive(false);
+		}
     }
 }

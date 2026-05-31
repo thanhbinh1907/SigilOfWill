@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wind_Staff
   m_EditorClassIdentifier: Assembly-CSharp::SG.StaffWeaponItem
   itemName: Wind Staff
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d621e2d3b9093244da8c4c7d4adb972a, type: 3}
   itemDescription: Buff wind damage.
   itemID: 5
-  weaponModel: {fileID: 4620991593835924226, guid: 12ac749c75a1c6142912ba25417bc5a6, type: 3}
+  weaponModel: {fileID: 3294102209946575578, guid: e821ed12e33ad3a4fa3be0b6a8ed2749, type: 3}
   strengREQ: 0
   dexREQ: 0
   intREQ: 0

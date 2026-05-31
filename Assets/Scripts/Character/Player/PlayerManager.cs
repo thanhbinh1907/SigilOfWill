@@ -144,6 +144,56 @@ namespace SG
 				currentCharacterData.currentLeftHandWeaponID = playerInventoryManager.currentLeftHandWeapon.itemID;
 			}
 
+			// SAVE INVENTORY & QUICK SLOTS
+			if (currentCharacterData.itemsInventoryIDs == null)
+				currentCharacterData.itemsInventoryIDs = new List<int>();
+			else
+				currentCharacterData.itemsInventoryIDs.Clear();
+
+			foreach (var item in playerInventoryManager.itemsInventory)
+			{
+				if (item != null)
+				{
+					currentCharacterData.itemsInventoryIDs.Add(item.itemID);
+				}
+			}
+
+			if (currentCharacterData.weaponsInRightHandSlotsIDs == null)
+				currentCharacterData.weaponsInRightHandSlotsIDs = new List<int>();
+			else
+				currentCharacterData.weaponsInRightHandSlotsIDs.Clear();
+
+			foreach (var weapon in playerInventoryManager.weaponsInRightHandSlots)
+			{
+				if (weapon != null)
+				{
+					currentCharacterData.weaponsInRightHandSlotsIDs.Add(weapon.itemID);
+				}
+				else
+				{
+					currentCharacterData.weaponsInRightHandSlotsIDs.Add(WorldItemDatabase.instance.unarmedWeapon.itemID);
+				}
+			}
+
+			if (currentCharacterData.weaponsInLeftHandSlotsIDs == null)
+				currentCharacterData.weaponsInLeftHandSlotsIDs = new List<int>();
+			else
+				currentCharacterData.weaponsInLeftHandSlotsIDs.Clear();
+
+			foreach (var weapon in playerInventoryManager.weaponsInLeftHandSlots)
+			{
+				if (weapon != null)
+				{
+					currentCharacterData.weaponsInLeftHandSlotsIDs.Add(weapon.itemID);
+				}
+				else
+				{
+					currentCharacterData.weaponsInLeftHandSlotsIDs.Add(WorldItemDatabase.instance.unarmedWeapon.itemID);
+				}
+			}
+
+			currentCharacterData.rightHandWeaponIndex = playerInventoryManager.rightHandWeaponIndex;
+			currentCharacterData.leftHandWeaponIndex = playerInventoryManager.leftHandWeaponIndex;
 		}
 
         public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) 
@@ -170,6 +220,48 @@ namespace SG
 
 			playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentRightHandWeaponID);
 			playerInventoryManager.currentLeftHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentLeftHandWeaponID);
+
+			// LOAD INVENTORY
+			playerInventoryManager.itemsInventory.Clear();
+			if (currentCharacterData.itemsInventoryIDs != null)
+			{
+				foreach (var itemID in currentCharacterData.itemsInventoryIDs)
+				{
+					WeaponItem weapon = WorldItemDatabase.instance.GetWeaponByID(itemID);
+					if (weapon != null)
+					{
+						playerInventoryManager.AddItemToInventory(weapon);
+					}
+				}
+			}
+
+			// LOAD QUICK SLOTS
+			for (int i = 0; i < 3; i++)
+			{
+				if (currentCharacterData.weaponsInRightHandSlotsIDs != null && i < currentCharacterData.weaponsInRightHandSlotsIDs.Count)
+				{
+					playerInventoryManager.weaponsInRightHandSlots[i] = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.weaponsInRightHandSlotsIDs[i]);
+				}
+				else
+				{
+					playerInventoryManager.weaponsInRightHandSlots[i] = WorldItemDatabase.instance.unarmedWeapon;
+				}
+			}
+
+			for (int i = 0; i < 3; i++)
+			{
+				if (currentCharacterData.weaponsInLeftHandSlotsIDs != null && i < currentCharacterData.weaponsInLeftHandSlotsIDs.Count)
+				{
+					playerInventoryManager.weaponsInLeftHandSlots[i] = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.weaponsInLeftHandSlotsIDs[i]);
+				}
+				else
+				{
+					playerInventoryManager.weaponsInLeftHandSlots[i] = WorldItemDatabase.instance.unarmedWeapon;
+				}
+			}
+
+			playerInventoryManager.rightHandWeaponIndex = currentCharacterData.rightHandWeaponIndex;
+			playerInventoryManager.leftHandWeaponIndex = currentCharacterData.leftHandWeaponIndex;
 
 			playerEquipmentManager.LoadWeaponsOnBothHands();
 		}

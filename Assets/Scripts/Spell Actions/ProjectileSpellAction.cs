@@ -20,7 +20,6 @@ namespace SG
 			if (spawnLocation == null)
 			{
 				spawnLocation = player.playerEquipmentManager.rightHandSlot.transform;
-				Debug.LogWarning("Vũ khí không có Spell Spawn Point. Lấy tạm vị trí tay phải.");
 			}
 
 			Vector3 spawnPosition = spawnLocation.position;
@@ -29,7 +28,8 @@ namespace SG
 			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
 			{
 				Transform targetTransform = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform;
-				Vector3 targetPos = targetTransform != null ? targetTransform.position : player.playerCombatManager.currentTarget.transform.position;
+				Vector3 targetPos = targetTransform != null ? targetTransform.position : 
+					player.playerCombatManager.currentTarget.transform.position;
 				shootDirection = targetPos - spawnLocation.position;
 			}
 
@@ -38,7 +38,6 @@ namespace SG
 
 			if (spellPrefab == null)
 			{
-				Debug.LogError($"Projectile Spell '{name}' lacks spellPrefab!");
 				return;
 			}
 
@@ -52,7 +51,6 @@ namespace SG
 				rb.linearVelocity = shootDirection * speed;
 			}
 
-			Debug.Log($"Projectile Spell '{name}' spawned successfully.");
 		}
 	}
 }

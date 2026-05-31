@@ -19,6 +19,10 @@ namespace SG
 		[SerializeField] AudioSource bossIntroPlayer;
 		[SerializeField] AudioSource bossLoopPlayer;
 		[SerializeField] float musicVolume = 0.5f;
+		[Header("Global Volume Settings")]
+		public float sfxVolume = 0.5f;
+
+		public System.Action<float> OnBGMVolumeChanged;
 
         private void Awake()
         {
@@ -29,7 +33,12 @@ namespace SG
             else
             {
                 Destroy(gameObject);
+				return;
             }
+
+			// Load saved settings
+			musicVolume = PlayerPrefs.GetFloat("BGM_Volume", 0.5f);
+			sfxVolume = PlayerPrefs.GetFloat("SFX_Volume", 0.5f);
 
 			// Tự động khởi tạo AudioSource nếu chưa được gán trong Inspector
 			if (bossIntroPlayer == null)
@@ -46,8 +55,45 @@ namespace SG
 			}
 
 			// Đảm bảo âm thanh phẳng 2D tuyệt đối (không bị giảm theo khoảng cách)
-			if (bossIntroPlayer != null) bossIntroPlayer.spatialBlend = 0f;
-			if (bossLoopPlayer != null) bossLoopPlayer.spatialBlend = 0f;
+			if (bossIntroPlayer != null)
+			{
+				bossIntroPlayer.spatialBlend = 0f;
+				bossIntroPlayer.volume = musicVolume;
+			}
+			if (bossLoopPlayer != null)
+			{
+				bossLoopPlayer.spatialBlend = 0f;
+				bossLoopPlayer.volume = musicVolume;
+			}
+		}
+
+		public void SetBGMVolume(float volume)
+		{
+			musicVolume = volume;
+			PlayerPrefs.SetFloat("BGM_Volume", musicVolume);
+			PlayerPrefs.Save();
+
+			if (bossIntroPlayer != null) bossIntroPlayer.volume = musicVolume;
+			if (bossLoopPlayer != null) bossLoopPlayer.volume = musicVolume;
+
+			OnBGMVolumeChanged?.Invoke(musicVolume);
+		}
+
+		public void SetSFXVolume(float volume)
+		{
+			sfxVolume = volume;
+			PlayerPrefs.SetFloat("SFX_Volume", sfxVolume);
+			PlayerPrefs.Save();
+		}
+
+		public float GetBGMVolume()
+		{
+			return musicVolume;
+		}
+
+		public float GetSFXVolume()
+		{
+			return sfxVolume;
 		}
 
 		public void PlayBossTrack(AudioClip introTrack, AudioClip loopTrack)

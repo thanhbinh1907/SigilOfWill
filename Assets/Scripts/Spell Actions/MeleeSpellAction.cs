@@ -13,15 +13,12 @@ namespace SG
 
 			if (spellPrefab == null)
 			{
-				Debug.LogError($"Melee Spell '{name}' lacks spellPrefab!");
 				return;
 			}
 
 			GameObject spellObj = Instantiate(spellPrefab, spawnPosition, spawnRotation);
 
 			InitializeHitbox(spellObj, player);
-
-			Debug.Log($"Melee Spell '{name}' spawned successfully.");
 		}
 	}
 }

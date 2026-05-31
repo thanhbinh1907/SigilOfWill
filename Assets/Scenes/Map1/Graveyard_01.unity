@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -274,6 +278,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -396,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -579,6 +591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -713,6 +729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -734,6 +754,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -812,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -947,6 +975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1050,6 +1082,10 @@ PrefabInstance:
     - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103265714657091479, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_RootOrder
@@ -1341,6 +1377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1924404215069938538, guid: 85d18420367f0074c921467924ad2582, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1399,9 +1439,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 38.374
       objectReference: {fileID: 0}
+    - target: {fileID: 4148727301491497051, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7901467800877154074, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_RootOrder
@@ -1691,6 +1739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Crypt_Door_Boarded_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2437617227467349076, guid: 99ac418c86f7c6e4388ed300eedc6d5a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3071445430754608878, guid: 99ac418c86f7c6e4388ed300eedc6d5a, type: 3}
       propertyPath: m_RootOrder
       value: 55
@@ -1838,6 +1890,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -2221,6 +2277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Basalt_04 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2420,6 +2480,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2955,6 +3019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 168
@@ -3076,6 +3144,10 @@ PrefabInstance:
     - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3259,6 +3331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
       value: 136
@@ -3324,6 +3400,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -3665,6 +3745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Statue_02
       objectReference: {fileID: 0}
+    - target: {fileID: 2069400881656398713, guid: bd7702b2232285943b914c03251d727e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3686,6 +3770,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -3886,6 +3974,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4185,6 +4277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4284,6 +4380,10 @@ PrefabInstance:
     - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
@@ -4651,9 +4751,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1988434955}
     m_Modifications:
+    - target: {fileID: 4148727301491497051, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7901467800877154074, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_RootOrder
@@ -4776,6 +4884,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5023,6 +5135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cloud_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5044,6 +5160,10 @@ PrefabInstance:
     - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Basalt_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
@@ -5328,6 +5448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 148
@@ -5454,6 +5578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cloud_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5531,6 +5659,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5610,6 +5742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8045964095532244039, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5687,6 +5823,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5872,10 +6012,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4262116678790628612, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4643458503317151784, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ea0850cd45628224eb56ca9fab8e50d1, type: 2}
+    - target: {fileID: 5500341121393130753, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5954,6 +6102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1924404215069938538, guid: 85d18420367f0074c921467924ad2582, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5973,7 +6125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 154040562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6088,6 +6240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 173
@@ -6153,6 +6309,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -6380,6 +6540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Well_01_Insert_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3587299271815331055, guid: a0bad9e154bea3149a4103a8b353bd59, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4216342331711923797, guid: a0bad9e154bea3149a4103a8b353bd59, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6501,6 +6665,10 @@ PrefabInstance:
     - target: {fileID: 4509402703182841577, guid: 3d8a1c82131c3a24b906f6557728e9a5, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509402703182841577, guid: 3d8a1c82131c3a24b906f6557728e9a5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6736,6 +6904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6801,6 +6973,10 @@ PrefabInstance:
     - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Lamp_Hanging_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8300982342143866592, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_CastShadows
@@ -7120,6 +7296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_05 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6154560912215210070, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6783182064136430316, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -7307,6 +7487,10 @@ PrefabInstance:
     - target: {fileID: 763958996993209178, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 763958996993209178, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1268569068685873807, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -7558,6 +7742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7645,6 +7833,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -7834,6 +8026,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4262116678790628612, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500341121393130753, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7855,6 +8055,10 @@ PrefabInstance:
     - target: {fileID: 4814231558058451792, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
       propertyPath: m_Name
       value: SM_Env_Vine_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814231558058451792, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5297436803928488426, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
       propertyPath: m_RootOrder
@@ -7965,6 +8169,10 @@ PrefabInstance:
     - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_03 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929518337431265766, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -8143,6 +8351,10 @@ PrefabInstance:
     - target: {fileID: 7468453053722539627, guid: d46388ce1f854b24db247ac7b23e7d41, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468453053722539627, guid: d46388ce1f854b24db247ac7b23e7d41, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7849377050755362001, guid: d46388ce1f854b24db247ac7b23e7d41, type: 3}
       propertyPath: m_RootOrder
@@ -8370,6 +8582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Crate_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3534860782186679106, guid: f8b22dd8017abb1488f3654bb07934f0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4198913460874121720, guid: f8b22dd8017abb1488f3654bb07934f0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8504,6 +8720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8525,6 +8745,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -8591,6 +8815,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -8957,6 +9185,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -9529,6 +9761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 163
@@ -9594,6 +9830,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -9730,6 +9970,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -9879,6 +10123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Basalt_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -10000,6 +10248,14 @@ PrefabInstance:
     - target: {fileID: 4262116678790628612, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262116678790628612, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500341121393130753, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10249,6 +10505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 44
@@ -10485,6 +10745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10584,6 +10848,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -11058,6 +11326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11300,6 +11572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11378,6 +11654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11399,6 +11679,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -11712,6 +11996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 167
@@ -11834,6 +12122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11855,6 +12147,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -12833,6 +13129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -13041,6 +13341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Post_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13119,6 +13423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_05 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -13143,6 +13451,10 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
       objectReference: {fileID: 0}
+    - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13164,6 +13476,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -13298,6 +13614,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13513,6 +13833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Lamp_Hanging_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8300982342143866592, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -13595,6 +13919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13673,6 +14001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Basalt_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6609481716783912975, guid: dafb0867a1ee55145bb0e2f47f964aca, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13717,7 +14049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722020378737418520, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123742799500824015, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_RootOrder
@@ -13769,7 +14101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7608636929534203765, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13870,6 +14202,10 @@ PrefabInstance:
     - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Brazier_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178384880093446900, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_RootOrder
@@ -14005,6 +14341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14082,6 +14422,10 @@ PrefabInstance:
     - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14523,6 +14867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14544,6 +14892,10 @@ PrefabInstance:
     - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2157093109020397711, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_RootOrder
@@ -15173,6 +15525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
       value: 135
@@ -15238,6 +15594,10 @@ PrefabInstance:
     - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crate_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2890204454827777113, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_RootOrder
@@ -15891,6 +16251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15995,6 +16359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Moss_05 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7074073678133148413, guid: b70aac24d797ebc4193f6d91f82f747c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7595312160799023175, guid: b70aac24d797ebc4193f6d91f82f747c, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -16072,6 +16440,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -16195,6 +16567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_05 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -16219,6 +16595,10 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
       objectReference: {fileID: 0}
+    - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16240,6 +16620,10 @@ PrefabInstance:
     - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crate_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2890204454827777113, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_RootOrder
@@ -16819,6 +17203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Statue_People_03
       objectReference: {fileID: 0}
+    - target: {fileID: 5463324645450366506, guid: b1794bac0b324df4c899a2ae1109e86d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5823537641976176639, guid: b1794bac0b324df4c899a2ae1109e86d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -16888,6 +17276,18 @@ PrefabInstance:
     - target: {fileID: 695063756792121515, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Lantern_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 695063756792121515, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437201376540344006, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130024992732222987, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17377,6 +17777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_Basic_02
       objectReference: {fileID: 0}
+    - target: {fileID: 3001574940498946899, guid: d4ce9cd83697d0e439a1d44ff7c879db, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17398,6 +17802,10 @@ PrefabInstance:
     - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
@@ -17697,6 +18105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17796,6 +18208,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -17931,6 +18347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17972,6 +18392,10 @@ PrefabInstance:
     - target: {fileID: 1522345048165729606, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722020378737418520, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123742799500824015, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_RootOrder
@@ -18032,6 +18456,10 @@ PrefabInstance:
     - target: {fileID: 7608636929534203765, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Candle_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608636929534203765, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18136,6 +18564,10 @@ PrefabInstance:
     - target: {fileID: 504605353467092804, guid: 7b354ee524213cc4db2cea86e811bf74, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 504605353467092804, guid: 7b354ee524213cc4db2cea86e811bf74, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 885915317750646270, guid: 7b354ee524213cc4db2cea86e811bf74, type: 3}
       propertyPath: m_RootOrder
@@ -18292,6 +18724,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -18497,6 +18933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cloud_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18588,6 +19028,10 @@ PrefabInstance:
     - target: {fileID: 5995187935144783874, guid: 0d4fb2d818837d841b82ce1d9f11472b, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrel_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995187935144783874, guid: 0d4fb2d818837d841b82ce1d9f11472b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6375125671071673016, guid: 0d4fb2d818837d841b82ce1d9f11472b, type: 3}
       propertyPath: m_RootOrder
@@ -18883,6 +19327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cloud_03
       objectReference: {fileID: 0}
+    - target: {fileID: 763958996993209178, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1268569068685873807, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -19143,6 +19591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 145
@@ -19208,6 +19660,10 @@ PrefabInstance:
     - target: {fileID: 7215809562124524443, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215809562124524443, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8027776545990689057, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
       propertyPath: m_RootOrder
@@ -19286,6 +19742,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -19701,6 +20161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19766,6 +20230,10 @@ PrefabInstance:
     - target: {fileID: 4509402703182841577, guid: 3d8a1c82131c3a24b906f6557728e9a5, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509402703182841577, guid: 3d8a1c82131c3a24b906f6557728e9a5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19926,6 +20394,10 @@ PrefabInstance:
     - target: {fileID: 928791763385903229, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 928791763385903229, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1721297823330421160, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -20357,6 +20829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_03
       objectReference: {fileID: 0}
+    - target: {fileID: 504605353467092804, guid: 7b354ee524213cc4db2cea86e811bf74, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 885915317750646270, guid: 7b354ee524213cc4db2cea86e811bf74, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -20665,6 +21141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -20742,6 +21222,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -21113,6 +21597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -21329,6 +21817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21394,6 +21886,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21569,6 +22065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Basalt_04
       objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -21647,6 +22147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06
       objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
       value: 114
@@ -21724,6 +22228,10 @@ PrefabInstance:
     - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
@@ -21937,6 +22445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21962,6 +22474,10 @@ PrefabInstance:
     - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_04 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6671915922026078066, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_RootOrder
@@ -22267,7 +22783,7 @@ GameObject:
   - component: {fileID: 768628460}
   - component: {fileID: 768628459}
   - component: {fileID: 768628458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23267,6 +23783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -23467,6 +23987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23570,6 +24094,10 @@ PrefabInstance:
     - target: {fileID: 419776883302810686, guid: 4fb0ecf19ada3f747b424b05a9ac0f18, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Statue_People_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 419776883302810686, guid: 4fb0ecf19ada3f747b424b05a9ac0f18, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1051740551040147076, guid: 4fb0ecf19ada3f747b424b05a9ac0f18, type: 3}
       propertyPath: m_RootOrder
@@ -23778,6 +24306,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24021,6 +24553,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Lantern_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 695063756792121515, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437201376540344006, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130024992732222987, guid: eaddcf73f7a3ffa4c82b0171469a5933, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24099,6 +24643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24120,6 +24668,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -24351,6 +24903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Brazier_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9178384880093446900, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -24485,6 +25041,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24506,6 +25066,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -24572,6 +25136,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -24858,9 +25426,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: be1f6e58fc7498b4fbf71a4abab8c524, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1001 &844582075
 PrefabInstance:
@@ -25170,6 +25738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2157093109020397711, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -25296,6 +25868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25369,6 +25945,10 @@ PrefabInstance:
     - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25540,6 +26120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -25617,6 +26201,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -25818,6 +26406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25884,6 +26476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_01
       objectReference: {fileID: 0}
+    - target: {fileID: 6539438462106867174, guid: 5c9c674f945ae3d49a40d7ca5a64cc86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25905,6 +26501,10 @@ PrefabInstance:
     - target: {fileID: 7074073678133148413, guid: b70aac24d797ebc4193f6d91f82f747c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Moss_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074073678133148413, guid: b70aac24d797ebc4193f6d91f82f747c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7595312160799023175, guid: b70aac24d797ebc4193f6d91f82f747c, type: 3}
       propertyPath: m_RootOrder
@@ -26144,6 +26744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7595595266075953990, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -26277,6 +26881,10 @@ PrefabInstance:
     - target: {fileID: 763958996993209178, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 763958996993209178, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1268569068685873807, guid: 5c05b6cdc9b1f5e4db57e8b0bda356bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -26444,7 +27052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1918400745116896212, guid: 92426034b61bb4e46b35d8ba6a5f1437, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26698,6 +27306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
       value: 181
@@ -26897,6 +27509,10 @@ PrefabInstance:
     - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27199,6 +27815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_03
       objectReference: {fileID: 0}
+    - target: {fileID: 4814231558058451792, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5297436803928488426, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -27276,6 +27896,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -27705,6 +28329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4814231558058451792, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5297436803928488426, guid: 3b596e7d4f71d9842acfe5f83c93dc16, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -27999,6 +28627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28158,6 +28790,10 @@ PrefabInstance:
     - target: {fileID: 2266404328464906784, guid: 2eda3b6db64ebbf4aaa1513c37212954, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266404328464906784, guid: 2eda3b6db64ebbf4aaa1513c37212954, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28319,6 +28955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_04
       objectReference: {fileID: 0}
+    - target: {fileID: 7502749378455016767, guid: ecd0e20add3c18f4db6e0534dc558a9a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28415,6 +29055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
       value: 138
@@ -28481,7 +29125,7 @@ GameObject:
   - component: {fileID: 1004337514}
   - component: {fileID: 1004337513}
   - component: {fileID: 1004337512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OceanPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28790,6 +29434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Post_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28811,6 +29459,10 @@ PrefabInstance:
     - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2157093109020397711, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_RootOrder
@@ -29172,6 +29824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29249,6 +29905,10 @@ PrefabInstance:
     - target: {fileID: 7734811380642378979, guid: bb19bb69b1f189d49b31a8b6946ddb3b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Grunge_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734811380642378979, guid: bb19bb69b1f189d49b31a8b6946ddb3b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29357,6 +30017,10 @@ PrefabInstance:
     - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6671915922026078066, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_RootOrder
@@ -29482,7 +30146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
@@ -29510,7 +30174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29533,6 +30197,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -29611,6 +30279,10 @@ PrefabInstance:
     - target: {fileID: 3534860782186679106, guid: f8b22dd8017abb1488f3654bb07934f0, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crate_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534860782186679106, guid: f8b22dd8017abb1488f3654bb07934f0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4198913460874121720, guid: f8b22dd8017abb1488f3654bb07934f0, type: 3}
       propertyPath: m_RootOrder
@@ -29837,6 +30509,10 @@ PrefabInstance:
     - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7595595266075953990, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_RootOrder
@@ -30153,6 +30829,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -30674,6 +31354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1924404215069938538, guid: 85d18420367f0074c921467924ad2582, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30778,7 +31462,7 @@ GameObject:
   - component: {fileID: 1088727168}
   - component: {fileID: 1088727167}
   - component: {fileID: 1088727166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SeaFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30890,6 +31574,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -31547,6 +32235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31638,6 +32330,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -32044,6 +32740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrel_Open_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2190145996170096, guid: f55116dce50043b4ab8ce72817ee6de9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 814051202746284490, guid: f55116dce50043b4ab8ce72817ee6de9, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -32316,6 +33016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -32476,6 +33180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Statue_People_Damaged_02
       objectReference: {fileID: 0}
+    - target: {fileID: 7493906000052398225, guid: 7257114d1e2396a4f866d9472f08bceb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7832994923991986731, guid: 7257114d1e2396a4f866d9472f08bceb, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -32598,6 +33306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32675,6 +33387,10 @@ PrefabInstance:
     - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32832,6 +33548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32873,6 +33593,10 @@ PrefabInstance:
     - target: {fileID: 1522345048165729606, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722020378737418520, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123742799500824015, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_RootOrder
@@ -32921,6 +33645,10 @@ PrefabInstance:
     - target: {fileID: 7608636929534203765, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Candle_09 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608636929534203765, guid: 59d4679fc30072b408eaae14a4ddc2e1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33346,6 +34074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
       value: 120
@@ -33480,6 +34212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_Drip_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1918400745116896212, guid: 92426034b61bb4e46b35d8ba6a5f1437, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33558,6 +34294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_03 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1924404215069938538, guid: 85d18420367f0074c921467924ad2582, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33609,6 +34349,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -33687,6 +34431,10 @@ PrefabInstance:
     - target: {fileID: 6177922030278960381, guid: c93ebcd8afce962489237d0270d312c1, type: 3}
       propertyPath: m_Name
       value: SM_Env_Vine_Pillar_Ornate_Square_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177922030278960381, guid: c93ebcd8afce962489237d0270d312c1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6843136029472734791, guid: c93ebcd8afce962489237d0270d312c1, type: 3}
       propertyPath: m_RootOrder
@@ -33839,6 +34587,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -34048,6 +34800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34069,6 +34825,10 @@ PrefabInstance:
     - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7595595266075953990, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_RootOrder
@@ -34151,6 +34911,10 @@ PrefabInstance:
     - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6671915922026078066, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_RootOrder
@@ -34643,6 +35407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_05 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -34666,6 +35434,10 @@ PrefabInstance:
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35083,6 +35855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
       value: 96
@@ -35364,6 +36140,10 @@ PrefabInstance:
     - target: {fileID: 2266404328464906784, guid: 2eda3b6db64ebbf4aaa1513c37212954, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266404328464906784, guid: 2eda3b6db64ebbf4aaa1513c37212954, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35767,6 +36547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35816,7 +36600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273223573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36259,6 +37043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
       value: 119
@@ -36557,6 +37345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36578,6 +37370,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -36712,6 +37508,10 @@ PrefabInstance:
     - target: {fileID: 7739060066891303157, guid: e1349677da76c03459d6a01582814a1d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Trunk_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739060066891303157, guid: e1349677da76c03459d6a01582814a1d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36898,6 +37698,10 @@ PrefabInstance:
     - target: {fileID: 2351342055802178843, guid: 1a93dc4a86863c74bab652bfdafc560e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Book_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351342055802178843, guid: 1a93dc4a86863c74bab652bfdafc560e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3164470918767892385, guid: 1a93dc4a86863c74bab652bfdafc560e, type: 3}
       propertyPath: m_RootOrder
@@ -37259,6 +38063,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Moss_03
       objectReference: {fileID: 0}
+    - target: {fileID: 7629992995413838133, guid: 2f4e14677d461564689eb2057c164d17, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37576,6 +38384,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -37978,6 +38790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38086,6 +38902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_CloudRing_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1028028927069224604, guid: 83f6efa95b283904f9500553cb918756, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1532550627331596105, guid: 83f6efa95b283904f9500553cb918756, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -38167,6 +38987,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38324,6 +39148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cloud_01
       objectReference: {fileID: 0}
+    - target: {fileID: 928791763385903229, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1721297823330421160, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -38401,6 +39229,10 @@ PrefabInstance:
     - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38533,6 +39365,10 @@ PrefabInstance:
     - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Lamp_Hanging_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8300982342143866592, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_CastShadows
@@ -38858,6 +39694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39028,6 +39868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7071540963476820476, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7595595266075953990, guid: 6f70e7cb264a3af48918e904fc090697, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -39154,6 +39998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Post_01
       objectReference: {fileID: 0}
+    - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39175,6 +40023,10 @@ PrefabInstance:
     - target: {fileID: 3708027328437661164, guid: 06dc8663730f9eb408038053963b6864, type: 3}
       propertyPath: m_Name
       value: SM_Env_Vine_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708027328437661164, guid: 06dc8663730f9eb408038053963b6864, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4052781825587148630, guid: 06dc8663730f9eb408038053963b6864, type: 3}
       propertyPath: m_RootOrder
@@ -39241,6 +40093,10 @@ PrefabInstance:
     - target: {fileID: 7215809562124524443, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_06 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215809562124524443, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8027776545990689057, guid: cf7f98516b1d8334e9825b81d2c4905e, type: 3}
       propertyPath: m_RootOrder
@@ -39468,6 +40324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -39627,6 +40487,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -40186,6 +41050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043199351169265913, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4240694075400279207, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -40213,6 +41081,10 @@ PrefabInstance:
     - target: {fileID: 4259829624541853303, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Candle_06 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259829624541853303, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40440,6 +41312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40517,6 +41393,10 @@ PrefabInstance:
     - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929518337431265766, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -40700,6 +41580,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1787088567}
     m_Modifications:
+    - target: {fileID: 4024870985215494612, guid: e483d3061667c83408993447826b0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5867813854626694383, guid: e483d3061667c83408993447826b0dbb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -40756,9 +41640,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302197344316021208, guid: e483d3061667c83408993447826b0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6495731284744314453, guid: e483d3061667c83408993447826b0dbb, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Chest_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495731284744314453, guid: e483d3061667c83408993447826b0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40838,6 +41730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40856,6 +41752,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1121356621}
     m_Modifications:
+    - target: {fileID: 1930279948026185251, guid: 98595a6531503c84eb939b1ff05c12da, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5100000726143532721, guid: 98595a6531503c84eb939b1ff05c12da, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -40903,6 +41803,10 @@ PrefabInstance:
     - target: {fileID: 5588130474426147851, guid: 98595a6531503c84eb939b1ff05c12da, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Well_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588130474426147851, guid: 98595a6531503c84eb939b1ff05c12da, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41063,6 +41967,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41140,6 +42048,10 @@ PrefabInstance:
     - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41377,6 +42289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 169
@@ -41525,6 +42441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 171
@@ -41590,6 +42510,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -41739,6 +42663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Crate_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2890204454827777113, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -41864,7 +42792,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1279
+    m_Bits: 1
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -41873,7 +42801,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 60371255fb2aa934d8b420c6f1da0bc5, type: 2}
   m_BuildHeightMesh: 0
@@ -41970,6 +42898,10 @@ PrefabInstance:
     - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103265714657091479, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_RootOrder
@@ -42122,6 +43054,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -42294,6 +43230,10 @@ PrefabInstance:
     - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42525,6 +43465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Lamp_Hanging_01
       objectReference: {fileID: 0}
+    - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8300982342143866592, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -42603,6 +43547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.976
       objectReference: {fileID: 0}
+    - target: {fileID: 4043199351169265913, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4240694075400279207, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -42630,6 +43578,10 @@ PrefabInstance:
     - target: {fileID: 4259829624541853303, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Candle_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259829624541853303, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42787,6 +43739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8045964095532244039, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8406529211058142610, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -42812,6 +43768,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -42960,6 +43920,10 @@ PrefabInstance:
     - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
@@ -43112,6 +44076,10 @@ PrefabInstance:
     - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crate_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546716384888522467, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2890204454827777113, guid: 2c7ed40987035fd47a2dc4a49746fb18, type: 3}
       propertyPath: m_RootOrder
@@ -43305,6 +44273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6539438462106867174, guid: 5c9c674f945ae3d49a40d7ca5a64cc86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43378,6 +44350,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43466,6 +44442,10 @@ PrefabInstance:
     - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
@@ -43601,6 +44581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Statue_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8954384771802947857, guid: 13b44c153cf85eb47998e4379b49e512, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43678,6 +44662,10 @@ PrefabInstance:
     - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43848,6 +44836,10 @@ PrefabInstance:
     - target: {fileID: 2869212441881286887, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
       propertyPath: m_Name
       value: SM_Env_Grunge_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869212441881286887, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3214071701554283101, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
       propertyPath: m_RootOrder
@@ -44088,7 +45080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535857231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44363,6 +45355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_Basic_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1214921126796328010, guid: 8f0b60243a5dc0248b98bbac82ab9c78, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1988221585231685360, guid: 8f0b60243a5dc0248b98bbac82ab9c78, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -44473,6 +45469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_Draped_01
       objectReference: {fileID: 0}
+    - target: {fileID: 9144373961423392296, guid: 03f296c791dc5054ea596c9347afaca4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44550,6 +45550,10 @@ PrefabInstance:
     - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758082738299663172, guid: 62257a34878d0154f869d925170c9580, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44643,6 +45647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -44720,6 +45728,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -44880,6 +45892,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -45156,6 +46172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Basalt_04 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -45233,6 +46253,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -45727,6 +46751,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -46384,6 +47412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_Basic_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3001574940498946899, guid: d4ce9cd83697d0e439a1d44ff7c879db, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3649957428608944774, guid: d4ce9cd83697d0e439a1d44ff7c879db, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -46726,6 +47758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6331138045149136328, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6671915922026078066, guid: 03158df78170b35459d1a6bef52a77a1, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -46964,6 +48000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 47
@@ -47042,6 +48082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 175
@@ -47107,6 +48151,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -47185,6 +48233,10 @@ PrefabInstance:
     - target: {fileID: 6154560912215210070, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154560912215210070, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6783182064136430316, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
       propertyPath: m_RootOrder
@@ -47311,6 +48363,10 @@ PrefabInstance:
     - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47542,6 +48598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47563,6 +48623,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -47641,6 +48705,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -47850,6 +48918,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4262116678790628612, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500341121393130753, guid: 836f8ac7b18cc2d43b39197816561a8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47998,6 +49074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Trunk_01
       objectReference: {fileID: 0}
+    - target: {fileID: 7739060066891303157, guid: e1349677da76c03459d6a01582814a1d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48023,6 +49103,10 @@ PrefabInstance:
     - target: {fileID: 6154560912215210070, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_05 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154560912215210070, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6783182064136430316, guid: 64e798065e6d15c46bc0251b07ef0f8d, type: 3}
       propertyPath: m_RootOrder
@@ -48146,6 +49230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.976
       objectReference: {fileID: 0}
+    - target: {fileID: 4043199351169265913, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4240694075400279207, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -48174,6 +49262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_06
       objectReference: {fileID: 0}
+    - target: {fileID: 4259829624541853303, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48193,7 +49285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706515573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48238,6 +49330,10 @@ PrefabInstance:
     - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838754438212157112, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183649883789894658, guid: de5f94945368fbf49a7467cb5c57422d, type: 3}
       propertyPath: m_RootOrder
@@ -48395,6 +49491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
       value: 180
@@ -48517,6 +49617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48538,6 +49642,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -48648,6 +49756,10 @@ PrefabInstance:
     - target: {fileID: 8045964095532244039, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045964095532244039, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48831,6 +49943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7468453053722539627, guid: d46388ce1f854b24db247ac7b23e7d41, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7849377050755362001, guid: d46388ce1f854b24db247ac7b23e7d41, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -48896,6 +50012,10 @@ PrefabInstance:
     - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
@@ -49011,6 +50131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Post_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49089,6 +50213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Statue_People_Damaged_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5588218288374256981, guid: 9267577843ebd1e408d3dddcf129555c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49110,6 +50238,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -49299,6 +50431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8045964095532244039, guid: ae5f1db14a31b5b41bac93e3e9ee303a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49447,6 +50583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4047619411423330996, guid: 9629320e0d4448e43aafe804522b3c22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49583,6 +50723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_03 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5929518337431265766, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -49608,6 +50752,10 @@ PrefabInstance:
     - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_06 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889126712754819027, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229376790143669609, guid: d4e5821ae831da64eb19eeb105c667d2, type: 3}
       propertyPath: m_RootOrder
@@ -49961,6 +51109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4509402703182841577, guid: 3d8a1c82131c3a24b906f6557728e9a5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -50243,7 +51395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787088567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50287,6 +51439,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -50580,6 +51736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1631526187575200309, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2157093109020397711, guid: 5cb458dcaaf8d6d4d9b026ad394f0e71, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -50801,6 +51961,10 @@ PrefabInstance:
       value: SM_Env_Skydome_01
       objectReference: {fileID: 0}
     - target: {fileID: 1791595961500100878, guid: 85ba971b045a2ff4da64af60b97ca38d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791595961500100878, guid: 85ba971b045a2ff4da64af60b97ca38d, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -50825,6 +51989,10 @@ PrefabInstance:
     - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
@@ -51060,6 +52228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -51224,6 +52396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -51361,6 +52537,10 @@ PrefabInstance:
     - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747527159359809990, guid: a7ac25f33cda4a142b07895294ec49ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51506,6 +52686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -51572,6 +52756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -51590,9 +52778,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1988434955}
     m_Modifications:
+    - target: {fileID: 4148727301491497051, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416434307688326560, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7901467800877154074, guid: bdf4e270f5d02034ab8ecb736e89b28e, type: 3}
       propertyPath: m_RootOrder
@@ -51776,7 +52972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688596867530812240, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
       propertyPath: m_Layer
-      value: 31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6192740609396918917, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -51784,7 +52980,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7b7f5267309d7494099639a23d9d189d, type: 2}
     - target: {fileID: 6500632491225041568, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
       propertyPath: m_Layer
-      value: 31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6500632491225041568, guid: 31489bb6b032392419c09929bcaae4fc, type: 3}
       propertyPath: m_IsActive
@@ -52020,6 +53216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Moss_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8782604133478015110, guid: 909e62e4de82b2944bbd2e47b1467a53, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52176,6 +53376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5280784968546435123, guid: dab3a8687c90bea45847e6c9f2418ebf, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52254,6 +53458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_05
       objectReference: {fileID: 0}
+    - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -52278,6 +53486,10 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
       objectReference: {fileID: 0}
+    - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52299,6 +53511,10 @@ PrefabInstance:
     - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Brazier_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178384880093446900, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_RootOrder
@@ -52516,6 +53732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_08
       objectReference: {fileID: 0}
+    - target: {fileID: 7943051094163666510, guid: b2af82cdd7eeb0b4fa4ea59a7272de1e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52589,6 +53809,10 @@ PrefabInstance:
     - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52745,6 +53969,10 @@ PrefabInstance:
     - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728476840781804253, guid: bb2a2b1241698db4b8db001ae5ac6618, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53374,6 +54602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_BackgroundHill_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 851000130848300216, guid: 99e77e620cabde6458233c30d32621a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53451,6 +54683,10 @@ PrefabInstance:
     - target: {fileID: 6609481716783912975, guid: dafb0867a1ee55145bb0e2f47f964aca, type: 3}
       propertyPath: m_Name
       value: SM_Env_Basalt_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609481716783912975, guid: dafb0867a1ee55145bb0e2f47f964aca, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53615,6 +54851,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54269,6 +55509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1919698273}
+  - component: {fileID: 1919698274}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -54411,6 +55652,38 @@ Transform:
   - {fileID: 228779774}
   m_Father: {fileID: 1461863240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919698274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919698272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.033333335
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1921456220
 GameObject:
   m_ObjectHideFlags: 0
@@ -54549,6 +55822,10 @@ PrefabInstance:
     - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Basalt_04 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780746838235448800, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556580262150201178, guid: 82ad56f1934c2ca448972de668e5982f, type: 3}
       propertyPath: m_RootOrder
@@ -54705,6 +55982,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -54922,6 +56203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_04 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7920309915679848748, guid: 53050af2286ec4f4f875f11bd6c8f8c9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55000,6 +56285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Stage_Wooden_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4415734678009011711, guid: c5e7fbe34425043448f971d9b8ca5d84, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55069,6 +56358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Candle_05 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4248235983366723859, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.14202738
@@ -55092,6 +56385,10 @@ PrefabInstance:
     - target: {fileID: 6171568862542239852, guid: 449925fcd876614479c206a808363ed4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.21705753
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296170297191038002, guid: 449925fcd876614479c206a808363ed4, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55315,6 +56612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55474,6 +56775,10 @@ PrefabInstance:
     - target: {fileID: 1918400745116896212, guid: 92426034b61bb4e46b35d8ba6a5f1437, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Candle_Drip_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918400745116896212, guid: 92426034b61bb4e46b35d8ba6a5f1437, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55835,6 +57140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Trunk_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7739060066891303157, guid: e1349677da76c03459d6a01582814a1d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55934,6 +57243,10 @@ PrefabInstance:
     - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
@@ -56068,6 +57381,10 @@ PrefabInstance:
     - target: {fileID: 928791763385903229, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cloud_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 928791763385903229, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1721297823330421160, guid: 0a1919b5ec5789340944f27cf03e16e7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -56393,6 +57710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_01 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5361431197472674691, guid: 632eee49de0562648bc267266b3016cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -56622,6 +57943,10 @@ PrefabInstance:
     - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Post_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 876757560519835232, guid: a63af264fdc527246aa967c7e6156615, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57231,6 +58556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57252,6 +58581,10 @@ PrefabInstance:
     - target: {fileID: 2869212441881286887, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
       propertyPath: m_Name
       value: SM_Env_Grunge_12 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869212441881286887, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3214071701554283101, guid: a265b010a86e2a14bbc900d48f6180d4, type: 3}
       propertyPath: m_RootOrder
@@ -57781,6 +59114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Vine_05
       objectReference: {fileID: 0}
+    - target: {fileID: 5522046962779589274, guid: f84a66ede7bfddb4ba8439a469200a06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57884,6 +59221,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -58007,6 +59348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Moss_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7629992995413838133, guid: 2f4e14677d461564689eb2057c164d17, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58094,6 +59439,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -58226,6 +59575,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -58517,6 +59870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tree_Dead_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4189578134408584881, guid: 649cfd5a63de1c14da210383152753da, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58538,6 +59895,10 @@ PrefabInstance:
     - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Brazier_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371062267507710030, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178384880093446900, guid: 887ca6f05d8eb0940be8f3d4916be6b1, type: 3}
       propertyPath: m_RootOrder
@@ -58661,6 +60022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Lamp_Hanging_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7508625403262129973, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8300982342143866592, guid: aab20c158f4dcec41b042ff7007dd34e, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -58686,6 +60051,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -58925,6 +60294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 385388632142586824, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014150251707464050, guid: 5def850ecb3d2f84f8e76760c5502d3a, type: 3}
       propertyPath: m_RootOrder
       value: 140
@@ -59072,6 +60445,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -59663,6 +61040,10 @@ PrefabInstance:
     - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rocks_Small_02 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968608213932172036, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348371161062554046, guid: d69a479198122994a82170c7bdc8c05b, type: 3}
       propertyPath: m_RootOrder
@@ -60263,6 +61644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2657014724808500933, guid: dab18b94bd285514e9e88188800bc738, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3428449311954910335, guid: dab18b94bd285514e9e88188800bc738, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -60471,6 +61856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Flag_Dark_Damaged_04
       objectReference: {fileID: 0}
+    - target: {fileID: 8914902577313827565, guid: bc918e9f4a26c754f809c66be0b4a6ce, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60629,9 +62018,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1787088567}
     m_Modifications:
+    - target: {fileID: 110686105799373496, guid: 102c223a36e57ba4fa9faf401d586e83, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1711000990206310673, guid: 102c223a36e57ba4fa9faf401d586e83, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Cage_Large_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711000990206310673, guid: 102c223a36e57ba4fa9faf401d586e83, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2086682825236865963, guid: 102c223a36e57ba4fa9faf401d586e83, type: 3}
       propertyPath: m_RootOrder
@@ -60780,6 +62177,10 @@ PrefabInstance:
     - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Tomb_Stone_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 289434336781960493, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103265714657091479, guid: c08b40bbbb802c84986e9f88310d00ee, type: 3}
       propertyPath: m_RootOrder
@@ -61051,6 +62452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61154,6 +62559,10 @@ PrefabInstance:
     - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Cliff_Basalt_04 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469657689267850846, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282188658442966244, guid: 4767bca14e4997f44bf8bcafa0c1757c, type: 3}
       propertyPath: m_RootOrder
@@ -61280,6 +62689,10 @@ PrefabInstance:
     - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Stairs_02 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326694584359497662, guid: c7898700f91eee14fb9e73cc5de26af9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61487,6 +62900,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+--- !u!114 &3271065286377096545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5962685940410438126, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+  m_PrefabInstance: {fileID: 3271065286377096544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58fecb2638f27a4e9db43873d777e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &7720366266093596818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61535,6 +62959,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690225901350997133, guid: 034ea061811dbd74b9e7816d6237ec61, type: 3}
+      propertyPath: fogWalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690225901350997133, guid: 034ea061811dbd74b9e7816d6237ec61, type: 3}
+      propertyPath: 'fogWalls.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3271065286377096545}
     - target: {fileID: 6623496085575195069, guid: 034ea061811dbd74b9e7816d6237ec61, type: 3}
       propertyPath: m_Name
       value: World Object Manager

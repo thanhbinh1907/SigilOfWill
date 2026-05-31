@@ -15,9 +15,9 @@ namespace SG
 
         private void OnEnable()
         {
-            Debug.Log($"[SelectButtonOnEnable] OnEnable kích hoạt trên nút: {gameObject.name}");
-            StartCoroutine(SelectButtonDelayed());
-        }
+            button.Select();
+            button.OnSelect(null); 
+		}
 
         private System.Collections.IEnumerator SelectButtonDelayed()
         {

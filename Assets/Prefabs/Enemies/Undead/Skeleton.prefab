@@ -2391,6 +2391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2820015732319118093, guid: c47455654b559264d949fc16e35419f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

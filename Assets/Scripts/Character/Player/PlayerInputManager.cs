@@ -319,14 +319,22 @@ namespace SG
 
 		private void HandleSwitchWeaponInput()
         {
-            if (switchRightWeaponInput)
+            if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
+                return;
+
+            bool keyboard1Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit1Key.wasPressedThisFrame;
+            bool keyboard2Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit2Key.wasPressedThisFrame;
+
+            // Reset the old input triggers so they don't stack up or interfere
+            switchRightWeaponInput = false;
+            switchLeftWeaponInput = false;
+
+            if (keyboard1Pressed)
             {
-                switchRightWeaponInput = false;
                 player.playerEquipmentManager.SwitchRightWeapon();
             }
-            if (switchLeftWeaponInput)
+            if (keyboard2Pressed)
             {
-                switchLeftWeaponInput = false;
                 player.playerEquipmentManager.SwitchLeftWeapon();
             }
 		}
@@ -426,14 +434,13 @@ namespace SG
 
 				if (PlayerUIManager.instance != null)
 				{
-					// Reset và dọn dẹp các cửa sổ thông báo trước khi mở menu chính
 					if (PlayerUIManager.instance.playerUIPopUpManager != null)
 						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows(); 
 
 					PlayerUIManager.instance.CloseAllMenuWindows();
 
 					if (PlayerUIManager.instance.playerUICharacterMenuManager != null)
-						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
+						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu(); 
 				}
 			}
 		}

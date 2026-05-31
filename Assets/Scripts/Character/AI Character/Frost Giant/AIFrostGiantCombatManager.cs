@@ -136,7 +136,6 @@ namespace SG
 		{
 			if (oneHandImpactPoint == null)
 			{
-				Debug.LogError("oneHandImpactPoint chưa được gán trong AIFrostGiantCombatManager!");
 				return;
 			}
 
@@ -154,7 +153,6 @@ namespace SG
 		{
 			if (twoHandImpactPoint == null)
 			{
-				Debug.LogError("twoHandImpactPoint chưa được gán trong AIFrostGiantCombatManager!");
 				return;
 			}
 

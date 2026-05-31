@@ -45,3 +45,13 @@ public enum ItemPickupType
 	WorldSpawn,
 	CharacterDrop
 }
+
+public enum EquipmentSlotType
+{
+    RightWeapon01,
+    RightWeapon02,
+    RightWeapon03,
+    LeftWeapon01,
+    LeftWeapon02,
+    LeftWeapon03
+}

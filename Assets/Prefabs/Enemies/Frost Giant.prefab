@@ -1936,7 +1936,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  groundedCheckSphereRadius: 0.17
+  groundedCheckSphereRadius: 0.2
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
@@ -2071,6 +2071,7 @@ MonoBehaviour:
   vitality: 10
   endurance: 10
   intelligence: 10
+  characterUIManager: {fileID: 0}
   aiCharacterCombatManager: {fileID: 0}
   aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 3809702215217312}
@@ -2086,16 +2087,21 @@ MonoBehaviour:
   sleepAnimation: Sleep_01
   awakeAnimation: Awaken_01
   sleepState: {fileID: 11400000, guid: d5dcc382fb82f4f429edc74f92d0a099, type: 2}
-  myFogWalls: []
+  myFogWalls:
+  - {fileID: 5962685940410438126, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
   bossIntroMusic: {fileID: 0}
   bossLoopMusic: {fileID: 8300000, guid: b576bfddf7ba39b4099802caa79d3b0e, type: 3}
   minimumHealthPercentageToShift: 0.5
   hasShiftedPhase: 0
   phaseShiftDownAnimation: Phase_Shift_Down_01
+  phaseShiftDownCrossfade: 0.25
   phaseShiftStunAnimation: Phase_Shift_Stun_01
+  phaseShiftStunCrossfade: 0.25
   phaseShiftStunDuration: 3
   phaseShiftAnimation: Phase_Shift_01
+  phaseShiftRecoverCrossfade: 0.25
   phase2CombatStance: {fileID: 11400000, guid: 6b09ba0868825db45b6a430e9d777e7d, type: 2}
+  phase2AttackSpeed: 1.5
   wakeBossUpDebug: 0
   frostGiantSoundFXManager: {fileID: 0}
 --- !u!114 &3250872375235354097

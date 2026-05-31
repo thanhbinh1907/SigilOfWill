@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Thunder_Staff
   m_EditorClassIdentifier: Assembly-CSharp::SG.StaffWeaponItem
   itemName: Thunder Staff
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c482e13e9d042aa47ae0157c8aca4809, type: 3}
   itemDescription: Buff lighting damage.
   itemID: 4
-  weaponModel: {fileID: 7255140408272727148, guid: 995d887b8f0a1514a96322975b640a3b, type: 3}
+  weaponModel: {fileID: 3507061205918437759, guid: 7fb241fae0822674d88d007beeecb8cf, type: 3}
   strengREQ: 0
   dexREQ: 0
   intREQ: 0

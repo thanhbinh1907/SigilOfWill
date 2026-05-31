@@ -6,14 +6,12 @@ namespace SG
     {
         private void OnEnable()
         {
-            if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerHUDManager != null)
-                PlayerUIManager.instance.playerHUDManager.ToggleHUD(false);
-        }
+            PlayerUIManager.instance.playerUIHudManager.ToggleHUD(false);
+		}
 
         private void OnDisable()
         {
-            if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerHUDManager != null)
-                PlayerUIManager.instance.playerHUDManager.ToggleHUD(true);
+            PlayerUIManager.instance.playerUIHudManager.ToggleHUD(true);
         }
     }
 }

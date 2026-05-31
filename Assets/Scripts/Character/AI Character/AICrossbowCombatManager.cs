@@ -23,34 +23,27 @@ namespace SG
 		{
 			if (arrowPrefab != null && arrowSpawnPoint != null)
 			{
-				// Hướng bắn mặc định
 				Vector3 shootDirection = arrowSpawnPoint.transform.forward;
 
-				// KIỂM TRA MỤC TIÊU VÀ LOCK ON TRANSFORM
 				if (aiCharacter.characterCombatManager.currentTarget != null)
 				{
 					Vector3 targetPosition;
 
-					// Nếu mục tiêu có Lock On Transform, ta lấy vị trí đó làm điểm ngắm
 					if (aiCharacter.characterCombatManager.currentTarget.characterCombatManager.lockOnTransform != null)
 					{
 						targetPosition = aiCharacter.characterCombatManager.currentTarget.characterCombatManager.lockOnTransform.position;
 					}
 					else
 					{
-						// Nếu không có, nhắm vào tâm của transform mục tiêu (thường là dưới chân) và cộng thêm chiều cao
 						targetPosition = aiCharacter.characterCombatManager.currentTarget.transform.position;
 						targetPosition.y += 1.5f;
 					}
 
-					// Tính toán hướng từ đầu nỏ đến điểm Lock On
 					shootDirection = (targetPosition - arrowSpawnPoint.position).normalized;
 				}
 
-				// Sinh ra mũi tên và xoay theo hướng nhắm chuẩn xác
 				GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, Quaternion.LookRotation(shootDirection));
 
-				// Thiết lập sát thương (giữ nguyên cấu trúc bạn muốn)
 				ProjectileDamageCollider arrowDamageCollider = arrow.GetComponent<ProjectileDamageCollider>();
 				if (arrowDamageCollider != null)
 				{
@@ -61,7 +54,6 @@ namespace SG
 					arrowDamageCollider.EnableDamageCollider();
 				}
 
-				// Đẩy mũi tên đi theo hướng đã tính
 				Rigidbody arrowRigidbody = arrow.GetComponent<Rigidbody>();
 				if (arrowRigidbody != null)
 				{

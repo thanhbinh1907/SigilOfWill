@@ -28,10 +28,8 @@ namespace SG
 
 			aiCharacter.aiCharacterCombatManager.RotateTowardsTargetWhilistAttacking(aiCharacter);
 
-			//  SET MOVEMENT TO ZERO
 			aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0, false);
 
-			// PERFORM A COMBO
 			if (willPerformCombo && !hasPerformedCombo)
             {
                 if (currentAttack.comboAction != null)
@@ -47,13 +45,11 @@ namespace SG
 
 			if (!hasPerformAttack)
             {
-				// IF WE ARE STILL RECOVERING FROM AN ACTION, WAIT BEFORE PERFORMING ANOTHER
 				if (aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
                     return this;
 
                 PerformAttack(aiCharacter);
 
-                // RETURN TO THE TOP, SO IF WE HAVE A COMBO WE PROCESS THAT WHEN WE ARE ABLE
                 return this;
 			}
 

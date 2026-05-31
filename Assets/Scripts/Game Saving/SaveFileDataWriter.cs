@@ -12,17 +12,10 @@ namespace SG
 		public string saveDataDirectoryPath = "";
 		public string saveFileName = "Character";
 
-		// BEFORE WE CREATE A NEW FILE, WE MUST CHECK TO SEE IF A FILE WITH THE SAME NAME ALREADY EXISTS, AND IF IT DOES, WE WILL DELETE IT SO THAT WE CAN CREATE A NEW ONE WITH THE SAME NAME
+		// BEFORE WE CREATE A NEW FILE, WE MUST CHECK TO SEE IF A FILE WITH THE SAME NAME ALREADY EXISTS
 		public bool CheckToSeeIfFileExists()
 		{
-			if (File.Exists(Path.Combine(saveDataDirectoryPath, saveFileName)))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return File.Exists(Path.Combine(saveDataDirectoryPath, saveFileName));
 		}
 
 		// USED TO DELETE CHARATER SAVE FILES
@@ -31,7 +24,7 @@ namespace SG
 			File.Delete(Path.Combine(saveDataDirectoryPath, saveFileName));
 		}
 
-		// USED TO CREATE A NEW SAVE FILE FOR THE CHARACTER, AND WRITE THE CHARACTER SAVE DATA TO IT
+		// USED TO CREATE A NEW SAVE FILE FOR THE CHARACTER, AND WRITE THE CHARACTER SAVE DATA TO IT ASYNCHRONOUSLY
 		public void CreateNewCharacterSaveFile(CharacterSaveData characterSaveData)
 		{
 			// MAKE A PATH TO THE SAVE FILE 
@@ -40,25 +33,33 @@ namespace SG
 			try
 			{
 				Directory.CreateDirectory(Path.GetDirectoryName(savePath));
-				Debug.Log("Created directory for save file at: " + Path.GetDirectoryName(savePath));
 
-				// SERIALIZE THE CHARACTER SAVE DATA TO A JSON STRING
+				// SERIALIZE THE CHARACTER SAVE DATA ON THE MAIN THREAD (Fast & Safe)
 				string dataToStore = JsonUtility.ToJson(characterSaveData, true);
 
-				// WRITE THE JSON STRING TO THE SAVE FILE
-				using (FileStream fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+				// WRITE THE JSON STRING TO THE SAVE FILE ON A BACKGROUND THREAD (Avoids Lag Spikes)
+				System.Threading.Tasks.Task.Run(() =>
 				{
-					using (StreamWriter fileWriter = new StreamWriter(fileStream))
+					try
 					{
-						fileWriter.Write(dataToStore);;
+						using (FileStream fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+						{
+							using (StreamWriter fileWriter = new StreamWriter(fileStream))
+							{
+								fileWriter.Write(dataToStore);
+							}
+						}
 					}
-				}
+					catch (Exception ex)
+					{
+						Debug.LogError("An error occurred while writing the save file asynchronously: " + ex.Message);
+					}
+				});
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError("An error occurred while creating the save file: " + ex.Message);
+				Debug.LogError("An error occurred while preparing the save file: " + ex.Message);
 			}
-
 		}
 
 		// USED TO LOAD A SAVE FILE UPON LOADING A PREVIOUS GAME

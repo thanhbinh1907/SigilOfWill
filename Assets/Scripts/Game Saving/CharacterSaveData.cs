@@ -46,12 +46,22 @@ namespace SG
 		[Header("World Items Looted")]
 		public SerializableDictionary<int, bool> worldItemsLooted;
 
+		[Header("Inventory & Quick Slots")]
+		public List<int> itemsInventoryIDs;
+		public List<int> weaponsInRightHandSlotsIDs;
+		public List<int> weaponsInLeftHandSlotsIDs;
+		public int rightHandWeaponIndex;
+		public int leftHandWeaponIndex;
+
 		public CharacterSaveData()
 		{
 			bossesAwakened = new SerializableDictionary<int, bool>();
 			bossesDefeated = new SerializableDictionary<int, bool>();
 			sitesOfGrace = new SerializableDictionary<int, bool>();
 			worldItemsLooted = new SerializableDictionary<int, bool>();
+			itemsInventoryIDs = new List<int>();
+			weaponsInRightHandSlotsIDs = new List<int>();
+			weaponsInLeftHandSlotsIDs = new List<int>();
 		}
 	}
 }

@@ -66013,6 +66013,10 @@ PrefabInstance:
       value: Fog Wall Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 5962685940410438126, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
+      propertyPath: fogWallID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962685940410438126, guid: 006a798c76ccde54f98a70cd3989a0b0, type: 3}
       propertyPath: fogWallCollider
       value: 
       objectReference: {fileID: 1361508982}

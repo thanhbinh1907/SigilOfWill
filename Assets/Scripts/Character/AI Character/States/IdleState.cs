@@ -11,12 +11,10 @@ namespace SG
 		{
 			if (aiCharacter.characterCombatManager.currentTarget != null)
 			{
-				// RETURN THE PURSUE TARGET STATE
 				return SwitchState(aiCharacter, aiCharacter.pursueTarget);
 			}
 			else
 			{
-				// RETURN THIS STATE, TO CONTINUALLY SEARCH FOR A TARGET
 				aiCharacter.aiCharacterCombatManager.FindATargetViaLineOfSight(aiCharacter);
 				return this;
 			}

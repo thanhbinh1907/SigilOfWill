@@ -21,18 +21,18 @@ namespace SG
 
 		public void AddItemToInventory(Item item)
 		{
-			if (item is WeaponItem weaponItem)
+			itemsInventory.Add(item);
+		}
+
+		public void RemoveItemFromInventory(Item item)
+		{
+			itemsInventory.Remove(item);
+
+			for (int i = itemsInventory.Count - 1; i > -1; i--)
 			{
-				if (!weaponsInventory.Contains(weaponItem))
+				if (itemsInventory[i] == null)
 				{
-					weaponsInventory.Add(weaponItem);
-				}
-			}
-			else
-			{
-				if (!itemsInventory.Contains(item))
-				{
-					itemsInventory.Add(item);
+					itemsInventory.RemoveAt(i);
 				}
 			}
 		}

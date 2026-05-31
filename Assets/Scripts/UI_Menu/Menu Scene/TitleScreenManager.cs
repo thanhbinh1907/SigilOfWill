@@ -19,11 +19,20 @@ namespace SG
 		[SerializeField] Button mainMenuLoadGameButton;
 		[SerializeField] Button mainMenuNewGameButton;
 		[SerializeField] Button deleteCharacterPopUpConfirmButton;
+		[SerializeField] Button startGameButton;
+		[SerializeField] Button quitButton;
+		[SerializeField] Button settingsButton;
 
 		[Header("Pop Ups")]
 		[SerializeField] GameObject noCharacterSlotsPopUp;
 		[SerializeField] Button noChacterSlotsOkayButton;
 		[SerializeField] GameObject deleteCharacterSlotPopUp;
+
+		[Header("Settings Menu")]
+		[SerializeField] GameObject titleScreenSettingsMenu;
+		[SerializeField] Slider bgmVolumeSlider;
+		[SerializeField] Slider sfxVolumeSlider;
+		[SerializeField] Button settingsReturnButton;
 
 		[Header("Character Slots")]
 		public CharacterSlot currentSelectedSlot = CharacterSlot.NO_SLOT;
@@ -36,6 +45,19 @@ namespace SG
 			else
 			{
 				Destroy(gameObject);
+			}
+		}
+
+		private void Start()
+		{
+			// Tự động liên kết sự kiện slider để tránh lỗi cấu hình bằng tay trong Unity Inspector
+			if (bgmVolumeSlider != null)
+			{
+				bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+			}
+			if (sfxVolumeSlider != null)
+			{
+				sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
 			}
 		}
 
@@ -82,7 +104,55 @@ namespace SG
 			titleScreenLoadMenu.SetActive(false);
 
 			mainMenuLoadGameButton.Select();
-		} 
+		}
+
+		public void OpenSettingsMenu()
+		{
+			titleScreenMainMenu.SetActive(false);
+			titleScreenSettingsMenu.SetActive(true);
+
+			// Load the current volumes into the sliders
+			if (WorldSoundFXManager.instance != null)
+			{
+				bgmVolumeSlider.value = WorldSoundFXManager.instance.GetBGMVolume();
+				sfxVolumeSlider.value = WorldSoundFXManager.instance.GetSFXVolume();
+			}
+
+			// Select the first setting control
+			bgmVolumeSlider.Select();
+		}
+
+		public void CloseSettingsMenu()
+		{
+			titleScreenSettingsMenu.SetActive(false);
+
+			settingsButton.Select();
+		}
+
+		public void SetBGMVolume(float volume)
+		{
+			if (WorldSoundFXManager.instance != null)
+			{
+				WorldSoundFXManager.instance.SetBGMVolume(volume);
+			}
+		}
+
+		public void SetSFXVolume(float volume)
+		{
+			if (WorldSoundFXManager.instance != null)
+			{
+				WorldSoundFXManager.instance.SetSFXVolume(volume);
+			}
+		}
+
+		public void CloseMainGameMenu()
+		{
+			startGameButton.gameObject.SetActive(true);
+			settingsButton.gameObject.SetActive(true);
+			quitButton.gameObject.SetActive(true);
+
+			titleScreenMainMenu.SetActive(false);
+		}
 
 		public void DisplayNoFreeCharacterSlotPopUp()
 		{
@@ -133,6 +203,25 @@ namespace SG
 		{
 			deleteCharacterSlotPopUp.SetActive(false);
 			loadMenuReturnButton.Select();
+		}
+
+		public void QuitGame()
+		{
+			Application.Quit();
+
+			#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+			#endif
+		}
+
+		public void DisableQuitButton()
+		{
+			quitButton.gameObject.SetActive(false);
+		}
+
+		public void DisableSettingsButton()
+		{
+			settingsButton.gameObject.SetActive(false);
 		}
 	}
 }

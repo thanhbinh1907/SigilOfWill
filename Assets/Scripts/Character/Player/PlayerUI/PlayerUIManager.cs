@@ -6,8 +6,8 @@ namespace SG {
 	public class PlayerUIManager : MonoBehaviour
 	{
 		public static PlayerUIManager instance;
+
 		[HideInInspector] public PlayerUIHudManager playerUIHudManager;
-		public PlayerUIHudManager playerHUDManager => playerUIHudManager;
 		[HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
 		[HideInInspector] public PlayerUICharacterMenuManager playerUICharacterMenuManager;
 		[HideInInspector] public PlayerUIEquipmentManager playerUIEquipmentManager;
@@ -17,12 +17,17 @@ namespace SG {
 		public bool popupWindowIsOpen = false;
 
 		[Header("Main Menu Settings (Offline)")]
-		[SerializeField] private CanvasGroup hudCanvasGroup;       // Kéo thả CanvasGroup của thanh Máu/Stamina vào đây
-		[SerializeField] private CanvasGroup mainMenuCanvasGroup;  // Kéo thả CanvasGroup của Menu Tổng (Equipment, Inventory...) vào đây
+		[SerializeField] private CanvasGroup hudCanvasGroup;      
+		[SerializeField] private CanvasGroup mainMenuCanvasGroup;  
 
 		public void ToggleMainMenu()
 		{
-			menuWindowIsOpen = !menuWindowIsOpen;
+			SetMainMenuActive(!menuWindowIsOpen);
+		}
+
+		public void SetMainMenuActive(bool active)
+		{
+			menuWindowIsOpen = active;
 
 			if (menuWindowIsOpen)
 			{
@@ -42,7 +47,15 @@ namespace SG {
 					mainMenuCanvasGroup.blocksRaycasts = true;
 				}
 				
-				// Khóa thời gian game hoặc ngắt hành vi tấn công/nhảy của Player tại đây nếu cần
+				// Tắt player input manager đi để không thể di chuyển
+				if (PlayerInputManager.instance != null)
+				{
+					PlayerInputManager.instance.enabled = false;
+				}
+
+				// Mở khóa chuột để chọn ô vũ khí
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
 			}
 			else
 			{
@@ -54,6 +67,29 @@ namespace SG {
 				
 				// Đóng luôn màn hình con Trang bị nếu người chơi đang bật
 				GetComponentInChildren<PlayerUIEquipmentManager>()?.CloseEquipmentManagerMenu();
+
+				// Bật lại player input manager
+				if (PlayerInputManager.instance != null)
+				{
+					PlayerInputManager.instance.enabled = true;
+				}
+
+				// Khóa lại chuột khi chơi game
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
+			}
+		}
+
+		private void Update()
+		{
+			if (menuWindowIsOpen)
+			{
+				// Cho phép nhấn Escape để đóng menu khi PlayerInputManager bị tắt
+				bool escapePressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame;
+				if (escapePressed)
+				{
+					CloseAllMenuWindows();
+				}
 			}
 		}
 
@@ -77,10 +113,8 @@ namespace SG {
 
 		public void CloseAllMenuWindows()
 		{
-			if (playerUICharacterMenuManager != null)
-				playerUICharacterMenuManager.CloseCharacterMenu();
-			if (playerUIEquipmentManager != null)
-				playerUIEquipmentManager.CloseEquipmentManagerMenu();
+			playerUICharacterMenuManager.CloseCharacterMenu();
+			playerUIEquipmentManager.CloseEquipmentManagerMenu();
 		}
 
 		private void Start()

@@ -2949,6 +2949,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   leftHandWeaponIndex: 1
+  itemsInventory:
+  - {fileID: 11400000, guid: c9c46d549c1f71c4298594ce0ac6cf08, type: 2}
+  - {fileID: 11400000, guid: a83a472270508884bb92ba6b722a7dc7, type: 2}
+  - {fileID: 11400000, guid: bb4973fc48caa8840b3bce893c75ccd8, type: 2}
+  - {fileID: 11400000, guid: 09c4dbd77e6b5b949890f42a536f5117, type: 2}
+  - {fileID: 11400000, guid: 860eebd6b61237c4696a0e4d980a2133, type: 2}
+  - {fileID: 11400000, guid: a7e9b65a6fbb5be4187112e96fc05770, type: 2}
+  weaponsInventory:
+  - {fileID: 11400000, guid: c9c46d549c1f71c4298594ce0ac6cf08, type: 2}
+  - {fileID: 11400000, guid: a83a472270508884bb92ba6b722a7dc7, type: 2}
+  - {fileID: 11400000, guid: bb4973fc48caa8840b3bce893c75ccd8, type: 2}
+  - {fileID: 11400000, guid: 09c4dbd77e6b5b949890f42a536f5117, type: 2}
+  - {fileID: 11400000, guid: 860eebd6b61237c4696a0e4d980a2133, type: 2}
+  - {fileID: 11400000, guid: a7e9b65a6fbb5be4187112e96fc05770, type: 2}
 --- !u!114 &7296765403861622784
 MonoBehaviour:
   m_ObjectHideFlags: 0

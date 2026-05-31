@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +16,6 @@ namespace SG
 
 		[Header("Foot Steps")]
 		[SerializeField] protected AudioClip[] footSteps;
-		// public AudioClip[] footStepsDirt;
-		// public AudioClip[] footStepsStone;
-
 		protected virtual void Awake()
 		{
 			audioSource = GetComponent<AudioSource>();
@@ -26,11 +23,10 @@ namespace SG
 
 		public void PlaySoundFX(AudioClip soundFX, float volume = 1, bool randomizePitch = true, float pitchRandom = 0.1f)
 		{
-			audioSource.PlayOneShot(soundFX, volume);
-			// RESET PITCH
+			float finalVolume = volume * (WorldSoundFXManager.instance != null ? WorldSoundFXManager.instance.sfxVolume : 1f);
+			audioSource.PlayOneShot(soundFX, finalVolume);
 			audioSource.pitch = 1;
 
-			// RANDOMIZE PITCH BECAUSE WE DONT WANT THE SOUND TO BE EXACTLY THE SAME EVERY TIME IT PLAYS, IT CAN GET ANNOYING
 			if (randomizePitch)
 			{
 				audioSource.pitch += UnityEngine.Random.Range(-pitchRandom, pitchRandom);
@@ -39,7 +35,8 @@ namespace SG
 
 		public void PlayRollSoundFX()
 		{
-			audioSource.PlayOneShot(WorldSoundFXManager.instance.rollSFX);
+			float finalVolume = WorldSoundFXManager.instance != null ? WorldSoundFXManager.instance.sfxVolume : 1f;
+			audioSource.PlayOneShot(WorldSoundFXManager.instance.rollSFX, finalVolume);
 		}
 
 		public virtual void PlayDamageGruntSFX()

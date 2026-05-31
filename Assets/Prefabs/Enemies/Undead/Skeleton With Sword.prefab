@@ -2379,27 +2379,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2383310101513651979, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2383310101513651979, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2820015732319118093, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_Name
       value: Character UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2820015732319118093, guid: c47455654b559264d949fc16e35419f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7481713092194102184, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_Pivot.x
@@ -2510,6 +2514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6474682533091919895}
     m_Modifications:
+    - target: {fileID: -3430451369435596584, guid: b257d2366c5af8f48add7981213d3969, type: 3}
+      propertyPath: showDebugGizmos
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4831504819681368199, guid: b257d2366c5af8f48add7981213d3969, type: 3}
       propertyPath: m_Name
       value: Sword

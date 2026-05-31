@@ -13,52 +13,35 @@ namespace SG
 
 		protected override void OnTriggerEnter(Collider other)
 		{
-			Debug.Log($"[ProjectileDamageCollider] OnTriggerEnter kích hoạt trên {gameObject.name} va chạm với '{other.name}' (Layer: {LayerMask.LayerToName(other.gameObject.layer)}, IsTrigger: {other.isTrigger})");
-
-			// Bỏ qua nếu va chạm với chính nhân vật bắn ra phép
 			CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 			if (damageTarget != null && damageTarget == characterCausingDamage)
 			{
-				Debug.Log($"[ProjectileDamageCollider] Bỏ qua va chạm vì mục tiêu là Caster: {damageTarget.name}");
 				return;
 			}
 
-			// Bỏ qua các trigger collider khác (như vùng lock-on, vùng tương tác...)
 			if (other.isTrigger)
 			{
-				Debug.Log($"[ProjectileDamageCollider] Bỏ qua va chạm vì collider chạm phải cũng là Trigger.");
 				return;
 			}
 
-			// Xác định điểm va chạm
 			contactPoint = other.ClosestPointOnBounds(transform.position);
 
-			// Nếu chạm phải nhân vật/quái thì gây sát thương
 			if (damageTarget != null)
 			{
 				if (damageTarget.isInvulnerable)
 				{
-					Debug.Log($"[ProjectileDamageCollider] Bỏ qua gây sát thương lên {damageTarget.name} vì đang bất tử.");
 					return;
 				}
 
-				Debug.Log($"[ProjectileDamageCollider] Gây sát thương lên {damageTarget.name}. Chi tiết - Vật lý: {physicalDamage}, Lửa: {fireDamage}, Sét: {lightningDamage}, Gió: {windDamage}, Phép: {magicDamage}");
 				DamageTarget(damageTarget);
 			}
-			else
-			{
-				Debug.Log($"[ProjectileDamageCollider] Va chạm với vật thể môi trường (không phải Character).");
-			}
 
-			// Nếu có hiệu ứng nổ (như Quả cầu lửa): Tạo vụ nổ và tự hủy đạn khi va chạm bất kỳ thứ gì (kể cả quái hay tường)
 			if (explodeVFX != null)
 			{
-				Debug.Log($"[ProjectileDamageCollider] Tạo hiệu ứng nổ {explodeVFX.name} và tự hủy đạn.");
 				GameObject explosion = Instantiate(explodeVFX, contactPoint, Quaternion.identity);
 				Destroy(explosion, explodeVFXDestroyTime);
 				Destroy(transform.root.gameObject);
 			}
-			// Nếu KHÔNG có hiệu ứng nổ (như Windblade Ultimate): Bay xuyên qua mọi thứ (quái + tường), không tự hủy!
 		}
 
 		protected override void DamageTarget(CharacterManager damageTarget)

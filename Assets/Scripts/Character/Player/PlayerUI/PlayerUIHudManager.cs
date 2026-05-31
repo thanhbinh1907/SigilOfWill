@@ -23,7 +23,7 @@ namespace SG
                 if (canvasGroup != null)
                 {
                     canvasGroup.alpha = status ? 1f : 0f;
-                }
+                } 
             }
         }
 

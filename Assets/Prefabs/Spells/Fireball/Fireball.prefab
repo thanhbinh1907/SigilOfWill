@@ -4911,7 +4911,7 @@ MonoBehaviour:
   windDamage: 0
   holyDamage: 0
   damageCollider: {fileID: -3545574775768418211}
-  showDebugGizmos: 1
+  showDebugGizmos: 0
   contactPoint: {x: 0, y: 0, z: 0}
   light_attack_Modifier: 1
   heavy_attack_Modifier: 1
