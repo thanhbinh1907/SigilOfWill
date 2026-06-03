@@ -64,7 +64,7 @@ namespace SG
             DontDestroyOnLoad(gameObject);
             SceneManager.activeSceneChanged += OnSceneChange;
 
-            if (SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+            if (WorldSaveGameManager.instance != null && SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
             {
                 instance.enabled = true;
             }
@@ -76,7 +76,7 @@ namespace SG
 
         private void OnSceneChange(Scene oldScene, Scene newScene)
         {
-            if (newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+            if (WorldSaveGameManager.instance != null && newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
             {
                 instance.enabled = true;
 
@@ -163,7 +163,7 @@ namespace SG
             }
             else
             {
-                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+                if (WorldSaveGameManager.instance != null && UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;

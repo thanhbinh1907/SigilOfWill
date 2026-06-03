@@ -102,6 +102,15 @@ namespace SG
                 {
                     WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace[siteOfGraceID] = true;
                 }
+
+                // Lưu tọa độ Grace ngồi gần nhất
+                var saveData = WorldSaveGameManager.instance.currentCharacterData;
+                saveData.hasGraceSaved = true;
+                saveData.lastGraceSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+                saveData.lastGraceXPosition = player.transform.position.x;
+                saveData.lastGraceYPosition = player.transform.position.y;
+                saveData.lastGraceZPosition = player.transform.position.z;
+
                 WorldSaveGameManager.instance.SaveGame();
             }
 
@@ -184,6 +193,19 @@ namespace SG
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
             {
                 PlayerUIManager.instance.playerUIPopUpManager.SendPlayerMessagePopup(interactableText);
+            }
+
+            // TỰ ĐỘNG LƯU GAME: Thực hiện lưu vị trí và chỉ số nhân vật khi ngồi nghỉ (giống Elden Ring)
+            if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
+            {
+                var saveData = WorldSaveGameManager.instance.currentCharacterData;
+                saveData.hasGraceSaved = true;
+                saveData.lastGraceSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+                saveData.lastGraceXPosition = player.transform.position.x;
+                saveData.lastGraceYPosition = player.transform.position.y;
+                saveData.lastGraceZPosition = player.transform.position.z;
+
+                WorldSaveGameManager.instance.SaveGame();
             }
         }
 

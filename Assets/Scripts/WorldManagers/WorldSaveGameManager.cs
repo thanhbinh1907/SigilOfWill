@@ -65,6 +65,32 @@ namespace SG
 		{
 			DontDestroyOnLoad(gameObject);
 			LoadAllCharacterProfiles();
+			
+			// BẮT ĐẦU CHU KỲ TỰ ĐỘNG LƯU PHONG CÁCH ELDEN RING
+			StartCoroutine(PeriodicAutoSave());
+		}
+
+		private IEnumerator PeriodicAutoSave()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(10f); // Tự động lưu sau mỗi 10 giây trong nền
+
+				// Chỉ lưu nếu Scene đã load xong, nhân vật Player đã xuất hiện và còn sống
+				if (!isSceneLoading && player != null && !player.isDead)
+				{
+					SaveGame();
+				}
+			}
+		}
+
+		// TỰ ĐỘNG LƯU KHI NGƯỜI CHƠI THOÁT GAME
+		private void OnApplicationQuit()
+		{
+			if (player != null && !isSceneLoading)
+			{
+				SaveGame();
+			}
 		}
 
 		private void Update()
@@ -247,6 +273,13 @@ namespace SG
 		private void NewGame()
 		{
 			isSceneLoading = true;
+			
+			// Gán sceneIndex mặc định cho nhân vật mới từ worldSceneIndex
+			if (currentCharacterData != null)
+			{
+				currentCharacterData.sceneIndex = worldSceneIndex;
+			}
+
 			// SAVE THE NEWLY CREATED CHARACTER STATS, AND ITEM (WHEN CREATION SCREEN IS ADDED)
 			SaveGame();
 			StartCoroutine(LoadWorldScene());
@@ -281,8 +314,8 @@ namespace SG
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
 			saveFileDataWriter.saveFileName = saveFileName;
 
-			// PASS THE PLAYER INFO, FROM GAME, TO THEIR SAVE FILE
-			if (player != null)
+			// PASS THE PLAYER INFO, FROM GAME, TO THEIR SAVE FILE (Chỉ lưu thông số Player hiện tại nếu Player còn sống)
+			if (player != null && !player.isDead)
 			{
 				player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
 			}
@@ -378,10 +411,13 @@ namespace SG
 			yield return loadOperation;
 
 			// 2. SPAWN PLAYER INTO THE WORLD
-			if (playerPrefab != null)
+			if (player == null)
 			{
-				GameObject playerObj = Instantiate(playerPrefab);
-				player = playerObj.GetComponent<PlayerManager>();
+				if (playerPrefab != null)
+				{
+					GameObject playerObj = Instantiate(playerPrefab);
+					player = playerObj.GetComponent<PlayerManager>();
+				}
 			}
 
 			// 3. WAIT UNTIL THE PLAYER HAS BEEN SPAWNED INTO THE WORLD BEFORE WE ATTEMPT TO LOAD DATA ONTO THE PLAYER
@@ -400,10 +436,22 @@ namespace SG
 
 		}
 		*/
+		public void RespawnPlayer()
+		{
+			if (isSceneLoading)
+				return;
+
+			isSceneLoading = true;
+			StartCoroutine(LoadWorldScene());
+		}
+
 		public int GetWorldSceneIndex()
 		{
-			//return worldSceneIndex;
-			return currentCharacterData.sceneIndex;
+			if (currentCharacterData != null)
+			{
+				return currentCharacterData.sceneIndex;
+			}
+			return worldSceneIndex;
 		}
 	}
 }

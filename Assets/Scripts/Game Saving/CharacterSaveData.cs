@@ -43,6 +43,13 @@ namespace SG
 		[Header("Sites Of Grace")]
 		public SerializableDictionary<int, bool> sitesOfGrace;
 
+		[Header("Last Grace Position")]
+		public bool hasGraceSaved = false;
+		public int lastGraceSceneIndex;
+		public float lastGraceXPosition;
+		public float lastGraceYPosition;
+		public float lastGraceZPosition;
+
 		[Header("World Items Looted")]
 		public SerializableDictionary<int, bool> worldItemsLooted;
 

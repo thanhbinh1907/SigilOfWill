@@ -55,6 +55,32 @@ namespace SG
 			DontDestroyOnLoad(gameObject);
 		}
 
+		private void OnEnable()
+		{
+			SceneManager.sceneLoaded += OnSceneLoaded;
+		}
+
+		private void OnDisable()
+		{
+			SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+		{
+			if (aiCharacterSpawners != null)
+			{
+				aiCharacterSpawners.Clear();
+			}
+			if (spawnedCharacters != null)
+			{
+				spawnedCharacters.Clear();
+			}
+			if (spawnedInBosses != null)
+			{
+				spawnedInBosses.Clear();
+			}
+		}
+
 		private void OnDestroy()
 		{
 			if (instance == this)

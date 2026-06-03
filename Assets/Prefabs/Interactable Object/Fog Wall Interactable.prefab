@@ -5122,7 +5122,7 @@ MonoBehaviour:
   _isActive: 1
   enterDirection: 3
   passThroughSpeed: 1.5
-  passThroughDuration: 1.5
+  passThroughDuration: 1
 --- !u!54 &2540464340298111663
 Rigidbody:
   m_ObjectHideFlags: 0

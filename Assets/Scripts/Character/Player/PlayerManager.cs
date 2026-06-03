@@ -110,12 +110,46 @@ namespace SG
 
 		public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
 		{
-            PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+			if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
+			{
+				PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+			}
 
-			return base.ProcessDeathEvent(manuallySelectDeathAnimation);
+			yield return base.ProcessDeathEvent(manuallySelectDeathAnimation);
 
-            // CHECK FOR PLAYERS THAT ARE ALIVE, IF 0 RESPAWN CHARACTERS
+			// Tự động hồi sinh và tải lại game tại trạm nghỉ Grace gần nhất
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
+			{
+				var saveData = WorldSaveGameManager.instance.currentCharacterData;
 
+				if (saveData.hasGraceSaved)
+				{
+					// Nếu đã từng ngồi/kích hoạt Grace, hồi sinh tại tọa độ Grace đó
+					saveData.sceneIndex = saveData.lastGraceSceneIndex;
+					saveData.xPosition = saveData.lastGraceXPosition;
+					saveData.yPosition = saveData.lastGraceYPosition;
+					saveData.zPosition = saveData.lastGraceZPosition;
+				}
+				else
+				{
+					// Nếu chưa ngồi Grace nào, hồi sinh tại scene ban đầu và vị trí mặc định (0, 0, 0)
+					saveData.sceneIndex = WorldSaveGameManager.instance.worldSceneIndex;
+					saveData.xPosition = 0;
+					saveData.yPosition = 0;
+					saveData.zPosition = 0;
+				}
+
+				// Reset chỉ số sinh mạng về tối đa để khi load game sẽ hồi phục hoàn toàn
+				saveData.currentHealth = playerStatsManager.CalculateHealthBasedOnVitalityLevel(saveData.vitality);
+				saveData.currentStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(saveData.endurance);
+				saveData.currentMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(saveData.intelligence);
+
+				// Lưu lại trước khi load game để bảo toàn vị trí respawn mới
+				WorldSaveGameManager.instance.SaveGame();
+
+				// Tải lại game và load lại Scene (sẽ hồi sinh lại quái và đặt lại Player)
+				WorldSaveGameManager.instance.RespawnPlayer();
+			}
 		}
 
         public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData)
@@ -198,25 +232,53 @@ namespace SG
 
         public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) 
         {
+            isDead = false;
+
             characterName = currentCharacterData.characterName;
             Vector3 myPosition = new Vector3(currentCharacterData.xPosition, currentCharacterData.yPosition, currentCharacterData.zPosition);
+            
+            // THỦ THUẬT UNITY: Tạm thời tắt CharacterController để tránh bị lỗi tự động giật ngược vị trí cũ khi dịch chuyển (Teleport)
+            if (characterController != null)
+            {
+                characterController.enabled = false;
+            }
+
             transform.position = myPosition;
+
+            if (characterController != null)
+            {
+                characterController.enabled = true;
+            }
+
+            if (playerAnimatorManager != null)
+            {
+                playerAnimatorManager.PlayTargetAnimation("Empty", false);
+            }
 
             vitality = currentCharacterData.vitality;
             endurance = currentCharacterData.endurance;
             intelligence = currentCharacterData.intelligence;
 
 			maxHealth = playerStatsManager.CalculateHealthBasedOnVitalityLevel(vitality);
-            currentHealth = maxHealth;
-            PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+			currentHealth = maxHealth;
+			if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIHudManager != null)
+			{
+				PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+			}
 
 			maxStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(endurance);
 			currentStamina = maxStamina;
-			PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+			if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIHudManager != null)
+			{
+				PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+			}
 
-            maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
-            currentMana = maxMana;
-            PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
+			maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
+			currentMana = maxMana;
+			if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIHudManager != null)
+			{
+				PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
+			}
 
 			playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentRightHandWeaponID);
 			playerInventoryManager.currentLeftHandWeapon = WorldItemDatabase.instance.GetWeaponByID(currentCharacterData.currentLeftHandWeaponID);
