@@ -1,0 +1,216 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
+
+namespace SG
+{
+    public class PlayerEquipmentManager : CharacterEquipmentManager
+    {
+        PlayerManager player;
+
+        public WeaponModelInstantiationSlot rightHandSlot;
+        public WeaponModelInstantiationSlot leftHandSlot;
+
+        [SerializeField] public WeaponManager rightWeaponManager;
+        [SerializeField] public WeaponManager leftWeaponManager;
+
+        public GameObject rightHandWeaponModel;
+        public GameObject leftHandWeaponModel;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            player = GetComponent<PlayerManager>();
+
+            InitializeWeaponSlots();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            LoadWeaponsOnBothHands();
+        }
+
+        private void InitializeWeaponSlots()
+        {
+            WeaponModelInstantiationSlot[] weaponSlots = GetComponentsInChildren<WeaponModelInstantiationSlot>();
+
+            foreach (var weaponSlot in weaponSlots)
+            {
+                if (weaponSlot.weaponSlot == WeaponModelSlot.RightHand)
+                {
+                    rightHandSlot = weaponSlot;
+                }
+                else if (weaponSlot.weaponSlot == WeaponModelSlot.LeftHand)
+                {
+                    leftHandSlot = weaponSlot;
+                }
+            }
+        }
+
+        public void LoadWeaponsOnBothHands()
+        {
+            LoadRightWeapon();
+            LoadLeftWeapon();
+        }
+
+        // RIGHT HAND WEAPON
+
+        public void SwitchRightWeapon()
+        {
+            if (player.isPerformingAction)
+                return;
+
+            player.playerAnimatorManager.PlayTargetAnimation("Swap_Right_Weapon_01", false, false, true, true);
+
+            WeaponItem selectedWeapon = null;
+            int index = player.playerInventoryManager.rightHandWeaponIndex;
+
+            for (int i = 0; i < 3; i++)
+            {
+                index += 1;
+                if (index > 2) index = 0;
+
+                WeaponItem weaponInSlot = player.playerInventoryManager.weaponsInRightHandSlots[index];
+
+                if (weaponInSlot != null && weaponInSlot.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                {
+                    selectedWeapon = weaponInSlot;
+                    player.playerInventoryManager.rightHandWeaponIndex = index;
+                    break;
+                }
+            }
+
+            if (selectedWeapon != null)
+            {
+                player.playerInventoryManager.currentRightHandWeapon = selectedWeapon;
+            }
+            else
+            {
+                player.playerInventoryManager.currentRightHandWeapon = WorldItemDatabase.instance.unarmedWeapon;
+                player.playerInventoryManager.rightHandWeaponIndex = -1;
+            }
+
+            LoadRightWeapon();
+        }
+
+        public void LoadRightWeapon()
+        {
+            if (player.playerInventoryManager.currentRightHandWeapon != null)
+            {
+                // UNLOAD CURRENT WEAPON MODEL
+                rightHandSlot.UnloadWeapon();
+
+                // LOAD NEW WEAPON MODEL
+                rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
+                rightHandSlot.LoadWeapon(rightHandWeaponModel);
+                rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
+                if (rightWeaponManager != null)
+                {
+                    rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                }
+                else
+                {
+                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay phải '{rightHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                }
+
+                if (PlayerUIManager.instance != null)
+                {
+                    PlayerUIManager.instance.playerUIHudManager.SetRightWeaponQuickSlotIcon(player.playerInventoryManager.currentRightHandWeapon.itemID);
+                }
+            }
+        }
+
+        // LEFT HAND WEAPON
+
+        public void SwitchLeftWeapon()
+        {
+            if (player.isPerformingAction)
+                return;
+
+            player.playerAnimatorManager.PlayTargetAnimation("Swap_Left_Weapon_01", false, false, true, true);
+
+            WeaponItem selectedWeapon = null;
+            int index = player.playerInventoryManager.leftHandWeaponIndex;
+
+            for (int i = 0; i < 3; i++)
+            {
+                index += 1;
+                if (index > 2) index = 0;
+                WeaponItem weaponInSlot = player.playerInventoryManager.weaponsInLeftHandSlots[index];
+                if (weaponInSlot != null && weaponInSlot.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                {
+                    selectedWeapon = weaponInSlot;
+                    player.playerInventoryManager.leftHandWeaponIndex = index;
+                    break;
+                }
+            }
+
+            if (selectedWeapon != null)
+            {
+                player.playerInventoryManager.currentLeftHandWeapon = selectedWeapon;
+            }
+            else
+            {
+                player.playerInventoryManager.currentLeftHandWeapon = WorldItemDatabase.instance.unarmedWeapon;
+                player.playerInventoryManager.leftHandWeaponIndex = -1;
+            }
+            LoadLeftWeapon();
+        }
+
+        public void LoadLeftWeapon()
+        {
+            if (player.playerInventoryManager.currentLeftHandWeapon != null)
+            {
+                leftHandSlot.UnloadWeapon();
+
+                leftHandWeaponModel = Instantiate(player.playerInventoryManager.currentLeftHandWeapon.weaponModel);
+                leftHandSlot.LoadWeapon(leftHandWeaponModel);
+                leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
+                if (leftWeaponManager != null)
+                {
+                    leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
+                }
+                else
+                {
+                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay trái '{leftHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                }
+
+                if (PlayerUIManager.instance != null)
+                {
+                    PlayerUIManager.instance.playerUIHudManager.SetLeftWeaponQuickSlotIcon(player.playerInventoryManager.currentLeftHandWeapon.itemID);
+                }
+            }
+        }
+
+        // DAMAGE COLLIDER
+
+        public void OpenDamageCollider()
+        {
+            if (player.isUsingRightHand)
+            {
+                rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
+                player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
+			}
+            else if (player.isUsingLeftHand)
+            {
+                leftWeaponManager.meleeDamageCollider.EnableDamageCollider();
+				player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentLeftHandWeapon.whooshes));
+			}
+		}
+
+        public void CloseDamageCollider()
+        {
+            if (player.isUsingRightHand)
+            {
+                rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
+            else if (player.isUsingLeftHand)
+            {
+                leftWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
+        }
+    }
+}

@@ -73,3 +73,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore heavy third-party Asset Store packages (Addons)
+/[Aa]ssets/[Aa]ddons/
+/[Aa]ssets/[Aa]ddons.meta
+
+# Ignore Unity recovery folders
+/[Aa]ssets/_[Rr]ecovery/
+/[Aa]ssets/_[Rr]ecovery.meta
