@@ -67,7 +67,18 @@ namespace SG
 
 			Debug.Log($"[HỆ THỐNG BOSS] Khởi tạo Boss ID {bossID}. hasBeenDefeated: {hasBeenDefeated}, hasBeenAwakened: {hasBeenAwakened}, sleepState có được gán không: {sleepState != null}");
 
-			StartCoroutine(GetFogWallsFromWorldObjectManager());
+			// Tìm tất cả các Fog Wall có ID tương ứng trong scene trực tiếp
+			myFogWalls.Clear();
+			FogWallInteractable[] allWalls = FindObjectsByType<FogWallInteractable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+			foreach (var fogWall in allWalls)
+			{
+				if (fogWall != null && fogWall.fogWallID == bossID)
+				{
+					myFogWalls.Add(fogWall);
+				}
+			}
+
+			LoadBossAndFogWallStates();
 
 			if (WorldAIManager.instance != null)
 			{
@@ -236,24 +247,7 @@ namespace SG
 			}
 		}
 
-		private IEnumerator GetFogWallsFromWorldObjectManager()
-		{
-			while (WorldObjectManager.instance == null || WorldObjectManager.instance.fogWalls.Count == 0)
-			{
-				yield return null;
-			}
 
-			myFogWalls.Clear();
-			foreach (var fogWall in WorldObjectManager.instance.fogWalls)
-			{
-				if (fogWall.fogWallID == bossID)
-				{
-					myFogWalls.Add(fogWall);
-				}
-			}
-
-			LoadBossAndFogWallStates();
-		}
 
 		private void LoadBossAndFogWallStates()
 		{

@@ -103,6 +103,16 @@ namespace SG
                     fogObject.SetActive(isActive);
                 }
             }
+
+            if (fogWallCollider != null)
+            {
+                fogWallCollider.enabled = isActive;
+            }
+
+            if (interactableCollider != null)
+            {
+                interactableCollider.enabled = isActive;
+            }
         }
 
         // =================================================================================
