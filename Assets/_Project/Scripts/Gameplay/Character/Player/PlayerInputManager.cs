@@ -28,7 +28,6 @@ namespace SG
         [SerializeField] bool dodgeInput = false;
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
-        //[SerializeField] bool leftMouseInput = false;
 
 		[Header("LOCK ON INPUT")]
         [SerializeField] bool lockOnInput = false; 
@@ -106,8 +105,6 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
-                //playerControls.PlayerAction.LeftMouse.performed += i => leftMouseInput = true;
-
 				// SWITCH WEAPON INPUT
 				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;
 				playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switchLeftWeaponInput = true;
@@ -153,6 +150,13 @@ namespace SG
         {
             if (player == null) return;
 
+            // Nếu người chơi đã chết, không xử lý các đầu vào hành động/di chuyển khác
+            if (player.isDead)
+            {
+                spellTriggerInput = false;
+                return;
+            }
+
             HandleAllInput();
 
             // Cập nhật trạng thái con trỏ chuột dựa trên UI
@@ -180,7 +184,6 @@ namespace SG
             HandleSprintInput();
             HandleJumpInput();
             HandleCastSpellInput();
-            //HandleLeftMouseInput();
 			HandleSwitchWeaponInput();
 			HandleInteractionInput();
 			HandleCloseUIInput();
@@ -301,22 +304,6 @@ namespace SG
             }
         }
 
-        /*
-        private void HandleLeftMouseInput()
-        {
-            if (leftMouseInput)
-            {
-                leftMouseInput = false;
-
-                player.SetCharacterActionHand(true);
-
-                player.playerCombatManager.PerformWeaponBasedAction(
-                    player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action.actionID, 
-                    player.playerInventoryManager.currentRightHandWeapon.itemID);
-            }
-		}
-        */
-
 		private void HandleSwitchWeaponInput()
         {
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
@@ -401,6 +388,15 @@ namespace SG
 
 				if (player != null && player.playerInteractionManager != null)
 				{
+					if (player.animator != null)
+					{
+						var stateInfo = player.animator.GetCurrentAnimatorStateInfo(0);
+						if (stateInfo.IsName("Sit_Down_At_Grace") || stateInfo.IsName("Stand_Up_From_Grace"))
+						{
+							return;
+						}
+					}
+
 					player.playerInteractionManager.Interact();
 				}
 			}
