@@ -105,6 +105,11 @@ namespace SG
             playerStatsManager.RegenerateMana();
 			PlayerCamera.instance.HandleAllCameraActions();
 
+			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
+			{
+				WorldSaveGameManager.instance.currentCharacterData.secondsPlayed += Time.deltaTime;
+			}
+
 			DebugMenu();
         }
 
@@ -132,11 +137,11 @@ namespace SG
 				}
 				else
 				{
-					// Nếu chưa ngồi Grace nào, hồi sinh tại scene ban đầu và vị trí mặc định (0, 0, 0)
+					// Nếu chưa ngồi Grace nào, hồi sinh tại scene ban đầu và vị trí mặc định khởi đầu
 					saveData.sceneIndex = WorldSaveGameManager.instance.worldSceneIndex;
-					saveData.xPosition = 0;
-					saveData.yPosition = 0;
-					saveData.zPosition = 0;
+					saveData.xPosition = WorldSaveGameManager.instance.startingPosition.x;
+					saveData.yPosition = WorldSaveGameManager.instance.startingPosition.y;
+					saveData.zPosition = WorldSaveGameManager.instance.startingPosition.z;
 				}
 
 				// Reset chỉ số sinh mạng về tối đa để khi load game sẽ hồi phục hoàn toàn

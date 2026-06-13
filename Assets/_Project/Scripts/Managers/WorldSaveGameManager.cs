@@ -20,6 +20,9 @@ namespace SG
 		[Header("World Scene Index")]
 		[SerializeField] public int worldSceneIndex = 2;
 
+		[Header("Starting Position")]
+		[SerializeField] public Vector3 startingPosition = Vector3.zero;
+
 		[Header("Save Data Writer")]
 		private SaveFileDataWriter saveFileDataWriter;
 
@@ -68,6 +71,10 @@ namespace SG
 
 		private void Start()
 		{
+			if (instance != this)
+			{
+				return;
+			}
 			DontDestroyOnLoad(gameObject);
 			LoadAllCharacterProfiles();
 			
@@ -159,6 +166,35 @@ namespace SG
 
 			}
 			return fileName;
+		}
+
+		public CharacterSaveData GetCharacterSaveDataBasedOnCharacterSlot(CharacterSlot characterSlot)
+		{
+			switch (characterSlot)
+			{
+				case CharacterSlot.CharacterSlot_01:
+					return characterSlot01;
+				case CharacterSlot.CharacterSlot_02:
+					return characterSlot02;
+				case CharacterSlot.CharacterSlot_03:
+					return characterSlot03;
+				case CharacterSlot.CharacterSlot_04:
+					return characterSlot04;
+				case CharacterSlot.CharacterSlot_05:
+					return characterSlot05;
+				case CharacterSlot.CharacterSlot_06:
+					return characterSlot06;
+				case CharacterSlot.CharacterSlot_07:
+					return characterSlot07;
+				case CharacterSlot.CharacterSlot_08:
+					return characterSlot08;
+				case CharacterSlot.CharacterSlot_09:
+					return characterSlot09;
+				case CharacterSlot.CharacterSlot_10:
+					return characterSlot10;
+				default:
+					return null;
+			}
 		}
 
 		public void AttemptToCreateNewGame()
@@ -282,6 +318,9 @@ namespace SG
 			if (currentCharacterData != null)
 			{
 				currentCharacterData.sceneIndex = worldSceneIndex;
+				currentCharacterData.xPosition = startingPosition.x;
+				currentCharacterData.yPosition = startingPosition.y;
+				currentCharacterData.zPosition = startingPosition.z;
 			}
 
 			// SAVE THE NEWLY CREATED CHARACTER STATS, AND ITEM (WHEN CREATION SCREEN IS ADDED)
@@ -345,14 +384,19 @@ namespace SG
 		}
 
 		// LOAD ALL CHARACTER PROFILE ON DEVICE WHEN STARTING GAME
-		private void LoadAllCharacterProfiles()
+		public void LoadAllCharacterProfiles()
 		{
 			saveFileDataWriter = new SaveFileDataWriter();
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_01);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot01 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot01 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_02);
@@ -360,11 +404,19 @@ namespace SG
 			{
 				characterSlot02 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot02 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_03);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot03 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot03 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_04);
@@ -372,11 +424,19 @@ namespace SG
 			{
 				characterSlot04 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot04 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_05);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot05 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot05 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_06);
@@ -384,11 +444,19 @@ namespace SG
 			{
 				characterSlot06 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot06 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_07);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot07 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot07 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_08);
@@ -396,17 +464,29 @@ namespace SG
 			{
 				characterSlot08 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot08 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_09);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot09 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot09 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_10);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot10 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot10 = null;
 			}
 		}
 
@@ -428,6 +508,9 @@ namespace SG
 				loadingScreenCanvasGroup.interactable = true;
 			}
 
+			// Ngưng đọng thời gian game khi đang tải cảnh
+			Time.timeScale = 0f;
+
 			// Start pulsing loading icon if present
 			Coroutine pulseCoroutine = null;
 			if (loadingIconCanvasGroup != null)
@@ -435,7 +518,7 @@ namespace SG
 				pulseCoroutine = StartCoroutine(PulseLoadingIcon());
 			}
 
-			float loadingStartTime = Time.time;
+			float loadingStartTime = Time.realtimeSinceStartup;
 
 			// 1. LOAD WORLD SCENE
 			// IF WE WANT TO USE DIFFERENT SCENE FOR LEVELS IN OUR PROJECT USE THIS
@@ -460,10 +543,10 @@ namespace SG
 			player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
 
 			// Ensure the loading screen is displayed for at least minimumLoadingTime to mask loading lag
-			float timeElapsed = Time.time - loadingStartTime;
+			float timeElapsed = Time.realtimeSinceStartup - loadingStartTime;
 			if (timeElapsed < minimumLoadingTime)
 			{
-				yield return new WaitForSeconds(minimumLoadingTime - timeElapsed);
+				yield return new WaitForSecondsRealtime(minimumLoadingTime - timeElapsed);
 			}
 
 			// Fade out loading screen smoothly
@@ -473,7 +556,7 @@ namespace SG
 				float fadeTimer = 0f;
 				while (fadeTimer < fadeDuration)
 				{
-					fadeTimer += Time.deltaTime;
+					fadeTimer += Time.unscaledDeltaTime;
 					loadingScreenCanvasGroup.alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
 					yield return null;
 				}
@@ -481,6 +564,9 @@ namespace SG
 				loadingScreenCanvasGroup.blocksRaycasts = false;
 				loadingScreenCanvasGroup.interactable = false;
 			}
+
+			// Khôi phục lại thời gian game sau khi màn hình tải đã biến mất hoàn toàn
+			Time.timeScale = 1f;
 
 			if (pulseCoroutine != null)
 			{
