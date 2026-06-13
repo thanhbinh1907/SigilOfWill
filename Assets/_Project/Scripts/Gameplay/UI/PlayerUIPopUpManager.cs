@@ -26,6 +26,14 @@ namespace SG
         [SerializeField] TextMeshProUGUI graceRestoredPopUpText;
         [SerializeField] CanvasGroup graceRestoredPopUpCanvasGroup; // Allows us to set the alpha to fade over time
 
+        [Header("Victory Screen Settings")]
+        [SerializeField] GameObject victoryScreenGameObject;
+        [SerializeField] CanvasGroup victoryScreenCanvasGroup;
+
+        [Header("Demo Completion Pop Up Settings")]
+        [SerializeField] GameObject demoCompletionPopUpGameObject;
+        [SerializeField] CanvasGroup demoCompletionPopUpCanvasGroup;
+
         [Header("Player Message Pop Up")]
         [SerializeField] GameObject playerMessagePopUpGameObject;
         [SerializeField] TextMeshProUGUI playerMessageText;
@@ -230,6 +238,80 @@ namespace SG
                 StartCoroutine(FadeInPopUpOverTime(graceRestoredPopUpCanvasGroup, 5));
                 StartCoroutine(WaitThenFadeOutPopUpOverTime(graceRestoredPopUpCanvasGroup, 2, 5));
             }
+        }
+
+        public void DisplayVictoryScreen()
+        {
+            if (victoryScreenGameObject != null)
+            {
+                victoryScreenGameObject.SetActive(true);
+            }
+            if (victoryScreenCanvasGroup != null)
+            {
+                victoryScreenCanvasGroup.alpha = 1f;
+                victoryScreenCanvasGroup.interactable = true;
+                victoryScreenCanvasGroup.blocksRaycasts = true;
+            }
+
+            // Mở khóa chuột để người chơi tương tác với nút nhấn
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // Khóa di chuyển/tương tác nhân vật
+            if (PlayerInputManager.instance != null)
+            {
+                PlayerInputManager.instance.enabled = false;
+            }
+        }
+
+        public void VictoryReturnToMainMenu()
+        {
+            // Restore timeScale before returning to Main Menu
+            Time.timeScale = 1f;
+
+            // Dọn dẹp các thực thể DontDestroyOnLoad không cần thiết trước khi về Title Screen
+            if (PlayerManager.instance != null) Destroy(PlayerManager.instance.gameObject);
+            if (PlayerCamera.instance != null) Destroy(PlayerCamera.instance.gameObject);
+            if (PlayerInputManager.instance != null) Destroy(PlayerInputManager.instance.gameObject);
+            
+            // Tải cảnh Title Screen (thông thường index 0 hoặc 1, ở đây load 0 hoặc theo tên)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0); 
+        }
+
+        public void VictoryQuitGame()
+        {
+            Application.Quit();
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+        }
+
+        public void DisplayDemoCompletionPopup()
+        {
+            if (demoCompletionPopUpGameObject != null)
+            {
+                demoCompletionPopUpGameObject.SetActive(true);
+            }
+
+            if (demoCompletionPopUpCanvasGroup != null)
+            {
+                demoCompletionPopUpCanvasGroup.alpha = 1f;
+                demoCompletionPopUpCanvasGroup.interactable = true;
+                demoCompletionPopUpCanvasGroup.blocksRaycasts = true;
+            }
+
+            // Mở khóa con trỏ chuột để người chơi tương tác với nút nhấn
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // Khóa di chuyển và tương tác của nhân vật
+            if (PlayerInputManager.instance != null)
+            {
+                PlayerInputManager.instance.enabled = false;
+            }
+
+            // Ngưng đọng thời gian game khi hiện bảng thông báo
+            Time.timeScale = 0f;
         }
     }
 }

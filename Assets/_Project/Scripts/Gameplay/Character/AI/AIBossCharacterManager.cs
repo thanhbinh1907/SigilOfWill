@@ -407,6 +407,11 @@ namespace SG
 			yield return new WaitForSeconds(2.5f);
 
 			gameObject.SetActive(false);
+
+			if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
+			{
+				PlayerUIManager.instance.playerUIPopUpManager.DisplayDemoCompletionPopup();
+			}
 		}
 	}
 }
