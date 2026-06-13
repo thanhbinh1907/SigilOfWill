@@ -26,10 +26,6 @@ namespace SG
         [SerializeField] TextMeshProUGUI graceRestoredPopUpText;
         [SerializeField] CanvasGroup graceRestoredPopUpCanvasGroup; // Allows us to set the alpha to fade over time
 
-        [Header("Victory Screen Settings")]
-        [SerializeField] GameObject victoryScreenGameObject;
-        [SerializeField] CanvasGroup victoryScreenCanvasGroup;
-
         [Header("Demo Completion Pop Up Settings")]
         [SerializeField] GameObject demoCompletionPopUpGameObject;
         [SerializeField] CanvasGroup demoCompletionPopUpCanvasGroup;
@@ -240,31 +236,7 @@ namespace SG
             }
         }
 
-        public void DisplayVictoryScreen()
-        {
-            if (victoryScreenGameObject != null)
-            {
-                victoryScreenGameObject.SetActive(true);
-            }
-            if (victoryScreenCanvasGroup != null)
-            {
-                victoryScreenCanvasGroup.alpha = 1f;
-                victoryScreenCanvasGroup.interactable = true;
-                victoryScreenCanvasGroup.blocksRaycasts = true;
-            }
-
-            // Mở khóa chuột để người chơi tương tác với nút nhấn
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-            // Khóa di chuyển/tương tác nhân vật
-            if (PlayerInputManager.instance != null)
-            {
-                PlayerInputManager.instance.enabled = false;
-            }
-        }
-
-        public void VictoryReturnToMainMenu()
+        public void ReturnToMainMenu()
         {
             // Restore timeScale before returning to Main Menu
             Time.timeScale = 1f;
@@ -278,7 +250,7 @@ namespace SG
             UnityEngine.SceneManagement.SceneManager.LoadScene(0); 
         }
 
-        public void VictoryQuitGame()
+        public void QuitGame()
         {
             Application.Quit();
             #if UNITY_EDITOR
