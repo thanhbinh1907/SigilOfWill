@@ -49,11 +49,11 @@ namespace SG
 
 		private void Start()
 		{
-			// Đảm bảo mở khóa và hiển thị chuột khi vào Title Screen/Main Menu
+
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 
-			// Tự động liên kết sự kiện slider để tránh lỗi cấu hình bằng tay trong Unity Inspector
+
 			if (bgmVolumeSlider != null)
 			{
 				bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
@@ -168,7 +168,7 @@ namespace SG
 			noCharacterSlotsPopUp.SetActive(true);
 			noChacterSlotsOkayButton.Select();
 		}
-		 
+
 		public void CloseNoFreeCharacterSlotPopUp()
 		{
 			noCharacterSlotsPopUp.SetActive(false);

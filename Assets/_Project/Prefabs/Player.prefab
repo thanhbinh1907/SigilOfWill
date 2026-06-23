@@ -2799,7 +2799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5df5080c5e46b241bd9a7701f30adf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerLocomotionInput
-  gravityForce: -40
+  gravityForce: -70.6
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   rotationSpeed: 10
   sprintingStaminaCost: 2
   jumpStaminaCost: 25
-  jumpHeight: 4
+  jumpHeight: 0.5
   jumpForwardSpeed: 5
   freeFallSpeed: 2
   dodgeStaminaCost: 25
@@ -2906,7 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6c489da6f77d244a312b65d9679f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SG.PlayerStatsManager
-  staminaRegenerationAmount: 2
+  staminaRegenerationAmount: 10
   staminaRegenerationDelay: 2
   manaRegenerationAmount: 10
   manaRegenerationDelay: 2

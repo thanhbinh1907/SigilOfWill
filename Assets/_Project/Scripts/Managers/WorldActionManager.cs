@@ -28,9 +28,15 @@ namespace SG
 
 		public void Start()
 		{
-			for (int i = 0; i < weaponItemActions.Length; i++)
-            {
-                weaponItemActions[i].actionID = i;
+			if (weaponItemActions != null)
+			{
+				for (int i = 0; i < weaponItemActions.Length; i++)
+				{
+					if (weaponItemActions[i] != null)
+					{
+						weaponItemActions[i].actionID = i;
+					}
+				}
 			}
 		}
 
@@ -44,7 +50,8 @@ namespace SG
 
 		public WeaponItemAction GetWeaponItemActionByID(int ID)
         {
-            return weaponItemActions.FirstOrDefault(action => action.actionID == ID);
+            if (weaponItemActions == null) return null;
+            return weaponItemActions.FirstOrDefault(action => action != null && action.actionID == ID);
 		}
 	}
 }

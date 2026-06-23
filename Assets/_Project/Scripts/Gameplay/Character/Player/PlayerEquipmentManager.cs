@@ -101,22 +101,36 @@ namespace SG
             if (player.playerInventoryManager.currentRightHandWeapon != null)
             {
                 // UNLOAD CURRENT WEAPON MODEL
-                rightHandSlot.UnloadWeapon();
+                if (rightHandSlot != null)
+                {
+                    rightHandSlot.UnloadWeapon();
+                }
 
                 // LOAD NEW WEAPON MODEL
-                rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
-                rightHandSlot.LoadWeapon(rightHandWeaponModel);
-                rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
-                if (rightWeaponManager != null)
+                if (player.playerInventoryManager.currentRightHandWeapon.weaponModel != null)
                 {
-                    rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                    rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
+                    if (rightHandSlot != null)
+                    {
+                        rightHandSlot.LoadWeapon(rightHandWeaponModel);
+                    }
+                    rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
+                    if (rightWeaponManager != null)
+                    {
+                        rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay phải '{rightHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay phải '{rightHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                    rightHandWeaponModel = null;
+                    rightWeaponManager = null;
                 }
 
-                if (PlayerUIManager.instance != null)
+                if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIHudManager != null)
                 {
                     PlayerUIManager.instance.playerUIHudManager.SetRightWeaponQuickSlotIcon(player.playerInventoryManager.currentRightHandWeapon.itemID);
                 }
@@ -164,21 +178,35 @@ namespace SG
         {
             if (player.playerInventoryManager.currentLeftHandWeapon != null)
             {
-                leftHandSlot.UnloadWeapon();
-
-                leftHandWeaponModel = Instantiate(player.playerInventoryManager.currentLeftHandWeapon.weaponModel);
-                leftHandSlot.LoadWeapon(leftHandWeaponModel);
-                leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
-                if (leftWeaponManager != null)
+                if (leftHandSlot != null)
                 {
-                    leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
+                    leftHandSlot.UnloadWeapon();
+                }
+
+                if (player.playerInventoryManager.currentLeftHandWeapon.weaponModel != null)
+                {
+                    leftHandWeaponModel = Instantiate(player.playerInventoryManager.currentLeftHandWeapon.weaponModel);
+                    if (leftHandSlot != null)
+                    {
+                        leftHandSlot.LoadWeapon(leftHandWeaponModel);
+                    }
+                    leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
+                    if (leftWeaponManager != null)
+                    {
+                        leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay trái '{leftHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning($">> [PLAYER EQUIPMENT] Model vũ khí tay trái '{leftHandWeaponModel.name}' chưa được gắn component 'WeaponManager'!");
+                    leftHandWeaponModel = null;
+                    leftWeaponManager = null;
                 }
 
-                if (PlayerUIManager.instance != null)
+                if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIHudManager != null)
                 {
                     PlayerUIManager.instance.playerUIHudManager.SetLeftWeaponQuickSlotIcon(player.playerInventoryManager.currentLeftHandWeapon.itemID);
                 }

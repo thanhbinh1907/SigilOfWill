@@ -29,17 +29,17 @@ namespace SG
 
 		[Header("Weapon Base Poise Damage")]
 		public float poiseDMG = 10;
-		// OFFENSIVE POISE BONUS WHEN ATTACKING 
+		// OFFENSIVE POISE BONUS WHEN ATTACKING
 
 		[Header("Attack Modifiers")]
 		public float light_Attack_01_Modifier = 1f;
 		// HEAVY ATTACK MODIFIER
-		// CRITICAL ATTACK MODIFIER ETC 
+		// CRITICAL ATTACK MODIFIER ETC
 
 		[Header("Stamina Cost Modifiers")]
 		public int baseStaminaCost = 20;
 		public float lightAttackStaminaCost = 0.9f;
-		// RUNNING ATTACK STAMINA COST MODIFIER 
+		// RUNNING ATTACK STAMINA COST MODIFIER
 		// HEAVY ATTACK STAMINA COST MODIFIER
 
 		[Header("Actions")]

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-namespace SG { 
+namespace SG {
 	public class PlayerCamera : MonoBehaviour
 	{
 		public static PlayerCamera instance;
@@ -13,19 +13,19 @@ namespace SG {
 
 		[Header("Camera Settings")]
 		[SerializeField] private float cameraSmoothSpeed = 0.3f;
-		[SerializeField] float leftAndRightRotationSpeed = 220; 
+		[SerializeField] float leftAndRightRotationSpeed = 220;
 		[SerializeField] float upAndDownRotationSpeed = 220;
 		[SerializeField] float minimumPivot = -30;                     // lowest point the camera can look down to
-		[SerializeField] float maximumPivot = 60; 
+		[SerializeField] float maximumPivot = 60;
 		[SerializeField] float cameraCollisionRadius = 0.2f;
 		[SerializeField] LayerMask collisionWithLayers;
 
 		[Header("Camera Values")]
 		private Vector3 cameraVelocity;
 		private Vector3 cameraObjectPosition;                          // used for camera collision (move camera to this position if there is a collision)
-		[SerializeField] float leftAndRightLookAngle;			
-		[SerializeField] float upAndDownLookAngle; 
-		private float cameraZPosition;                                 // used for camera collision 
+		[SerializeField] float leftAndRightLookAngle;
+		[SerializeField] float upAndDownLookAngle;
+		private float cameraZPosition;                                 // used for camera collision
 		private float targetCameraZPosition;                           // used for camera collision
 
 		[Header("Lock On Settings")]
@@ -203,17 +203,17 @@ namespace SG {
 			for (int i=0; i < colliders.Length; i++)
 			{
 				CharacterManager lockOnTarget = colliders[i].GetComponent<CharacterManager>();
-				
+
 				if (lockOnTarget != null)
 				{
 					float distanceFromPlayer = Vector3.Distance(player.transform.position, lockOnTarget.transform.position);
-					
+
 					Vector3 lockOnTargetDirection = lockOnTarget.transform.position - player.transform.position;
 					float viewableAngle = Vector3.Angle(lockOnTargetDirection, cameraObject.transform.forward);
 
 					if (lockOnTarget.isDead ||
 						lockOnTarget.transform.root == player.transform.root ||
-						distanceFromPlayer > maximumLockOnDistance || 
+						distanceFromPlayer > maximumLockOnDistance ||
 						viewableAngle < minimumViewableAngle || viewableAngle > maximumViewableAngle)
 					{
 						continue;
@@ -240,24 +240,24 @@ namespace SG {
 			}
 		}
 
-		// ===================== Test & Debug ===================== // 
+		// ===================== Test & Debug ===================== //
 		private void OnDrawGizmos()
 		{
 			if (player == null) return;
 
-			// 1. Vẽ vòng tròn bán kính Lock-on (Màu xanh dương)
+
 			Gizmos.color = Color.blue;
 			Gizmos.DrawWireSphere(player.transform.position, lockOnRadius);
 
-			// 2. Nếu đang Lock-on, vẽ đường thẳng nối tới mục tiêu (Màu đỏ)
+
 			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
 			{
 				Gizmos.color = Color.red;
-				// Vẽ tia nối giữa 2 điểm Lock-on để kiểm tra Linecast
+
 				Gizmos.DrawLine(player.playerCombatManager.lockOnTransform.position,
 								player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position);
 
-				// Vẽ một khối cầu nhỏ tại điểm đang bị khóa
+
 				Gizmos.DrawWireSphere(player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position, 0.5f);
 			}
 		}

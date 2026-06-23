@@ -2,7 +2,7 @@
 
 public class ProjectileDestroyer : MonoBehaviour
 {
-	public float lifeTime = 5f; 
+	public float lifeTime = 5f;
 
 	void Start()
 	{

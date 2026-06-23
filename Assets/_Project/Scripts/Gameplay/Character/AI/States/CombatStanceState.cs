@@ -9,27 +9,44 @@ namespace SG
 	public class CombatStanceState : AIState
 	{
 		[Header("Attack")]
-		public List<AICharacterAttackAction> aiCharacterAttacks;			
-		protected List<AICharacterAttackAction> potentialAttacks;           
-		[SerializeField] protected AICharacterAttackAction choosenAttack; 
+		public List<AICharacterAttackAction> aiCharacterAttacks;
+		protected List<AICharacterAttackAction> potentialAttacks;
+		[SerializeField] protected AICharacterAttackAction choosenAttack;
 		[SerializeField] protected AICharacterAttackAction previousAttack;
-		protected bool hasAttack = false;                                              	
+		protected bool hasAttack = false;
 
 		[Header("Combo")]
-		[SerializeField] protected bool canPerformCombo = false;            
-		[SerializeField] protected int chanceToPerformCombo = 25;           
-		//[SerializeField] bool hasRollForComboChance = false;                
+		[SerializeField] protected bool canPerformCombo = false;
+		[SerializeField] protected int chanceToPerformCombo = 25;
+		//[SerializeField] bool hasRollForComboChance = false;
 
 		[Header("Engagement Distance")]
-		[SerializeField] public float maximumEngagementDistance = 5;    
+		[SerializeField] public float maximumEngagementDistance = 5;
 
 		public override AIState Tick(AICharacterManager aiCharacter)
 		{
 			if (aiCharacter.isPerformingAction)
 				return this;
 
-			if (!aiCharacter.navMeshAgent.enabled)
-				aiCharacter.navMeshAgent.enabled = true;
+			if (aiCharacter.navMeshAgent != null)
+			{
+				if (!aiCharacter.navMeshAgent.enabled || !aiCharacter.navMeshAgent.isOnNavMesh)
+				{
+					NavMeshHit hit;
+					if (NavMesh.SamplePosition(aiCharacter.transform.position, out hit, 10.0f, NavMesh.AllAreas))
+					{
+						Debug.Log($">> [COMBAT STANCE] {aiCharacter.name} snapping off-mesh Agent to {hit.position}");
+						aiCharacter.navMeshAgent.enabled = false;
+						aiCharacter.transform.position = hit.position;
+						aiCharacter.navMeshAgent.enabled = true;
+					}
+					else
+					{
+						Debug.LogWarning($">> [COMBAT STANCE] {aiCharacter.name} could not snap Agent near 10m! Disabling agent.");
+						aiCharacter.navMeshAgent.enabled = false;
+					}
+				}
+			}
 
 			if (aiCharacter.aiCharacterCombatManager.enablePivot)
 			{
@@ -39,6 +56,13 @@ namespace SG
 					{
 						aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
 					}
+				}
+			}
+			else
+			{
+				if (!aiCharacter.isMoving)
+				{
+					aiCharacter.aiCharacterCombatManager.RotateTowardsTarget(aiCharacter);
 				}
 			}
 
@@ -60,9 +84,13 @@ namespace SG
 			if (aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
 				return SwitchState(aiCharacter, aiCharacter.pursueTarget);
 
-			NavMeshPath path = new NavMeshPath();
-			aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
-			aiCharacter.navMeshAgent.SetPath(path);
+			if (aiCharacter.navMeshAgent != null && aiCharacter.navMeshAgent.isActiveAndEnabled && aiCharacter.navMeshAgent.isOnNavMesh)
+			{
+				Debug.Log($">> [COMBAT STANCE] {aiCharacter.name} calculating path to target: {aiCharacter.aiCharacterCombatManager.currentTarget.transform.position}");
+				NavMeshPath path = new NavMeshPath();
+				aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
+				aiCharacter.navMeshAgent.SetPath(path);
+			}
 
 			return this;
 		}
@@ -73,7 +101,7 @@ namespace SG
 
 			foreach (var potentialAttack in aiCharacterAttacks)
 			{
-				if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget 
+				if (potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget
 					|| potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterCombatManager.distanceFromTarget)
 				{
 					continue;

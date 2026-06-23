@@ -81,3 +81,13 @@ crashlytics-build.properties
 # Ignore Unity recovery folders
 /[Aa]ssets/_[Rr]ecovery/
 /[Aa]ssets/_[Rr]ecovery.meta
+node_modules
+
+# Python virtual environment and compilation build folders
+Model_SOW/venv/
+Model_SOW/dist/
+Model_SOW/build/
+Model_SOW/*.spec
+
+# Agent-specific directories
+.agent/

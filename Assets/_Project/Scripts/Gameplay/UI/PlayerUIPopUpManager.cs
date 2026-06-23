@@ -35,11 +35,11 @@ namespace SG
         [SerializeField] TextMeshProUGUI playerMessageText;
 
         [Header("Item Loot Popup Settings (Offline Context)")]
-        [SerializeField] private GameObject itemPopupGameObject; // Khung GameObject tổng của Panel nhặt đồ
-        [SerializeField] private UnityEngine.UI.Image itemIconImage;  // Ô hiển thị ảnh Sprite vật phẩm
-        [SerializeField] private TMPro.TextMeshProUGUI itemNameText;  // Khung chữ tên vật phẩm
-        [SerializeField] private TMPro.TextMeshProUGUI itemAmountText;// Khung chữ số lượng vật phẩm
-        
+        [SerializeField] private GameObject itemPopupGameObject;
+        [SerializeField] private UnityEngine.UI.Image itemIconImage;
+        [SerializeField] private TMPro.TextMeshProUGUI itemNameText;
+        [SerializeField] private TMPro.TextMeshProUGUI itemAmountText;
+
 
         public void SendYouDiedPopUp()
         {
@@ -76,7 +76,7 @@ namespace SG
         {
             if (duration > 0)
             {
-                text.characterSpacing = 0;          // RESET OUR CHARACTER SPACING 
+                text.characterSpacing = 0;          // RESET OUR CHARACTER SPACING
                 float timer = 0;
 
                 yield return null;
@@ -178,7 +178,7 @@ namespace SG
                 playerMessagePopUpGameObject.SetActive(false);
             }
 
-            // Chỉ tắt trạng thái popupWindowIsOpen nếu panel vật phẩm hoặc các popup khác không hiển thị
+
             if (itemPopupGameObject != null && itemPopupGameObject.activeSelf)
             {
                 PlayerUIManager.instance.popupWindowIsOpen = true;
@@ -193,20 +193,20 @@ namespace SG
         {
             if (itemPopupGameObject == null) return;
 
-            // 1. Gán trạng thái báo hiệu hệ thống UI đang có pop-up mở để chặn mở Menu hòm đồ đè lên nhau
+
             PlayerUIManager.instance.popupWindowIsOpen = true;
 
-            // 2. Gán nạp dữ liệu Sprite hình ảnh và văn bản chuỗi từ Asset truyền vào
+
             if (itemIconImage != null) itemIconImage.sprite = item.itemIcon;
             if (itemNameText != null) itemNameText.text = item.itemName;
-            
-            if (itemAmountText != null) 
+
+            if (itemAmountText != null)
             {
                 itemAmountText.gameObject.SetActive(true);
                 itemAmountText.text = "x" + itemAmount.ToString();
             }
 
-            // 3. Kích hoạt bật hiển thị Panel UI lên màn hình chính công khai
+
             itemPopupGameObject.SetActive(true);
         }
 
@@ -241,13 +241,14 @@ namespace SG
             // Restore timeScale before returning to Main Menu
             Time.timeScale = 1f;
 
-            // Dọn dẹp các thực thể DontDestroyOnLoad không cần thiết trước khi về Title Screen
+            CloseDemoCompletionPopup();
+
             if (PlayerManager.instance != null) Destroy(PlayerManager.instance.gameObject);
             if (PlayerCamera.instance != null) Destroy(PlayerCamera.instance.gameObject);
             if (PlayerInputManager.instance != null) Destroy(PlayerInputManager.instance.gameObject);
-            
-            // Tải cảnh Title Screen (thông thường index 0 hoặc 1, ở đây load 0 hoặc theo tên)
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0); 
+
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
 
         public void QuitGame()
@@ -272,18 +273,33 @@ namespace SG
                 demoCompletionPopUpCanvasGroup.blocksRaycasts = true;
             }
 
-            // Mở khóa con trỏ chuột để người chơi tương tác với nút nhấn
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            // Khóa di chuyển và tương tác của nhân vật
+
             if (PlayerInputManager.instance != null)
             {
                 PlayerInputManager.instance.enabled = false;
             }
 
-            // Ngưng đọng thời gian game khi hiện bảng thông báo
+
             Time.timeScale = 0f;
+        }
+
+        public void CloseDemoCompletionPopup()
+        {
+            if (demoCompletionPopUpGameObject != null)
+            {
+                demoCompletionPopUpGameObject.SetActive(false);
+            }
+
+            if (demoCompletionPopUpCanvasGroup != null)
+            {
+                demoCompletionPopUpCanvasGroup.alpha = 0f;
+                demoCompletionPopUpCanvasGroup.interactable = false;
+                demoCompletionPopUpCanvasGroup.blocksRaycasts = false;
+            }
         }
     }
 }

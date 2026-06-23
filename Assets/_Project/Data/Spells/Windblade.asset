@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: SG.Gameplay::SG.MeleeSpellAction
   spellID: 3
   spellAnimation: Windblade_Cast
-  manaCost: 12
+  manaCost: 10
   spellPrefab: {fileID: 6799862405182533531, guid: 295e7b42df4ad4e43813578e7182a973, type: 3}
   fireDamage: 0
   lightningDamage: 0
-  windDamage: 500
+  windDamage: 10

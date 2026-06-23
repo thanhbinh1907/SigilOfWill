@@ -19,7 +19,7 @@ namespace SG
 				return;
 
 			if (!playerPerformingAction.isGrounded)
-				return; 
+				return;
 
 			PerformLightAttack(playerPerformingAction, weaponPerformingAction);
 		}

@@ -30,7 +30,7 @@ namespace SG
         [SerializeField] bool jumpInput = false;
 
 		[Header("LOCK ON INPUT")]
-        [SerializeField] bool lockOnInput = false; 
+        [SerializeField] bool lockOnInput = false;
 
 		[Header("PLAYER COMBAT INPUT")]
         [SerializeField] public bool spellTriggerInput = false;
@@ -109,18 +109,18 @@ namespace SG
 				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;
 				playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switchLeftWeaponInput = true;
 
-				// LOCK ON 
+				// LOCK ON
 				playerControls.PlayerAction.LockOn.performed += i => lockOnInput = true;
 
 				playerControls.PlayerCombat.SpellTrigger.performed += i =>
 				{
 					spellTriggerInput = true;
-					Debug.Log(">>(Player Input Manager) ĐÃ NHẬN DIỆN PHÍM E ĐƯỢC BẤM XUỐNG!"); 
+					Debug.Log(">>(Player Input Manager) ĐÃ NHẬN DIỆN PHÍM E ĐƯỢC BẤM XUỐNG!");
 				};
 				playerControls.PlayerCombat.SpellTrigger.canceled += i =>
 				{
 					spellTriggerInput = false;
-					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!"); 
+					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!");
 				};
 
 				// INTERACTION
@@ -150,7 +150,7 @@ namespace SG
         {
             if (player == null) return;
 
-            // Nếu người chơi đã chết, không xử lý các đầu vào hành động/di chuyển khác
+
             if (player.isDead)
             {
                 spellTriggerInput = false;
@@ -159,7 +159,7 @@ namespace SG
 
             HandleAllInput();
 
-            // Cập nhật trạng thái con trỏ chuột dựa trên UI
+
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -218,7 +218,7 @@ namespace SG
                 moveAmount = 1f;
             }
 
-            if (player == null) 
+            if (player == null)
                 return;
 
             if (moveAmount != 0)
@@ -229,10 +229,10 @@ namespace SG
             {
                 player.isMoving = false;
 			}
-            
+
 			if (player.isLockOn)
             {
-                if (player.isSprinting) 
+                if (player.isSprinting)
                 {
                     player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, verticalInput, player.isSprinting);
 				}
@@ -241,9 +241,9 @@ namespace SG
 					player.playerAnimatorManager.UpdateAnimatorMovementParameters(horizontalInput, verticalInput, player.isSprinting);
 				}
             }
-            // HORIZONTAL = 0 BECAUSE WE ONLY WANT NON-STRAFING MOVEMENT 
+            // HORIZONTAL = 0 BECAUSE WE ONLY WANT NON-STRAFING MOVEMENT
             // WE USE HORIZONTAL WHEN WE WANT STRAFING MOVEMENT OR LOCKED ON
-            // IF WE ARE NOT LOCKED ON, ONLY USE MOVEAMOUNT  
+            // IF WE ARE NOT LOCKED ON, ONLY USE MOVEAMOUNT
             else
             {
                 player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.isSprinting);
@@ -309,19 +309,14 @@ namespace SG
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
                 return;
 
-            bool keyboard1Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit1Key.wasPressedThisFrame;
-            bool keyboard2Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit2Key.wasPressedThisFrame;
-
-            // Reset the old input triggers so they don't stack up or interfere
-            switchRightWeaponInput = false;
-            switchLeftWeaponInput = false;
-
-            if (keyboard1Pressed)
+			if (switchRightWeaponInput)
             {
+                switchRightWeaponInput = false;
                 player.playerEquipmentManager.SwitchRightWeapon();
             }
-            if (keyboard2Pressed)
+            if (switchLeftWeaponInput)
             {
+                switchLeftWeaponInput = false;
                 player.playerEquipmentManager.SwitchLeftWeapon();
             }
 		}
@@ -376,7 +371,7 @@ namespace SG
 			{
 				interactionInput = false;
 
-				// Nếu bảng thông báo nhận vật phẩm đang hiển thị trên UI, bấm phím tương tác lần nữa sẽ ẩn nó đi
+
 				if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
 				{
 					if (PlayerUIManager.instance.playerUIPopUpManager.IsItemPopupActive())
@@ -404,7 +399,7 @@ namespace SG
 
 		private void HandleCloseUIInput()
 		{
-			// Kiểm tra nhấn phím Escape trên bàn phím
+
 			bool escapePressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame;
 
 			if (escapePressed)
@@ -431,12 +426,12 @@ namespace SG
 				if (PlayerUIManager.instance != null)
 				{
 					if (PlayerUIManager.instance.playerUIPopUpManager != null)
-						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows(); 
+						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows();
 
 					PlayerUIManager.instance.CloseAllMenuWindows();
 
 					if (PlayerUIManager.instance.playerUICharacterMenuManager != null)
-						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu(); 
+						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
 				}
 			}
 		}

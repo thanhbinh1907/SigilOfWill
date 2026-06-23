@@ -1943,7 +1943,7 @@ MonoBehaviour:
   isUsingLeftHand: 0
   isActive: 1
   isInvulnerable: 0
-  maxHealth: 0
+  maxHealth: 60
   _currentHealth: 0
   maxStamina: 0
   _currentStamina: 0

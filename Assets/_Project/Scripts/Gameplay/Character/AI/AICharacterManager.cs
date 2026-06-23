@@ -55,16 +55,27 @@ namespace SG
 
         private void ProcessStateMachine()
         {
+            if (navMeshAgent != null && navMeshAgent.enabled && !navMeshAgent.isOnNavMesh)
+            {
+                Debug.LogWarning($">> [AI MANAGER] {name}'s NavMeshAgent is enabled but off-mesh! Disabling it to prevent crash.");
+                navMeshAgent.enabled = false;
+            }
+
+            if (aiCharacterCombatManager.currentTarget != null)
+            {
+                aiCharacterCombatManager.targetsDirection = aiCharacterCombatManager.currentTarget.transform.position - transform.position;
+                aiCharacterCombatManager.viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetsDirection);
+                aiCharacterCombatManager.distanceFromTarget = Vector3.Distance(transform.position, aiCharacterCombatManager.currentTarget.transform.position);
+
+                if (aiCharacterCombatManager.distanceFromTarget > aiCharacterCombatManager.distanceToLoseTarget)
+                {
+                    aiCharacterCombatManager.SetTarget(null);
+                }
+            }
+
             AIState nextState = currentState?.Tick(this);
 
-			if (aiCharacterCombatManager.currentTarget != null)
-			{
-				aiCharacterCombatManager.targetsDirection = aiCharacterCombatManager.currentTarget.transform.position - transform.position;
-				aiCharacterCombatManager.viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetsDirection);
-                aiCharacterCombatManager.distanceFromTarget = Vector3.Distance(transform.position, aiCharacterCombatManager.currentTarget.transform.position);
-			}
-
-			if (nextState != null)
+            if (nextState != null)
             {
                 currentState = nextState;
             }
@@ -75,10 +86,7 @@ namespace SG
 
 			if (navMeshAgent.enabled)
             {
-                Vector3 agentDestiation = navMeshAgent.destination;
-                float remainingDistance = Vector3.Distance(transform.position, agentDestiation);
-
-                if (remainingDistance > navMeshAgent.stoppingDistance)
+                if (navMeshAgent.velocity.sqrMagnitude > 0.05f)
                 {
                     isMoving = true;
                 }

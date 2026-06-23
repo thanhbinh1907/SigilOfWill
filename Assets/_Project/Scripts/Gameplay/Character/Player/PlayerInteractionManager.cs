@@ -6,9 +6,9 @@ namespace SG
     public class PlayerInteractionManager : MonoBehaviour
     {
         private PlayerManager player;
-        
+
         [Header("Interaction Queue")]
-        // Danh sách xếp hàng quản lý đa vật thể va chạm cục bộ Offline
+
         private List<Interactable> currentInteractableActions;
 
         private void Awake()
@@ -23,17 +23,18 @@ namespace SG
 
         public void Update()
         {
-            // Kiểm tra an toàn: Nếu không có vật thể nào va chạm thì bỏ qua quét UI
+
             if (currentInteractableActions == null || currentInteractableActions.Count == 0) return;
 
-            // Chặn không cho hiện prompt chữ nếu người chơi đang bận mở bảng Menu hòm đồ/trang bị
-            if (PlayerUIManager.instance != null && 
-               (PlayerUIManager.instance.menuWindowIsOpen || PlayerUIManager.instance.popupWindowIsOpen))
+
+            if (PlayerUIManager.instance != null &&
+               (PlayerUIManager.instance.menuWindowIsOpen ||
+                (PlayerUIManager.instance.playerUIPopUpManager != null && PlayerUIManager.instance.playerUIPopUpManager.IsItemPopupActive())))
             {
                 return;
             }
 
-            // Gọi hàm quét xử lý hiển thị Text Prompt của vật thể ưu tiên số 1 (Index 0)
+
             CheckForInteractable();
         }
 
@@ -41,12 +42,12 @@ namespace SG
         {
             if (currentInteractableActions.Count == 0) return;
 
-            // Nếu phần tử đầu tiên bị null (vật thể bị hủy đột ngột), tiến hành dọn dẹp hàng đợi
+
             if (currentInteractableActions[0] == null)
             {
                 currentInteractableActions.RemoveAt(0);
 
-                // Cập nhật lại trạng thái nếu hàng đợi rỗng sau khi dọn dẹp
+
                 if (currentInteractableActions.Count == 0)
                 {
                     if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
@@ -57,7 +58,7 @@ namespace SG
                 return;
             }
 
-            // Đẩy chuỗi văn bản tương tác của đối tượng sang cho UI hiển thị lên màn hình
+
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
             {
                 PlayerUIManager.instance.playerUIPopUpManager.SendPlayerMessagePopup(currentInteractableActions[0].interactableText);
@@ -70,10 +71,10 @@ namespace SG
 
             if (currentInteractableActions[0] != null)
             {
-                // Kích hoạt hàm tương tác thực tế của thực thể đang xếp đầu tiên
+
                 currentInteractableActions[0].Interact(player);
-                
-                // Tự động dọn dẹp hệ thống danh sách xếp hàng
+
+
                 RefreshInteractionList();
             }
         }
@@ -104,7 +105,7 @@ namespace SG
         {
             if (currentInteractableActions == null) return;
 
-            // Thuật toán vòng lặp ngược chạy lùi dọn dẹp sạch sẽ toàn bộ ô nhớ trống rỗng an toàn
+
             for (int i = currentInteractableActions.Count - 1; i >= 0; i--)
             {
                 if (currentInteractableActions[i] == null)
@@ -113,7 +114,7 @@ namespace SG
                 }
             }
 
-            // Nếu sau khi dọn dẹp mà danh sách trống hoàn toàn, ra lệnh cho UI ẩn bảng thông báo đi (chỉ ẩn message popup, giữ nguyên loot card)
+
             if (currentInteractableActions.Count == 0)
             {
                 if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)

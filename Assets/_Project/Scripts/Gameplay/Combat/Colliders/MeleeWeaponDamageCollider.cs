@@ -33,7 +33,20 @@ namespace SG
 				if (damageTarget == characterCausingDamage)
 					return;
 
-				contactPoint =	other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+				try
+				{
+					contactPoint = other.ClosestPointOnBounds(transform.position);
+				}
+				catch
+				{
+					contactPoint = other.bounds.ClosestPoint(transform.position);
+				}
+
+				if (characterCausingDamage != null && WorldUtilityManager.instance != null)
+				{
+					if (!WorldUtilityManager.instance.CanIDamageThisTarget(characterCausingDamage.characterGroup, damageTarget.characterGroup))
+						return;
+				}
 
 				if (damageTarget.isInvulnerable)
 					return;
@@ -46,6 +59,18 @@ namespace SG
 		{
 			if (charactersDamaged.Contains(damageTarget))
 				return;
+
+			if (characterCausingDamage == null)
+			{
+				Debug.LogWarning("characterCausingDamage is null on MeleeWeaponDamageCollider: " + name);
+				return;
+			}
+
+			if (WorldCharacterEffectsManager.instance == null || WorldCharacterEffectsManager.instance.takeDamageEffect == null)
+			{
+				Debug.LogError("WorldCharacterEffectsManager or takeDamageEffect is null on MeleeWeaponDamageCollider: " + name);
+				return;
+			}
 
 			charactersDamaged.Add(damageTarget);
 
@@ -62,19 +87,25 @@ namespace SG
 			damageEffect.contactPoint = contactPoint;
 			damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
 
-			switch (characterCausingDamage.characterCombatManager.currentAttackType)
+			if (characterCausingDamage.characterCombatManager != null)
 			{
-				case AttackType.LightAttack01:
-					ApplyAttackDamageModifiers(light_Attack_01_Modifier, damageEffect);
-					break;
-				case AttackType.HeavyAttack01:
-					ApplyAttackDamageModifiers(heavy_Attack_01_Modifier, damageEffect);
-					break;
-				default:
-					break;
+				switch (characterCausingDamage.characterCombatManager.currentAttackType)
+				{
+					case AttackType.LightAttack01:
+						ApplyAttackDamageModifiers(light_Attack_01_Modifier, damageEffect);
+						break;
+					case AttackType.HeavyAttack01:
+						ApplyAttackDamageModifiers(heavy_Attack_01_Modifier, damageEffect);
+						break;
+					default:
+						break;
+				}
 			}
 
-			damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+			if (damageTarget.characterEffectsManager != null)
+			{
+				damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+			}
 		}
 
 		private void ApplyAttackDamageModifiers(float modifier, TakeDamageEffect damage)

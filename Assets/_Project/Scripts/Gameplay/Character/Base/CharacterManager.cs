@@ -5,7 +5,7 @@ using TMPro;
 using System;
 using UnityEngine.AI;
 
-namespace SG 
+namespace SG
 {
 	public class CharacterManager : MonoBehaviour
 	{
@@ -45,7 +45,7 @@ namespace SG
 		// ----------------------- HEALTH ------------------------ //
 		public int maxHealth = 0;
 		public event Action<int, int> OnHealthChanged;
-		
+
 		public int _currentHealth = 0;
 		public int currentHealth
 		{
@@ -70,7 +70,7 @@ namespace SG
 			set
 			{
 				float oldValue = _currentStamina;
-				_currentStamina = value;
+				_currentStamina = Mathf.Clamp(value, 0f, maxStamina);
 				OnStaminaChanged?.Invoke(oldValue,_currentStamina);
 			}
 		}
@@ -85,7 +85,7 @@ namespace SG
 			set
 			{
 				float oldValue = _currentMana;
-				_currentMana = value;
+				_currentMana = Mathf.Clamp(value, 0f, maxMana);
 				OnManaChanged?.Invoke(oldValue,_currentMana);
 			}
 		}
@@ -114,7 +114,7 @@ namespace SG
 		{
 			IgnoreMyOwnColliders();
 
-			// Đăng ký sự kiện kiểm tra lượng máu (tự động xử lý chết khi HP <= 0) cho tất cả nhân vật
+
 			OnHealthChanged += CheckHP;
 
 			if (characterUIManager != null)
@@ -122,7 +122,7 @@ namespace SG
 				OnHealthChanged += characterUIManager.OnCharacterHPChanged;
 			}
 
-			// Khởi tạo máu ban đầu bằng máu tối đa cho AI và Boss
+
 			if (currentHealth == 0 && maxHealth > 0)
 			{
 				currentHealth = maxHealth;

@@ -39,6 +39,6 @@ namespace SG
 		public void CloseMeleeDamageCollider()
 		{
 			meleeCollider.DisableDamageCollider();
-		}	
+		}
 	}
 }

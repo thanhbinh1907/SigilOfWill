@@ -164,6 +164,7 @@ MonoBehaviour:
   saveGame: 0
   loadGame: 0
   worldSceneIndex: 1
+  startingPosition: {x: -5, y: -0.1, z: -14}
   currentCharacterSlotBeingUsed: 0
   currentCharacterData:
     sceneIndex: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca884aebe28557a4f836b8b66a4e668c, type: 3}
   - {fileID: 21300000, guid: e249afe401da6eb45af41e034b232d06, type: 3}
   loadingScreenBackgroundImage: {fileID: 6413231417394706317}
+  loadingIconCanvasGroup: {fileID: 0}
   characterSlot01:
     sceneIndex: 0
     characterName: Character

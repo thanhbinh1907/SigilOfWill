@@ -19,13 +19,13 @@ namespace SG
 
         [Header("Equipment Inventory")]
 		public EquipmentSlotType currentSelectedEquipmentSlot;
-		[SerializeField] GameObject equipmentInventoryWindow; 
+		[SerializeField] GameObject equipmentInventoryWindow;
 		[SerializeField] GameObject equipmentInventorySlotPrefab;
 		[SerializeField] Transform equipmentInventoryContentWindow;
 
 		private bool isSlotSelected = false;
 
-		public void OpenEquipmentManagerMenu() 
+		public void OpenEquipmentManagerMenu()
         {
             PlayerUIManager.instance.menuWindowIsOpen = true;
             menu.SetActive(true);
@@ -37,7 +37,7 @@ namespace SG
             LoadWeaponInventory();
 		}
 
-        public void CloseEquipmentManagerMenu() 
+        public void CloseEquipmentManagerMenu()
         {
             PlayerUIManager.instance.menuWindowIsOpen = false;
             menu.SetActive(false);
@@ -60,85 +60,122 @@ namespace SG
         private void RefreshWeaponSlotIcons()
         {
             PlayerManager player = PlayerManager.instance;
+            if (player == null || player.playerInventoryManager == null) return;
 
             // RIGHT HAND SLOT 01
-            WeaponItem rightHandWeapon01 = player.playerInventoryManager.weaponsInRightHandSlots[0];
-            if (rightHandWeapon01 != null && rightHandWeapon01.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            if (player.playerInventoryManager.weaponsInRightHandSlots.Length > 0)
             {
-                rightHandSlot01.enabled = true;
-                rightHandSlot01.sprite = rightHandWeapon01.itemIcon;
-            }
-            else
-            {
-                rightHandSlot01.enabled = false;
-                rightHandSlot01.sprite = null;
+                WeaponItem rightHandWeapon01 = player.playerInventoryManager.weaponsInRightHandSlots[0];
+                if (rightHandSlot01 != null)
+                {
+                    if (rightHandWeapon01 != null && rightHandWeapon01.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        rightHandSlot01.enabled = true;
+                        rightHandSlot01.sprite = rightHandWeapon01.itemIcon;
+                    }
+                    else
+                    {
+                        rightHandSlot01.enabled = false;
+                        rightHandSlot01.sprite = null;
+                    }
+                }
             }
 
             // RIGHT HAND SLOT 02
-            WeaponItem rightHandWeapon02 = player.playerInventoryManager.weaponsInRightHandSlots[1];
-            if (rightHandWeapon02 != null && rightHandWeapon02.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            if (player.playerInventoryManager.weaponsInRightHandSlots.Length > 1)
             {
-                rightHandSlot02.enabled = true;
-                rightHandSlot02.sprite = rightHandWeapon02.itemIcon;
-            }
-            else
-            {
-                rightHandSlot02.enabled = false;
-                rightHandSlot02.sprite = null;
+                WeaponItem rightHandWeapon02 = player.playerInventoryManager.weaponsInRightHandSlots[1];
+                if (rightHandSlot02 != null)
+                {
+                    if (rightHandWeapon02 != null && rightHandWeapon02.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        rightHandSlot02.enabled = true;
+                        rightHandSlot02.sprite = rightHandWeapon02.itemIcon;
+                    }
+                    else
+                    {
+                        rightHandSlot02.enabled = false;
+                        rightHandSlot02.sprite = null;
+                    }
+                }
             }
 
             // RIGHT HAND SLOT 03
-            WeaponItem rightHandWeapon03 = player.playerInventoryManager.weaponsInRightHandSlots[2];
-            if (rightHandWeapon03 != null && rightHandWeapon03.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            if (player.playerInventoryManager.weaponsInRightHandSlots.Length > 2)
             {
-                rightHandSlot03.enabled = true;
-                rightHandSlot03.sprite = rightHandWeapon03.itemIcon;
-            }
-            else
-            {
-                rightHandSlot03.enabled = false;
-                rightHandSlot03.sprite = null;
+                WeaponItem rightHandWeapon03 = player.playerInventoryManager.weaponsInRightHandSlots[2];
+                if (rightHandSlot03 != null)
+                {
+                    if (rightHandWeapon03 != null && rightHandWeapon03.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        rightHandSlot03.enabled = true;
+                        rightHandSlot03.sprite = rightHandWeapon03.itemIcon;
+                    }
+                    else
+                    {
+                        rightHandSlot03.enabled = false;
+                        rightHandSlot03.sprite = null;
+                    }
+                }
             }
 
-			// LEFT HAND SLOT 01
-            WeaponItem leftHandWeapon01 = player.playerInventoryManager.weaponsInLeftHandSlots[0];
-            if (leftHandWeapon01 != null && leftHandWeapon01.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            // LEFT HAND SLOT 01
+            if (player.playerInventoryManager.weaponsInLeftHandSlots.Length > 0)
             {
-                leftHandSlot01.enabled = true;
-                leftHandSlot01.sprite = leftHandWeapon01.itemIcon;
+                WeaponItem leftHandWeapon01 = player.playerInventoryManager.weaponsInLeftHandSlots[0];
+                if (leftHandSlot01 != null)
+                {
+                    if (leftHandWeapon01 != null && leftHandWeapon01.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        leftHandSlot01.enabled = true;
+                        leftHandSlot01.sprite = leftHandWeapon01.itemIcon;
+                    }
+                    else
+                    {
+                        leftHandSlot01.enabled = false;
+                        leftHandSlot01.sprite = null;
+                    }
+                }
             }
-            else
-            {
-                leftHandSlot01.enabled = false;
-                leftHandSlot01.sprite = null;
-			}
 
             // LEFT HAND SLOT 02
-            WeaponItem leftHandWeapon02 = player.playerInventoryManager.weaponsInLeftHandSlots[1];
-            if (leftHandWeapon02 != null && leftHandWeapon02.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            if (player.playerInventoryManager.weaponsInLeftHandSlots.Length > 1)
             {
-                leftHandSlot02.enabled = true;
-                leftHandSlot02.sprite = leftHandWeapon02.itemIcon;
+                WeaponItem leftHandWeapon02 = player.playerInventoryManager.weaponsInLeftHandSlots[1];
+                if (leftHandSlot02 != null)
+                {
+                    if (leftHandWeapon02 != null && leftHandWeapon02.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        leftHandSlot02.enabled = true;
+                        leftHandSlot02.sprite = leftHandWeapon02.itemIcon;
+                    }
+                    else
+                    {
+                        leftHandSlot02.enabled = false;
+                        leftHandSlot02.sprite = null;
+                    }
+                }
             }
-            else
-            {
-                leftHandSlot02.enabled = false;
-                leftHandSlot02.sprite = null;
-			}
 
             // LEFT HAND SLOT 03
-            WeaponItem leftHandWeapon03 = player.playerInventoryManager.weaponsInLeftHandSlots[2];
-            if (leftHandWeapon03 != null && leftHandWeapon03.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+            if (player.playerInventoryManager.weaponsInLeftHandSlots.Length > 2)
             {
-                leftHandSlot03.enabled = true;
-                leftHandSlot03.sprite = leftHandWeapon03.itemIcon;
+                WeaponItem leftHandWeapon03 = player.playerInventoryManager.weaponsInLeftHandSlots[2];
+                if (leftHandSlot03 != null)
+                {
+                    if (leftHandWeapon03 != null && leftHandWeapon03.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
+                    {
+                        leftHandSlot03.enabled = true;
+                        leftHandSlot03.sprite = leftHandWeapon03.itemIcon;
+                    }
+                    else
+                    {
+                        leftHandSlot03.enabled = false;
+                        leftHandSlot03.sprite = null;
+                    }
+                }
             }
-            else
-            {
-                leftHandSlot03.enabled = false;
-                leftHandSlot03.sprite = null;
-			}
-		}
+        }
 
         private void ClearEquipmentInventory()
         {
@@ -231,15 +268,15 @@ namespace SG
             if (weaponsSlots != null)
             {
                 WeaponItem equippedWeapon = weaponsSlots[slotIndex];
-                
+
                 // If there is indeed a weapon equipped (not unarmed)
                 if (equippedWeapon != null && equippedWeapon.itemID != WorldItemDatabase.instance.unarmedWeapon.itemID)
                 {
                     Debug.Log($">> [EQUIPMENT UI] Un-equipping weapon: {equippedWeapon.itemName} from slot {slot}");
-                    
+
                     // Return it to inventory
                     player.playerInventoryManager.AddItemToInventory(equippedWeapon);
-                    
+
                     // Set slot to unarmed
                     weaponsSlots[slotIndex] = WorldItemDatabase.instance.unarmedWeapon;
 

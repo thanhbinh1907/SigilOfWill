@@ -13,7 +13,7 @@ namespace SG
 
 		[Header("Action Sounds")]
 		public AudioClip rollSFX;
-		public AudioClip pickupItemSFX; // Âm thanh thu thập vật phẩm
+		public AudioClip pickupItemSFX;
 
 		[Header("Boss Music Players")]
 		[SerializeField] AudioSource bossIntroPlayer;
@@ -23,6 +23,7 @@ namespace SG
 		public float sfxVolume = 0.5f;
 
 		public System.Action<float> OnBGMVolumeChanged;
+		public System.Action<float> OnSFXVolumeChanged;
 
         private void Awake()
         {
@@ -40,7 +41,7 @@ namespace SG
 			musicVolume = PlayerPrefs.GetFloat("BGM_Volume", 0.5f);
 			sfxVolume = PlayerPrefs.GetFloat("SFX_Volume", 0.5f);
 
-			// Tự động khởi tạo AudioSource nếu chưa được gán trong Inspector
+
 			if (bossIntroPlayer == null)
 			{
 				bossIntroPlayer = gameObject.AddComponent<AudioSource>();
@@ -54,7 +55,6 @@ namespace SG
 				bossLoopPlayer.playOnAwake = false;
 			}
 
-			// Đảm bảo âm thanh phẳng 2D tuyệt đối (không bị giảm theo khoảng cách)
 			if (bossIntroPlayer != null)
 			{
 				bossIntroPlayer.spatialBlend = 0f;
@@ -84,6 +84,7 @@ namespace SG
 			sfxVolume = volume;
 			PlayerPrefs.SetFloat("SFX_Volume", sfxVolume);
 			PlayerPrefs.Save();
+			OnSFXVolumeChanged?.Invoke(sfxVolume);
 		}
 
 		public float GetBGMVolume()
@@ -127,6 +128,36 @@ namespace SG
 		public void StopBossMusic()
 		{
 			StartCoroutine(FadeOutBossMusic(2f));
+		}
+
+		public void StopBossMusicImmediate()
+		{
+			StopAllCoroutines();
+			if (bossIntroPlayer != null)
+			{
+				bossIntroPlayer.Stop();
+				bossIntroPlayer.volume = musicVolume;
+			}
+			if (bossLoopPlayer != null)
+			{
+				bossLoopPlayer.Stop();
+				bossLoopPlayer.volume = musicVolume;
+			}
+		}
+
+		private void OnEnable()
+		{
+			UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+		}
+
+		private void OnDisable()
+		{
+			UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+		{
+			StopBossMusicImmediate();
 		}
 
 		private IEnumerator FadeOutBossMusic(float duration)
@@ -179,7 +210,7 @@ namespace SG
 		}
 
         /*
-        public AudioClip ChooseRandomFootStepSoundBasedOnGround(GameObject steppedOnObject, CharacterManager character) 
+        public AudioClip ChooseRandomFootStepSoundBasedOnGround(GameObject steppedOnObject, CharacterManager character)
         {
             if (steppedOnObject.tag == "Dirt")
             {

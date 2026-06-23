@@ -16,7 +16,7 @@ MonoBehaviour:
   spellAnimation: Fireball_Ultimate_Cast
   manaCost: 50
   spellPrefab: {fileID: 1764370465590902, guid: 7efed9b7dcfc6954b95c9d998a217498, type: 3}
-  fireDamage: 7000
+  fireDamage: 70
   lightningDamage: 0
   windDamage: 0
   spawnForwardOffset: 5

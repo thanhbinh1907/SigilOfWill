@@ -57,21 +57,40 @@ namespace SG
 
 		public string GetRandomAnimationFromList(List<string> animationList)
 		{
+			if (animationList == null || animationList.Count == 0)
+			{
+				return "";
+			}
+
 			List<string> finalList = new List<string>();
 
 			foreach (var item in animationList)
 			{
-				finalList.Add(item);
+				if (!string.IsNullOrEmpty(item))
+				{
+					finalList.Add(item);
+				}
 			}
 
-			finalList.Remove(lastDamageAnimationPlayed);
-
-			for (int i = finalList.Count - 1; i > -1; i--)
+			if (finalList.Count > 1)
 			{
-				if (finalList[i] == null)
+				finalList.Remove(lastDamageAnimationPlayed);
+			}
+
+			if (finalList.Count == 0)
+			{
+				foreach (var item in animationList)
 				{
-					finalList.RemoveAt(i);
+					if (!string.IsNullOrEmpty(item))
+					{
+						finalList.Add(item);
+					}
 				}
+			}
+
+			if (finalList.Count == 0)
+			{
+				return "";
 			}
 
 			int randemValue = Random.Range(0, finalList.Count);
@@ -93,13 +112,23 @@ namespace SG
 		}
 
 		public virtual void PlayTargetAnimation(
-			string targetAnimation, 
-			bool isPerformingAction, 
-			bool applyRootMotion = true, 
-			bool canRotate = false, 
+			string targetAnimation,
+			bool isPerformingAction,
+			bool applyRootMotion = true,
+			bool canRotate = false,
 			bool canMove = false)
 		{
+			if (string.IsNullOrEmpty(targetAnimation))
+			{
+				Debug.LogWarning("PlayTargetAnimation was called with a null or empty animation name!");
+				return;
+			}
 			Debug.Log("Playing Animation: " + targetAnimation);
+			if (character.animator == null)
+			{
+				Debug.LogError("character.animator is null on " + character.name);
+				return;
+			}
 			character.applyRootMotion = applyRootMotion;
 			character.animator.CrossFade(targetAnimation, 0.2f);
 			// can be used to stop character movement during an animation, such as attacking or being hit
@@ -120,9 +149,25 @@ namespace SG
 			// UPDATE ANIMATION SET TO CURRENT WEAPON ANIMATION
 			// DECIDE IF OUR ATTACK CAN BE PARRIED
 
+			if (string.IsNullOrEmpty(targetAnimation))
+			{
+				Debug.LogWarning("PlayTargetAttackActionAnimation was called with a null or empty animation name!");
+				return;
+			}
+			Debug.Log("Playing Attack Animation: " + targetAnimation);
+			if (character.animator == null)
+			{
+				Debug.LogError("character.animator is null on " + character.name);
+				return;
+			}
+			if (character.characterCombatManager == null)
+			{
+				Debug.LogError("character.characterCombatManager is null on " + character.name);
+				return;
+			}
 			character.characterCombatManager.currentAttackType = attackType;
 			character.applyRootMotion = applyRootMotion;
-			character.animator.CrossFade(targetAnimation, 0.2f);	
+			character.animator.CrossFade(targetAnimation, 0.2f);
 			character.isPerformingAction = isPerformingAction;
 			character.canRotate = canRotate;
 			character.canMove = canMove;

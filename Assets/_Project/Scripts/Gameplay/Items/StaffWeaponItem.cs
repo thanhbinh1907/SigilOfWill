@@ -7,6 +7,6 @@ namespace SG
 	[CreateAssetMenu(menuName = "Items/Weapons/Staff Weapon")]
     public class StaffWeaponItem : WeaponItem
     {
-		
+
 	}
 }

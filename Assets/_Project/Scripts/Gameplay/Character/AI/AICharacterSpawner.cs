@@ -26,7 +26,7 @@ namespace SG
 		{
 			if (characterGameObject != null)
 			{
-				// Kiểm tra xem GameObject này có phải là Boss không
+
 				AIBossCharacterManager bossCharacter = characterGameObject.GetComponent<AIBossCharacterManager>();
 				if (bossCharacter == null)
 				{
@@ -35,7 +35,7 @@ namespace SG
 
 				if (bossCharacter != null)
 				{
-					// Nếu là Boss, kiểm tra xem đã bị đánh bại trong file save hiện tại chưa
+
 					if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
 					{
 						int bossID = bossCharacter.bossID;
@@ -51,6 +51,26 @@ namespace SG
 				}
 
 				instantiatedGameObject = Instantiate(characterGameObject, transform.position, transform.rotation);
+
+
+				UnityEngine.AI.NavMeshAgent agent = instantiatedGameObject.GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
+				if (agent != null)
+				{
+					UnityEngine.AI.NavMeshHit hit;
+					if (UnityEngine.AI.NavMesh.SamplePosition(instantiatedGameObject.transform.position, out hit, 10.0f, UnityEngine.AI.NavMesh.AllAreas))
+					{
+						bool prevEnabled = agent.enabled;
+						agent.enabled = false;
+						instantiatedGameObject.transform.position = hit.position;
+						agent.enabled = prevEnabled;
+					}
+					else
+					{
+
+						agent.enabled = false;
+					}
+				}
+
 				WorldAIManager.instance.AddSpawnedCharacter(instantiatedGameObject);
 			}
 		}

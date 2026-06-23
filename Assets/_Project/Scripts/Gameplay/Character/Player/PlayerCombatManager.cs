@@ -24,15 +24,24 @@ namespace SG
 
 		private void Update()
 		{
+			if (player.isDead)
+			{
+				if (player.isCasting)
+				{
+					DisableCastingState();
+				}
+				return;
+			}
+
 			if (player.isCasting)
 			{
-				// Nếu đã nhả phím E, bắt đầu đếm ngược thời gian chờ gói tin từ Python
+
 				if (PlayerInputManager.instance != null && !PlayerInputManager.instance.spellTriggerInput)
 				{
 					float oldTimer = castingTimeoutTimer;
 					castingTimeoutTimer -= Time.deltaTime;
-					
-					// Log mỗi giây để theo dõi tiến trình timeout mà không gây spam
+
+
 					if (Mathf.FloorToInt(oldTimer) != Mathf.FloorToInt(castingTimeoutTimer))
 					{
 						Debug.Log($">> [PLAYER COMBAT] Đang đếm ngược thời gian chờ gói tin từ Python. Còn lại: {castingTimeoutTimer:F1} giây.");
@@ -80,12 +89,18 @@ namespace SG
 				default:
 					break;
 			}
-			 
+
 			player.currentStamina -= Mathf.RoundToInt(staminaDeducted);
 		}
 
 		public void EnableCastingState()
 		{
+			if (player.isDead)
+			{
+				Debug.LogWarning($">> [PLAYER COMBAT] Không thể cast phép vì Player đã chết!");
+				return;
+			}
+
 			if (player.isPerformingAction)
 			{
 				Debug.LogWarning($">> [PLAYER COMBAT] Không thể cast phép vì player.isPerformingAction = true!");
@@ -107,10 +122,10 @@ namespace SG
 			}
 
 			player.isCasting = true;
-			castingTimeoutTimer = castingTimeoutDuration; // Khởi tạo lại timer khi bắt đầu cast
+			castingTimeoutTimer = castingTimeoutDuration;
 			Debug.Log("--- BẮT ĐẦU CHỜ GIỌNG NÓI VÀ CỬ CHỈ TỪ PYTHON (Đè phím E) ---");
 
-			// Xóa dữ liệu cũ khi bắt đầu đè phím E
+
 			if (UDPReceiver.instance != null) UDPReceiver.instance.ResetUDPData();
 		}
 
@@ -125,11 +140,11 @@ namespace SG
 		{
 			if (UDPReceiver.instance != null)
 			{
-				// Lấy dữ liệu từ UDP Gesture Receiver
+
 				int currentGestureID = UDPReceiver.instance.currentGestureID;
 				string currentVoice = UDPReceiver.instance.currentVoiceWord;
 
-				// -1 nghĩa là chưa có gói tin UDP mới gửi tới từ Python (đang chờ gói tin)
+
 				if (currentGestureID == -1)
 				{
 					return;
@@ -140,37 +155,37 @@ namespace SG
 				int spellIDToCast = -1;
 				string spellMode = "";
 
-				// 1. Kiểm tra FIREBALL (Thường: 1, Cường hóa: 4)
+
 				if (currentGestureID == 1 && currentVoice == "fireball")
 				{
-					spellIDToCast = 4; // Bắn ra phép cường hóa có ID = 4
+					spellIDToCast = 4;
 					spellMode = "CƯỜNG HÓA (Cả cử chỉ & giọng nói)";
 				}
 				else if ((currentGestureID == 1 && currentVoice == "none") || (currentGestureID == 0 && currentVoice == "fireball"))
 				{
-					spellIDToCast = 1; // Phép thường có ID = 1
+					spellIDToCast = 1;
 					spellMode = "THƯỜNG (Chỉ cử chỉ hoặc chỉ giọng nói)";
 				}
-				// 2. Kiểm tra THUNDERBOLT (Thường: 2, Cường hóa: 5)
+
 				else if (currentGestureID == 2 && currentVoice == "thunderbolt")
 				{
-					spellIDToCast = 5; // Bắn ra phép cường hóa có ID = 5
+					spellIDToCast = 5;
 					spellMode = "CƯỜNG HÓA (Cả cử chỉ & giọng nói)";
 				}
 				else if ((currentGestureID == 2 && currentVoice == "none") || (currentGestureID == 0 && currentVoice == "thunderbolt"))
 				{
-					spellIDToCast = 2; // Phép thường có ID = 2
+					spellIDToCast = 2;
 					spellMode = "THƯỜNG (Chỉ cử chỉ hoặc chỉ giọng nói)";
 				}
-				// 3. Kiểm tra WINDBLADE (Thường: 3, Cường hóa: 6)
+
 				else if (currentGestureID == 3 && currentVoice == "windblade")
 				{
-					spellIDToCast = 6; // Bắn ra phép cường hóa có ID = 6
+					spellIDToCast = 6;
 					spellMode = "CƯỜNG HÓA (Cả cử chỉ & giọng nói)";
 				}
 				else if ((currentGestureID == 3 && currentVoice == "none") || (currentGestureID == 0 && currentVoice == "windblade"))
 				{
-					spellIDToCast = 3; // Phép thường có ID = 3
+					spellIDToCast = 3;
 					spellMode = "THƯỜNG (Chỉ cử chỉ hoặc chỉ giọng nói)";
 				}
 
@@ -184,7 +199,7 @@ namespace SG
 					Debug.LogWarning($"[THẤT BẠI] Sai Combo hoặc không khớp bất kỳ phép nào: Cử chỉ {currentGestureID} & Giọng '{currentVoice}'");
 				}
 
-				// Reset dữ liệu và kết thúc trạng thái cast sau khi đã nhận và xử lý xong gói tin UDP
+
 				UDPReceiver.instance.ResetUDPData();
 				DisableCastingState();
 			}
@@ -192,6 +207,12 @@ namespace SG
 
 		private void AttemptToCastSpell(int gestureID)
 		{
+			if (player.isDead)
+			{
+				Debug.LogWarning("Không thể cast phép vì player đã chết!");
+				return;
+			}
+
 			Debug.Log($">> [PLAYER COMBAT] Đang tìm SpellAction cho ID = {gestureID} trong WorldSpellDatabase...");
 			SpellAction spellAction = WorldSpellDatabase.instance.GetSpellActionByID(gestureID);
 			if (spellAction != null)

@@ -18,14 +18,14 @@ namespace SG
 		public int attackWeight = 50;
 		// ATTACK CAN BE  REPEATED
 		public float actionRecoveryTime = 2;                // The time before the character can make another attack after performing this one
-		public float minimumAttackAngle = -35;                
+		public float minimumAttackAngle = -35;
 		public float maximumAttackAngle = 35;
 		public float minimumAttackDistance = 0;
 		public float maximumAttackDistance = 3;
 
 		public void AttempToPerformAction(AICharacterManager aiCharacter)
         {
-			aiCharacter.characterAnimatorManager.PlayTargetAttackActionAnimation(attackType, attackAnimation, true);
+			aiCharacter.characterAnimatorManager.PlayTargetAttackActionAnimation(attackType, attackAnimation, true, true, true);
 		}
 	}
 }

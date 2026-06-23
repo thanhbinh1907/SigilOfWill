@@ -5,19 +5,28 @@ import csv
 import os
 import numpy as np
 import sys
-import os
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 def resource_path(relative_path):
     """ Lấy path đúng khi chạy exe hoặc chạy python """
     try:
         base_path = sys._MEIPASS  # PyInstaller temp folder
+        return os.path.join(base_path, relative_path)
     except Exception:
-        base_path = os.path.abspath(".")
-    return os.path.join(base_path, relative_path)
+        # Thử tìm trong thư mục Model_SOW (thư mục cha của data_tools)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        path1 = os.path.join(script_dir, "..", relative_path)
+        if os.path.exists(path1):
+            return os.path.abspath(path1)
+        return os.path.join(os.path.abspath("."), relative_path)
 
 # --- CẤU HÌNH ---
 LABEL = "Neutral"  # Tên chiêu thức hiện tại
-DATA_PATH = "gesture_data.csv"
+DATA_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gesture_data.csv"))
 RECORDING = False 
 latest_hand_landmarks = None # Biến để truyền dữ liệu từ callback ra màn hình
 

@@ -6,16 +6,12 @@ namespace SG
 {
     public class ResetActionFlag : StateMachineBehaviour
     {
-		CharacterManager character;
 		override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-			if (character == null)
-			{
-				character = animator.GetComponentInParent<CharacterManager>();
-			}
+			CharacterManager character = animator.GetComponentInParent<CharacterManager>();
 
 			if (character == null) return;
-			
+
 			// THIS CALL WHEN ACTION END
 			character.isPerformingAction = false;
 			character.applyRootMotion = false;

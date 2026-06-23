@@ -2,14 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
-using UnityEditor.Rendering;
 using System.Xml;
 
 namespace SG
 {
     public class PlayerLocomotionManager : CharacterLocomotionManager
     {
-        PlayerManager player; 
+        PlayerManager player;
 
         [HideInInspector] public float verticalMovement;
         [HideInInspector] public float horizontalMovement;
@@ -42,14 +41,14 @@ namespace SG
             player = GetComponent<PlayerManager>();
 		}
 
-        public void HandleAllMovement() 
+        public void HandleAllMovement()
         {
 			HandleGroundedMovement();
             HandleRotation();
             HandleJumpingMovement();
             HandleFreeFallMovement();
 		}
-       
+
         private void GetVerticalAndHorizontalMovement()
         {
             verticalMovement = PlayerInputManager.instance.verticalInput;
@@ -181,7 +180,7 @@ namespace SG
             if(player.currentStamina <= 0)
             {
                 player.isSprinting = false;
-                return; 
+                return;
             }
 
 			// IF WE ARE MOVING WE CAN SPRINT, OTHERWISE WE CAN'T SPRINT
@@ -217,7 +216,7 @@ namespace SG
 
 				Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
 				player.transform.rotation = playerRotation;
-                
+
                 player.playerAnimatorManager.PlayTargetAnimation("Roll_Forward_01", true, true);
 			}
             else
@@ -251,7 +250,7 @@ namespace SG
 
             jumpDirection = PlayerCamera.instance.transform.forward * PlayerInputManager.instance.verticalInput;
             jumpDirection += PlayerCamera.instance.transform.right * PlayerInputManager.instance.horizontalInput;
-            
+
             jumpDirection.y = 0;
 
             if (jumpDirection != Vector3.zero)

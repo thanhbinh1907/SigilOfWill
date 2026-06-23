@@ -50,7 +50,7 @@ namespace SG
 					case CharacterGroup.Team1: return false;
 					case CharacterGroup.Team2: return true;
 					default:
-						break;	
+						break;
 				}
 			}
 			else if (attackingCharacter == CharacterGroup.Team2)
@@ -74,7 +74,7 @@ namespace SG
 			Vector3 cross = Vector3.Cross(characterTransform.forward, targetsDirection);
 
 			if (cross.y < 0)
-				viewableAngle = -viewableAngle;	
+				viewableAngle = -viewableAngle;
 
 			return viewableAngle;
 		}

@@ -13,15 +13,15 @@ namespace SG
 
 		[Header("VFX Settings")]
 		[SerializeField] private bool showDebugGizmos = true;
-		public GameObject impactVFX; // Prefab hiệu ứng sét giật xuống (Lightning hit)
+		public GameObject impactVFX;
 		public float impactVFXDestroyTime = 2f;
 
 		private void Start()
 		{
-			// Bắt đầu chu kỳ gây sát thương liên tục
+
 			StartCoroutine(ApplyContinuousDamage());
 
-			// Tự hủy toàn bộ đám mây/hiệu ứng sau thời gian duration
+
 			Destroy(gameObject, duration);
 		}
 
@@ -48,9 +48,15 @@ namespace SG
 
 				if (targetCharacter != null)
 				{
-					// Tránh tự gây sát thương cho bản thân (người cast phép)
+
 					if (targetCharacter == characterCausingDamage)
 						continue;
+
+					if (characterCausingDamage != null)
+					{
+						if (!WorldUtilityManager.instance.CanIDamageThisTarget(characterCausingDamage.characterGroup, targetCharacter.characterGroup))
+							continue;
+					}
 
 					if (!damagedCharacters.Contains(targetCharacter))
 					{
@@ -59,19 +65,19 @@ namespace SG
 						if (targetCharacter.isInvulnerable)
 							continue;
 
-						// Tạo và áp dụng hiệu ứng nhận sát thương bằng ApplyDamage
+
 						ApplyDamage(targetCharacter, targetCharacter.transform.position);
 
-						// Sinh ra hiệu ứng sét đánh (Lightning hit) tại vị trí mục tiêu
+
 						if (impactVFX != null)
 						{
 							Vector3 spawnPos = targetCharacter.transform.position;
-							// Ưu tiên lấy vị trí lock-on (giữa ngực) để sét đánh trúng cơ thể thay vì dưới chân
+
 							if (targetCharacter.characterCombatManager != null && targetCharacter.characterCombatManager.lockOnTransform != null)
 							{
 								spawnPos = targetCharacter.characterCombatManager.lockOnTransform.position;
 							}
-							
+
 							GameObject hitEffect = Instantiate(impactVFX, spawnPos, Quaternion.identity);
 							Destroy(hitEffect, impactVFXDestroyTime);
 						}

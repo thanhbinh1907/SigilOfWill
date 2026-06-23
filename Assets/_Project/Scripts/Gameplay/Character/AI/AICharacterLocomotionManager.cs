@@ -12,7 +12,7 @@ namespace SG
 			{
 				aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
 			}
-				
+
 		}
 	}
 }

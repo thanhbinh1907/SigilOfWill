@@ -66,7 +66,7 @@ namespace SG
             WorldSaveGameManager.instance.LoadGame();
 		}
 
-        public void SelectCurrentSlot() 
+        public void SelectCurrentSlot()
         {
 			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.isSceneLoading)
 				return;

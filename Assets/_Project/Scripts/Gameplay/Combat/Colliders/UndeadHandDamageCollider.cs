@@ -9,7 +9,7 @@ namespace SG
 		protected override void Awake()
 		{
 			base.Awake();
-			
+
 			damageCollider = GetComponent<Collider>();
 			undeadCharacter = GetComponentInParent<AICharacterManager>();
 		}

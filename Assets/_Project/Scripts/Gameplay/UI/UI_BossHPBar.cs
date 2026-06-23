@@ -21,7 +21,7 @@ namespace SG
 			SetMaxStat(boss.maxHealth);
 			SetStat(boss.currentHealth);
 
-			// Đăng ký lắng nghe sự kiện máu thay đổi
+
 			bossCharacter.OnHealthChanged += SetBossHP;
 		}
 

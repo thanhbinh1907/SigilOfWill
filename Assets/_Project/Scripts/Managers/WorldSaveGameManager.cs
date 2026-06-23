@@ -77,8 +77,8 @@ namespace SG
 			}
 			DontDestroyOnLoad(gameObject);
 			LoadAllCharacterProfiles();
-			
-			// BẮT ĐẦU CHU KỲ TỰ ĐỘNG LƯU PHONG CÁCH ELDEN RING
+
+
 			StartCoroutine(PeriodicAutoSave());
 		}
 
@@ -86,9 +86,9 @@ namespace SG
 		{
 			while (true)
 			{
-				yield return new WaitForSeconds(10f); // Tự động lưu sau mỗi 10 giây trong nền
+				yield return new WaitForSeconds(10f);
 
-				// Chỉ lưu nếu Scene đã load xong, nhân vật Player đã xuất hiện và còn sống
+
 				if (!isSceneLoading && player != null && !player.isDead)
 				{
 					SaveGame();
@@ -123,6 +123,35 @@ namespace SG
 			if (instance == this)
 			{
 				instance = null;
+			}
+		}
+
+		public string GetDefaultCharacterNameBasedOnCharacterSlot(CharacterSlot characterSlot)
+		{
+			switch (characterSlot)
+			{
+				case CharacterSlot.CharacterSlot_01:
+					return "Character Slot 1";
+				case CharacterSlot.CharacterSlot_02:
+					return "Character Slot 2";
+				case CharacterSlot.CharacterSlot_03:
+					return "Character Slot 3";
+				case CharacterSlot.CharacterSlot_04:
+					return "Character Slot 4";
+				case CharacterSlot.CharacterSlot_05:
+					return "Character Slot 5";
+				case CharacterSlot.CharacterSlot_06:
+					return "Character Slot 6";
+				case CharacterSlot.CharacterSlot_07:
+					return "Character Slot 7";
+				case CharacterSlot.CharacterSlot_08:
+					return "Character Slot 8";
+				case CharacterSlot.CharacterSlot_09:
+					return "Character Slot 9";
+				case CharacterSlot.CharacterSlot_10:
+					return "Character Slot 10";
+				default:
+					return "Character";
 			}
 		}
 
@@ -207,7 +236,7 @@ namespace SG
 
 			// CHECK TO SEE IF WE CAN CREATE A NEW FILE SAVE (CHECK FOR OTHER EXISTING FILE FIRST)
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_01);
-			if (!saveFileDataWriter.CheckToSeeIfFileExists()) 
+			if (!saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				// IF THE FILE EXIST, WE CAN'T CREATE A NEW GAME, OTHERWISE, WE CAN CREATE A NEW GAME
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_01;
@@ -313,10 +342,11 @@ namespace SG
 		private void NewGame()
 		{
 			isSceneLoading = true;
-			
-			// Gán sceneIndex mặc định cho nhân vật mới từ worldSceneIndex
+
+
 			if (currentCharacterData != null)
 			{
+				currentCharacterData.characterName = GetDefaultCharacterNameBasedOnCharacterSlot(currentCharacterSlotBeingUsed);
 				currentCharacterData.sceneIndex = worldSceneIndex;
 				currentCharacterData.xPosition = startingPosition.x;
 				currentCharacterData.yPosition = startingPosition.y;
@@ -344,12 +374,12 @@ namespace SG
 			saveFileDataWriter.saveFileName = saveFileName;
 			currentCharacterData = saveFileDataWriter.LoadSaveFile();
 
-			StartCoroutine(LoadWorldScene()); 
+			StartCoroutine(LoadWorldScene());
 		}
 
 		public void SaveGame()
 		{
-			// Không được lưu game khi đang trong khu vực chiến đấu với Boss (trận đấu Boss đang diễn ra)
+
 			if (WorldAIManager.instance != null && WorldAIManager.instance.IsAnyBossFightActive())
 			{
 				Debug.Log("[HỆ THỐNG LƯU] Không thể lưu game khi đang chiến đấu với Boss!");
@@ -364,7 +394,7 @@ namespace SG
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
 			saveFileDataWriter.saveFileName = saveFileName;
 
-			// PASS THE PLAYER INFO, FROM GAME, TO THEIR SAVE FILE (Chỉ lưu thông số Player hiện tại nếu Player còn sống)
+
 			if (player != null && !player.isDead)
 			{
 				player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
@@ -508,7 +538,7 @@ namespace SG
 				loadingScreenCanvasGroup.interactable = true;
 			}
 
-			// Ngưng đọng thời gian game khi đang tải cảnh
+
 			Time.timeScale = 0f;
 
 			// Start pulsing loading icon if present
@@ -565,7 +595,7 @@ namespace SG
 				loadingScreenCanvasGroup.interactable = false;
 			}
 
-			// Khôi phục lại thời gian game sau khi màn hình tải đã biến mất hoàn toàn
+
 			Time.timeScale = 1f;
 
 			if (pulseCoroutine != null)

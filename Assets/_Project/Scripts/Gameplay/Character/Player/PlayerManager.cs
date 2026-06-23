@@ -77,7 +77,7 @@ namespace SG
 
 				// UPDATE UI STATS BAR WHEN A STATS CHANGE
 				OnHealthChanged += PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue;
-				
+
                 OnStaminaChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
                 OnStaminaChanged += playerStatsManager.ResetStaminaRegenTimer;
 
@@ -122,14 +122,14 @@ namespace SG
 
 			yield return base.ProcessDeathEvent(manuallySelectDeathAnimation);
 
-			// Tự động hồi sinh và tải lại game tại trạm nghỉ Grace gần nhất
+
 			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.currentCharacterData != null)
 			{
 				var saveData = WorldSaveGameManager.instance.currentCharacterData;
 
 				if (saveData.hasGraceSaved)
 				{
-					// Nếu đã từng ngồi/kích hoạt Grace, hồi sinh tại tọa độ Grace đó
+
 					saveData.sceneIndex = saveData.lastGraceSceneIndex;
 					saveData.xPosition = saveData.lastGraceXPosition;
 					saveData.yPosition = saveData.lastGraceYPosition;
@@ -137,22 +137,22 @@ namespace SG
 				}
 				else
 				{
-					// Nếu chưa ngồi Grace nào, hồi sinh tại scene ban đầu và vị trí mặc định khởi đầu
+
 					saveData.sceneIndex = WorldSaveGameManager.instance.worldSceneIndex;
 					saveData.xPosition = WorldSaveGameManager.instance.startingPosition.x;
 					saveData.yPosition = WorldSaveGameManager.instance.startingPosition.y;
 					saveData.zPosition = WorldSaveGameManager.instance.startingPosition.z;
 				}
 
-				// Reset chỉ số sinh mạng về tối đa để khi load game sẽ hồi phục hoàn toàn
+
 				saveData.currentHealth = playerStatsManager.CalculateHealthBasedOnVitalityLevel(saveData.vitality);
 				saveData.currentStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(saveData.endurance);
 				saveData.currentMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(saveData.intelligence);
 
-				// Lưu lại trước khi load game để bảo toàn vị trí respawn mới
+
 				WorldSaveGameManager.instance.SaveGame();
 
-				// Tải lại game và load lại Scene (sẽ hồi sinh lại quái và đặt lại Player)
+
 				WorldSaveGameManager.instance.RespawnPlayer();
 			}
 		}
@@ -235,14 +235,14 @@ namespace SG
 			currentCharacterData.leftHandWeaponIndex = playerInventoryManager.leftHandWeaponIndex;
 		}
 
-        public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) 
+        public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData)
         {
             isDead = false;
 
             characterName = currentCharacterData.characterName;
             Vector3 myPosition = new Vector3(currentCharacterData.xPosition, currentCharacterData.yPosition, currentCharacterData.zPosition);
-            
-            // THỦ THUẬT UNITY: Tạm thời tắt CharacterController để tránh bị lỗi tự động giật ngược vị trí cũ khi dịch chuyển (Teleport)
+
+
             if (characterController != null)
             {
                 characterController.enabled = false;
@@ -350,7 +350,7 @@ namespace SG
 		// =============================================== DEBUG =============================================== //
 		private void DebugMenu()
         {
-            if (respawnCharacter) 
+            if (respawnCharacter)
             {
                 respawnCharacter = false;
                 ReviveCharacter();
@@ -364,8 +364,8 @@ namespace SG
 
 			if (testCastFireball)
 			{
-				testCastFireball = false; 
-										  
+				testCastFireball = false;
+
 				SpellAction spell = WorldSpellDatabase.instance.GetSpellActionByID(1);
 				if (spell != null) spell.AttemptToPerformAction(this);
 			}
@@ -413,15 +413,15 @@ namespace SG
 
 		private void ForceDebugHit(float angle)
 		{
-			// 1. Khởi tạo hiệu ứng sát thương từ Database
+
 			TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
 
-			// 2. Gán các thông số cần thiết
-			damageEffect.physicalDamage = 10; // Sát thương giả định
-			damageEffect.angleHitFrom = angle; // Góc đánh truyền vào
-			damageEffect.contactPoint = transform.position + Vector3.up; // Điểm va chạm (ngay ngực nhân vật)
 
-			// 3. Chạy quy trình xử lý hiệu ứng (Bao gồm Animation, SFX, VFX)
+			damageEffect.physicalDamage = 10;
+			damageEffect.angleHitFrom = angle;
+			damageEffect.contactPoint = transform.position + Vector3.up;
+
+
 			characterEffectsManager.ProcessInstantEffect(damageEffect);
 		}
 
@@ -429,25 +429,25 @@ namespace SG
 		#if UNITY_EDITOR
 		private void OnValidate()
 		        {
-			        // Kiểm tra nếu game đang chạy và các Manager đã tồn tại
+
 			        if (Application.isPlaying && playerStatsManager != null && PlayerUIManager.instance != null)
 			        {
-				        // 1. Tính toán lại Max Health dựa trên Vitality mới
+
 				        maxHealth = playerStatsManager.CalculateHealthBasedOnVitalityLevel(vitality);
-				        // 2. Cập nhật thanh UI
+
 				        PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
 
-				        // Tương tự cho Stamina
+
 				        maxStamina = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(endurance);
 				        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
 
                         maxMana = playerStatsManager.CalculateManaBasedOnIntelligenceLevel(intelligence);
                         PlayerUIManager.instance.playerUIHudManager.SetMaxManaValue(maxMana);
 
-					// 3. Kiểm tra nếu currentHealth <= 0 và chưa chết, thì xử lý chết
+
 					if (currentHealth <= 0 && !isDead)
 						{
-							// Truy cập trực tiếp hàm xử lý chết vì Event không tự chạy
+
 							StartCoroutine(ProcessDeathEvent());
 						}
 			        }

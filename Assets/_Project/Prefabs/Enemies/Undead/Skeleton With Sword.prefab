@@ -1814,8 +1814,8 @@ MonoBehaviour:
   isUsingLeftHand: 0
   isActive: 1
   isInvulnerable: 0
-  maxHealth: 0
-  _currentHealth: 0
+  maxHealth: 90
+  _currentHealth: 90
   maxStamina: 0
   _currentStamina: 0
   maxMana: 0
@@ -2379,11 +2379,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2383310101513651979, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2383310101513651979, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820015732319118093, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_Name
@@ -2391,19 +2391,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820015732319118093, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3040469635953466585, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7481713092194102184, guid: c47455654b559264d949fc16e35419f9, type: 3}
       propertyPath: m_Pivot.x

@@ -20,9 +20,9 @@ namespace SG
         private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
         private ParticleSystem ps;
 
-        // Cooldown tránh việc 1 hạt va chạm nhiều lần trong cùng 1 frame gây chết quái lập tức
+
         private Dictionary<CharacterManager, float> damageCooldowns = new Dictionary<CharacterManager, float>();
-        private float hitCooldown = 0.25f; // Giãn cách 0.25 giây giữa các lần trúng sét của mỗi mục tiêu
+        private float hitCooldown = 0.25f;
 
         void Start()
         {
@@ -47,16 +47,25 @@ namespace SG
 
             int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
-            // Kiểm tra va chạm để trừ máu quái vật
+
             CharacterManager targetCharacter = other.GetComponentInParent<CharacterManager>();
             if (targetCharacter != null)
             {
                 Debug.Log($"[ParticleCollisionInstance] Va chạm hạt xảy ra với nhân vật '{targetCharacter.name}'. Số lượng sự kiện va chạm: {numCollisionEvents}");
-                
+
                 if (targetCharacter == characterCausingDamage)
                 {
                     Debug.Log($"[ParticleCollisionInstance] Bỏ qua va chạm vì mục tiêu là chính người gây sát thương (Caster).");
                     return;
+                }
+
+                if (characterCausingDamage != null)
+                {
+                    if (!WorldUtilityManager.instance.CanIDamageThisTarget(characterCausingDamage.characterGroup, targetCharacter.characterGroup))
+                    {
+                        Debug.Log($"[ParticleCollisionInstance] Bỏ qua va chạm do cài đặt friendly fire.");
+                        return;
+                    }
                 }
 
                 if (targetCharacter.isDead)

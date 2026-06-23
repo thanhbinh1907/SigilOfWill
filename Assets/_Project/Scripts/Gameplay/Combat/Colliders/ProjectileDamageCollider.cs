@@ -19,6 +19,14 @@ namespace SG
 				return;
 			}
 
+			if (damageTarget != null && characterCausingDamage != null)
+			{
+				if (!WorldUtilityManager.instance.CanIDamageThisTarget(characterCausingDamage.characterGroup, damageTarget.characterGroup))
+				{
+					return;
+				}
+			}
+
 			if (other.isTrigger)
 			{
 				return;
@@ -40,8 +48,9 @@ namespace SG
 			{
 				GameObject explosion = Instantiate(explodeVFX, contactPoint, Quaternion.identity);
 				Destroy(explosion, explodeVFXDestroyTime);
-				Destroy(transform.root.gameObject);
 			}
+
+			Destroy(transform.root.gameObject);
 		}
 
 		protected override void DamageTarget(CharacterManager damageTarget)

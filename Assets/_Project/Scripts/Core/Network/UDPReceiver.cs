@@ -13,10 +13,11 @@ namespace SG
 		Thread receiveThread;
 		UdpClient client;
 		public int port = 11000;
+		private volatile bool isRunning = true;
 
 		[Header("Data Received From Python")]
 		public int currentGestureID = -1;
-		public string currentVoiceWord = ""; // BIẾN MỚI: Lưu từ khóa nhận từ Python
+		public string currentVoiceWord = "";
 
 		private void Awake()
 		{
@@ -26,6 +27,10 @@ namespace SG
 
 		private void Start()
 		{
+			if (instance != this)
+			{
+				return;
+			}
 			InitUDP();
 			DontDestroyOnLoad(gameObject);
 		}
@@ -39,46 +44,59 @@ namespace SG
 
 		private void ReceiveData()
 		{
-			client = new UdpClient(port);
-			while (true)
+			try
 			{
-				try
+				client = new UdpClient(port);
+				while (isRunning)
 				{
-					IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
-					byte[] data = client.Receive(ref anyIP);
-
-					string text = Encoding.UTF8.GetString(data).Trim();
-					Debug.Log($">> [UDP RECEIVER] Nhận dữ liệu thô từ Python: '{text}'");
-
-					// Phân tích định dạng mới từ Python: "ID,TừKhóa" (Ví dụ: "2,thunderbolt")
-					if (text.Contains(","))
+					try
 					{
-						string[] splitData = text.Split(',');
-						if (splitData.Length >= 2)
+						IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+						byte[] data = client.Receive(ref anyIP);
+
+						if (!isRunning) break;
+
+						string text = Encoding.UTF8.GetString(data).Trim();
+						System.Console.WriteLine($">> [UDP RECEIVER] Nhận dữ liệu thô từ Python: '{text}'");
+
+
+						if (text.Contains(","))
 						{
-							if (int.TryParse(splitData[0], out int id))
+							string[] splitData = text.Split(',');
+							if (splitData.Length >= 2)
+							{
+								if (int.TryParse(splitData[0], out int id))
+								{
+									currentGestureID = id;
+								}
+								currentVoiceWord = splitData[1].ToLower().Trim();
+							}
+						}
+						else
+						{
+
+							if (int.TryParse(text, out int id))
 							{
 								currentGestureID = id;
+								currentVoiceWord = "";
 							}
-							currentVoiceWord = splitData[1].ToLower().Trim();
 						}
+						System.Console.WriteLine($">> [UDP RECEIVER] Phân tích thành công: GestureID = {currentGestureID}, VoiceWord = '{currentVoiceWord}'");
 					}
-					else
+					catch (System.Exception e)
 					{
-						// Tương thích ngược: Nếu Python chỉ gửi mỗi số ID
-						if (int.TryParse(text, out int id))
-						{
-							currentGestureID = id;
-							currentVoiceWord = "";
-						}
+						if (!isRunning) break;
+						System.Console.WriteLine(e.ToString());
 					}
-					Debug.Log($">> [UDP RECEIVER] Phân tích thành công: GestureID = {currentGestureID}, VoiceWord = '{currentVoiceWord}'");
 				}
-				catch (System.Exception e) { Debug.Log(e.ToString()); }
+			}
+			catch (System.Exception e)
+			{
+				System.Console.WriteLine("UDP Receiver Thread Error: " + e.Message);
 			}
 		}
 
-		// Hàm dọn dẹp dữ liệu cũ
+
 		public void ResetUDPData()
 		{
 			currentGestureID = -1;
@@ -88,7 +106,7 @@ namespace SG
 		private void OnDestroy()
 		{
 			if (instance == this) instance = null;
-			if (receiveThread != null) receiveThread.Abort();
+			isRunning = false;
 			if (client != null) client.Close();
 		}
 	}

@@ -15,13 +15,12 @@ namespace SG
 
         private void OnEnable()
         {
-            button.Select();
-            button.OnSelect(null); 
+            StartCoroutine(SelectButtonDelayed());
 		}
 
         private System.Collections.IEnumerator SelectButtonDelayed()
         {
-            yield return null; // Chờ 1 frame để EventSystem thiết lập xong
+            yield return null;
             if (button != null)
             {
                 if (EventSystem.current == null)
