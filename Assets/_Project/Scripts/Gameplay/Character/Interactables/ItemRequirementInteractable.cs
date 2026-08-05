@@ -8,7 +8,7 @@ namespace SG
         [Header("Requirement Settings")]
         [Tooltip("Unique ID for this interactable to save its state in character save data.")]
         public int interactableID = 0;
-        
+
         [Tooltip("List of items required to activate this interactable.")]
         public List<Item> requiredItems = new List<Item>();
 
@@ -52,7 +52,7 @@ namespace SG
                     if (isAlreadyActivated)
                     {
                         ApplyActivationEffects();
-                        
+
                         if (disableInteractionOnSuccess && interactableCollider != null)
                         {
                             interactableCollider.enabled = false;
@@ -115,7 +115,7 @@ namespace SG
                     {
                         interactableCollider.enabled = false;
                     }
-                    
+
                     Debug.Log($"[TƯƠNG TÁC] Đã kích hoạt thành công bục tương tác ID {interactableID}!");
                 }
                 else

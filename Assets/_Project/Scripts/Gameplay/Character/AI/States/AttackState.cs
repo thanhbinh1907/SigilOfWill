@@ -19,7 +19,7 @@ namespace SG
 
 		public override AIState Tick(AICharacterManager aiCharacter)
 		{
-			if (aiCharacter.characterCombatManager.currentTarget == null) 
+			if (aiCharacter.characterCombatManager.currentTarget == null)
                 return SwitchState(aiCharacter, aiCharacter.idle);
 
             if (aiCharacter.aiCharacterCombatManager.currentTarget.isDead)
@@ -34,7 +34,7 @@ namespace SG
             {
                 if (currentAttack.comboAction != null)
                 {
-                    // IF CAN COMBO 
+                    // IF CAN COMBO
                     //hasPerformedCombo = true;
                     //currentAttack.comboAction.AttempToPerformAction(aiCharacter);
 				}

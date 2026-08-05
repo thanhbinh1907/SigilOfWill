@@ -13,7 +13,7 @@ namespace SG
 		public string lastAttackAnimationPerformed;
 
 		[Header("Attack Target")]
-		public CharacterManager currentTarget; 
+		public CharacterManager currentTarget;
 
 		public Transform lockOnTransform;
 

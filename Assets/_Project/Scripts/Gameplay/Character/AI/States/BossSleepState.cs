@@ -7,7 +7,7 @@ namespace SG
 	{
 		public override AIState Tick(AICharacterManager aiCharacter)
 		{
-			// Đứng im, không tìm mục tiêu, không đuổi theo Player, trả về chính nó
+
 			return this;
 		}
 	}

@@ -12,16 +12,16 @@ namespace SG
 
 		[Header("Grounded Check & Jumping")]
 		[SerializeField] protected float gravityForce = -5.55f;             // THE FORCE AT WHICH THE CHARACTER WILL BE PULLED DOWN TO THE GROUND
-		[SerializeField] LayerMask groundLayer;                                           
-		[SerializeField] float groundedCheckSphereRadius = 1;           
+		[SerializeField] LayerMask groundLayer;
+		[SerializeField] float groundedCheckSphereRadius = 1;
 		[SerializeField] protected Vector3 yVelocity;						// THE FORCE AT WHICH THE CHARACTER WILL BE PULLED DOWN TO THE GROUND
-		[SerializeField] protected float groundedYVelocity = -20;			// THE Y VELOCITY VALUE TO BE APPLIED WHEN THE CHARACTER IS GROUNDED 
+		[SerializeField] protected float groundedYVelocity = -20;			// THE Y VELOCITY VALUE TO BE APPLIED WHEN THE CHARACTER IS GROUNDED
 		[SerializeField] protected float fallStartYVelocity = -5;           // THE FORCE AT WHICH THE CHARACTER WILL START TO FALL WHEN THEY STEP OFF A LEDGE (RISE IF THEY FALL LONGER)
 		protected bool fallingVelocityHasBeenSet = false;                   // A FLAG TO CHECK IF THE FALLING VELOCITY HAS BEEN SET TO PREVENT IT FROM BEING SET EVERY FRAME
 		protected float inAirTimer = 0;                                     // A TIMER TO TRACK HOW LONG THE CHARACTER HAS BEEN IN THE AIR
 
 		protected virtual void Awake()
-		{	
+		{
 			if (character == null)
 			{
 				character = GetComponent<CharacterManager>();
@@ -77,14 +77,14 @@ namespace SG
 		}
 
 		#if UNITY_EDITOR
-				// Hàm này sẽ tự động vẽ quả cầu trong cửa sổ Scene khi bạn bấm chọn vào GameObject của Nhân vật/Boss
+
 				protected virtual void OnDrawGizmosSelected()
 				{
-					// Thay đổi màu sắc hiển thị của quả cầu (ở đây đặt màu xanh lá cho dễ nhìn)
+
 					Gizmos.color = Color.green;
 
-					// Vẽ một quả cầu dạng khung lưới (Wire Sphere) tại đúng vị trí check ground
-					// Sử dụng transform.position để tránh lỗi NullReference khi chưa bấm Play game
+
+
 					Gizmos.DrawWireSphere(transform.position, groundedCheckSphereRadius);
 				}
 		#endif

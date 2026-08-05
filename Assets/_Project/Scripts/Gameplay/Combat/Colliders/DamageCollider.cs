@@ -10,7 +10,7 @@ namespace SG
         [SerializeField] protected Collider damageCollider;
 
 		[Header("Debug")]
-		[SerializeField] bool showDebugGizmos = true; 
+		[SerializeField] bool showDebugGizmos = true;
 
 		[Header("Contact Point")]
         public Vector3 contactPoint;
@@ -33,22 +33,34 @@ namespace SG
                 if (damageTarget == characterCausingDamage)
                     return;
 
-				contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+				try
+				{
+					contactPoint = other.ClosestPointOnBounds(transform.position);
+				}
+				catch
+				{
+					contactPoint = other.bounds.ClosestPoint(transform.position);
+				}
 
 				// CHECK IF WE CAN DAMAGE THIS TARGET BASED ON FRIENDLY FIRE SETTINGS
+				if (characterCausingDamage != null && WorldUtilityManager.instance != null)
+				{
+					if (!WorldUtilityManager.instance.CanIDamageThisTarget(characterCausingDamage.characterGroup, damageTarget.characterGroup))
+						return;
+				}
 
 				// CHECK IF TARGET IS BLOCKING
 
-				// CHECK IF TARGET IS INVULNERABLE 
+				// CHECK IF TARGET IS INVULNERABLE
 				if (damageTarget.isInvulnerable)
 					return;
 
-				// DAMAGE 
+				// DAMAGE
 
 				DamageTarget(damageTarget);
 			}
 		}
-        
+
         protected virtual void DamageTarget(CharacterManager damageTarget)
         {
             // WE DONT WANT TO DAMAGE THE SAME TARGET MORE THAN ONCE PER ATTACK
@@ -69,39 +81,39 @@ namespace SG
         public virtual void DisableDamageCollider()
         {
             damageCollider.enabled = false;
-            charactersDamaged.Clear();                  
+            charactersDamaged.Clear();
 		}
 
 		protected virtual void OnDrawGizmos()
 		{
-			// Chỉ vẽ nếu được bật, có collider và collider đó đang hoạt động
+
 			if (!showDebugGizmos || damageCollider == null || !damageCollider.enabled)
 				return;
 
-			Gizmos.color = new Color(1, 0, 0, 0.5f); // Màu đỏ trong suốt
+			Gizmos.color = new Color(1, 0, 0, 0.5f);
 
-			// Áp dụng Ma trận của Transform để khối debug xoay và tỉ lệ theo đúng vật thể
+
 			Matrix4x4 oldMatrix = Gizmos.matrix;
 			Gizmos.matrix = transform.localToWorldMatrix;
 
-			// Kiểm tra từng loại hình dáng cụ thể
+
 			if (damageCollider is BoxCollider box)
 			{
-				// Vẽ hình hộp khớp với Size và Center của BoxCollider
+
 				Gizmos.DrawCube(box.center, box.size);
 			}
 			else if (damageCollider is SphereCollider sphere)
 			{
-				// Vẽ hình cầu khớp với Radius và Center của SphereCollider
+
 				Gizmos.DrawSphere(sphere.center, sphere.radius);
 			}
 			else if (damageCollider is CapsuleCollider capsule)
 			{
-				// Capsule không có hàm Draw sẵn, ta vẽ 2 đầu cầu để xác định phạm vi hitbox
+
 				Vector3 pointOffset = Vector3.zero;
 				float halfHeight = (capsule.height / 2f) - capsule.radius;
 
-				// Xác định hướng của Capsule (0: X, 1: Y, 2: Z)
+
 				if (capsule.direction == 0) pointOffset = Vector3.right * halfHeight;
 				else if (capsule.direction == 1) pointOffset = Vector3.up * halfHeight;
 				else if (capsule.direction == 2) pointOffset = Vector3.forward * halfHeight;
@@ -109,11 +121,11 @@ namespace SG
 				Gizmos.DrawSphere(capsule.center + pointOffset, capsule.radius);
 				Gizmos.DrawSphere(capsule.center - pointOffset, capsule.radius);
 
-				// Vẽ đường nối giữa 2 đầu
+
 				Gizmos.DrawLine(capsule.center + pointOffset, capsule.center - pointOffset);
 			}
 
-			// Trả lại matrix mặc định để không ảnh hưởng đến các Gizmos khác
+
 			Gizmos.matrix = oldMatrix;
 		}
 	}

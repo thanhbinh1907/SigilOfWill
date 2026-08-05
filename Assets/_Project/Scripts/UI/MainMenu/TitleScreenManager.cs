@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.UI;
 using UnityEngine.UI;
 
 namespace SG
@@ -50,7 +49,11 @@ namespace SG
 
 		private void Start()
 		{
-			// Tự động liên kết sự kiện slider để tránh lỗi cấu hình bằng tay trong Unity Inspector
+
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+
+
 			if (bgmVolumeSlider != null)
 			{
 				bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
@@ -89,6 +92,12 @@ namespace SG
 
 		public void OpenLoadGameMenu()
 		{
+			// Refresh character profiles before opening the load menu
+			if (WorldSaveGameManager.instance != null)
+			{
+				WorldSaveGameManager.instance.LoadAllCharacterProfiles();
+			}
+
 			// CLOSE THE MAIN MENU AND OPEN THE LOAD GAME MENU
 			titleScreenMainMenu.SetActive(false);
 			titleScreenLoadMenu.SetActive(true);
@@ -159,7 +168,7 @@ namespace SG
 			noCharacterSlotsPopUp.SetActive(true);
 			noChacterSlotsOkayButton.Select();
 		}
-		 
+
 		public void CloseNoFreeCharacterSlotPopUp()
 		{
 			noCharacterSlotsPopUp.SetActive(false);
@@ -191,6 +200,12 @@ namespace SG
 		{
 			deleteCharacterSlotPopUp.SetActive(false);
 			WorldSaveGameManager.instance.DeleteGame(currentSelectedSlot);
+
+			// Refresh character profiles after deleting
+			if (WorldSaveGameManager.instance != null)
+			{
+				WorldSaveGameManager.instance.LoadAllCharacterProfiles();
+			}
 
 			// WE DISABLE AND THEN ENABLE THE LOAD MENU TO REFRESH THE CHARACTER SLOTS
 			titleScreenLoadMenu.SetActive(false);

@@ -20,6 +20,9 @@ namespace SG
 		[Header("World Scene Index")]
 		[SerializeField] public int worldSceneIndex = 2;
 
+		[Header("Starting Position")]
+		[SerializeField] public Vector3 startingPosition = Vector3.zero;
+
 		[Header("Save Data Writer")]
 		private SaveFileDataWriter saveFileDataWriter;
 
@@ -68,10 +71,14 @@ namespace SG
 
 		private void Start()
 		{
+			if (instance != this)
+			{
+				return;
+			}
 			DontDestroyOnLoad(gameObject);
 			LoadAllCharacterProfiles();
-			
-			// BẮT ĐẦU CHU KỲ TỰ ĐỘNG LƯU PHONG CÁCH ELDEN RING
+
+
 			StartCoroutine(PeriodicAutoSave());
 		}
 
@@ -79,9 +86,9 @@ namespace SG
 		{
 			while (true)
 			{
-				yield return new WaitForSeconds(10f); // Tự động lưu sau mỗi 10 giây trong nền
+				yield return new WaitForSeconds(10f);
 
-				// Chỉ lưu nếu Scene đã load xong, nhân vật Player đã xuất hiện và còn sống
+
 				if (!isSceneLoading && player != null && !player.isDead)
 				{
 					SaveGame();
@@ -116,6 +123,35 @@ namespace SG
 			if (instance == this)
 			{
 				instance = null;
+			}
+		}
+
+		public string GetDefaultCharacterNameBasedOnCharacterSlot(CharacterSlot characterSlot)
+		{
+			switch (characterSlot)
+			{
+				case CharacterSlot.CharacterSlot_01:
+					return "Character Slot 1";
+				case CharacterSlot.CharacterSlot_02:
+					return "Character Slot 2";
+				case CharacterSlot.CharacterSlot_03:
+					return "Character Slot 3";
+				case CharacterSlot.CharacterSlot_04:
+					return "Character Slot 4";
+				case CharacterSlot.CharacterSlot_05:
+					return "Character Slot 5";
+				case CharacterSlot.CharacterSlot_06:
+					return "Character Slot 6";
+				case CharacterSlot.CharacterSlot_07:
+					return "Character Slot 7";
+				case CharacterSlot.CharacterSlot_08:
+					return "Character Slot 8";
+				case CharacterSlot.CharacterSlot_09:
+					return "Character Slot 9";
+				case CharacterSlot.CharacterSlot_10:
+					return "Character Slot 10";
+				default:
+					return "Character";
 			}
 		}
 
@@ -161,6 +197,35 @@ namespace SG
 			return fileName;
 		}
 
+		public CharacterSaveData GetCharacterSaveDataBasedOnCharacterSlot(CharacterSlot characterSlot)
+		{
+			switch (characterSlot)
+			{
+				case CharacterSlot.CharacterSlot_01:
+					return characterSlot01;
+				case CharacterSlot.CharacterSlot_02:
+					return characterSlot02;
+				case CharacterSlot.CharacterSlot_03:
+					return characterSlot03;
+				case CharacterSlot.CharacterSlot_04:
+					return characterSlot04;
+				case CharacterSlot.CharacterSlot_05:
+					return characterSlot05;
+				case CharacterSlot.CharacterSlot_06:
+					return characterSlot06;
+				case CharacterSlot.CharacterSlot_07:
+					return characterSlot07;
+				case CharacterSlot.CharacterSlot_08:
+					return characterSlot08;
+				case CharacterSlot.CharacterSlot_09:
+					return characterSlot09;
+				case CharacterSlot.CharacterSlot_10:
+					return characterSlot10;
+				default:
+					return null;
+			}
+		}
+
 		public void AttemptToCreateNewGame()
 		{
 			if (isSceneLoading)
@@ -171,7 +236,7 @@ namespace SG
 
 			// CHECK TO SEE IF WE CAN CREATE A NEW FILE SAVE (CHECK FOR OTHER EXISTING FILE FIRST)
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_01);
-			if (!saveFileDataWriter.CheckToSeeIfFileExists()) 
+			if (!saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				// IF THE FILE EXIST, WE CAN'T CREATE A NEW GAME, OTHERWISE, WE CAN CREATE A NEW GAME
 				currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_01;
@@ -277,11 +342,15 @@ namespace SG
 		private void NewGame()
 		{
 			isSceneLoading = true;
-			
-			// Gán sceneIndex mặc định cho nhân vật mới từ worldSceneIndex
+
+
 			if (currentCharacterData != null)
 			{
+				currentCharacterData.characterName = GetDefaultCharacterNameBasedOnCharacterSlot(currentCharacterSlotBeingUsed);
 				currentCharacterData.sceneIndex = worldSceneIndex;
+				currentCharacterData.xPosition = startingPosition.x;
+				currentCharacterData.yPosition = startingPosition.y;
+				currentCharacterData.zPosition = startingPosition.z;
 			}
 
 			// SAVE THE NEWLY CREATED CHARACTER STATS, AND ITEM (WHEN CREATION SCREEN IS ADDED)
@@ -305,12 +374,12 @@ namespace SG
 			saveFileDataWriter.saveFileName = saveFileName;
 			currentCharacterData = saveFileDataWriter.LoadSaveFile();
 
-			StartCoroutine(LoadWorldScene()); 
+			StartCoroutine(LoadWorldScene());
 		}
 
 		public void SaveGame()
 		{
-			// Không được lưu game khi đang trong khu vực chiến đấu với Boss (trận đấu Boss đang diễn ra)
+
 			if (WorldAIManager.instance != null && WorldAIManager.instance.IsAnyBossFightActive())
 			{
 				Debug.Log("[HỆ THỐNG LƯU] Không thể lưu game khi đang chiến đấu với Boss!");
@@ -325,7 +394,7 @@ namespace SG
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
 			saveFileDataWriter.saveFileName = saveFileName;
 
-			// PASS THE PLAYER INFO, FROM GAME, TO THEIR SAVE FILE (Chỉ lưu thông số Player hiện tại nếu Player còn sống)
+
 			if (player != null && !player.isDead)
 			{
 				player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
@@ -345,14 +414,19 @@ namespace SG
 		}
 
 		// LOAD ALL CHARACTER PROFILE ON DEVICE WHEN STARTING GAME
-		private void LoadAllCharacterProfiles()
+		public void LoadAllCharacterProfiles()
 		{
 			saveFileDataWriter = new SaveFileDataWriter();
 			saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_01);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot01 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot01 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_02);
@@ -360,11 +434,19 @@ namespace SG
 			{
 				characterSlot02 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot02 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_03);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot03 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot03 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_04);
@@ -372,11 +454,19 @@ namespace SG
 			{
 				characterSlot04 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot04 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_05);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot05 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot05 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_06);
@@ -384,11 +474,19 @@ namespace SG
 			{
 				characterSlot06 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot06 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_07);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot07 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot07 = null;
 			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_08);
@@ -396,17 +494,29 @@ namespace SG
 			{
 				characterSlot08 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot08 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_09);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot09 = saveFileDataWriter.LoadSaveFile();
 			}
+			else
+			{
+				characterSlot09 = null;
+			}
 
 			saveFileDataWriter.saveFileName = DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_10);
 			if (saveFileDataWriter.CheckToSeeIfFileExists())
 			{
 				characterSlot10 = saveFileDataWriter.LoadSaveFile();
+			}
+			else
+			{
+				characterSlot10 = null;
 			}
 		}
 
@@ -428,6 +538,9 @@ namespace SG
 				loadingScreenCanvasGroup.interactable = true;
 			}
 
+
+			Time.timeScale = 0f;
+
 			// Start pulsing loading icon if present
 			Coroutine pulseCoroutine = null;
 			if (loadingIconCanvasGroup != null)
@@ -435,7 +548,7 @@ namespace SG
 				pulseCoroutine = StartCoroutine(PulseLoadingIcon());
 			}
 
-			float loadingStartTime = Time.time;
+			float loadingStartTime = Time.realtimeSinceStartup;
 
 			// 1. LOAD WORLD SCENE
 			// IF WE WANT TO USE DIFFERENT SCENE FOR LEVELS IN OUR PROJECT USE THIS
@@ -460,10 +573,10 @@ namespace SG
 			player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
 
 			// Ensure the loading screen is displayed for at least minimumLoadingTime to mask loading lag
-			float timeElapsed = Time.time - loadingStartTime;
+			float timeElapsed = Time.realtimeSinceStartup - loadingStartTime;
 			if (timeElapsed < minimumLoadingTime)
 			{
-				yield return new WaitForSeconds(minimumLoadingTime - timeElapsed);
+				yield return new WaitForSecondsRealtime(minimumLoadingTime - timeElapsed);
 			}
 
 			// Fade out loading screen smoothly
@@ -473,7 +586,7 @@ namespace SG
 				float fadeTimer = 0f;
 				while (fadeTimer < fadeDuration)
 				{
-					fadeTimer += Time.deltaTime;
+					fadeTimer += Time.unscaledDeltaTime;
 					loadingScreenCanvasGroup.alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
 					yield return null;
 				}
@@ -481,6 +594,9 @@ namespace SG
 				loadingScreenCanvasGroup.blocksRaycasts = false;
 				loadingScreenCanvasGroup.interactable = false;
 			}
+
+
+			Time.timeScale = 1f;
 
 			if (pulseCoroutine != null)
 			{

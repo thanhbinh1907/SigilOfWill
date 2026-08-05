@@ -54,7 +54,7 @@ namespace SG
 		public int CalculateManaBasedOnIntelligenceLevel(int intelligence)
 		{
 			float mana = 0;
-			
+
 			mana = intelligence * 10;
 			return Mathf.RoundToInt(mana);
 		}

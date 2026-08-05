@@ -6,6 +6,6 @@ namespace SG
 {
 	public class PlayerSoundFXManager : CharacterSoundFXManager
 	{
-			
+
 	}
 }

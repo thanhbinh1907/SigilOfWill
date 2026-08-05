@@ -27,7 +27,7 @@ namespace SG
 		// USED TO CREATE A NEW SAVE FILE FOR THE CHARACTER, AND WRITE THE CHARACTER SAVE DATA TO IT ASYNCHRONOUSLY
 		public void CreateNewCharacterSaveFile(CharacterSaveData characterSaveData)
 		{
-			// MAKE A PATH TO THE SAVE FILE 
+			// MAKE A PATH TO THE SAVE FILE
 			string savePath = Path.Combine(saveDataDirectoryPath, saveFileName);
 
 			try
@@ -52,7 +52,7 @@ namespace SG
 					}
 					catch (Exception ex)
 					{
-						Debug.LogError("An error occurred while writing the save file asynchronously: " + ex.Message);
+						System.Console.WriteLine("An error occurred while writing the save file asynchronously: " + ex.Message);
 					}
 				});
 			}
@@ -67,7 +67,7 @@ namespace SG
 		{
 			CharacterSaveData characterSaveData = null;
 
-			// MAKE A PATH TO LOAD THE SAVE FILE 
+			// MAKE A PATH TO LOAD THE SAVE FILE
 			string savePath = Path.Combine(saveDataDirectoryPath, saveFileName);
 
 			if (File.Exists(savePath))

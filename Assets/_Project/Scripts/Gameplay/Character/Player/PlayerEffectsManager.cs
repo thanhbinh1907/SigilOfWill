@@ -20,7 +20,7 @@ namespace SG
 				// TakeStaminaDamageEffect effect = Instantiate(effectToTest) as TakeStaminaDamageEffect;
 				// effect.staminaDamage = 55;
 
-				// WHEN WE DONT INSTANTIATE IT, THE ORIGINAL IS CHANGED 
+				// WHEN WE DONT INSTANTIATE IT, THE ORIGINAL IS CHANGED
 				// effectToTest.staminaDamage = 55;
 
 				InstantCharacterEffect effect = Instantiate(effectToTest);

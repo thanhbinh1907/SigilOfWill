@@ -18,6 +18,12 @@ namespace SG
 
 		public virtual void AttemptToPerformAction(PlayerManager player)
 		{
+			if (player.isDead)
+			{
+				Debug.LogWarning($">> [SPELL ACTION] Không thể thực hiện chiêu thức vì Player đã chết!");
+				return;
+			}
+
 			Debug.Log($">> [SPELL ACTION] AttemptToPerformAction bắt đầu. Chiêu thức: {name}, Mana hiện tại của Player: {player.currentMana}, Mana tiêu hao: {manaCost}");
 			if (player.currentMana >= manaCost)
 			{

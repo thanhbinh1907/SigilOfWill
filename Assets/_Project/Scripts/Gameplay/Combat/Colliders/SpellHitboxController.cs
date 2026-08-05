@@ -21,7 +21,7 @@ namespace SG
 
 		private void Awake()
 		{
-			// Tự động tìm kiếm các component nếu chưa kéo thủ công trong Inspector
+
 			if (damageCollider == null) damageCollider = GetComponentInChildren<DamageCollider>();
 			if (continuousZone == null) continuousZone = GetComponentInChildren<ContinuousAOEDamageZone>();
 			if (particleCollision == null) particleCollision = GetComponentInChildren<ParticleCollisionInstance>();
@@ -29,7 +29,7 @@ namespace SG
 
 		public void InitializeSpell(CharacterManager caster, SpellAction spell)
 		{
-			// Tự động tìm tất cả các thành phần kế thừa từ DamageDealer trong prefab
+
 			DamageDealer[] damageDealers = GetComponentsInChildren<DamageDealer>(true);
 			foreach (var dealer in damageDealers)
 			{
@@ -60,14 +60,14 @@ namespace SG
 				}
 			}
 
-			// Quản lý việc bật/tắt Hitbox theo thời gian trễ
+
 			if (useCustomHitboxTiming)
 			{
 				StartCoroutine(ExecuteCustomHitboxTiming());
 			}
 			else
 			{
-				// Mặc định: Kích hoạt ngay lập tức cho các projectile thông thường
+
 				if (damageCollider != null)
 				{
 					damageCollider.EnableDamageCollider();
@@ -75,7 +75,7 @@ namespace SG
 				}
 			}
 
-			// Quản lý việc tự hủy vật thể tránh rác Scene
+
 			if (autoDestroy)
 			{
 				Destroy(gameObject, destroyDelay);

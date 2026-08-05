@@ -18,5 +18,5 @@ MonoBehaviour:
   spellPrefab: {fileID: 6209638768021923619, guid: 14015a0255c53aa46a4a3d3c1e951160, type: 3}
   fireDamage: 0
   lightningDamage: 0
-  windDamage: 500
+  windDamage: 50
   speed: 15

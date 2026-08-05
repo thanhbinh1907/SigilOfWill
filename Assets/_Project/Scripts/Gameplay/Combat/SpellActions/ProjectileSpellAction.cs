@@ -28,7 +28,7 @@ namespace SG
 			if (player.isLockOn && player.playerCombatManager.currentTarget != null)
 			{
 				Transform targetTransform = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform;
-				Vector3 targetPos = targetTransform != null ? targetTransform.position : 
+				Vector3 targetPos = targetTransform != null ? targetTransform.position :
 					player.playerCombatManager.currentTarget.transform.position;
 				shootDirection = targetPos - spawnLocation.position;
 			}

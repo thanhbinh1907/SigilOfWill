@@ -19,9 +19,9 @@ namespace SG
 			else
 			{
 				spawnPosition = player.transform.position + player.transform.forward * spawnForwardOffset;
-				
+
 				RaycastHit hit;
-				if (Physics.Raycast(spawnPosition + Vector3.up * 10f, Vector3.down, out hit, 20f, 
+				if (Physics.Raycast(spawnPosition + Vector3.up * 10f, Vector3.down, out hit, 20f,
 					WorldUtilityManager.instance.GetEnvironmentLayers()))
 				{
 					spawnPosition.y = hit.point.y;

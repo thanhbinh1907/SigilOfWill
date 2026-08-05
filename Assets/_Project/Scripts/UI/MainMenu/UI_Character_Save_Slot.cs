@@ -23,160 +23,37 @@ namespace SG
 
         private void LoadSaveSlot()
         {
+            if (WorldSaveGameManager.instance == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             saveFileWriter = new SaveFileDataWriter();
             saveFileWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
 
-            // save slot 1
-            if (characterSlot == CharacterSlot.CharacterSlot_01)
+            // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
+            if (saveFileWriter.CheckToSeeIfFileExists())
             {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
+                CharacterSaveData slotData = WorldSaveGameManager.instance.GetCharacterSaveDataBasedOnCharacterSlot(characterSlot);
+                if (slotData != null)
+                {
+                    characterName.text = slotData.characterName;
 
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot01.characterName;
+                    // Format and display time played in HH:mm:ss format
+                    System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(slotData.secondsPlayed);
+                    timePlayed.text = string.Format("{0:00}:{1:00}:{2:00}", (int)timeSpan.TotalHours, timeSpan.Minutes, timeSpan.Seconds);
                 }
-                // if it doesn't exist, disable the save slot
                 else
                 {
                     gameObject.SetActive(false);
                 }
             }
-            // save slot 2
-            else if (characterSlot == CharacterSlot.CharacterSlot_02)
+            // if it doesn't exist, disable the save slot
+            else
             {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot02.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 3
-            else if (characterSlot == CharacterSlot.CharacterSlot_03)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot03.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 4
-            else if (characterSlot == CharacterSlot.CharacterSlot_04)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot04.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 5
-            else if (characterSlot == CharacterSlot.CharacterSlot_05)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot05.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 6
-            else if (characterSlot == CharacterSlot.CharacterSlot_06)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot06.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 7
-            else if (characterSlot == CharacterSlot.CharacterSlot_07)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot07.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 8
-            else if (characterSlot == CharacterSlot.CharacterSlot_08)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot08.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 9
-            else if (characterSlot == CharacterSlot.CharacterSlot_09)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot09.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            // save slot 10
-            else if (characterSlot == CharacterSlot.CharacterSlot_10)
-            {
-                saveFileWriter.saveFileName = WorldSaveGameManager.instance.DecideCharacterFileNameBaseOnCharacterSlotBeingUsed(characterSlot);
-                // if the file exist, load the data and display the character name and time played, otherwise, disable the save slot
-                if (saveFileWriter.CheckToSeeIfFileExists())
-                {
-                    characterName.text = WorldSaveGameManager.instance.characterSlot10.characterName;
-                }
-                // if it doesn't exist, disable the save slot
-                else
-                {
-                    gameObject.SetActive(false);
-                }
+                gameObject.SetActive(false);
             }
         }
 
@@ -189,7 +66,7 @@ namespace SG
             WorldSaveGameManager.instance.LoadGame();
 		}
 
-        public void SelectCurrentSlot() 
+        public void SelectCurrentSlot()
         {
 			if (WorldSaveGameManager.instance != null && WorldSaveGameManager.instance.isSceneLoading)
 				return;

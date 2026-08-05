@@ -13,13 +13,29 @@ import json
 import queue
 import sys
 import threading
+import os
 # pyrefly: ignore [missing-import]
 import sounddevice as sd
 # pyrefly: ignore [missing-import]
 from vosk import Model, KaldiRecognizer
 
+# Đảm bảo in các ký tự Unicode tiếng Việt và emoji không bị lỗi trên console Windows
+import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+# --- XÁC ĐỊNH ĐƯỜNG DẪN ĐỘNG CHO PYINSTALLER ---
+if getattr(sys, 'frozen', False):
+    # Nếu đang chạy dưới dạng file exe đóng gói bằng PyInstaller
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    # Nếu chạy trực tiếp từ mã nguồn python
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # --- CẤU HÌNH ---  
-MODEL_PATH = "model_camera/sigil_model.keras"
+MODEL_PATH = os.path.join(BASE_DIR, "model_camera", "sigil_model.keras")
 LABELS = ['Neutral', 'Fireball',  'Thunderbolt', 'WindBlade']
 THRESHOLD = 0.5 
 MAX_FRAMES = 100 
@@ -53,7 +69,8 @@ except Exception as e:
 # 2. LOAD MODEL GIỌNG NÓI (VOSK)
 print("🎤 Đang tải mô hình giọng nói Vosk...")
 try:
-    vosk_model = Model("model_voice")
+    vosk_model_path = os.path.join(BASE_DIR, "model_voice")
+    vosk_model = Model(vosk_model_path)
     print("✅ Mô hình giọng nói Vosk đã sẵn sàng!")
 except Exception as e:
     print(f"❌ LỖI LOAD MODEL VOSK: {e}")
@@ -71,7 +88,7 @@ def result_callback(result, output_image, timestamp_ms):
     latest_hand_landmarks = result.hand_landmarks
 
 options = HandLandmarkerOptions(
-    base_options=BaseOptions(model_asset_path='hand_landmarker.task'),
+    base_options=BaseOptions(model_asset_path=os.path.join(BASE_DIR, 'hand_landmarker.task')),
     running_mode=VisionRunningMode.LIVE_STREAM,
     num_hands=1,
     result_callback=result_callback

@@ -23,7 +23,7 @@ namespace SG
                 if (canvasGroup != null)
                 {
                     canvasGroup.alpha = status ? 1f : 0f;
-                } 
+                }
             }
         }
 
@@ -125,7 +125,7 @@ namespace SG
 
         public void AddBossHPBar(AIBossCharacterManager boss)
         {
-            // Tránh tạo trùng lặp
+
             if (activeBossHPBars.Exists(bar => bar.GetBossCharacter() == boss))
                 return;
 
@@ -159,7 +159,7 @@ namespace SG
             if (hpBar != null)
             {
                 activeBossHPBars.Remove(hpBar);
-                // Giải phóng toàn bộ Prefab cha (Boss Health Bar(Clone)) thay vì chỉ GameObject con Health Bar
+
                 if (hpBar.transform.parent != null && hpBar.transform.parent != bossHPBarParent)
                 {
                     Destroy(hpBar.transform.parent.gameObject);
@@ -169,6 +169,25 @@ namespace SG
                     Destroy(hpBar.gameObject);
                 }
             }
+        }
+
+        public void ClearAllBossHPBars()
+        {
+            foreach (var hpBar in activeBossHPBars)
+            {
+                if (hpBar != null)
+                {
+                    if (hpBar.transform.parent != null && hpBar.transform.parent != bossHPBarParent)
+                    {
+                        Destroy(hpBar.transform.parent.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(hpBar.gameObject);
+                    }
+                }
+            }
+            activeBossHPBars.Clear();
         }
     }
 }

@@ -28,10 +28,9 @@ namespace SG
         [SerializeField] bool dodgeInput = false;
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
-        //[SerializeField] bool leftMouseInput = false;
 
 		[Header("LOCK ON INPUT")]
-        [SerializeField] bool lockOnInput = false; 
+        [SerializeField] bool lockOnInput = false;
 
 		[Header("PLAYER COMBAT INPUT")]
         [SerializeField] public bool spellTriggerInput = false;
@@ -106,24 +105,22 @@ namespace SG
                 playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;
 
-                //playerControls.PlayerAction.LeftMouse.performed += i => leftMouseInput = true;
-
 				// SWITCH WEAPON INPUT
 				playerControls.PlayerAction.SwitchRightWeapon.performed += i => switchRightWeaponInput = true;
 				playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switchLeftWeaponInput = true;
 
-				// LOCK ON 
+				// LOCK ON
 				playerControls.PlayerAction.LockOn.performed += i => lockOnInput = true;
 
 				playerControls.PlayerCombat.SpellTrigger.performed += i =>
 				{
 					spellTriggerInput = true;
-					Debug.Log(">>(Player Input Manager) ĐÃ NHẬN DIỆN PHÍM E ĐƯỢC BẤM XUỐNG!"); 
+					Debug.Log(">>(Player Input Manager) ĐÃ NHẬN DIỆN PHÍM E ĐƯỢC BẤM XUỐNG!");
 				};
 				playerControls.PlayerCombat.SpellTrigger.canceled += i =>
 				{
 					spellTriggerInput = false;
-					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!"); 
+					Debug.Log(">> (Player Input Manager) ĐÃ NHẢ PHÍM E!");
 				};
 
 				// INTERACTION
@@ -153,9 +150,16 @@ namespace SG
         {
             if (player == null) return;
 
+
+            if (player.isDead)
+            {
+                spellTriggerInput = false;
+                return;
+            }
+
             HandleAllInput();
 
-            // Cập nhật trạng thái con trỏ chuột dựa trên UI
+
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -180,7 +184,6 @@ namespace SG
             HandleSprintInput();
             HandleJumpInput();
             HandleCastSpellInput();
-            //HandleLeftMouseInput();
 			HandleSwitchWeaponInput();
 			HandleInteractionInput();
 			HandleCloseUIInput();
@@ -215,7 +218,7 @@ namespace SG
                 moveAmount = 1f;
             }
 
-            if (player == null) 
+            if (player == null)
                 return;
 
             if (moveAmount != 0)
@@ -226,10 +229,10 @@ namespace SG
             {
                 player.isMoving = false;
 			}
-            
+
 			if (player.isLockOn)
             {
-                if (player.isSprinting) 
+                if (player.isSprinting)
                 {
                     player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, verticalInput, player.isSprinting);
 				}
@@ -238,9 +241,9 @@ namespace SG
 					player.playerAnimatorManager.UpdateAnimatorMovementParameters(horizontalInput, verticalInput, player.isSprinting);
 				}
             }
-            // HORIZONTAL = 0 BECAUSE WE ONLY WANT NON-STRAFING MOVEMENT 
+            // HORIZONTAL = 0 BECAUSE WE ONLY WANT NON-STRAFING MOVEMENT
             // WE USE HORIZONTAL WHEN WE WANT STRAFING MOVEMENT OR LOCKED ON
-            // IF WE ARE NOT LOCKED ON, ONLY USE MOVEAMOUNT  
+            // IF WE ARE NOT LOCKED ON, ONLY USE MOVEAMOUNT
             else
             {
                 player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.isSprinting);
@@ -301,40 +304,19 @@ namespace SG
             }
         }
 
-        /*
-        private void HandleLeftMouseInput()
-        {
-            if (leftMouseInput)
-            {
-                leftMouseInput = false;
-
-                player.SetCharacterActionHand(true);
-
-                player.playerCombatManager.PerformWeaponBasedAction(
-                    player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action.actionID, 
-                    player.playerInventoryManager.currentRightHandWeapon.itemID);
-            }
-		}
-        */
-
 		private void HandleSwitchWeaponInput()
         {
             if (PlayerUIManager.instance != null && PlayerUIManager.instance.menuWindowIsOpen)
                 return;
 
-            bool keyboard1Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit1Key.wasPressedThisFrame;
-            bool keyboard2Pressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.digit2Key.wasPressedThisFrame;
-
-            // Reset the old input triggers so they don't stack up or interfere
-            switchRightWeaponInput = false;
-            switchLeftWeaponInput = false;
-
-            if (keyboard1Pressed)
+			if (switchRightWeaponInput)
             {
+                switchRightWeaponInput = false;
                 player.playerEquipmentManager.SwitchRightWeapon();
             }
-            if (keyboard2Pressed)
+            if (switchLeftWeaponInput)
             {
+                switchLeftWeaponInput = false;
                 player.playerEquipmentManager.SwitchLeftWeapon();
             }
 		}
@@ -389,7 +371,7 @@ namespace SG
 			{
 				interactionInput = false;
 
-				// Nếu bảng thông báo nhận vật phẩm đang hiển thị trên UI, bấm phím tương tác lần nữa sẽ ẩn nó đi
+
 				if (PlayerUIManager.instance != null && PlayerUIManager.instance.playerUIPopUpManager != null)
 				{
 					if (PlayerUIManager.instance.playerUIPopUpManager.IsItemPopupActive())
@@ -401,6 +383,15 @@ namespace SG
 
 				if (player != null && player.playerInteractionManager != null)
 				{
+					if (player.animator != null)
+					{
+						var stateInfo = player.animator.GetCurrentAnimatorStateInfo(0);
+						if (stateInfo.IsName("Sit_Down_At_Grace") || stateInfo.IsName("Stand_Up_From_Grace"))
+						{
+							return;
+						}
+					}
+
 					player.playerInteractionManager.Interact();
 				}
 			}
@@ -408,7 +399,7 @@ namespace SG
 
 		private void HandleCloseUIInput()
 		{
-			// Kiểm tra nhấn phím Escape trên bàn phím
+
 			bool escapePressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame;
 
 			if (escapePressed)
@@ -435,12 +426,12 @@ namespace SG
 				if (PlayerUIManager.instance != null)
 				{
 					if (PlayerUIManager.instance.playerUIPopUpManager != null)
-						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows(); 
+						PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopupWindows();
 
 					PlayerUIManager.instance.CloseAllMenuWindows();
 
 					if (PlayerUIManager.instance.playerUICharacterMenuManager != null)
-						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu(); 
+						PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
 				}
 			}
 		}

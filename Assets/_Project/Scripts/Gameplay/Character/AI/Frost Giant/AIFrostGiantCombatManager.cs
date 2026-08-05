@@ -41,8 +41,8 @@ namespace SG
 		public GameObject jumpSlamVFX;
 
 		[Header("Gizmos Toggle")]
-		[SerializeField] private bool showGroundSlam01Gizmo = true; 
-		[SerializeField] private bool showGroundSlam02Gizmo = true; 
+		[SerializeField] private bool showGroundSlam01Gizmo = true;
+		[SerializeField] private bool showGroundSlam02Gizmo = true;
 		[SerializeField] private bool showJumpSlamGizmo = true;
 
 		protected override void Awake()
@@ -199,6 +199,9 @@ namespace SG
 					if (targetCharacter == aiCharacter)
 						continue;
 
+					if (!WorldUtilityManager.instance.CanIDamageThisTarget(aiCharacter.characterGroup, targetCharacter.characterGroup))
+						continue;
+
 					if (!damagedCharacters.Contains(targetCharacter))
 					{
 						damagedCharacters.Add(targetCharacter);
@@ -207,6 +210,7 @@ namespace SG
 							continue;
 
 						TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+						damageEffect.characterCausingDamage = aiCharacter;
 						damageEffect.physicalDamage = damageValue;
 						damageEffect.poiseDamage = damageValue;
 
@@ -220,19 +224,19 @@ namespace SG
 		{
 			if (showGroundSlam01Gizmo && oneHandImpactPoint != null)
 			{
-				Gizmos.color = Color.red; 
+				Gizmos.color = Color.red;
 				Gizmos.DrawWireSphere(oneHandImpactPoint.position, groundSlam01Radius);
 			}
 
 			if (showGroundSlam02Gizmo && twoHandImpactPoint != null)
 			{
-				Gizmos.color = Color.yellow; 
+				Gizmos.color = Color.yellow;
 				Gizmos.DrawWireSphere(twoHandImpactPoint.position, groundSlam02Radius);
 			}
 
 			if (showJumpSlamGizmo && jumpImpactPoint != null)
 			{
-				Gizmos.color = Color.blue; 
+				Gizmos.color = Color.blue;
 				Gizmos.DrawWireSphere(jumpImpactPoint.position, jumpSlamRadius);
 			}
 		}

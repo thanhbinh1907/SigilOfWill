@@ -1,5 +1,11 @@
 {
     "files.exclude": {
-        "**/*.meta": true
-    }
+        "**/*.meta": true,
+        "**/*.csproj": true,
+        "**/*.sln": true,
+        "**/*.asset": true,
+        "**/*.unitypackage": true,
+        "**/*.asmdef": true,
+    },
+    "git.ignoreLimitWarning": true
 }

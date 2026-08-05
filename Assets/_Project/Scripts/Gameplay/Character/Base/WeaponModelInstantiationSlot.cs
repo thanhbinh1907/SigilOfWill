@@ -6,7 +6,7 @@ namespace SG
 {
     public class WeaponModelInstantiationSlot : MonoBehaviour
     {
-		
+
 		public WeaponModelSlot weaponSlot;
 		public GameObject currentWeaponModel;
 

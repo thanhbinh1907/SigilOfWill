@@ -19,7 +19,7 @@ namespace SG
         {
             currentSelected = EventSystem.current.currentSelectedGameObject;
 
-            if (currentSelected != null) 
+            if (currentSelected != null)
             {
                 if (currentSelected != previouslySelected)
                 {
@@ -34,7 +34,7 @@ namespace SG
         {
             Canvas.ForceUpdateCanvases();
 
-            Vector2 newPosition = 
+            Vector2 newPosition =
                 (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position) - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
 
             // WE ONLY WANT TO LOCK THE POSITION ON THE Y AXIS (UP AND DOWN)

@@ -23,7 +23,7 @@ namespace SG
 			return newState;
 		}
 
-		protected virtual void ResetStateFlags(AICharacterManager aiCharacter) 
+		protected virtual void ResetStateFlags(AICharacterManager aiCharacter)
 		{
 			// RESET ANY STATE FLAGS HERE SO WHEN YOU RETURN TO THE STATE, THEY ARE BLANK ONCE AGAIN
 		}

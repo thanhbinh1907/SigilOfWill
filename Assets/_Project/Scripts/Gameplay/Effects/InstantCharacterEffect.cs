@@ -11,7 +11,7 @@ namespace SG
 
         public virtual void ProcessEffect(CharacterManager character)
         {
- 
-		} 
+
+		}
 	}
 }

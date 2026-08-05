@@ -1,8 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+import sys
 
-FILE_PATH = 'gesture_data.csv'
+# Đảm bảo in các ký tự Unicode tiếng Việt và emoji không bị lỗi trên console Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+FILE_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gesture_data.csv"))
 
 def analyze_gestures():
     try:

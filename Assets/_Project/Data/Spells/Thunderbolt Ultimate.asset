@@ -17,6 +17,6 @@ MonoBehaviour:
   manaCost: 100
   spellPrefab: {fileID: 1604970523841052, guid: dfabbd05c7735314e97de47b3d7695c4, type: 3}
   fireDamage: 0
-  lightningDamage: 35
+  lightningDamage: 45
   windDamage: 0
   spawnForwardOffset: 5

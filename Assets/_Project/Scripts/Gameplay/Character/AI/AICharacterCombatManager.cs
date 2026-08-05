@@ -21,6 +21,7 @@ namespace SG
 
         [Header("Detection")]
         [SerializeField] float detectionRadius = 15;
+        public float distanceToLoseTarget = 25;
         public float minimunFOV = -35;
         public float maximumFOV = 35;
 
@@ -55,6 +56,12 @@ namespace SG
                 if (targetCharacter.isDead)
                     continue;
 
+                if (targetCharacter.characterCombatManager == null || targetCharacter.characterCombatManager.lockOnTransform == null)
+                    continue;
+
+                if (aiCharacter.characterCombatManager == null || aiCharacter.characterCombatManager.lockOnTransform == null)
+                    continue;
+
                 // CAN I ATTACK THIS CHARACTER, IF SO, MAKE THEM MY TARGET
                 if (WorldUtilityManager.instance.CanIDamageThisTarget(aiCharacter.characterGroup, targetCharacter.characterGroup))
                 {
@@ -74,12 +81,16 @@ namespace SG
                         }
                         else
                         {
+                            Debug.Log($">> [AI COMBAT] Target found for {aiCharacter.name}! Setting target to {targetCharacter.name}");
                             targetsDirection = targetCharacter.transform.position - transform.position;
                             viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, targetsDirection);
                             aiCharacter.characterCombatManager.SetTarget(targetCharacter);
 
                             if (enablePivot)
+                            {
+                                Debug.Log($">> [AI COMBAT] {aiCharacter.name} pivoting towards target. viewableAngle = {viewableAngle}");
 								PivotTowardsTarget(aiCharacter);
+                            }
                         }
                     }
                 }
@@ -156,6 +167,22 @@ namespace SG
 
             aiCharacter.transform.rotation = Quaternion.Slerp(aiCharacter.transform.rotation, targetRotation, attackRotationSpeed * Time.deltaTime);
 		}
+
+        public void RotateTowardsTarget(AICharacterManager aiCharacter)
+        {
+            if (currentTarget == null)
+                return;
+
+            Vector3 targetDirection = currentTarget.transform.position - aiCharacter.transform.position;
+            targetDirection.y = 0;
+            targetDirection.Normalize();
+
+            if (targetDirection == Vector3.zero)
+                targetDirection = aiCharacter.transform.forward;
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            aiCharacter.transform.rotation = Quaternion.Slerp(aiCharacter.transform.rotation, targetRotation, attackRotationSpeed * Time.deltaTime);
+        }
 
 		public void HandleActionRecovery(AICharacterManager aiCharacter)
         {

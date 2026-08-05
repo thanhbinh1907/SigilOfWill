@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-namespace SG { 
+namespace SG {
 	public class PlayerUIManager : MonoBehaviour
 	{
 		public static PlayerUIManager instance;
@@ -17,8 +19,14 @@ namespace SG {
 		public bool popupWindowIsOpen = false;
 
 		[Header("Main Menu Settings (Offline)")]
-		[SerializeField] private CanvasGroup hudCanvasGroup;      
-		[SerializeField] private CanvasGroup mainMenuCanvasGroup;  
+		[SerializeField] private CanvasGroup hudCanvasGroup;
+		[SerializeField] private CanvasGroup mainMenuCanvasGroup;
+
+		[Header("Settings Menu")]
+		[SerializeField] public GameObject settingsMenu;
+		[SerializeField] public Slider bgmVolumeSlider;
+		[SerializeField] public Slider sfxVolumeSlider;
+		[SerializeField] public Button settingsReturnButton;
 
 		public void ToggleMainMenu()
 		{
@@ -31,7 +39,7 @@ namespace SG {
 
 			if (menuWindowIsOpen)
 			{
-				// ẨN THANH HUD CHIẾN ĐẤU
+
 				if (hudCanvasGroup != null)
 				{
 					hudCanvasGroup.alpha = 0;
@@ -39,42 +47,42 @@ namespace SG {
 					hudCanvasGroup.blocksRaycasts = false;
 				}
 
-				// HIỆN MENU TỔNG
+
 				if (mainMenuCanvasGroup != null)
 				{
 					mainMenuCanvasGroup.alpha = 1;
 					mainMenuCanvasGroup.interactable = true;
 					mainMenuCanvasGroup.blocksRaycasts = true;
 				}
-				
-				// Tắt player input manager đi để không thể di chuyển
+
+
 				if (PlayerInputManager.instance != null)
 				{
 					PlayerInputManager.instance.enabled = false;
 				}
 
-				// Mở khóa chuột để chọn ô vũ khí
+
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 			}
 			else
 			{
-				// HIỆN LẠI THANH HUD CHIẾN ĐẤU
+
 				if (hudCanvasGroup != null) { hudCanvasGroup.alpha = 1; hudCanvasGroup.interactable = true; hudCanvasGroup.blocksRaycasts = true; }
 
-				// ẨN MENU TỔNG
+
 				if (mainMenuCanvasGroup != null) { mainMenuCanvasGroup.alpha = 0; mainMenuCanvasGroup.interactable = false; mainMenuCanvasGroup.blocksRaycasts = false; }
-				
-				// Đóng luôn màn hình con Trang bị nếu người chơi đang bật
+
+
 				GetComponentInChildren<PlayerUIEquipmentManager>()?.CloseEquipmentManagerMenu();
 
-				// Bật lại player input manager
+
 				if (PlayerInputManager.instance != null)
 				{
 					PlayerInputManager.instance.enabled = true;
 				}
 
-				// Khóa lại chuột khi chơi game
+
 				Cursor.lockState = CursorLockMode.Locked;
 				Cursor.visible = false;
 			}
@@ -84,7 +92,7 @@ namespace SG {
 		{
 			if (menuWindowIsOpen)
 			{
-				// Cho phép nhấn Escape để đóng menu khi PlayerInputManager bị tắt
+
 				bool escapePressed = UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame;
 				if (escapePressed)
 				{
@@ -97,11 +105,11 @@ namespace SG {
 		{
 			if (instance == null)
 			{
-				instance = this; 
+				instance = this;
 			}
 			else
 			{
-				Destroy(gameObject); 
+				Destroy(gameObject);
 			}
 			DontDestroyOnLoad(gameObject);
 
@@ -113,13 +121,120 @@ namespace SG {
 
 		public void CloseAllMenuWindows()
 		{
+			if (settingsMenu != null && settingsMenu.activeSelf)
+			{
+				CloseSettingsMenu();
+				return;
+			}
+
 			playerUICharacterMenuManager.CloseCharacterMenu();
 			playerUIEquipmentManager.CloseEquipmentManagerMenu();
 		}
 
 		private void Start()
 		{
+			if (instance != this)
+			{
+				return;
+			}
 			DontDestroyOnLoad(gameObject);
+
+			// Dynamically bind settings button inside pause menu
+			Button settingsBtn = FindButtonByName(transform, "Settings");
+			if (settingsBtn != null)
+			{
+				settingsBtn.onClick.RemoveAllListeners();
+				settingsBtn.onClick.AddListener(OpenSettingsMenu);
+			}
+
+			// Bind sliders
+			if (bgmVolumeSlider != null)
+			{
+				bgmVolumeSlider.onValueChanged.RemoveAllListeners();
+				bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+			}
+			if (sfxVolumeSlider != null)
+			{
+				sfxVolumeSlider.onValueChanged.RemoveAllListeners();
+				sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+			}
+			if (settingsReturnButton != null)
+			{
+				settingsReturnButton.onClick.RemoveAllListeners();
+				settingsReturnButton.onClick.AddListener(CloseSettingsMenu);
+			}
+
+			Scene currentScene = SceneManager.GetActiveScene();
+			if (currentScene.buildIndex == 0 || currentScene.name.Contains("Menu") || currentScene.name.Contains("Title"))
+			{
+				SetHUDActive(false);
+			}
+			else
+			{
+				SetHUDActive(true);
+			}
+		}
+
+		private void OnEnable()
+		{
+			SceneManager.sceneLoaded += OnSceneLoaded;
+		}
+
+		private void OnDisable()
+		{
+			SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+		{
+			if (scene.buildIndex == 0 || scene.name.Contains("Menu") || scene.name.Contains("Title"))
+			{
+				SetHUDActive(false);
+			}
+			else
+			{
+				SetHUDActive(true);
+			}
+
+			if (playerUIHudManager == null)
+			{
+				playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>(true);
+			}
+
+			if (playerUIHudManager != null)
+			{
+				playerUIHudManager.ClearAllBossHPBars();
+			}
+
+			if (playerUIPopUpManager == null)
+			{
+				playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>(true);
+			}
+
+			if (playerUIPopUpManager != null)
+			{
+				playerUIPopUpManager.CloseDemoCompletionPopup();
+			}
+		}
+
+		public void SetHUDActive(bool active)
+		{
+			if (hudCanvasGroup != null)
+			{
+				hudCanvasGroup.alpha = active ? 1 : 0;
+				hudCanvasGroup.interactable = active;
+				hudCanvasGroup.blocksRaycasts = active;
+			}
+
+			if (playerUIHudManager == null)
+			{
+				playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>(true);
+			}
+
+			if (playerUIHudManager != null)
+			{
+				playerUIHudManager.ToggleHUD(active);
+			}
 		}
 
 		private void OnDestroy()
@@ -129,6 +244,87 @@ namespace SG {
 				instance = null;
 			}
 		}
-	} 
-	
+
+		private Button FindButtonByName(Transform parent, string name)
+		{
+			foreach (var btn in parent.GetComponentsInChildren<Button>(true))
+			{
+				if (btn.gameObject.name == name)
+					return btn;
+			}
+			return null;
+		}
+
+		public void OpenSettingsMenu()
+		{
+			if (mainMenuCanvasGroup != null)
+			{
+				mainMenuCanvasGroup.alpha = 0f;
+				mainMenuCanvasGroup.interactable = false;
+				mainMenuCanvasGroup.blocksRaycasts = false;
+			}
+
+			if (settingsMenu != null)
+			{
+				settingsMenu.SetActive(true);
+			}
+
+			if (WorldSoundFXManager.instance != null)
+			{
+				if (bgmVolumeSlider != null) bgmVolumeSlider.value = WorldSoundFXManager.instance.GetBGMVolume();
+				if (sfxVolumeSlider != null) sfxVolumeSlider.value = WorldSoundFXManager.instance.GetSFXVolume();
+			}
+
+			if (bgmVolumeSlider != null)
+			{
+				bgmVolumeSlider.Select();
+				if (UnityEngine.EventSystems.EventSystem.current != null)
+				{
+					UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(bgmVolumeSlider.gameObject);
+				}
+			}
+		}
+
+		public void CloseSettingsMenu()
+		{
+			if (settingsMenu != null)
+			{
+				settingsMenu.SetActive(false);
+			}
+
+			if (mainMenuCanvasGroup != null)
+			{
+				mainMenuCanvasGroup.alpha = 1f;
+				mainMenuCanvasGroup.interactable = true;
+				mainMenuCanvasGroup.blocksRaycasts = true;
+			}
+
+			Button settingsBtn = FindButtonByName(transform, "Settings");
+			if (settingsBtn != null)
+			{
+				settingsBtn.Select();
+				if (UnityEngine.EventSystems.EventSystem.current != null)
+				{
+					UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(settingsBtn.gameObject);
+				}
+			}
+		}
+
+		public void SetBGMVolume(float volume)
+		{
+			if (WorldSoundFXManager.instance != null)
+			{
+				WorldSoundFXManager.instance.SetBGMVolume(volume);
+			}
+		}
+
+		public void SetSFXVolume(float volume)
+		{
+			if (WorldSoundFXManager.instance != null)
+			{
+				WorldSoundFXManager.instance.SetSFXVolume(volume);
+			}
+		}
+	}
+
 }

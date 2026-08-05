@@ -24,7 +24,7 @@ namespace SG
         private void OnSlotClicked()
         {
             PlayerUIEquipmentManager equipmentManager = PlayerUIManager.instance.playerUIEquipmentManager;
-            
+
             // Load the inventory for this slot type and handle selection/un-equipping
             equipmentManager.LoadEquipmenInventory(slotType);
         }

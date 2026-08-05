@@ -16,8 +16,25 @@ namespace SG
 			if (aiCharacter.characterCombatManager.currentTarget == null)
 				return SwitchState(aiCharacter, aiCharacter.idle);
 
-			if (!aiCharacter.navMeshAgent.enabled)
-				aiCharacter.navMeshAgent.enabled = true;
+			if (aiCharacter.navMeshAgent != null)
+			{
+				if (!aiCharacter.navMeshAgent.enabled || !aiCharacter.navMeshAgent.isOnNavMesh)
+				{
+					NavMeshHit hit;
+					if (NavMesh.SamplePosition(aiCharacter.transform.position, out hit, 10.0f, NavMesh.AllAreas))
+					{
+						Debug.Log($">> [PURSUE] {aiCharacter.name} snapping off-mesh Agent to {hit.position}");
+						aiCharacter.navMeshAgent.enabled = false;
+						aiCharacter.transform.position = hit.position;
+						aiCharacter.navMeshAgent.enabled = true;
+					}
+					else
+					{
+						Debug.LogWarning($">> [PURSUE] {aiCharacter.name} could not snap Agent near 10m! Disabling agent.");
+						aiCharacter.navMeshAgent.enabled = false;
+					}
+				}
+			}
 
 			if (aiCharacter.aiCharacterCombatManager.enablePivot)
 			{
@@ -28,13 +45,17 @@ namespace SG
 
 			aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);
 
-			if (aiCharacter.combatStance != null && aiCharacter.aiCharacterCombatManager.distanceFromTarget <= 
+			if (aiCharacter.combatStance != null && aiCharacter.aiCharacterCombatManager.distanceFromTarget <=
 				aiCharacter.combatStance.maximumEngagementDistance)
 				return SwitchState(aiCharacter, aiCharacter.combatStance);
 
-			NavMeshPath path = new NavMeshPath();
-			aiCharacter.navMeshAgent.CalculatePath(aiCharacter.characterCombatManager.currentTarget.transform.position, path);
-			aiCharacter.navMeshAgent.SetPath(path);
+			if (aiCharacter.navMeshAgent != null && aiCharacter.navMeshAgent.isActiveAndEnabled && aiCharacter.navMeshAgent.isOnNavMesh)
+			{
+				Debug.Log($">> [PURSUE] {aiCharacter.name} calculating path to target: {aiCharacter.characterCombatManager.currentTarget.transform.position}");
+				NavMeshPath path = new NavMeshPath();
+				aiCharacter.navMeshAgent.CalculatePath(aiCharacter.characterCombatManager.currentTarget.transform.position, path);
+				aiCharacter.navMeshAgent.SetPath(path);
+			}
 
 			return this;
 		}
