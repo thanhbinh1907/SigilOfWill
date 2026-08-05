@@ -1,99 +1,80 @@
-GAME DESIGN DOCUMENT: CƠ CHẾ CỐT LÕI (CORE MECHANICS)
-Dự án: Sigil of Will - Single-player Gesture-based and Voice Action RPG
+# GAME DESIGN DOCUMENT: CORE MECHANICS
+**Project: Sigil of Will - Single-player Gesture-based and Voice Action RPG**
 
-I. Vòng Lặp Trạng Thái (State Loop) & Điều Khiển
-Game được thiết kế xoay quanh hai trạng thái chuyển đổi mượt mà để giải quyết việc sử dụng luân phiên chuột và cử chỉ tay.
+[![Play on itch.io](https://img.shields.io/badge/Play-itch.io-fa5c5c?logo=itch.io)](https://thanhbinh19.itch.io/sigil-of-will)
+[![Watch Trailer](https://img.shields.io/badge/Trailer-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=smnhPDAU6q0) 
 
-1. Trạng Thái Khám Phá (Exploration Mode)
-Kích hoạt: Trạng thái mặc định khi không có kẻ địch trong phạm vi.
+## I. State Loop & Controls
+The game is designed around two smoothly transitioning states to accommodate the alternating use of a mouse and hand gestures.
 
-Mục tiêu: Di chuyển, tìm đường, tương tác môi trường.
+### 1. Exploration Mode
+**Activation:** Default state when no enemies are in range.
 
-Điều khiển:
+**Objective:** Movement, pathfinding, environmental interaction.
 
-WASD: Di chuyển nhân vật.
+**Controls:**
+- **WASD:** Character movement.
+- **Mouse (Delta):** Free 360-degree camera rotation. Left-click/Right-click can be assigned to light interactions (picking up items, opening doors).
+- **AI Sensor (MediaPipe):** In Standby mode to save system resources.
 
-Chuột (Mouse Delta): Xoay camera tự do 360 độ. Left-click/Right-click có thể gán cho tương tác nhẹ (nhặt đồ, mở cửa).
+### 2. Combat Mode
+**Activation:** Automatically triggers when entering a "Combat Zone/Arena" or being detected by a monster (Aggro).
 
-Cảm biến AI (MediaPipe): Ở trạng thái nghỉ ngơi (Standby) để tiết kiệm tài nguyên hệ thống
+**Objective:** Survive and eliminate targets using magic.
 
-2. Trạng Thái Chiến Đấu (Combat Mode)
-Kích hoạt: Tự động kích hoạt khi bước vào "vùng đụng độ" (Combat Zone/Arena) hoặc bị quái vật phát hiện (Aggro).
+**Controls & Transition:**
+- **Auto-Lock Camera:** The camera immediately disables mouse input. Instead, the camera uses an algorithm (e.g., `Quaternion.Slerp` in Unity) to automatically lock the view onto the most dangerous/closest enemy. A Target Indicator circle appears under the monster's feet.
+- **Right Hand (Releasing Mouse):** The player raises their right hand to the webcam's recognition area to prepare casting "Sigils" while simultaneously chanting spells (fireball, thunderbolt, windblade).
+- **Left Hand (Keyboard):** Remains on WASD to control character movement, dodge/backstep, and jump.
 
-Mục tiêu: Sinh tồn và tiêu diệt mục tiêu bằng phép thuật.
+## II. Stamina & Mana System
 
-Điều khiển & Chuyển đổi:
+Stamina and Mana are the core components to balance pacing, forcing players to fight with rhythm instead of blindly spamming skills.
 
-Auto-Lock Camera: Camera lập tức vô hiệu hóa đầu vào của chuột. Thay vào đó, Camera sử dụng thuật toán (ví dụ: Quaternion.Slerp trong Unity) để tự động khóa góc nhìn vào kẻ địch nguy hiểm nhất/gần nhất. Dưới chân quái vật xuất hiện vòng tròn báo hiệu đang bị khóa mục tiêu (Target Indicator).
+**UI Display:** Two distinct resource bars on the screen. Green represents Mana and Blue represents Stamina.
 
-Tay phải (Buông chuột): Người chơi đưa tay phải lên vùng nhận diện của webcam để chuẩn bị thi triển các "Sigil" đồng thời với việc đọc thần chú (fireball, thunderbolt, windblade).
+**Stamina Consumption:**
+- **Dodge/Backstep/Sprint (Shift key), Jump (Space key):** Consumes a fixed amount of Stamina. Cannot dodge if Stamina is depleted.
+- Casting a spell will consume a certain amount of mana depending on the casted spell.
 
-Tay trái (Bàn phím): Vẫn đặt trên WASD để điều khiển nhân vật di chuyển và lùi/né, nhảy.
+**Stamina Recovery:**
+- Automatically recovers quickly when the character is in the None State (not holding the cast key, hand is resting down or not in the camera view) AND not performing a dodge action.
 
-II. Hệ Thống Thể Lực và Năng Lượng (Stamina & Mana System)
+**Exhaustion Penalty:** If Stamina runs out (drops to 0), the character falls into a state where they cannot cast spells or dodge, can only walk, and becomes an easy target for attacks.
 
-Stamina và Mana là cốt lõi để cân bằng nhịp độ, buộc người chơi phải chiến đấu có nhịp điệu (Rhythm) thay vì spam chiêu loạn xạ.
+**Mana Recovery:**
+- Recovers slower than stamina but is not affected by the character's state (except when casting spells; otherwise, it will recover even while running, jumping, or dodging).
 
-Hiển thị: Hai thanh năng lượng UI rõ ràng trên màn hình. Màu xanh lá là Mana còn xanh dương là Stamina
+## III. Magic Casting System (Gesture & Voice Casting)
+Uses AI combined with physics to define the combat style.
 
-Tiêu hao Stamina:
+### 1. The Trigger
+To begin reading gestures (preventing the AI from misinterpreting accidental arm swings), the player MUST hold down the "E" key with their left hand while their right hand performs the gesture and chants.
 
-Dodge/Backstep/Sprint (Phím Shift), Jump (Phím Space): Tiêu tốn một khối lượng Stamina cố định. Hết Stamina không thể né.
+Upon releasing the "E" key, the casting action immediately ends/is canceled.
 
-Khi tung chiêu sẽ tiêu tốn 1 lượng mana tùy vào chiêu thức được tung ra
+### 2. The Sigil Arsenal
+The system uses an LSTM network and MediaPipe to recognize real-time action sequences:
 
-Hồi phục Stamina:
+**[SIGIL 1] Fireball:**
+- **Gesture:** Charge up energy in the hand -> Push strongly forward.
+- **Voice:** Say "fireball"
+- **Characteristics:** High damage, slow projectile speed.
 
-Tự động hồi phục nhanh chóng khi nhân vật ở Trạng Thái None (không giữ phím cast chiêu, tay buông thõng hoặc không đưa vào camera) VÀ không thực hiện hành động né tránh.
+**[SIGIL 2] WindBlade:**
+- **Gesture:** Swing hand to slash horizontally or vertically decisively.
+- **Voice:** Say "windblade"
+- **Characteristics:** Slashes a wind blade (melee attack) causing Area of Effect (AoE) damage in a cone shape in front. Extremely effective for sweeping through crowds of small swarming monsters.
 
-Hình phạt (Exhaustion): Nếu Stamina cạn kiệt (về 0), nhân vật rơi vào trạng thái không thể cast phép hay né tránh, chỉ có thể đi bộ , trở thành mục tiêu dễ bị tấn công.
+**[SIGIL 3] Thunderbolt:**
+- **Gesture:** Point hand straight at the screen (towards the monster).
+- **Voice:** Say "thunderbolt"
+- **Characteristics:** Shoots a lightning bolt that instantly hits the target (Hitscan). Massive damage but consumes a lot of mana.
 
-Hồi phục Mana: 
+## IV. Combat Loop & Pacing
+A typical battle (especially a Boss Fight) will proceed according to the following loop:
 
-- Hồi phục chậm hơn stamina nhưng không bị ảnh hưởng bởi trạng thái nhân vật ( trừ khi cast chiêu còn không sẽ hồi phục kết cả khi đang thực hiện hành động chạy, nhảy, né ) 
-
-III. Hệ Thống Thi Triển Phép Thuật (Gesture & Voice Casting)
-Sử dụng AI kết hợp vật lý để định hình phong cách chiến đấu.
-
-1. Cơ chế Kích hoạt (The Trigger)
-Để bắt đầu đọc cử chỉ (ngăn AI nhận diện nhầm khi người chơi vung tay vô tình), người chơi BẮT BUỘC phải đè phím "E" bằng tay trái, đồng thời tay phải thực hiện cử chỉ và.
-
-Khi nhả phím "E", hành động tung chiêu lập tức kết thúc/hủy bỏ.
-
-2. Bộ Kỹ Năng (The Sigil Arsenal)
-Hệ thống sử dụng mạng LSTM và MediaPipe để nhận diện chuỗi hành động thời gian thực:
-
-[ẤN CHÚ 1] Fireball (Cầu Lửa):
-
-Cử chỉ: Tụ lực tay -> Đẩy mạnh ra phía trước.
-
-Ngôn ngữ : Đọc fireball
-
-Đặc tính: Sát thương cao, tốc độ bay chậm. 
-
-[ẤN CHÚ 2] WindBlade (Phong Nhẫn):
-
-Cử chỉ: Vung tay chém ngang hoặc dọc dứt khoát.
-
-Ngôn ngữ : Đọc windblade
-
-Đặc tính: Chém lưỡi dao gió (melee attack) gây sát thương diện rộng (AoE) hình nón phía trước. Cực kỳ hiệu quả để càn quét bầy quái vật nhỏ lao tới đông đúc (Swarm).
-
-[ẤN CHÚ 3] Thunderbolt (Lôi Kích):
-
-Cử chỉ: Đưa tay chỉ thẳng vào màn hình (hướng về phía quái vật).
-
-Ngôn ngữ : Đọc thunderbolt
-
-Đặc tính: Bắn ra tia sét đánh trúng mục tiêu ngay lập tức (Hitscan). Sát thương cực lớn nhưng tiêu tốn rất nhiều mana.
-
-IV. Nhịp Độ & Vòng Lặp Trận Đấu (Combat Loop)
-Một trận chiến điển hình (đặc biệt là Đánh Boss) sẽ diễn ra theo vòng lặp sau:
-
-Nhận diện: Game tự động khóa mục tiêu. Người chơi buông chuột, chuẩn bị tay phải và miệng để đọc thần chú.
-
-Quan sát & Né tránh: Tay trái dùng WASD + Shift để né các đòn tấn công của Boss (tiêu tốn stamina). 
-
-Phản công (Casting): Tìm khoảng trống (Window of Opportunity), đè phím "E", tụ lực tay phải đẩy ra và niệm chú trong thời gian giữ phím E.
-
-Hồi phục (None State): Thả phím "E", để hoàn thành việc cast chiêu, chiêu thức sẽ được nhân vật thi triển
+1. **Detection:** The game automatically locks onto the target. The player releases the mouse, preparing their right hand and voice to cast spells.
+2. **Observation & Dodging:** The left hand uses WASD + Shift to dodge the Boss's attacks (consuming stamina).
+3. **Counterattack (Casting):** Find a Window of Opportunity, hold the "E" key, charge up the right hand, push forward, and chant the spell while holding E.
+4. **Recovery (None State):** Release the "E" key to complete the casting, and the skill will be executed by the character.
